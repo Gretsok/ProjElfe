@@ -58,3 +58,4 @@
 # Crashlytics generated file
 /ProjElfUnity/crashlytics-build.properties
 
+ProjElfUnity/Packages/packages-lock.json
