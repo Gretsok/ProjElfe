@@ -169,7 +169,7 @@
 											"top": 357,
 											"width": 250.021484375,
 											"height": 13,
-											"text": "+Interact()",
+											"text": "+Interact(): bool",
 											"horizontalAlignment": 0
 										},
 										{
@@ -186,7 +186,7 @@
 											"top": 372,
 											"width": 250.021484375,
 											"height": 13,
-											"text": "+ManageSight()",
+											"text": "+ManageSight(): bool",
 											"horizontalAlignment": 0
 										}
 									],
@@ -824,7 +824,18 @@
 							"_parent": {
 								"$ref": "AAAAAAF1qJK+UCReCA0="
 							},
-							"name": "Interact"
+							"name": "Interact",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1uGo9JgOsoms=",
+									"_parent": {
+										"$ref": "AAAAAAF1qJMSKSTiddM="
+									},
+									"type": "bool",
+									"direction": "return"
+								}
+							]
 						},
 						{
 							"_type": "UMLOperation",
@@ -832,7 +843,18 @@
 							"_parent": {
 								"$ref": "AAAAAAF1qJK+UCReCA0="
 							},
-							"name": "ManageSight"
+							"name": "ManageSight",
+							"parameters": [
+								{
+									"_type": "UMLParameter",
+									"_id": "AAAAAAF1uGqP8AOvLYo=",
+									"_parent": {
+										"$ref": "AAAAAAF1qJRh1iUVaGY="
+									},
+									"type": "bool",
+									"direction": "return"
+								}
+							]
 						}
 					]
 				},
