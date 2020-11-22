@@ -2,9 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.MeleeWeaponData
+namespace ProjElf.CombatController
 {
-    public class MeleeWeaponData : MonoBehaviour
+    [CreateAssetMenu(fileName = "MeleeWeaponData", menuName = "weaponData/MeleeWeaponData")]
+    public class MeleeWeaponData : AWeaponData
     {
         // Start is called before the first frame update
         void Start()

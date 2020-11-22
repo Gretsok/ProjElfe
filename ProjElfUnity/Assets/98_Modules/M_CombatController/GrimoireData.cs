@@ -3,10 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-namespace ProjElf.GrimoireData
+namespace ProjElf.CombatController
 {
-    public class GrimoireData : MonoBehaviour
+    [CreateAssetMenu(fileName = "GrimoireData", menuName = "weaponData/GrimoireData")]
+    public class GrimoireData : AWeaponData
     {
+        //Var
+        private float m_projectileSpeed;
+        private float m_projectileRange;
+        [SerializeField] private MagicSpellProjectile m_projectilePrefab;
+        private bool m_allowContinueFiring;
+
         // Start is called before the first frame update
         void Start()
         {

@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.AWeaponData
+namespace ProjElf.CombatController
 {
-    public class AWeaponData : MonoBehaviour
+    public abstract class AWeaponData : ScriptableObject
     {
+        //Var
+        private string m_weaponName;
+        private int m_hitDamage;
+        private float m_attackSpeed;
+        private AWeapon m_weaponPrefab;
+        public AWeapon WeaponPrefab => m_weaponPrefab;
+
         // Start is called before the first frame update
         void Start()
         {

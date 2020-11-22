@@ -2,10 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.BowData
+namespace ProjElf.CombatController
 {
-    public class BowData : MonoBehaviour
+    [CreateAssetMenu(fileName = "BowData", menuName = "weaponData/BowData")]
+    public class BowData : AWeaponData
     {
+        //Var
+        private float m_projectileRange;
+        private float m_projectileFallSpeed;
+        private float m_projectileSpeed;
+        [SerializeField] private Arrow m_projectilePrefab;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -16,7 +23,7 @@ namespace ProjElf.BowData
         void Update()
         {
 
-        }
+        }  
     }
 }
 

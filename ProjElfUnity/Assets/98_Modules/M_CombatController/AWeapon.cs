@@ -2,10 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.AWeapon
+namespace ProjElf.CombatController
 {
-    public class AWeapon : MonoBehaviour
+    public abstract class AWeapon : MonoBehaviour
     {
+        //Var
+        private string m_weaponName;
+        private Damage m_damage;
+        private float m_attackSpeed;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -14,6 +19,11 @@ namespace ProjElf.AWeapon
 
         // Update is called once per frame
         void Update()
+        {
+
+        }
+
+        public void Use()
         {
 
         }

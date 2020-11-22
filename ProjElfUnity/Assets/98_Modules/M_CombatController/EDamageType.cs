@@ -2,21 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.EDamageType
+namespace ProjElf.CombatController
 {
-    public class EDamageType : MonoBehaviour
+    public enum EDamageType
     {
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        Physical,
+        Magical
     }
-
 }

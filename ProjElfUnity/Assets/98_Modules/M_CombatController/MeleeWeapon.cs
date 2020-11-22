@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjElf.MeleeWeapon
+namespace ProjElf.CombatController
 {
-    public class MeleeWeapon : MonoBehaviour
+    public class MeleeWeapon : AWeapon
     {
         // Start is called before the first frame update
         void Start()
