@@ -4,7 +4,8 @@
 
 namespace ProjElf.ProceduraleGeneration
 {
-    public class DunjonRoomData : ScriptableObject
+    [CreateAssetMenu(fileName = "DunjeonRoomData", menuName = "DunjeonGeneration/DunjeonRoomData")]
+    public class DunjeonRoomData : ScriptableObject
     {
         [SerializeField, Tooltip("The prefab of the room")]
         private DunjeonRoom m_roomPrefab = null;
@@ -29,6 +30,12 @@ namespace ProjElf.ProceduraleGeneration
         public GameObject GetRandomEnnemy()
         {
             return m_ennemiesToSpawn[0].EnnemyPrefab;
+        }
+
+        public int GetRandomNumberOfEnnemisToSpawn()
+        {
+            Random.InitState((new System.Random()).Next(0, 1000000));
+            return Random.Range(m_numberOfEnnemiesToSpawn.x, m_numberOfEnnemiesToSpawn.y);
         }
     }
 }
