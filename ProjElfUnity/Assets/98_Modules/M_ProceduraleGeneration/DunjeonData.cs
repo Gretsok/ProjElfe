@@ -31,7 +31,9 @@ namespace ProjElf.ProceduraleGeneration
         {
             List<DunjeonRoomData> tempList = m_rooms.FindAll(x => x.ForwardGate == hasForwardGate && x.LeftGate == hasLeftGate && x.RightGate == hasRightGate);
             Random.InitState((new System.Random()).Next(0, 1000000));
-            return tempList[Random.Range(0, tempList.Count)];
+            int randomIndex = Random.Range(0, tempList.Count);
+            //Debug.Log("random room index: "+randomIndex + " tempList count : " + tempList.Count);
+            return tempList[randomIndex];
         }
     }
 }

@@ -15,6 +15,6 @@ MonoBehaviour:
   m_roomPrefab: {fileID: 8601876511685939825, guid: ff3b94583b169874b9896e7dad0ebd1c,
     type: 3}
   m_numberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_forwardGate: 0
+  m_forwardGate: 1
   m_leftGate: 1
-  m_rightGate: 1
+  m_rightGate: 0
