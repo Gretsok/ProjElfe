@@ -8,9 +8,9 @@ namespace ProjElf.CombatController
     public class BowData : AWeaponData
     {
         //Var
-        private float m_projectileRange;
-        private float m_projectileFallSpeed;
-        private float m_projectileSpeed;
+        [SerializeField] private float m_projectileRange;
+        [SerializeField] private float m_projectileFallSpeed;
+        [SerializeField] private float m_projectileSpeed;
         [SerializeField] private Arrow m_projectilePrefab;
 
         // Start is called before the first frame update

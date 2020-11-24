@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    [CreateAssetMenu(fileName = "GrimoireData", menuName = "weaponData/GrimoireData")]
+    [CreateAssetMenu(fileName = "GrimoireData", menuName = "weaponData/GrimoireData")] //instancie un scripatble object
     public class GrimoireData : AWeaponData
     {
         //Var

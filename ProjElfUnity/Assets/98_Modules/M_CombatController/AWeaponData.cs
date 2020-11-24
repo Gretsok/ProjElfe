@@ -7,10 +7,10 @@ namespace ProjElf.CombatController
     public abstract class AWeaponData : ScriptableObject
     {
         //Var
-        private string m_weaponName;
-        private int m_hitDamage;
-        private float m_attackSpeed;
-        private AWeapon m_weaponPrefab;
+        [SerializeField] private string m_weaponName;
+        [SerializeField] private int m_hitDamage;
+        [SerializeField] private float m_attackSpeed;
+        [SerializeField] private AWeapon m_weaponPrefab;
         public AWeapon WeaponPrefab => m_weaponPrefab;
 
         // Start is called before the first frame update

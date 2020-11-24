@@ -12,6 +12,10 @@ namespace ProjElf.CombatController
         private Bow m_bow;
         //private AWeapon[] m_weapons = new AWeapon[3];
         private AWeapon selectedWeapon;
+        //Ref transform
+        [SerializeField] private Transform posMelee;
+        [SerializeField] private Transform posGrimoire;
+        [SerializeField] private Transform posBow;
 
         // Start is called before the first frame update
         void Start()
@@ -28,19 +32,19 @@ namespace ProjElf.CombatController
         public void ChangeMeleeWeapon(MeleeWeaponData newMeleeWeaponData)
         {
             MeleeWeapon newMeleeWeapon;
-            newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab);
+            newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee);
             m_meleeWeapon = newMeleeWeapon;
         }
         public void ChangeGrimoire(GrimoireData newGrimoireData)
         {
             Grimoire newGrimoire;
-            newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab);
+            newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire);
             m_grimoire = newGrimoire;
         }
         public void ChangeBow(BowData newBowData)
         {
             Bow newBow;
-            newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab);
+            newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow);
             m_bow = newBow;
         }
         public void SelectNextWeapon()
