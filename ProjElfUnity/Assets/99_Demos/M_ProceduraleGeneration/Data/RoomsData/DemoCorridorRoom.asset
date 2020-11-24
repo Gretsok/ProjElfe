@@ -14,7 +14,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomPrefab: {fileID: 7309122428619234962, guid: df6d62840bcd3e84e868b71526298896,
     type: 3}
-  m_numberOfEnnemiesToSpawn: {x: 0, y: 0}
+  m_ennemiesToSpawn:
+  - EnnemyPrefab: {fileID: 4853750319604868868, guid: a68985b08242a324686a3aec2b089708,
+      type: 3}
+    SpawnWeight: 1
+  - EnnemyPrefab: {fileID: 3127939893895927803, guid: 94730235e0ddef546819986dbe64c4e9,
+      type: 3}
+    SpawnWeight: 1
+  m_numberOfEnnemiesToSpawn: {x: 3, y: 5}
   m_forwardGate: 1
   m_leftGate: 0
   m_rightGate: 0

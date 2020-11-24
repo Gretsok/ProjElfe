@@ -282,14 +282,17 @@ namespace ProjElf.ProceduraleGeneration
                         }
                         else
                         {
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+
+
+                            
                             if (!corridorOnly)
                             {
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
@@ -298,6 +301,27 @@ namespace ProjElf.ProceduraleGeneration
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, true);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            }
+                            else
+                            {
+                                // generate random number to favorize forward corridor
+                                Random.InitState((new System.Random().Next(0, 11651615)));
+                                int randValue = Random.Range(0, 10);
+                                if(randValue < 1)
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                else if(randValue < 2)
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                else
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
                             }
                         }
                     }
@@ -346,14 +370,31 @@ namespace ProjElf.ProceduraleGeneration
                         }
                         else
                         {
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            
                             if (!corridorOnly)
                             {
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            }
+                            else
+                            {
+                                Random.InitState((new System.Random()).Next(0, 15164462));
+                                int randValue = Random.Range(0, 10);
+                                if(randValue >= 8)
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                else
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                
                             }
                         }
                     }
@@ -424,14 +465,31 @@ namespace ProjElf.ProceduraleGeneration
                         }
                         else
                         {
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            
                             if (!corridorOnly)
                             {
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            }
+                            else
+                            {
+                                Random.InitState((new System.Random()).Next(0, 15164462));
+                                int randValue = Random.Range(0, 10);
+                                if(randValue >= 8)
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                else
+                                {
+                                    roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
+                                    if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                }
+                                
                             }
                         }
                     }

@@ -6,6 +6,8 @@ namespace ProjElf.ProceduraleGeneration
     public class DunjeonRoom : MonoBehaviour
     {
         private DunjeonRoomData m_dunjeonRoomData = null;
+        private bool m_isInit = false;
+
         private bool m_isLeadingToEnd = true;
         private int m_roomsLeftUntilTheEnd = 0;
 
@@ -14,6 +16,11 @@ namespace ProjElf.ProceduraleGeneration
         internal bool HasForwardGate = false;
         internal bool HasLeftGate = false;
         internal bool HasRightGate = false;
+
+        [SerializeField]
+        private float m_width = 10f;
+        [SerializeField]
+        private LayerMask m_spawningLayerMask;
 
         [SerializeField]
         private Transform m_forwardGate = null;
@@ -41,19 +48,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return HasForwardGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return false;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return HasRightGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return HasLeftGate;
-                        break;
+                         
                     default:
                         return false;
-                        break;
+                         
                 }
             }
         }
@@ -66,19 +73,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return false;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return HasForwardGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return HasLeftGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return HasRightGate;
-                        break;
+                         
                     default:
                         return false;
-                        break;
+                         
                 }
             }
         }
@@ -91,19 +98,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return HasLeftGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return HasRightGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return HasForwardGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return false;
-                        break;
+                         
                     default:
                         return false;
-                        break;
+                         
                 }
             }
         }
@@ -116,19 +123,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return HasRightGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return HasLeftGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return false;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return HasForwardGate;
-                        break;
+                         
                     default:
                         return false;
-                        break;
+                         
                 }
             }
         }
@@ -143,19 +150,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return ForwardGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return BackwardGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return RightGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return LeftGate;
-                        break;
+                         
                     default:
                         return null;
-                        break;
+                         
                 }
             }
         }
@@ -168,19 +175,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return BackwardGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return ForwardGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return LeftGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return RightGate;
-                        break;
+                         
                     default:
                         return null;
-                        break;
+                         
                 }
             }
         }
@@ -193,19 +200,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return LeftGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return RightGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return ForwardGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return BackwardGate;
-                        break;
+                         
                     default:
                         return null;
-                        break;
+                         
                 }
             }
         }
@@ -218,19 +225,19 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     case ERoomOrientation.North:
                         return RightGate;
-                        break;
+                         
                     case ERoomOrientation.South:
                         return LeftGate;
-                        break;
+                         
                     case ERoomOrientation.West:
                         return BackwardGate;
-                        break;
+                         
                     case ERoomOrientation.East:
                         return ForwardGate;
-                        break;
+                         
                     default:
                         return null;
-                        break;
+                         
                 }
             }
         }
@@ -243,11 +250,61 @@ namespace ProjElf.ProceduraleGeneration
             HasForwardGate = m_dunjeonRoomData.ForwardGate;
             HasLeftGate = m_dunjeonRoomData.LeftGate;
             HasRightGate = m_dunjeonRoomData.RightGate;
+            ActivateRoom();
+        }
+
+        public void ActivateRoom()
+        {
+            
+            if(!m_isInit)
+            {
+                //Debug.Log("truc");
+                int numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn();
+                m_isInit = true;
+
+                for(int i = 0; i < numberOfEnnemisToSpawn; i++)
+                {
+                    GameObject ennemyToSpawnGO = m_dunjeonRoomData.GetRandomEnnemy();
+                    Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity);
+                }
+
+            }
+            
         }
 
         public Vector3 GetRandomWalkablePoint()
         {
-            return Vector3.zero;
+            float x, z;
+            Ray ray;
+            RaycastHit hitInfos;
+            int MAX_ITERATION = 100;
+            int nbIteration = 0;
+            do
+            {
+                System.Random rnd = new System.Random(Random.Range(0, 10000000));
+                Random.InitState(rnd.Next(0, 100000000));
+                x = Random.Range(-m_width / 2, m_width / 2);
+                Random.InitState(rnd.Next(0, 100000000));
+                z = Random.Range(-m_width / 2, m_width / 2);
+
+                ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
+                nbIteration++;
+
+            } while (!Physics.Raycast(ray, out hitInfos, 40, m_spawningLayerMask, QueryTriggerInteraction.Ignore) && nbIteration < MAX_ITERATION);
+            Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
+
+            if (nbIteration >= MAX_ITERATION)
+            {
+                Debug.LogError($"MAX ITERATION HIT while trying to find a random walkable point on {gameObject.name}");
+                Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
+
+            }
+            else
+            {
+                Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.green, 120f);
+            }
+
+            return hitInfos.point;
         }
     }
 
