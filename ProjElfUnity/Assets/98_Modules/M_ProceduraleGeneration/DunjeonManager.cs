@@ -15,7 +15,9 @@ namespace ProjElf.ProceduraleGeneration
         private List<DunjeonRoom> m_instantiatedRooms = new List<DunjeonRoom>();
         private int m_generatingRoomsRoomIndex = 0;
         [SerializeField]
-        private Transform m_firstGate = null;
+        private DunjeonRoom m_firstRoom = null;
+        [SerializeField]
+        private Vector2Int m_initPositions = Vector2Int.zero;
 
 
         private void Awake()
@@ -28,7 +30,7 @@ namespace ProjElf.ProceduraleGeneration
         {
             if(m_generatingRoomsRoomIndex < m_instantiatedRooms.Count)
             {
-                Debug.Log("Trying to generate surrounding rooms of room x:" + m_instantiatedRooms[m_generatingRoomsRoomIndex].PosX + " y:" + m_instantiatedRooms[m_generatingRoomsRoomIndex].PosY);
+                //Debug.Log("Trying to generate surrounding rooms of room x:" + m_instantiatedRooms[m_generatingRoomsRoomIndex].PosX + " y:" + m_instantiatedRooms[m_generatingRoomsRoomIndex].PosY);
                 GenerateSurroundingRooms(m_instantiatedRooms[m_generatingRoomsRoomIndex]);
                 m_generatingRoomsRoomIndex++;
             }
@@ -36,25 +38,27 @@ namespace ProjElf.ProceduraleGeneration
 
         private void GenerateDunjeon()
         {
-            GenerateNewRoom(m_firstGate, 0, 0, ERoomOrientation.North);
+            RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
+            GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, 20);
         }
 
         /// <summary>
         /// Generate new Room
         /// </summary>
-        /// <param name="doorConnection"></param>
-        /// <param name="posX"></param>
-        /// <param name="posY"></param>
-        /// <param name="roomOrientation"></param>
-        private void GenerateNewRoom(Transform doorConnection, int posX, int posY, ERoomOrientation roomOrientation)
+        /// <param name="doorConnection">Transform that will orientate and position new room</param>
+        /// <param name="posX">x index of new room</param>
+        /// <param name="posY">y index of new room</param>
+        /// <param name="roomOrientation">room orientation according to first gate</param>
+        /// <param name="onRightWay">Whether the room to be spawn is on the way to the end or not</param>
+        private void GenerateNewRoom(Transform doorConnection, int posX, int posY, ERoomOrientation roomOrientation, int roomsLeft, bool onRightWay = true)
         {
-            if (IsLocationFree(posX, posY))
+            if (roomsLeft > 0 && IsLocationFree(posX, posY))
             {
                 EDirectionState canGoLeft = EDirectionState.False;
                 EDirectionState canGoRight = EDirectionState.False;
                 EDirectionState canGoForward = EDirectionState.False;
                 EDirectionState canGoBackward = EDirectionState.False; // Should always be set to false when sent to CheckDirectionToGo, if not there is a problem :(
-                Debug.Log("Checking posX:" + posX + " posY:" + posY);
+                //Debug.Log("Checking posX:" + posX + " posY:" + posY);
                 switch (roomOrientation)
                 {
                     case ERoomOrientation.North:
@@ -70,9 +74,9 @@ namespace ProjElf.ProceduraleGeneration
                         CheckDirectionToGo(out canGoLeft, out canGoRight, out canGoForward, out canGoBackward, posX, posY);
                         break;
                 }
-                Debug.Log("Checking posX:" + posX + " posY:" + posY + " canGoLeft: " + canGoLeft + " canGoRight:" + canGoRight + " canGoForward:" + canGoForward + " orientation:" + roomOrientation);
+                //Debug.Log("Checking posX:" + posX + " posY:" + posY + " canGoLeft: " + canGoLeft + " canGoRight:" + canGoRight + " canGoForward:" + canGoForward + " orientation:" + roomOrientation);
                 
-                List<DunjeonRoomData> possibleRooms = GetPossibleRooms(canGoLeft, canGoRight, canGoForward, true, m_instantiatedRooms.Count > 140 ? true : false);
+                List<DunjeonRoomData> possibleRooms = GetPossibleRooms(canGoLeft, canGoRight, canGoForward, onRightWay && roomsLeft%5 == 0 ? false : true, roomsLeft < 2 ? true : false);
 
 
                 Random.InitState((new System.Random()).Next(0, 1000000));
@@ -86,34 +90,123 @@ namespace ProjElf.ProceduraleGeneration
                 room.SetUpRoom(roomData);
                 room.PosX = posX;
                 room.PosY = posY;
+                room.RoomsLeftUntilTheEnd = --roomsLeft;
+                room.IsLeadingToTheEnd = onRightWay;
                 RegisterRoomAtPosition(room, posX, posY);
             }
         }
 
+        /// <summary>
+        /// Generate all rooms next to doors of the current room
+        /// </summary>
+        /// <param name="room"></param>
         private void GenerateSurroundingRooms(DunjeonRoom room)
         {
-            if (room.CanGoNorth)
+            if (room.IsLeadingToTheEnd)
             {
-                Debug.Log("NORTH");
-                GenerateNewRoom(room.NorthGate, room.PosX, room.PosY + 1, ERoomOrientation.North);
+                int roomToSpawn = 0;
+                if (room.CanGoNorth)
+                {
+                    roomToSpawn++;
+                }
+                if (room.CanGoSouth)
+                {
+                    roomToSpawn++;
+                }
+                if (room.CanGoWest)
+                {
+                    roomToSpawn++;
+                }
+                if (room.CanGoEast)
+                {
+                    roomToSpawn++;
+                }
+
+                Random.InitState((new System.Random()).Next(0, 1000000));
+                int roomOnRightWayIndex = Random.Range(0, roomToSpawn);
+                roomToSpawn = 0;
+                bool roomOnGoodWayChosen = false;
+
+                if (room.CanGoNorth)
+                {
+                    if (!roomOnGoodWayChosen && roomToSpawn <= roomOnRightWayIndex)
+                    {
+                        GenerateNewRoom(room.NorthGate, room.PosX, room.PosY + 1, ERoomOrientation.North, room.RoomsLeftUntilTheEnd);
+                        roomOnGoodWayChosen = true;
+                    }
+                    else
+                    {
+                        GenerateNewRoom(room.NorthGate, room.PosX, room.PosY + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnWrongWay(), false);
+                    }
+                }
+                if (room.CanGoSouth)
+                {
+                    if (!roomOnGoodWayChosen && roomToSpawn <= roomOnRightWayIndex)
+                    {
+                        GenerateNewRoom(room.SouthGate, room.PosX, room.PosY - 1, ERoomOrientation.South, room.RoomsLeftUntilTheEnd);
+                        roomOnGoodWayChosen = true;
+                    }
+                    else
+                    {
+                        GenerateNewRoom(room.SouthGate, room.PosX, room.PosY - 1, ERoomOrientation.South, m_currentDunjeonData.GetRandomNumberOfRoomsOnWrongWay(), false);
+                    }
+                }
+                if (room.CanGoWest)
+                {
+                    if (!roomOnGoodWayChosen && roomToSpawn <= roomOnRightWayIndex)
+                    {
+                        GenerateNewRoom(room.WestGate, room.PosX - 1, room.PosY, ERoomOrientation.West, room.RoomsLeftUntilTheEnd);
+                        roomOnGoodWayChosen = true;
+                    }
+                    else
+                    {
+                        GenerateNewRoom(room.WestGate, room.PosX - 1, room.PosY, ERoomOrientation.West, m_currentDunjeonData.GetRandomNumberOfRoomsOnWrongWay(), false);
+
+                    }
+                }
+                if (room.CanGoEast)
+                {
+                    if (!roomOnGoodWayChosen && roomToSpawn <= roomOnRightWayIndex)
+                    {
+                        GenerateNewRoom(room.EastGate, room.PosX + 1, room.PosY, ERoomOrientation.East, room.RoomsLeftUntilTheEnd);
+                        roomOnGoodWayChosen = true;
+                    }
+                    else
+                    {
+                        GenerateNewRoom(room.EastGate, room.PosX + 1, room.PosY, ERoomOrientation.East, m_currentDunjeonData.GetRandomNumberOfRoomsOnWrongWay(), false);
+                    }
+                }
             }
-            if (room.CanGoSouth)
+            else
             {
-                Debug.Log("SOUTH");
-                GenerateNewRoom(room.SouthGate, room.PosX, room.PosY - 1, ERoomOrientation.South);
-            }
-            if (room.CanGoWest)
-            {
-                Debug.Log("WEST");
-                GenerateNewRoom(room.WestGate, room.PosX - 1, room.PosY, ERoomOrientation.West);
-            }
-            if (room.CanGoEast)
-            {
-                Debug.Log("EAST");
-                GenerateNewRoom(room.EastGate, room.PosX + 1, room.PosY, ERoomOrientation.East);
+                if (room.CanGoNorth)
+                {
+                    GenerateNewRoom(room.NorthGate, room.PosX, room.PosY + 1, ERoomOrientation.North, room.RoomsLeftUntilTheEnd, false);
+                }
+                if (room.CanGoSouth)
+                {
+                    GenerateNewRoom(room.SouthGate, room.PosX, room.PosY - 1, ERoomOrientation.South, room.RoomsLeftUntilTheEnd, false);
+                }
+                if (room.CanGoWest)
+                {
+                    GenerateNewRoom(room.WestGate, room.PosX - 1, room.PosY, ERoomOrientation.West, room.RoomsLeftUntilTheEnd, false);
+                }
+                if (room.CanGoEast)
+                {
+                    GenerateNewRoom(room.EastGate, room.PosX + 1, room.PosY, ERoomOrientation.East, room.RoomsLeftUntilTheEnd, false);
+                }
             }
         }
 
+        /// <summary>
+        /// Get every rooms that can be spawned according to directions states
+        /// </summary>
+        /// <param name="canGoLeft"></param>
+        /// <param name="canGoRight"></param>
+        /// <param name="canGoForward"></param>
+        /// <param name="corridorOnly">Only use corridors or use every rooms</param>
+        /// <param name="impasse">Use impasse rooms or do not</param>
+        /// <returns></returns>
         private List<DunjeonRoomData> GetPossibleRooms(EDirectionState canGoLeft, EDirectionState canGoRight, EDirectionState canGoForward, bool corridorOnly = false, bool impasse = false)
         {
             List<DunjeonRoomData> possibleRooms = new List<DunjeonRoomData>(); // Add uniquement si != null
@@ -162,8 +255,7 @@ namespace ProjElf.ProceduraleGeneration
                     // LEFT ?RIGHT ?FORWARD
                     else if (canGoForward == EDirectionState.Maybe)
                     {      
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
@@ -173,15 +265,23 @@ namespace ProjElf.ProceduraleGeneration
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, true);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
                     }
                     // LEFT ?RIGHT
                     else
-                    {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                    {                    
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -197,12 +297,15 @@ namespace ProjElf.ProceduraleGeneration
                     }
                     // LEFT ?FORWARD
                     else if (canGoForward == EDirectionState.Maybe)
-                    {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                    {                
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -229,8 +332,6 @@ namespace ProjElf.ProceduraleGeneration
                     // ?LEFT RIGHT ?FORWARD
                     else if (canGoForward == EDirectionState.Maybe)
                     {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
@@ -240,15 +341,23 @@ namespace ProjElf.ProceduraleGeneration
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, true);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
                     }
                     // ?LEFT RIGHT
                     else
-                    {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                    {              
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -257,10 +366,7 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     // ?LEFT ?RIGHT FORWARD
                     if (canGoForward == EDirectionState.True)
-                    {
-
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                    {                        
                         if(!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
@@ -268,6 +374,11 @@ namespace ProjElf.ProceduraleGeneration
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                         
@@ -281,18 +392,9 @@ namespace ProjElf.ProceduraleGeneration
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                         else
-                        {
-
-
-                            
+                        {                           
                             if (!corridorOnly)
                             {
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
@@ -335,13 +437,16 @@ namespace ProjElf.ProceduraleGeneration
                         }
                         else
                         {
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                             if (!corridorOnly)
                             {
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, true);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                            }
+                            else
+                            {
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
+                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                             }
                         }
@@ -352,11 +457,14 @@ namespace ProjElf.ProceduraleGeneration
                     // ?LEFT FORWARD
                     if (canGoForward == EDirectionState.True)
                     {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -373,10 +481,6 @@ namespace ProjElf.ProceduraleGeneration
                             
                             if (!corridorOnly)
                             {
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, true, false);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, true, false);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                             }
@@ -426,12 +530,15 @@ namespace ProjElf.ProceduraleGeneration
                     }
                     // RIGHT ?FORWARD
                     else if (canGoForward == EDirectionState.Maybe)
-                    {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                    { 
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -447,11 +554,14 @@ namespace ProjElf.ProceduraleGeneration
                     // ?RIGHT FORWARD
                     if (canGoForward == EDirectionState.True)
                     {
-                        roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                        if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         if (!corridorOnly)
                         {
                             roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
+                            if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
+                        }
+                        else
+                        {
+                            roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
                             if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                         }
                     }
@@ -468,10 +578,6 @@ namespace ProjElf.ProceduraleGeneration
                             
                             if (!corridorOnly)
                             {
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, false);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
-                                roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);
-                                if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                                 roomDataTemp = m_currentDunjeonData.GetRandomRoom(true, false, true);
                                 if (roomDataTemp != null) possibleRooms.Add(roomDataTemp);
                             }
@@ -657,11 +763,16 @@ namespace ProjElf.ProceduraleGeneration
             if (posX > 0)
             {
                 roomFurther = false;
-                if(m_instantiatedRoomsGrid[posX - 1].Count >= posY + 1)
+                if (m_instantiatedRooms.Count >= posX)
                 {
-                    if(m_instantiatedRoomsGrid[posX - 1][posY] != null)
+                    if (m_instantiatedRoomsGrid[posX - 1].Count >= posY + 1)
                     {
-                        roomFurther = true;
+                        if (m_instantiatedRoomsGrid[posX - 1][posY] != null)
+                        {
+                            roomFurther = true;
+                            Debug.Log("Room at west detected");
+                        }
+                        Debug.Log("B");
                     }
                 }
                 if (roomFurther)
@@ -669,6 +780,7 @@ namespace ProjElf.ProceduraleGeneration
                     if(m_instantiatedRoomsGrid[posX - 1][posY].CanGoEast)
                     {
                         canGoWest = EDirectionState.True;
+                        Debug.Log("this room can go east");
                     }
                     {
                         canGoWest = EDirectionState.False;
@@ -676,6 +788,7 @@ namespace ProjElf.ProceduraleGeneration
                 }
                 else
                 {
+                    Debug.Log("maybe could go east");
                     canGoWest = EDirectionState.Maybe;
                 }
             }
@@ -685,6 +798,12 @@ namespace ProjElf.ProceduraleGeneration
             }
         }
 
+        /// <summary>
+        /// Add a room to the known rooms at position [posX, posY].
+        /// </summary>
+        /// <param name="room"></param>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
         private void RegisterRoomAtPosition(DunjeonRoom room, int posX, int posY)
         {
             if(posX >= m_instantiatedRoomsGrid.Count)
@@ -709,10 +828,16 @@ namespace ProjElf.ProceduraleGeneration
             {
                 m_instantiatedRoomsGrid[posX][posY] = room;
                 m_instantiatedRooms.Add(room);
-                Debug.Log("Adding new room, now : " + m_instantiatedRooms.Count);
+                //Debug.Log("Adding new room, now : " + m_instantiatedRooms.Count);
             }
         }
 
+        /// <summary>
+        /// Check if we can place a room at [posX, posY].
+        /// </summary>
+        /// <param name="posX"></param>
+        /// <param name="posY"></param>
+        /// <returns></returns>
         private bool IsLocationFree(int posX, int posY)
         {
             if(m_instantiatedRoomsGrid.Count > posX)

@@ -8,8 +8,8 @@ namespace ProjElf.ProceduraleGeneration
         private DunjeonRoomData m_dunjeonRoomData = null;
         private bool m_isInit = false;
 
-        private bool m_isLeadingToEnd = true;
-        private int m_roomsLeftUntilTheEnd = 0;
+        internal bool IsLeadingToTheEnd = true;
+        internal int RoomsLeftUntilTheEnd = 0;
 
         internal ERoomOrientation RoomOrientation = ERoomOrientation.North;
 
@@ -250,7 +250,7 @@ namespace ProjElf.ProceduraleGeneration
             HasForwardGate = m_dunjeonRoomData.ForwardGate;
             HasLeftGate = m_dunjeonRoomData.LeftGate;
             HasRightGate = m_dunjeonRoomData.RightGate;
-            ActivateRoom();
+            //ActivateRoom();
         }
 
         public void ActivateRoom()

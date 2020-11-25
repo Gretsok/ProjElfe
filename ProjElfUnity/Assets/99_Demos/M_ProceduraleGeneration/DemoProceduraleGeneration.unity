@@ -121,6 +121,18 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &834646760 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8770263049822384698, guid: 858490ecefa146f46be2f10ca579a42a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1164666229}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &840883208
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +164,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_currentDunjeonData: {fileID: 11400000, guid: ecc64c809dfd0a34290cab0b4acd4c12,
     type: 2}
-  m_firstGate: {fileID: 1583008039}
+  m_firstRoom: {fileID: 834646760}
+  m_initPositions: {x: 50, y: 50}
 --- !u!4 &840883210
 Transform:
   m_ObjectHideFlags: 0
@@ -416,9 +429,3 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &1583008039 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 595900855012485209, guid: 858490ecefa146f46be2f10ca579a42a,
-    type: 3}
-  m_PrefabInstance: {fileID: 1164666229}
-  m_PrefabAsset: {fileID: 0}
