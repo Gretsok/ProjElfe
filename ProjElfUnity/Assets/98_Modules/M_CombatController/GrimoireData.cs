@@ -9,10 +9,10 @@ namespace ProjElf.CombatController
     public class GrimoireData : AWeaponData
     {
         //Var
-        private float m_projectileSpeed;
-        private float m_projectileRange;
+        [SerializeField] private float m_projectileSpeed;
+        [SerializeField] private float m_projectileRange;
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
-        private bool m_allowContinueFiring;
+        [SerializeField] private bool m_allowContinueFiring;
 
         // Start is called before the first frame update
         void Start()

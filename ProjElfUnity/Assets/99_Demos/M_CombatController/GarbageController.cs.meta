@@ -3,7 +3,12 @@ guid: eda27a26bae5bea4292d97f6735e1f52
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - meleeData: {fileID: 11400000, guid: cefb04cbfd4af5944a25d7cc7b94e754, type: 2}
+  - grimoireData: {fileID: 11400000, guid: 090670dbe5025134397aa21a2a6e7c97, type: 2}
+  - bowData: {fileID: 11400000, guid: 79f4d7361713e334f9d1a5ab6e4c1e82, type: 2}
+  - combatCont: {instanceID: 0}
+  - combatInv: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
