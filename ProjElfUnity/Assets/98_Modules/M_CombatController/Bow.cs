@@ -31,6 +31,11 @@ namespace ProjElf.CombatController
             newArrow.InitArrow(m_projectileSpeed, m_projectileFallSpeed);
             return newArrow;//pour pas avoir d'erreur /À enlever
         }
+
+        internal void FireArrow()
+        {
+            Arrow newArrow = InstantiateInitializedArrow();
+        }
     }
 }
 

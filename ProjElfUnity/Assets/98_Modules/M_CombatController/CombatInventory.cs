@@ -31,18 +31,30 @@ namespace ProjElf.CombatController
 
         public void ChangeMeleeWeapon(MeleeWeaponData newMeleeWeaponData)
         {
+            if(m_meleeWeapon != null)
+            {
+                Destroy(m_meleeWeapon.gameObject);
+            }
             MeleeWeapon newMeleeWeapon;
             newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee);
             m_meleeWeapon = newMeleeWeapon;
         }
         public void ChangeGrimoire(GrimoireData newGrimoireData)
         {
+            if (m_grimoire != null)
+            {
+                Destroy(m_grimoire.gameObject);
+            }
             Grimoire newGrimoire;
             newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire);
             m_grimoire = newGrimoire;
         }
         public void ChangeBow(BowData newBowData)
         {
+            if (m_bow != null)
+            {
+                Destroy(m_bow.gameObject);
+            }
             Bow newBow;
             newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow);
             m_bow = newBow;
@@ -50,37 +62,43 @@ namespace ProjElf.CombatController
         public void SelectNextWeapon()
         {
             //On part sur Epee / Grimoire / Arc donc :
-            if(selectedWeapon is MeleeWeapon)
+            if((selectedWeapon is MeleeWeapon) && (m_grimoire != null))
             {
                 selectedWeapon = m_grimoire;
             }
             else
             {
-                if(selectedWeapon is Grimoire)
+                if((selectedWeapon is Grimoire) && (m_bow != null))
                 {
                     selectedWeapon = m_bow;
                 }
                 else
                 {
-                    selectedWeapon = m_meleeWeapon;
+                    if(m_meleeWeapon != null)
+                    {
+                        selectedWeapon = m_meleeWeapon;
+                    }
                 }
             }
         }
         public void SelectPreviousWeapon()
         {
-            if (selectedWeapon is Bow)
+            if((selectedWeapon is Bow) && (m_grimoire != null))
             {
                 selectedWeapon = m_grimoire;
             }
             else
             {
-                if (selectedWeapon is Grimoire)
+                if((selectedWeapon is Grimoire) && (m_meleeWeapon != null))
                 {
                     selectedWeapon = m_meleeWeapon;
                 }
                 else
                 {
-                    selectedWeapon = m_bow;
+                    if (m_bow != null)
+                    {
+                        selectedWeapon = m_bow;
+                    }
                 }
             }
         }
