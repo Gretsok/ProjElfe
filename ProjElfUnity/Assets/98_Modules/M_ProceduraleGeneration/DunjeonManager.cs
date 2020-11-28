@@ -54,17 +54,28 @@ namespace ProjElf.ProceduraleGeneration
 
         private void DestroyDunjeon()
         {
-            Debug.Log("Destroying dunjeon");
-            for(int i = 0; i < m_instantiatedRooms.Count; i++)
+            Debug.Log("Destroying dunjeon " + m_instantiatedRooms.Count);
+            for(int i = 1; i < m_instantiatedRooms.Count; i++)
             {
-                Destroy(m_instantiatedRooms[i].gameObject);
+                if(m_instantiatedRooms[i] != null)
+                {
+                    if (m_instantiatedRooms[i] != m_firstRoom)
+                    {
+                        Destroy(m_instantiatedRooms[i].gameObject);
+                    }
+                }
+                    
+                    
             }
             m_instantiatedRooms.Clear();
+            m_instantiatedRooms = new List<DunjeonRoom>();
             for(int i = 0; i < m_instantiatedRoomsGrid.Count; i++)
             {
                 m_instantiatedRoomsGrid[i].Clear();
             }
             m_instantiatedRoomsGrid.Clear();
+            m_instantiatedRoomsGrid = new List<List<DunjeonRoom>>();
+            Debug.Log(m_instantiatedRooms.Count);
         }
 
         /// <summary>
@@ -446,7 +457,7 @@ namespace ProjElf.ProceduraleGeneration
                             {
                                 // generate random number to favorize forward corridor
                                 Random.InitState((new System.Random().Next(0, 11651615)));
-                                int randValue = Random.Range(0, 10);
+                                int randValue = Random.Range(0, 5);
                                 if(randValue < 1)
                                 {
                                     roomDataTemp = m_currentDunjeonData.GetRandomRoom(false, false, true);

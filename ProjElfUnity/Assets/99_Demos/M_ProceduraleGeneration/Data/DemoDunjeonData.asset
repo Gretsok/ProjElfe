@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: DemoDunjeonData
   m_EditorClassIdentifier: 
   m_numberOfRoomsOnRightWay: {x: 20, y: 30}
-  m_numberOfRoomsOnWrongWay: {x: 40, y: 50}
-  m_intersectionSpawningRate: {x: 1, y: 1}
+  m_numberOfRoomsOnWrongWay: {x: 3, y: 7}
+  m_intersectionSpawningRate: {x: 3, y: 5}
   m_finalRoomData: {fileID: 11400000, guid: c368c6fd66b8f534ea7af897aa7aac72, type: 2}
   m_rooms:
   - {fileID: 11400000, guid: e4ed5bf434901cc4e81e29e569f43816, type: 2}
