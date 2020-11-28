@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 
 namespace ProjElf.ProceduraleGeneration
@@ -35,6 +36,8 @@ namespace ProjElf.ProceduraleGeneration
         public Transform LeftGate => m_leftGate;
         public Transform RightGate => m_rightGate;
         public Transform BackwardGate => m_backwardGate;
+
+        private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
 
         internal int PosX = 0;
         internal int PosY = 0;
@@ -244,19 +247,21 @@ namespace ProjElf.ProceduraleGeneration
 
         #endregion
 
+        private bool m_roomSetUp = false;
         internal void SetUpRoom(DunjeonRoomData dunjeonRoomData)
         {
+            if (dunjeonRoomData == null) Debug.LogError("DUNJEON ROOM DATA NULL");
             m_dunjeonRoomData = dunjeonRoomData;
             HasForwardGate = m_dunjeonRoomData.ForwardGate;
             HasLeftGate = m_dunjeonRoomData.LeftGate;
             HasRightGate = m_dunjeonRoomData.RightGate;
-            //ActivateRoom();
+            m_roomSetUp = true;
         }
 
         public void ActivateRoom()
         {
             
-            if(!m_isInit)
+            if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
                 int numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn();
@@ -265,7 +270,7 @@ namespace ProjElf.ProceduraleGeneration
                 for(int i = 0; i < numberOfEnnemisToSpawn; i++)
                 {
                     GameObject ennemyToSpawnGO = m_dunjeonRoomData.GetRandomEnnemy();
-                    Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity);
+                    m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
                 }
 
             }
@@ -279,32 +284,49 @@ namespace ProjElf.ProceduraleGeneration
             RaycastHit hitInfos;
             int MAX_ITERATION = 100;
             int nbIteration = 0;
+            
+
             do
             {
+                
                 System.Random rnd = new System.Random(Random.Range(0, 10000000));
                 Random.InitState(rnd.Next(0, 100000000));
-                x = Random.Range(-m_width / 2, m_width / 2);
+                x = Random.Range(-m_width / 2f, m_width / 2f);
                 Random.InitState(rnd.Next(0, 100000000));
-                z = Random.Range(-m_width / 2, m_width / 2);
+                z = Random.Range(-m_width / 2f, m_width / 2f);
 
                 ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
                 nbIteration++;
+                //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
 
-            } while (!Physics.Raycast(ray, out hitInfos, 40, m_spawningLayerMask, QueryTriggerInteraction.Ignore) && nbIteration < MAX_ITERATION);
+                Debug.DrawRay(ray.origin, ray.direction * 40f, Color.red, 200f);
+
+            } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
             Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
 
             if (nbIteration >= MAX_ITERATION)
             {
                 Debug.LogError($"MAX ITERATION HIT while trying to find a random walkable point on {gameObject.name}");
-                Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
+                Debug.Log($"{ray.ToString()}");
 
             }
             else
             {
-                Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.green, 120f);
+                Debug.Log(PosX + " " + PosY);
+                Debug.DrawLine(ray.origin, ray.origin + ray.direction * 40, Color.green, 120f);
+                Debug.Log("Parent is " + hitInfos.collider.GetComponentInParent<DunjeonRoom>().name);
             }
-
             return hitInfos.point;
+            
+            
+        }
+
+        private void OnDestroy()
+        {
+            for(int i = 0; i < m_objectSpawnedInThisRoom.Count; i++)
+            {
+                Destroy(m_objectSpawnedInThisRoom[i].gameObject);
+            }
         }
     }
 

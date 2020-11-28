@@ -43,7 +43,7 @@ namespace ProjElf.ProceduraleGeneration
             Random.InitState((new System.Random()).Next(0, 1000000));
             int randomIndex = Random.Range(0, tempList.Count);
             //Debug.Log("random room index: "+randomIndex + " tempList count : " + tempList.Count);
-            Debug.Log("forw: " + hasForwardGate + " left: " + hasLeftGate + " right: " + hasRightGate);
+            //Debug.Log("forw: " + hasForwardGate + " left: " + hasLeftGate + " right: " + hasRightGate);
             return tempList[randomIndex];
         }
     }

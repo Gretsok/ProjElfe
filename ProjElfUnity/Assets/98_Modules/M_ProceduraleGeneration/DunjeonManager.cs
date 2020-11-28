@@ -28,6 +28,8 @@ namespace ProjElf.ProceduraleGeneration
             GenerateDunjeon();
         }
 
+
+        bool initRoom = false; // Temp : change the way to enable rooms later, certainly when the player passes on it
         private void Update()
         {
             if(m_generatingRoomsRoomIndex < m_instantiatedRooms.Count)
@@ -41,6 +43,15 @@ namespace ProjElf.ProceduraleGeneration
                 DestroyDunjeon();
                 GenerateDunjeon();
             }
+            else if(!initRoom)// Temp : change the way to enable rooms later, certainly when the player passes on it
+            {
+                foreach(DunjeonRoom room in m_instantiatedRooms)
+                {
+                    room.ActivateRoom();
+                }
+                initRoom = true;
+            }
+
         }
 
         private void GenerateDunjeon()
@@ -136,12 +147,14 @@ namespace ProjElf.ProceduraleGeneration
                 room.transform.rotation = doorConnection.rotation;
                 room.transform.position += (doorConnection.position - room.BackwardGate.position);
                 room.RoomOrientation = roomOrientation;
-                room.SetUpRoom(roomData);
+                
                 room.PosX = posX;
                 room.PosY = posY;
                 room.RoomsLeftUntilTheEnd = --roomsLeft;
                 room.IsLeadingToTheEnd = onRightWay;
+                room.SetUpRoom(roomData);
                 RegisterRoomAtPosition(room, posX, posY);
+                
             }
         }
 
