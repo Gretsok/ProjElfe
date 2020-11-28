@@ -12,19 +12,29 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField]
         private Vector2Int m_numberOfRoomsOnWrongWay = Vector2Int.zero;
         [SerializeField]
+        private Vector2Int m_intersectionSpawningRate = Vector2Int.zero;
+        [SerializeField]
         private DunjeonRoomData m_finalRoomData = null;
         [SerializeField]
         private List<DunjeonRoomData> m_rooms = new List<DunjeonRoomData>();
 
-        public int GetRandomNumberOfRoomsOnRightWay()
+        internal DunjeonRoomData FinalRoomData => m_finalRoomData;
+
+        internal int GetRandomNumberOfRoomsOnRightWay()
         {
             Random.InitState((new System.Random()).Next(0, 1000000));
             return Random.Range(m_numberOfRoomsOnRightWay.x, m_numberOfRoomsOnRightWay.y);
         }
-        public int GetRandomNumberOfRoomsOnWrongWay()
+        internal int GetRandomNumberOfRoomsOnWrongWay()
         {
             Random.InitState((new System.Random()).Next(0, 1000000));
             return Random.Range(m_numberOfRoomsOnWrongWay.x, m_numberOfRoomsOnWrongWay.y);
+        }
+
+        internal int GetIntersectionSpawningRate()
+        {
+            Random.InitState((new System.Random()).Next(0, 1000000));
+            return Random.Range(m_intersectionSpawningRate.x, m_intersectionSpawningRate.y);
         }
 
         public DunjeonRoomData GetRandomRoom(bool hasForwardGate, bool hasLeftGate, bool hasRightGate)
@@ -33,6 +43,7 @@ namespace ProjElf.ProceduraleGeneration
             Random.InitState((new System.Random()).Next(0, 1000000));
             int randomIndex = Random.Range(0, tempList.Count);
             //Debug.Log("random room index: "+randomIndex + " tempList count : " + tempList.Count);
+            Debug.Log("forw: " + hasForwardGate + " left: " + hasLeftGate + " right: " + hasRightGate);
             return tempList[randomIndex];
         }
     }

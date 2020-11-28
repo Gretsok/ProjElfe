@@ -18,7 +18,9 @@ namespace ProjElf.ProceduraleGeneration
         private DunjeonRoom m_firstRoom = null;
         [SerializeField]
         private Vector2Int m_initPositions = Vector2Int.zero;
+        private int m_intersectionSpawningRate = 0;
 
+        private bool m_hasFinalRoom = false;
 
         private void Awake()
         {
@@ -34,12 +36,35 @@ namespace ProjElf.ProceduraleGeneration
                 GenerateSurroundingRooms(m_instantiatedRooms[m_generatingRoomsRoomIndex]);
                 m_generatingRoomsRoomIndex++;
             }
+            else if(!m_hasFinalRoom)
+            {
+                DestroyDunjeon();
+                GenerateDunjeon();
+            }
         }
 
         private void GenerateDunjeon()
         {
+            Debug.Log("Generating Dunjeon");
+            m_generatingRoomsRoomIndex = 0;
+            m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
             RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
-            GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, 20);
+            GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay());
+        }
+
+        private void DestroyDunjeon()
+        {
+            Debug.Log("Destroying dunjeon");
+            for(int i = 0; i < m_instantiatedRooms.Count; i++)
+            {
+                Destroy(m_instantiatedRooms[i].gameObject);
+            }
+            m_instantiatedRooms.Clear();
+            for(int i = 0; i < m_instantiatedRoomsGrid.Count; i++)
+            {
+                m_instantiatedRoomsGrid[i].Clear();
+            }
+            m_instantiatedRoomsGrid.Clear();
         }
 
         /// <summary>
@@ -75,8 +100,21 @@ namespace ProjElf.ProceduraleGeneration
                         break;
                 }
                 //Debug.Log("Checking posX:" + posX + " posY:" + posY + " canGoLeft: " + canGoLeft + " canGoRight:" + canGoRight + " canGoForward:" + canGoForward + " orientation:" + roomOrientation);
+                List<DunjeonRoomData> possibleRooms = new List<DunjeonRoomData>();
+                if (!(roomsLeft < 2) || !onRightWay)
+                {
+                    possibleRooms = GetPossibleRooms(canGoLeft, canGoRight, canGoForward, onRightWay && roomsLeft % m_intersectionSpawningRate == 0 ? false : true, roomsLeft < 2 ? true : false);
+                    if(onRightWay && roomsLeft % 5 == 0)
+                    {
+                        m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
+                    }
+                }
+                else
+                {
+                    possibleRooms.Add(m_currentDunjeonData.FinalRoomData);
+                    m_hasFinalRoom = true;
+                }
                 
-                List<DunjeonRoomData> possibleRooms = GetPossibleRooms(canGoLeft, canGoRight, canGoForward, onRightWay && roomsLeft%5 == 0 ? false : true, roomsLeft < 2 ? true : false);
 
 
                 Random.InitState((new System.Random()).Next(0, 1000000));
@@ -770,7 +808,7 @@ namespace ProjElf.ProceduraleGeneration
                         if (m_instantiatedRoomsGrid[posX - 1][posY] != null)
                         {
                             roomFurther = true;
-                            Debug.Log("Room at west detected");
+
                         }
                         Debug.Log("B");
                     }
@@ -782,19 +820,22 @@ namespace ProjElf.ProceduraleGeneration
                         canGoWest = EDirectionState.True;
                         Debug.Log("this room can go east");
                     }
+                    else
                     {
                         canGoWest = EDirectionState.False;
+                        Debug.Log("this room cannot go east");
                     }
                 }
                 else
                 {
-                    Debug.Log("maybe could go east");
+                    Debug.Log("maybe could go west");
                     canGoWest = EDirectionState.Maybe;
                 }
             }
             else
             {
                 canGoWest = EDirectionState.False;
+                Debug.Log("Due to position cannot go west");
             }
         }
 
