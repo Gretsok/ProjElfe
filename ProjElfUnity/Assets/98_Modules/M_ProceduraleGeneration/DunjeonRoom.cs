@@ -7,20 +7,28 @@ namespace ProjElf.ProceduraleGeneration
     public class DunjeonRoom : MonoBehaviour
     {
         private DunjeonRoomData m_dunjeonRoomData = null;
-        private bool m_isInit = false;
+        private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
 
+        #region LifeCycle Attributes
+        private bool m_isInit = false;
+        private bool m_roomSetUp = false;
+        #endregion
+
+        #region RoomPositions Attributes
+        internal int PosX = 0;
+        internal int PosY = 0;
         internal bool IsLeadingToTheEnd = true;
         internal int RoomsLeftUntilTheEnd = 0;
-
         internal ERoomOrientation RoomOrientation = ERoomOrientation.North;
+        #endregion
 
         internal bool HasForwardGate = false;
         internal bool HasLeftGate = false;
         internal bool HasRightGate = false;
 
-        [SerializeField]
+        [SerializeField, Tooltip("Wiil affect random walkable point")]
         private float m_width = 10f;
-        [SerializeField]
+        [SerializeField, Tooltip("Default LayerMask used to find random walkable point")]
         private LayerMask m_spawningLayerMask = 1111;
 
         [SerializeField]
@@ -37,10 +45,6 @@ namespace ProjElf.ProceduraleGeneration
         public Transform RightGate => m_rightGate;
         public Transform BackwardGate => m_backwardGate;
 
-        private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
-
-        internal int PosX = 0;
-        internal int PosY = 0;
 
         #region CanGo CardinalDirections
         public bool CanGoNorth
@@ -247,7 +251,10 @@ namespace ProjElf.ProceduraleGeneration
 
         #endregion
 
-        private bool m_roomSetUp = false;
+        /// <summary>
+        /// Initialize room
+        /// </summary>
+        /// <param name="dunjeonRoomData"></param>
         internal void SetUpRoom(DunjeonRoomData dunjeonRoomData)
         {
             if (dunjeonRoomData == null) Debug.LogError("DUNJEON ROOM DATA NULL");
@@ -258,6 +265,9 @@ namespace ProjElf.ProceduraleGeneration
             m_roomSetUp = true;
         }
 
+        /// <summary>
+        /// Activate room
+        /// </summary>
         public void ActivateRoom()
         {
             
@@ -272,11 +282,12 @@ namespace ProjElf.ProceduraleGeneration
                     GameObject ennemyToSpawnGO = m_dunjeonRoomData.GetRandomEnnemy();
                     m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
                 }
-
             }
-            
         }
-
+        /// <summary>
+        /// Gets a point on the ground of the room. Mainly used to move AI and spawn objects
+        /// </summary>
+        /// <returns></returns>
         public Vector3 GetRandomWalkablePoint()
         {
             float x, z;
@@ -285,7 +296,7 @@ namespace ProjElf.ProceduraleGeneration
             int MAX_ITERATION = 100;
             int nbIteration = 0;
             
-
+            // We'll randomly raycast until we hit something or reach the MAX_ITERATION
             do
             {
                 
@@ -312,9 +323,7 @@ namespace ProjElf.ProceduraleGeneration
             }
             else
             {
-                Debug.Log(PosX + " " + PosY);
                 Debug.DrawLine(ray.origin, ray.origin + ray.direction * 40, Color.green, 120f);
-                Debug.Log("Parent is " + hitInfos.collider.GetComponentInParent<DunjeonRoom>().name);
             }
             return hitInfos.point;
             
@@ -323,6 +332,7 @@ namespace ProjElf.ProceduraleGeneration
 
         private void OnDestroy()
         {
+            // When we destroy the room, we want to destroy every object that the rooms spawned (Should only happen when destroying the whole dunjeon)
             for(int i = 0; i < m_objectSpawnedInThisRoom.Count; i++)
             {
                 Destroy(m_objectSpawnedInThisRoom[i].gameObject);

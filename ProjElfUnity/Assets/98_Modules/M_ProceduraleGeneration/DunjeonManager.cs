@@ -10,24 +10,23 @@ namespace ProjElf.ProceduraleGeneration
     {
         [SerializeField]
         private DunjeonData m_currentDunjeonData = null;
-        private int m_numberOfRoomsOnRightWay = 0;
-        private List<List<DunjeonRoom>> m_instantiatedRoomsGrid = new List<List<DunjeonRoom>>();
-        private List<DunjeonRoom> m_instantiatedRooms = new List<DunjeonRoom>();
-        private int m_generatingRoomsRoomIndex = 0;
         [SerializeField]
         private DunjeonRoom m_firstRoom = null;
         [SerializeField]
         private Vector2Int m_initPositions = Vector2Int.zero;
+        private List<List<DunjeonRoom>> m_instantiatedRoomsGrid = new List<List<DunjeonRoom>>();
+        private List<DunjeonRoom> m_instantiatedRooms = new List<DunjeonRoom>();
+        private int m_generatingRoomsRoomIndex = 0;
         private int m_intersectionSpawningRate = 0;
-
         private bool m_hasFinalRoom = false;
         private bool m_generationStarted = false;
-        private bool m_dunjeonGenerated = false;
-        public bool DunjeonGenerated => m_dunjeonGenerated;
+        public bool DunjeonGenerated { get; private set; } = false;
 
 
 
-
+        /// <summary>
+        /// Execute one frame in dunjeon generation, you have to call StartDunjeonGeneration() before.
+        /// </summary>
         internal void UpdateDunjeonGeneration()
         {
             if(m_generatingRoomsRoomIndex < m_instantiatedRooms.Count)
@@ -43,7 +42,7 @@ namespace ProjElf.ProceduraleGeneration
             }
             else
             {
-                m_dunjeonGenerated = true;
+                DunjeonGenerated = true;
             }
 
 
@@ -55,7 +54,6 @@ namespace ProjElf.ProceduraleGeneration
             {
                 Debug.Log("Generating Dunjeon");
                 m_generatingRoomsRoomIndex = 0;
-                m_numberOfRoomsOnRightWay = m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay();
                 m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
                 RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
                 GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay());
@@ -65,7 +63,7 @@ namespace ProjElf.ProceduraleGeneration
             {
                 Debug.LogWarning("Trying to start dunjeon Generation : Dunjeon Generation already started ! ");
             }
-}
+        }
 
         private void DestroyDunjeon()
         {
