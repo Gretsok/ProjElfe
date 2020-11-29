@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 
 namespace MOtter.StatesMachine
@@ -7,8 +8,13 @@ namespace MOtter.StatesMachine
     {
         [SerializeField] protected State m_defaultState = null;
         protected State m_currentState = null;
+        private bool m_isLoaded = false;
+        private bool m_isUnloaded = false;
 
-        public virtual void EnterStateMachine()
+        public bool IsLoaded => m_isLoaded;
+        public bool IsUnloaded => m_isUnloaded;
+
+        protected virtual void EnterStateMachine()
         {
             SwitchToState(m_defaultState);
         }
@@ -18,7 +24,17 @@ namespace MOtter.StatesMachine
             m_currentState?.UpdateState();
         }
 
-        public virtual void ExitStateMachine()
+        public virtual void DoFixedUpdate()
+        {
+            m_currentState?.FixedUpdateState();
+        }
+
+        public virtual void DoLateUpdate()
+        {
+            m_currentState?.LateUpdateState();
+        }
+
+        protected virtual void ExitStateMachine()
         {
 
         }
@@ -37,6 +53,21 @@ namespace MOtter.StatesMachine
         public void SwitchToNextState()
         {
             SwitchToState(m_currentState.NextState);
+        }
+
+        public virtual IEnumerator LoadAsync()
+        {
+            yield return null;
+            m_isLoaded = true;
+            EnterStateMachine();
+        }
+
+        public virtual IEnumerator UnloadAsync()
+        {
+
+            yield return null;
+            m_isUnloaded = true;
+            ExitStateMachine();
         }
 
         private void OnDestroy()

@@ -21,7 +21,7 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField]
         private float m_width = 10f;
         [SerializeField]
-        private LayerMask m_spawningLayerMask;
+        private LayerMask m_spawningLayerMask = 1111;
 
         [SerializeField]
         private Transform m_forwardGate = null;

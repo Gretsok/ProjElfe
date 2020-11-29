@@ -21,16 +21,14 @@ namespace ProjElf.ProceduraleGeneration
         private int m_intersectionSpawningRate = 0;
 
         private bool m_hasFinalRoom = false;
-
-        private void Awake()
-        {
-            m_numberOfRoomsOnRightWay = m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay();
-            GenerateDunjeon();
-        }
+        private bool m_generationStarted = false;
+        private bool m_dunjeonGenerated = false;
+        public bool DunjeonGenerated => m_dunjeonGenerated;
 
 
-        bool initRoom = false; // Temp : change the way to enable rooms later, certainly when the player passes on it
-        private void Update()
+
+
+        internal void UpdateDunjeonGeneration()
         {
             if(m_generatingRoomsRoomIndex < m_instantiatedRooms.Count)
             {
@@ -41,32 +39,39 @@ namespace ProjElf.ProceduraleGeneration
             else if(!m_hasFinalRoom)
             {
                 DestroyDunjeon();
-                GenerateDunjeon();
+                StartDunjeonGeneration();
             }
-            else if(!initRoom)// Temp : change the way to enable rooms later, certainly when the player passes on it
+            else
             {
-                foreach(DunjeonRoom room in m_instantiatedRooms)
-                {
-                    room.ActivateRoom();
-                }
-                initRoom = true;
+                m_dunjeonGenerated = true;
             }
 
+
         }
 
-        private void GenerateDunjeon()
+        internal void StartDunjeonGeneration()
         {
-            Debug.Log("Generating Dunjeon");
-            m_generatingRoomsRoomIndex = 0;
-            m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
-            RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
-            GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay());
-        }
+            if(!m_generationStarted)
+            {
+                Debug.Log("Generating Dunjeon");
+                m_generatingRoomsRoomIndex = 0;
+                m_numberOfRoomsOnRightWay = m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay();
+                m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
+                RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
+                GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay());
+                m_generationStarted = true;
+            }
+            else
+            {
+                Debug.LogWarning("Trying to start dunjeon Generation : Dunjeon Generation already started ! ");
+            }
+}
 
         private void DestroyDunjeon()
         {
             Debug.Log("Destroying dunjeon " + m_instantiatedRooms.Count);
-            for(int i = 1; i < m_instantiatedRooms.Count; i++)
+            m_generationStarted = false;
+            for (int i = 1; i < m_instantiatedRooms.Count; i++)
             {
                 if(m_instantiatedRooms[i] != null)
                 {

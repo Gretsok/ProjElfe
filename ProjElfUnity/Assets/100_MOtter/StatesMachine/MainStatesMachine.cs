@@ -1,5 +1,7 @@
 ﻿
 
+using System.Collections;
+
 namespace MOtter.StatesMachine
 {
     public class MainStatesMachine : StatesMachine
@@ -8,5 +10,7 @@ namespace MOtter.StatesMachine
         {
             MOtterApplication.GetInstance().GAMEMANAGER.RegisterNewMainStateMachine(this);
         }
+
+        
     }
 }
