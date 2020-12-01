@@ -17,7 +17,6 @@ public class DemoInteractablePlayerController : MonoBehaviour
         {
             Debug.Log("Inventaire fermé");
         }
-        // ici on met nos  Interact() & ManageSight()
     }
 }
     
