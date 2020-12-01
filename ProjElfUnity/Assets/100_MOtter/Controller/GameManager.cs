@@ -49,7 +49,7 @@ namespace MOtter.StatesMachine
         {
             if (m_mainStatesMachine != null)
             {
-                StartCoroutine(m_mainStatesMachine.UnloadAsync());
+                StartCoroutine(m_mainStatesMachine.UnloadAsync(null));
             }
             m_mainStatesMachine = statesmachine;
             StartCoroutine(statesmachine.LoadAsync());

@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using UnityEngine;
 
 
@@ -62,12 +63,13 @@ namespace MOtter.StatesMachine
             EnterStateMachine();
         }
 
-        public virtual IEnumerator UnloadAsync()
+        public virtual IEnumerator UnloadAsync(Action onUnloadEnded)
         {
 
             yield return null;
             m_isUnloaded = true;
             ExitStateMachine();
+            if(onUnloadEnded != null) onUnloadEnded();
         }
 
         private void OnDestroy()

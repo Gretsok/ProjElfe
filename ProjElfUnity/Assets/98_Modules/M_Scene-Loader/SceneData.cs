@@ -4,6 +4,7 @@ using UnityEngine;
 using MOtter;
 using UnityEngine.SceneManagement;
 using System;
+using MOtter.StatesMachine;
 
 namespace ProjElf.SceneData
 {
@@ -29,7 +30,7 @@ namespace ProjElf.SceneData
         public string LevelName=>m_levelName;
 
         [SerializeField] private LoadSceneMode m_defaultLoadMode;
-
+        private LoadSceneMode m_currentLoadSceneMode;
         private Scene sceneToActivate;
 
         public void LoadLevel()
@@ -40,13 +41,27 @@ namespace ProjElf.SceneData
 
         public void LoadLevel(LoadSceneMode loadMode)
         {
+            var currentGameMode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainStatesMachine>();
+            m_currentLoadSceneMode = loadMode;
+            if (currentGameMode != null)
+            {
+                Coroutine routine = currentGameMode.StartCoroutine(currentGameMode.UnloadAsync(LoadScenes));
+            }
+            else
+            {
+                LoadScenes();
+            }
+        }
+
+        private void LoadScenes()
+        {
             //On load une scene(main + additionalScenes[])
-            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName,loadMode);
+            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName, m_currentLoadSceneMode);
             op.completed += OnLevelLoaded;
             //charger additionalScenes 
-            for(int i =0; i<m_additionalScenes.Length; i++)
-            { 
-                if(i == 0)
+            for (int i = 0; i < m_additionalScenes.Length; i++)
+            {
+                if (i == 0)
                 {
                     op.completed -= OnLevelLoaded;
                 }
