@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using MOtter;
 using UnityEngine.SceneManagement;
-
+using System;
 
 namespace ProjElf.SceneData
 {
@@ -30,6 +30,8 @@ namespace ProjElf.SceneData
 
         [SerializeField] private LoadSceneMode m_defaultLoadMode;
 
+        private Scene sceneToActivate;
+
         public void LoadLevel()
         {
             //passe le m_default
@@ -39,21 +41,36 @@ namespace ProjElf.SceneData
         public void LoadLevel(LoadSceneMode loadMode)
         {
             //On load une scene(main + additionalScenes[])
-            SceneManager.LoadSceneAsync(m_mainScene.SceneName,loadMode);
+            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName,loadMode);
+            op.completed += OnLevelLoaded;
             //charger additionalScenes 
             for(int i =0; i<m_additionalScenes.Length; i++)
             { 
-                SceneManager.LoadSceneAsync(m_additionalScenes[i].SceneName, LoadSceneMode.Additive);//empeche la supperssion de la scene precedente
+                if(i == 0)
+                {
+                    op.completed -= OnLevelLoaded;
+                }
+                op = SceneManager.LoadSceneAsync(m_additionalScenes[i].SceneName, LoadSceneMode.Additive);//empeche la supperssion de la scene precedente
+                if (i == 0)
+                {
+                    op.completed += OnLevelLoaded;
+                }
             }
             if (m_additionalScenes.Length == 0)// Si il n'y a pas d'additional scene -> m_main sera la principale 
             {
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_mainScene.SceneName));
+                sceneToActivate = SceneManager.GetSceneByName(m_mainScene.SceneName);
             }
             else //sinon m_additionalScenes sera la scene active
             {
-                SceneManager.SetActiveScene(SceneManager.GetSceneByName(m_additionalScenes[0].SceneName));
+                sceneToActivate = SceneManager.GetSceneByName(m_additionalScenes[0].SceneName);
             }
-        }   
+        }
+
+        private void OnLevelLoaded(AsyncOperation obj)
+        {
+            SceneManager.SetActiveScene(sceneToActivate);
+            obj.completed -= OnLevelLoaded;
+        }
     }
 
 }
