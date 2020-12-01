@@ -12,3 +12,10 @@ Un jeu où tout le monde s'appelle Francis. Ou peut-être que pas du tout en fai
 ## Commentaires et annotations
 -Commenter chaque méthode en mettant /// .
 -Ajouter des [Tooltip("")] aux attributs visibles dans l'inspector.
+
+
+# Normes de nommages
+Les dossiers des modules commence par M_ .
+Les classes abstraites commence par A.
+Les énumérations commence par E.
+Les interfaces commence par I.
