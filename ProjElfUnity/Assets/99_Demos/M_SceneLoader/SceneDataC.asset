@@ -17,4 +17,4 @@ MonoBehaviour:
     m_SceneName: Scene_C
   m_additionalScenes: []
   m_levelName: 
-  m_defaultLoadMode: 0
+  m_defaultLoadMode: 1
