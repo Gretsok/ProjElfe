@@ -11,23 +11,48 @@ namespace MOtter.StatesMachine
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
         }
 
-        void Update()
+        private void Update()
         {
             if (m_mainStatesMachine != null)
             {
-                m_mainStatesMachine.DoUpdate();
+                if(m_mainStatesMachine.IsLoaded)
+                {
+                    m_mainStatesMachine.DoUpdate();
+                }  
             }
             MOtterApplication.GetInstance().SOUND.CheckIfAudioSourcesPlayingStoppedPlaying();
+        }
+
+        private void FixedUpdate()
+        {
+            if (m_mainStatesMachine != null)
+            {
+                if (m_mainStatesMachine.IsLoaded)
+                {
+                    m_mainStatesMachine.DoFixedUpdate();
+                }
+            }
+        }
+
+        private void LateUpdate()
+        {
+            if (m_mainStatesMachine != null)
+            {
+                if (m_mainStatesMachine.IsLoaded)
+                {
+                    m_mainStatesMachine.DoLateUpdate();
+                }
+            }
         }
 
         public void RegisterNewMainStateMachine(MainStatesMachine statesmachine)
         {
             if (m_mainStatesMachine != null)
             {
-                m_mainStatesMachine.ExitStateMachine();
+                StartCoroutine(m_mainStatesMachine.UnloadAsync(null));
             }
             m_mainStatesMachine = statesmachine;
-            statesmachine.EnterStateMachine();
+            StartCoroutine(statesmachine.LoadAsync());
         }
 
         public T GetCurrentMainStateMachine<T>() where T : MainStatesMachine

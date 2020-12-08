@@ -19,6 +19,16 @@ namespace MOtter.StatesMachine
 
         }
 
+        public virtual void FixedUpdateState()
+        {
+
+        }
+
+        public virtual void LateUpdateState()
+        {
+
+        }
+
         public virtual void ExitState()
         {
             Debug.Log("ExitState : " + gameObject.name);
