@@ -36,7 +36,7 @@ namespace ProjElf.CombatController
                 Destroy(m_meleeWeapon.gameObject);
             }
             MeleeWeapon newMeleeWeapon;
-            newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee);
+            newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee.position, posMelee.rotation ,posMelee);
             m_meleeWeapon = newMeleeWeapon;
         }
         public void ChangeGrimoire(GrimoireData newGrimoireData)
@@ -46,7 +46,7 @@ namespace ProjElf.CombatController
                 Destroy(m_grimoire.gameObject);
             }
             Grimoire newGrimoire;
-            newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire);
+            newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire.position, posGrimoire.rotation, posGrimoire);
             m_grimoire = newGrimoire;
         }
         public void ChangeBow(BowData newBowData)
@@ -56,7 +56,7 @@ namespace ProjElf.CombatController
                 Destroy(m_bow.gameObject);
             }
             Bow newBow;
-            newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow);
+            newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow.position, posBow.rotation, posBow);
             m_bow = newBow;
         }
         public void SelectNextWeapon()
