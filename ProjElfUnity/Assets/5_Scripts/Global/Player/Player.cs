@@ -19,7 +19,10 @@ namespace ProjElf.PlayerController
         public PlayerCameraController CameraController => m_cameraController;
         public Interactor Interactor => m_interactor;
 
+        internal bool IsFalling = false;
+
         #region States
+        [Header("Player States")]
         [SerializeField]
         private PlayerMovingState m_movingState = null;
         [SerializeField]
@@ -32,23 +35,56 @@ namespace ProjElf.PlayerController
         public PlayerSlidingState SlidingState => m_slidingState;
         #endregion
 
+        [Header("Position References")]
+        [SerializeField]
+        private Transform m_camFollowTarget = null;
+        public Transform CamFollowTarget => m_camFollowTarget;
+
         private Vector3 m_direction = Vector3.zero;
         public Vector3 Direction => m_direction;
 
-        private PlayerInputsActions m_actions = new PlayerInputsActions();
+        private PlayerInputsActions m_actions = null;
         public PlayerInputsActions Actions => m_actions;
 
+        private void Awake()
+        {
+            m_actions = new PlayerInputsActions();
+        }
 
+        public void Init()
+        {
+            EnterStateMachine();
+            m_cameraController.Zoom(false);
+        }
+
+
+        public void CleanUp()
+        {
+            ExitStateMachine();
+        }
+
+        protected override void EnterStateMachine()
+        {
+            base.EnterStateMachine();
+            SetUpInput();
+        }
+
+        protected override void ExitStateMachine()
+        {
+            CleanUpInput();
+            base.ExitStateMachine();
+        }
 
         #region Inputs
         protected void SetUpInput()
         {
-
+            m_actions.Enable();
         }
 
         protected void CleanUpInput()
         {
-
+            m_actions.Disable();
+            m_actions.Dispose();
         }
         #endregion
     }

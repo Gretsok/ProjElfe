@@ -45,10 +45,10 @@ namespace MOtter.StatesMachine
             if (m_currentState != null)
             {
                 state.PreviousState = m_currentState;
-                m_currentState.ExitState();
+                m_currentState?.ExitState();
             }
             m_currentState = state;
-            m_currentState.EnterState();
+            m_currentState?.EnterState();
         }
 
         public void SwitchToNextState()
