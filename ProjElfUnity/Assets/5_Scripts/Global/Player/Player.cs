@@ -40,8 +40,7 @@ namespace ProjElf.PlayerController
         private Transform m_camFollowTarget = null;
         public Transform CamFollowTarget => m_camFollowTarget;
 
-        private Vector3 m_direction = Vector3.zero;
-        public Vector3 Direction => m_direction;
+        internal Vector3 Direction = Vector3.zero;
 
         private PlayerInputsActions m_actions = null;
         public PlayerInputsActions Actions => m_actions;

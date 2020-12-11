@@ -18,13 +18,18 @@ namespace ProjElf.PlayerController
         protected override void UpdatePosition()
         {
             base.UpdatePosition();
-            m_direction = transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
-            m_player.CharacterController.Move(m_direction * m_movingSpeed * Time.deltaTime);
+            m_player.Direction = transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
+            m_player.CharacterController.Move(m_player.Direction * m_movingSpeed * Time.deltaTime);
         }
 
         protected override void UpdateLookAround()
         {
             m_player.transform.Rotate(m_player.transform.up * m_lookAroundInputs.x * m_cameraSensibility * Time.deltaTime);
+
+            Vector3 camFollowTargetEulerRotation = m_player.CamFollowTarget.rotation.eulerAngles;
+            camFollowTargetEulerRotation.x -= m_lookAroundInputs.y * m_cameraSensibility * Time.deltaTime;
+            camFollowTargetEulerRotation.z = 0;
+            m_player.CamFollowTarget.rotation = Quaternion.Euler(camFollowTargetEulerRotation);
         }
     
 

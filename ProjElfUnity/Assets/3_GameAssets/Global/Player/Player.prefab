@@ -247,9 +247,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_player: {fileID: 3496502620993785581}
-  m_movingSpeed: 5
+  m_movingSpeed: 20
   m_cameraSensibility: 15
   m_fallSpeed: 10
+  m_dashDistance: 12
 --- !u!1 &3496502620900274232
 GameObject:
   m_ObjectHideFlags: 0
@@ -342,7 +343,7 @@ MonoBehaviour:
   m_movingState: {fileID: 3496502621213438118}
   m_jumpingState: {fileID: 3496502620457651941}
   m_slidingState: {fileID: 3496502620723002296}
-  m_camFollowTarget: {fileID: 0}
+  m_camFollowTarget: {fileID: 7293391596197504668}
 --- !u!143 &3496502620993785580
 CharacterController:
   m_ObjectHideFlags: 0
@@ -680,7 +681,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.7777778, y: 1}
+    m_SensorSize: {x: 1.9321767, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
