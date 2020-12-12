@@ -65,6 +65,14 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""9969916b-0d05-49de-9bb3-96bf438e1dd6"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -243,6 +251,28 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""action"": ""SecondaryAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1d32f871-909c-44a3-a1fe-4cc6ad8d25f5"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86a2c6e6-f7c2-4c30-8a10-64bd6bdc489b"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -257,6 +287,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_Generic_Slide = m_Generic.FindAction("Slide", throwIfNotFound: true);
         m_Generic_PrimaryAttack = m_Generic.FindAction("PrimaryAttack", throwIfNotFound: true);
         m_Generic_SecondaryAttack = m_Generic.FindAction("SecondaryAttack", throwIfNotFound: true);
+        m_Generic_Interact = m_Generic.FindAction("Interact", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -312,6 +343,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Generic_Slide;
     private readonly InputAction m_Generic_PrimaryAttack;
     private readonly InputAction m_Generic_SecondaryAttack;
+    private readonly InputAction m_Generic_Interact;
     public struct GenericActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -322,6 +354,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         public InputAction @Slide => m_Wrapper.m_Generic_Slide;
         public InputAction @PrimaryAttack => m_Wrapper.m_Generic_PrimaryAttack;
         public InputAction @SecondaryAttack => m_Wrapper.m_Generic_SecondaryAttack;
+        public InputAction @Interact => m_Wrapper.m_Generic_Interact;
         public InputActionMap Get() { return m_Wrapper.m_Generic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -349,6 +382,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @SecondaryAttack.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSecondaryAttack;
                 @SecondaryAttack.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSecondaryAttack;
                 @SecondaryAttack.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSecondaryAttack;
+                @Interact.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
+                @Interact.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
+                @Interact.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
             }
             m_Wrapper.m_GenericActionsCallbackInterface = instance;
             if (instance != null)
@@ -371,6 +407,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @SecondaryAttack.started += instance.OnSecondaryAttack;
                 @SecondaryAttack.performed += instance.OnSecondaryAttack;
                 @SecondaryAttack.canceled += instance.OnSecondaryAttack;
+                @Interact.started += instance.OnInteract;
+                @Interact.performed += instance.OnInteract;
+                @Interact.canceled += instance.OnInteract;
             }
         }
     }
@@ -383,5 +422,6 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnSlide(InputAction.CallbackContext context);
         void OnPrimaryAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
     }
 }

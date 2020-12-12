@@ -24,6 +24,8 @@ namespace ProjElf.PlayerController
 
         internal bool IsFalling = false;
 
+        internal Ray Sight = new Ray();
+
         #region States
         [Header("Player States")]
         [SerializeField]
@@ -69,6 +71,12 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
+        }
+
+        public override void DoFixedUpdate()
+        {
+            base.DoFixedUpdate();
+            Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
         }
 
         protected override void ExitStateMachine()

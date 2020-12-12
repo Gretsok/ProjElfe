@@ -19,11 +19,15 @@ namespace ProjElf.Interaction
        /// <summary>
        /// Cette methode va gerer les ray cast et peut etre l'affichage d'un billboard au dessus du cube 
        /// </summary>
-       public void ManageSight()
+       public void ManageSight(Ray ray)
         {
+#if UNITY_EDITOR
+            rayToDisplay = ray;
+#endif
+
             RaycastHit hit; // on envoie un rayon 
 
-            if (Physics.Raycast(transform.position, transform.forward, out hit,m_maxDistance)) // <- On 
+            if (Physics.Raycast(ray, out hit,m_maxDistance)) // <- On 
             {
                 IInteractable currentInteractableCollider = hit.collider.GetComponent<IInteractable>(); // on recupere l'interectable -> soit null / soit Interactable
                 if (m_currentInteractableInSight != currentInteractableCollider)
@@ -39,11 +43,16 @@ namespace ProjElf.Interaction
                 m_currentInteractableInSight = null;
             }             
         }
+
+#if UNITY_EDITOR
+        private Ray rayToDisplay;
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
-            Gizmos.DrawLine(transform.position, transform.position + transform.forward * m_maxDistance);
+            Gizmos.DrawLine(rayToDisplay.origin, rayToDisplay.origin + rayToDisplay.direction * m_maxDistance);
         }
     }
+
+#endif
 }
 

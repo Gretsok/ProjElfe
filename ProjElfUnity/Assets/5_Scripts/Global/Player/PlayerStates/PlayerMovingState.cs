@@ -10,6 +10,8 @@ namespace ProjElf.PlayerController
             ManageInput();
             UpdatePosition();
             UpdateLookAround();
+            m_player.Interactor.ManageSight(m_player.Sight);
+
         }
 
 
@@ -53,6 +55,11 @@ namespace ProjElf.PlayerController
         {
             m_player.SwitchToState(m_player.SlidingState);
         }
+
+        private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_player.Interactor.Interact();
+        }
         #endregion
 
         #region Inputs
@@ -63,7 +70,10 @@ namespace ProjElf.PlayerController
             m_player.Actions.Generic.Jump.performed += Jump_performed;
             m_player.Actions.Generic.PrimaryAttack.performed += PrimaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
+            m_player.Actions.Generic.Interact.performed += Interact_performed;
         }
+
+        
 
         protected override void CleanUpInputs()
         {
@@ -71,6 +81,7 @@ namespace ProjElf.PlayerController
             m_player.Actions.Generic.Jump.performed -= Jump_performed;
             m_player.Actions.Generic.PrimaryAttack.performed -= PrimaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
+            m_player.Actions.Generic.Interact.performed -= Interact_performed;
             base.CleanUpInputs();
         }
         #endregion

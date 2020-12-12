@@ -8,7 +8,8 @@ public class DemoInteractablePlayerController : MonoBehaviour
     [SerializeField] Interactor m_interactor = null;
     private void Update()
     {
-        m_interactor.ManageSight();
+        Ray rayToUse = new Ray(transform.position, transform.forward);
+        m_interactor.ManageSight(rayToUse);
         if (Input.GetKeyDown(KeyCode.E))
         {
             Debug.Log("Inventaire ouvert");
