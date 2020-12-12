@@ -10,10 +10,14 @@ namespace ProjElf.PlayerController
             ManageInput();
             UpdatePosition();
             UpdateLookAround();
-            m_player.Interactor.ManageSight(m_player.Sight);
 
         }
 
+        public override void FixedUpdateState()
+        {
+            base.FixedUpdateState();
+            m_player.Interactor.ManageSight(m_player.Sight);
+        }
 
         protected override void UpdatePosition()
         {

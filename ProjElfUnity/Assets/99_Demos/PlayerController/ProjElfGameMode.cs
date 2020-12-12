@@ -2,13 +2,14 @@
 using ProjElf.PlayerController;
 using UnityEngine;
 
-public class ProjElfGameMode : MainStatesMachine
+public class ProjElfGameMode : PauseableStateMachine
 {
     [SerializeField]
     private Player m_player = null;
     protected override void EnterStateMachine()
     {
         base.EnterStateMachine();
+        Cursor.visible = false;
         m_player.Init();
     }
     public override void DoUpdate()

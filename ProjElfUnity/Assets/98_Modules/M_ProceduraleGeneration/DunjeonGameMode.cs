@@ -4,7 +4,7 @@ using System.Collections;
 
 namespace ProjElf.ProceduraleGeneration
 {
-    public class DunjeonGameMode : PauseableStateMachine
+    public class DunjeonGameMode : ProjElfGameMode
     {
         [SerializeField]
         private DunjeonManager m_dunjeonManager = null;

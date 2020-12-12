@@ -75,8 +75,8 @@ namespace ProjElf.PlayerController
 
         public override void DoFixedUpdate()
         {
-            base.DoFixedUpdate();
             Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
+            base.DoFixedUpdate();
         }
 
         protected override void ExitStateMachine()

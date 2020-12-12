@@ -243,6 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_defaultState: {fileID: 0}
+  m_pauseState: {fileID: 0}
+  StopTimeInPause: 1
   m_player: {fileID: 1882345483}
 --- !u!4 &279116260
 Transform:
@@ -382,6 +384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79ac9e7f4f8b40645a22ce6e0fe26859, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_dunjeonSceneData: {fileID: 11400000, guid: f9eff9a621ea38d4cb9058278261baa5, type: 2}
 --- !u!65 &1609365994
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -501,11 +504,6 @@ PrefabInstance:
     - target: {fileID: 1055872027, guid: c7130590766023a42ae215a65168bfde, type: 3}
       propertyPath: m_LocalPosition.z
       value: -3
-      objectReference: {fileID: 0}
-    - target: {fileID: 211362336852271529, guid: c7130590766023a42ae215a65168bfde,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 211362336852271529, guid: c7130590766023a42ae215a65168bfde,
         type: 3}
