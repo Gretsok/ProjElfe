@@ -33,6 +33,7 @@ namespace ProjElf.SceneData
         private LoadSceneMode m_currentLoadSceneMode;
         private Scene sceneToActivate;
 
+        #region LevelLoading
         public void LoadLevel()
         {
             //passe le m_default
@@ -56,7 +57,10 @@ namespace ProjElf.SceneData
         private void LoadScenes()
         {
             //On load une scene(main + additionalScenes[])
-            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName, m_currentLoadSceneMode);
+
+            MOtterApplication.GetInstance().GAMEMANAGER.RegisterNewLevel(this);
+            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName, LoadSceneMode.Additive);
+            Debug.Log("LOADING " + m_mainScene.SceneName);
             op.completed += OnLevelLoaded;
             //charger additionalScenes 
             for (int i = 0; i < m_additionalScenes.Length; i++)
@@ -85,7 +89,24 @@ namespace ProjElf.SceneData
         {
             SceneManager.SetActiveScene(sceneToActivate);
             obj.completed -= OnLevelLoaded;
+            if (m_currentLoadSceneMode == LoadSceneMode.Single)
+            {
+                MOtterApplication.GetInstance().GAMEMANAGER.UnloadScenesData();
+            }
         }
+        #endregion
+
+        #region LevelUnloading
+        public void UnloadLevel()
+        {
+            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(m_mainScene.SceneName).buildIndex);
+            Debug.Log("UNLOADING " + m_mainScene.SceneName);
+            for (int i = 0; i < m_additionalScenes.Length; i++)
+            {
+                SceneManager.UnloadSceneAsync(m_additionalScenes[i].SceneName);
+            }
+        }
+        #endregion
     }
 
 }
