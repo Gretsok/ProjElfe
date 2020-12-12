@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProjElf.PlayerController
 {
@@ -18,8 +16,10 @@ namespace ProjElf.PlayerController
         protected override void UpdatePosition()
         {
             base.UpdatePosition();
-            m_player.Direction = transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
+            m_player.Direction = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
             m_player.CharacterController.Move(m_player.Direction * m_movingSpeed * Time.deltaTime);
+            m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).z);
+            m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).x);
         }
 
         protected override void UpdateLookAround()

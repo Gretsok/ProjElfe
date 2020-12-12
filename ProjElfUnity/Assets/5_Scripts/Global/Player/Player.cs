@@ -14,10 +14,13 @@ namespace ProjElf.PlayerController
         private PlayerCameraController m_cameraController = null;
         [SerializeField]
         private Interactor m_interactor = null;
+        [SerializeField]
+        private CharacterAnimatorHandler m_characterAnimatorHandler = null;
 
         public CharacterController CharacterController => m_characterController;
         public PlayerCameraController CameraController => m_cameraController;
         public Interactor Interactor => m_interactor;
+        public CharacterAnimatorHandler CharacterAnimatorHandler => m_characterAnimatorHandler;
 
         internal bool IsFalling = false;
 

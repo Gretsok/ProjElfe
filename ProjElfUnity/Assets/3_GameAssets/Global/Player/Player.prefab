@@ -202,6 +202,8 @@ MonoBehaviour:
   m_movingSpeed: 5
   m_cameraSensibility: 15
   m_fallSpeed: 10
+  m_jumpHeight: 5
+  m_jumpSpeed: 5
 --- !u!1 &3496502620723002299
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,6 +342,7 @@ MonoBehaviour:
   m_characterController: {fileID: 3496502620993785580}
   m_cameraController: {fileID: 3496502621151300651}
   m_interactor: {fileID: 3496502620993785583}
+  m_characterAnimatorHandler: {fileID: 8727076818978162109}
   m_movingState: {fileID: 3496502621213438118}
   m_jumpingState: {fileID: 3496502620457651941}
   m_slidingState: {fileID: 3496502620723002296}
@@ -479,6 +482,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3496502621341617690}
+  - component: {fileID: 8727076818978162109}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -501,6 +505,19 @@ Transform:
   m_Father: {fileID: 3496502620993785578}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8727076818978162109
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3496502621341617693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c7cf36df79f024e9df2f04741ef525, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_characterAnimator: {fileID: 3496502621635077139}
 --- !u!1 &3996050602364316606
 GameObject:
   m_ObjectHideFlags: 0
@@ -681,7 +698,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.9321767, y: 1}
+    m_SensorSize: {x: 1.8312303, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
