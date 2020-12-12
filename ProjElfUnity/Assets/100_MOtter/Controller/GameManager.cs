@@ -1,9 +1,13 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace MOtter.StatesMachine
 {
     public class GameManager : MonoBehaviour
     {
+        [SerializeField]
+        private SceneField[] m_loadingScreens = null;
+        private string m_currentLoadingScreenSceneName = "";
         private MainStatesMachine m_mainStatesMachine = null;
 
         private void Start()
@@ -53,6 +57,7 @@ namespace MOtter.StatesMachine
             }
             m_mainStatesMachine = statesmachine;
             StartCoroutine(statesmachine.LoadAsync());
+            
         }
 
         public T GetCurrentMainStateMachine<T>() where T : MainStatesMachine
@@ -67,5 +72,12 @@ namespace MOtter.StatesMachine
             }
 
         }
+
+        #region LoadingScreenManagement
+        public void DisableLoadingScreen()
+        {
+
+        }
+        #endregion
     }
 }
