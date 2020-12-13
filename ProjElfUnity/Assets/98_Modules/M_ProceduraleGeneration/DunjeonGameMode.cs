@@ -19,6 +19,7 @@ namespace ProjElf.ProceduraleGeneration
                 m_dunjeonManager.UpdateDunjeonGeneration();
                 yield return 0;
             }
+
             #endregion
 
             yield return base.LoadAsync();

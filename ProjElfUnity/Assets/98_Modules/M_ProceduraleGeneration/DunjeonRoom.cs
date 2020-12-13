@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -270,7 +270,7 @@ namespace ProjElf.ProceduraleGeneration
         /// </summary>
         public void ActivateRoom()
         {
-            
+            GetComponent<NavMeshSurface>().BuildNavMesh();
             if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
