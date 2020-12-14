@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using ProjElf.AI;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,7 +9,8 @@ namespace ProjElf.ProceduraleGeneration
     {
         private DunjeonRoomData m_dunjeonRoomData = null;
         private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
-
+        private List<GenericAI> m_AISpawnedInThisRoom = new List<GenericAI>();
+        public List<GenericAI> AISpawnedInThisRoom => m_AISpawnedInThisRoom;
         #region LifeCycle Attributes
         private bool m_isInit = false;
         private bool m_roomSetUp = false;
@@ -270,7 +272,7 @@ namespace ProjElf.ProceduraleGeneration
         /// </summary>
         public void ActivateRoom()
         {
-            GetComponent<NavMeshSurface>().BuildNavMesh();
+            //GetComponent<NavMeshSurface>().BuildNavMesh();
             if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
@@ -281,9 +283,40 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     GameObject ennemyToSpawnGO = m_dunjeonRoomData.GetRandomEnnemy();
                     m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
+                    if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
+                    {
+                        m_AISpawnedInThisRoom.Add(newAI);
+                        newAI.Init();
+                    }
                 }
             }
         }
+
+
+        public void UpdateAIInRoom()
+        {
+            for(int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoUpdate();
+            }
+        }
+
+        public void FixedUpdateAIInRoom()
+        {
+            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoFixedUpdate();
+            }
+        }
+
+        public void LateUpdateAIInRoom()
+        {
+            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoLateUpdate();
+            }
+        }
+
         /// <summary>
         /// Gets a point on the ground of the room. Mainly used to move AI and spawn objects
         /// </summary>

@@ -2,17 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GenericAIWalkRoundState : MonoBehaviour
+namespace ProjElf.AI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GenericAIWalkRoundState : GenericAIWalkingState
     {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

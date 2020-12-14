@@ -1,18 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MOtter.StatesMachine;
 using UnityEngine;
 
-public class GenericAIState : MonoBehaviour
+namespace ProjElf.AI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GenericAIState : State
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        [SerializeField]
+        protected GenericAI m_owner = null;
+        [SerializeField]
+        protected float m_walkingSpeed = 5f;
     }
 }

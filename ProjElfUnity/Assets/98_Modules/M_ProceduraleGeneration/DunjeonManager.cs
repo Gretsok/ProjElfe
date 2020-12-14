@@ -16,6 +16,8 @@ namespace ProjElf.ProceduraleGeneration
         private Vector2Int m_initPositions = Vector2Int.zero;
         private List<List<DunjeonRoom>> m_instantiatedRoomsGrid = new List<List<DunjeonRoom>>();
         private List<DunjeonRoom> m_instantiatedRooms = new List<DunjeonRoom>();
+        public List<DunjeonRoom> InstantiatedRooms => m_instantiatedRooms;
+
         private int m_generatingRoomsRoomIndex = 0;
         private int m_intersectionSpawningRate = 0;
         private bool m_hasFinalRoom = false;

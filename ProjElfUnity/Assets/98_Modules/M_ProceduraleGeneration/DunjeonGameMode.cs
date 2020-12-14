@@ -8,6 +8,7 @@ namespace ProjElf.ProceduraleGeneration
     {
         [SerializeField]
         private DunjeonManager m_dunjeonManager = null;
+        public DunjeonManager DunjeonManager => m_dunjeonManager;
 
         public override IEnumerator LoadAsync()
         {
@@ -20,6 +21,12 @@ namespace ProjElf.ProceduraleGeneration
                 yield return 0;
             }
 
+            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            {
+                room.ActivateRoom();
+                yield return 0;
+            }
+
             #endregion
 
             yield return base.LoadAsync();
@@ -29,6 +36,33 @@ namespace ProjElf.ProceduraleGeneration
         {
             base.EnterStateMachine();
             Debug.Log("GM READY");
+        }
+
+        public override void DoUpdate()
+        {
+            base.DoUpdate();
+            foreach(DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            {
+                room.UpdateAIInRoom();
+            }
+        }
+
+        public override void DoFixedUpdate()
+        {
+            base.DoUpdate();
+            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            {
+                room.FixedUpdateAIInRoom();
+            }
+        }
+
+        public override void DoLateUpdate()
+        {
+            base.DoUpdate();
+            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            {
+                room.LateUpdateAIInRoom();
+            }
         }
     }
 }

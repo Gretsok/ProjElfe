@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MOtter.StatesMachine;
+using ProjElf.PlayerController;
 using UnityEngine;
+using UnityEngine.AI;
 
-public class GenericAI : MonoBehaviour
+namespace ProjElf.AI
 {
-    // Start is called before the first frame update
-    void Start()
+    public class GenericAI : StatesMachine
     {
-        
-    }
+        [SerializeField]
+        private Player m_player = null;
+        [SerializeField]
+        private NavMeshAgent m_agent = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public Player Player => m_player;
+        public NavMeshAgent Agent => m_agent;
+
+        public void Init()
+        {
+            EnterStateMachine();
+        }
+
     }
 }
