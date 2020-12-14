@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using MOtter.StatesMachine;
 using System.Collections;
+using UnityEngine.AI;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -20,12 +21,12 @@ namespace ProjElf.ProceduraleGeneration
                 m_dunjeonManager.UpdateDunjeonGeneration();
                 yield return 0;
             }
-
-            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            m_dunjeonManager.GetComponent<NavMeshSurface>().BuildNavMesh();
+            /*foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
             {
                 room.ActivateRoom();
                 yield return 0;
-            }
+            }*/
 
             #endregion
 
@@ -53,6 +54,13 @@ namespace ProjElf.ProceduraleGeneration
             foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
             {
                 room.FixedUpdateAIInRoom();
+            }
+            if(Physics.Raycast(m_player.transform.position, Vector3.down, out RaycastHit hitInfo))
+            {
+                if(hitInfo.transform.TryGetComponent<DunjeonRoom>(out DunjeonRoom room))
+                {
+                    room.ActivateRoom();
+                }
             }
         }
 

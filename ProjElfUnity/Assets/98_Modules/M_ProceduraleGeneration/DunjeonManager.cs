@@ -148,7 +148,7 @@ namespace ProjElf.ProceduraleGeneration
                 DunjeonRoomData roomData = possibleRooms[Random.Range(0, possibleRooms.Count)];
 
 
-                DunjeonRoom room = Instantiate(roomData.DunjeonRoom);
+                DunjeonRoom room = Instantiate(roomData.DunjeonRoom, transform);
                 room.transform.rotation = doorConnection.rotation;
                 room.transform.position += (doorConnection.position - room.BackwardGate.position);
                 room.RoomOrientation = roomOrientation;

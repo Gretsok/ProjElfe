@@ -5,7 +5,7 @@ using UnityEngine;
 public class ProjElfGameMode : PauseableStateMachine
 {
     [SerializeField]
-    private Player m_player = null;
+    protected Player m_player = null;
     protected override void EnterStateMachine()
     {
         base.EnterStateMachine();

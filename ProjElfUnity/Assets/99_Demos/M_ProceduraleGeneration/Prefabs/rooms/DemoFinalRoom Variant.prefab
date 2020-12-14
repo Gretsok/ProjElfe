@@ -180,6 +180,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: DemoFinalRoom Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 7874794788297696889, guid: fedcd14521dc6d043b032677ed0a29ae,
+        type: 3}
+      propertyPath: m_NavMeshData
+      value: 
+      objectReference: {fileID: 23800000, guid: c0b3b30446daf2a4f8bcdccc39a30032,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fedcd14521dc6d043b032677ed0a29ae, type: 3}
 --- !u!4 &7464466864708514229 stripped

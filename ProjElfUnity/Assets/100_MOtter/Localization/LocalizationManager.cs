@@ -2,11 +2,14 @@
 using System.IO;
 using UnityEngine;
 
+
+
 namespace MOtter.Localization
 {
 
     public class LocalizationManager : MonoBehaviour
     {
+        private const string path = "Assets/Resources/Localization.tsv";
         #region Fields
         private bool isInit = false;
 
@@ -64,7 +67,6 @@ namespace MOtter.Localization
 
         private int GetNumberMaxOfLanguages()
         {
-            string path = "Assets/Resources/Localization.tsv";
             StreamReader reader = new StreamReader(path);
             string line = reader.ReadLine();
             int charIndex = 0;
@@ -87,7 +89,6 @@ namespace MOtter.Localization
         /// <returns></returns>
         private Dictionary<string, string> LoadLanguage(int languageIndex)
         {
-            string path = "Assets/Resources/Localization.tsv";
             Dictionary<string, string> languageDictionary = new Dictionary<string, string>();
             StreamReader reader = new StreamReader(path);
             while (!reader.EndOfStream)

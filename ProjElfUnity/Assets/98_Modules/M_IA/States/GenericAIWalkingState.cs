@@ -48,6 +48,7 @@ namespace ProjElf.AI
             NavMesh.SamplePosition(randomDirection, out hit, distanceFromActualPosition, 1);
             Vector3 finalPosition = hit.position;
 
+
             return finalPosition;
         }
     }
