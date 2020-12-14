@@ -13,26 +13,6 @@ namespace ProjElf.AI
         [SerializeField]
         protected float m_distanceToCurrentToGoToChangeLocationToGo = 1f;
 
-        public override void EnterState()
-        {
-            base.EnterState();
-            SetNewLocationToGo();
-        }
-
-        public override void UpdateState()
-        {
-            base.UpdateState();
-            if((m_owner.transform.position - m_currentLocationToGo).magnitude < m_distanceToCurrentToGoToChangeLocationToGo)
-            {
-                SetNewLocationToGo();
-            }
-        }
-
-        protected void SetNewLocationToGo()
-        {
-            m_currentLocationToGo = GetRandomLocationToGo();
-            m_owner.Agent.SetDestination(m_currentLocationToGo);
-        }
 
         protected Vector3 GetRandomLocationToGo()
         {
