@@ -151,6 +151,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_defaultState: {fileID: 0}
+  m_pauseState: {fileID: 0}
+  StopTimeInPause: 1
   m_player: {fileID: 2137523635}
 --- !u!4 &38371847
 Transform:
@@ -861,6 +863,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1055872027, guid: c7130590766023a42ae215a65168bfde, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 1.539999
+      objectReference: {fileID: 0}
     - target: {fileID: 211362336852271529, guid: c7130590766023a42ae215a65168bfde,
         type: 3}
       propertyPath: m_LocalPosition.y

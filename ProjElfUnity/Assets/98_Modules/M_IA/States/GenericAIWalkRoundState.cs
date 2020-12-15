@@ -5,7 +5,6 @@ namespace ProjElf.AI
 {
     public class GenericAIWalkRoundState : GenericAIWalkingState
     {
-        [SerializeField]
         private List<Vector3> m_walkLocations = new List<Vector3>();
         [SerializeField]
         private int m_numberOfLocationsInWalk = 2;
