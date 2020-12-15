@@ -6,6 +6,7 @@ public class ProjElfGameMode : PauseableStateMachine
 {
     [SerializeField]
     protected Player m_player = null;
+    public Player Player => m_player;
     protected override void EnterStateMachine()
     {
         base.EnterStateMachine();

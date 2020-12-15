@@ -1,4 +1,5 @@
 ﻿using MOtter.StatesMachine;
+using ProjElf.ProceduraleGeneration;
 using UnityEngine;
 
 namespace ProjElf.AI
@@ -9,5 +10,7 @@ namespace ProjElf.AI
         protected GenericAI m_owner = null;
         [SerializeField]
         protected float m_walkingSpeed = 5f;
+
+        
     }
 }

@@ -56,6 +56,16 @@ namespace MOtter.StatesMachine
             SwitchToState(m_currentState.NextState);
         }
 
+        public void SwitchToPreviousState()
+        {
+            if (m_currentState != null)
+            {
+                m_currentState?.ExitState();
+            }
+            m_currentState = m_currentState.PreviousState;
+            m_currentState?.EnterState();
+        }
+
         public virtual IEnumerator LoadAsync()
         {
             yield return null;

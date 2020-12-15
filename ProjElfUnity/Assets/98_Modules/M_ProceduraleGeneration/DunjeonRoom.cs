@@ -286,7 +286,7 @@ namespace ProjElf.ProceduraleGeneration
                     if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
                     {
                         m_AISpawnedInThisRoom.Add(newAI);
-                        newAI.Init();
+                        newAI.Init(this);
                     }
                 }
             }
@@ -326,28 +326,32 @@ namespace ProjElf.ProceduraleGeneration
             float x, z;
             Ray ray;
             RaycastHit hitInfos;
+            NavMeshHit navHitInfos = new NavMeshHit();
             int MAX_ITERATION = 100;
             int nbIteration = 0;
-            
+
             // We'll randomly raycast until we hit something or reach the MAX_ITERATION
             do
             {
-                
-                System.Random rnd = new System.Random(Random.Range(0, 10000000));
-                Random.InitState(rnd.Next(0, 100000000));
-                x = Random.Range(-m_width / 2f, m_width / 2f);
-                Random.InitState(rnd.Next(0, 100000000));
-                z = Random.Range(-m_width / 2f, m_width / 2f);
+                do
+                {
 
-                ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
-                nbIteration++;
-                //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
+                    System.Random rnd = new System.Random(Random.Range(0, 10000000));
+                    Random.InitState(rnd.Next(0, 100000000));
+                    x = Random.Range(-m_width / 2f, m_width / 2f);
+                    Random.InitState(rnd.Next(0, 100000000));
+                    z = Random.Range(-m_width / 2f, m_width / 2f);
 
-                Debug.DrawRay(ray.origin, ray.direction * 40f, Color.red, 200f);
+                    ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
+                    nbIteration++;
+                    //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
 
-            } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
+                    Debug.DrawRay(ray.origin, ray.direction * 40f, Color.red, 200f);
+
+                } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
+            } while (!NavMesh.SamplePosition(hitInfos.point, out navHitInfos, 1, 1) && nbIteration < MAX_ITERATION);
             Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
-
+            Debug.Log("NavMesh:" + navHitInfos.position + " hitPoint: " + hitInfos.point + "navHitDist" + navHitInfos.distance);
             if (nbIteration >= MAX_ITERATION)
             {
                 Debug.LogError($"MAX ITERATION HIT while trying to find a random walkable point on {gameObject.name}");
@@ -358,7 +362,7 @@ namespace ProjElf.ProceduraleGeneration
             {
                 Debug.DrawLine(ray.origin, ray.origin + ray.direction * 40, Color.green, 120f);
             }
-            return hitInfos.point;
+            return navHitInfos.position;
             
             
         }

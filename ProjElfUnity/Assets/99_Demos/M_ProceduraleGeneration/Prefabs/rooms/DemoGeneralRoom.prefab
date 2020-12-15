@@ -525,7 +525,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_width: 10
+  m_width: 20
   m_spawningLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295

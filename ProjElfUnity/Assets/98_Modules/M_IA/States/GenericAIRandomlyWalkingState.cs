@@ -15,7 +15,7 @@ namespace ProjElf.AI
         public override void LateUpdateState()
         {
             base.LateUpdateState();
-            if ((m_owner.transform.position - m_currentLocationToGo).magnitude < m_distanceToCurrentToGoToChangeLocationToGo)
+            if ((m_owner.transform.position - m_currentLocationToGo).magnitude < m_distanceToCurrentLocationToGoToChangeLocationToGo)
             {
                 SetNewLocationToGo();
             }

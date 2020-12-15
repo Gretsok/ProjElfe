@@ -342,6 +342,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 4956116471592578851, guid: c7130590766023a42ae215a65168bfde,
+        type: 3}
+      propertyPath: m_Extents.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956116471592578851, guid: c7130590766023a42ae215a65168bfde,
+        type: 3}
+      propertyPath: m_Extents.x
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956116471592578851, guid: c7130590766023a42ae215a65168bfde,
+        type: 3}
+      propertyPath: m_Extents.z
+      value: 0.3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7130590766023a42ae215a65168bfde, type: 3}
 --- !u!114 &769079954 stripped
@@ -623,6 +638,11 @@ PrefabInstance:
     - target: {fileID: 7993932275139847732, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7993932275139847733, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
+        type: 3}
+      propertyPath: m_listOfStatesToActivateWhenCloseToPlayer.Array.size
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7993932275139847733, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
