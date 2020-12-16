@@ -17,7 +17,7 @@ MonoBehaviour:
   m_attackSpeed: 0
   m_weaponPrefab: {fileID: 6644058599901617637, guid: 9a2e1fe28ac97a4489e9279c82a91d40,
     type: 3}
-  m_projectileSpeed: 0
+  m_projectileSpeed: 15
   m_projectileRange: 0
   m_projectilePrefab: {fileID: 3991483171199732513, guid: 512d7115325869f4d87c8e978d97262a,
     type: 3}

@@ -26,7 +26,8 @@ namespace ProjElf.CombatController
         // Update is called once per frame
         void Update()
         {
-
+            this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
+            //Destroy si arrive à sa range maj à rajouter
         }
     }
 }

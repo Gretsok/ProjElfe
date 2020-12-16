@@ -8,14 +8,14 @@ namespace ProjElf.CombatController
     {
         //Var
         private float m_speed;
-        private float m_fallSpeed;
+        private float m_divingRate;
 
         //Initialisateur
-        public void InitArrow(float speed, float fallSpeed)
+        public void InitArrow(float speed, float divingRate)
         {
             m_speed = speed;
-            m_fallSpeed = fallSpeed;
-    }
+            m_divingRate = divingRate;
+        }
 
         // Start is called before the first frame update
         void Start()
@@ -26,7 +26,8 @@ namespace ProjElf.CombatController
         // Update is called once per frame
         void Update()
         {
-
+            this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
+            Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.deltaTime);
         }
     }
 }

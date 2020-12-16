@@ -14,6 +14,10 @@ namespace ProjElf.CombatController
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private bool m_allowContinueFiring;
 
+        public float refProjectileRange => m_projectileRange;
+        public bool refAllowContinueFiring => m_allowContinueFiring;
+        public float refProjectileSpeed => m_projectileSpeed;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -24,6 +28,18 @@ namespace ProjElf.CombatController
         void Update()
         {
 
+        }
+        public float GetrefProjectileSpeed()
+        {
+            return refProjectileSpeed;
+        }
+        public bool GetrefAllowContinueFiring()
+        {
+            return refAllowContinueFiring;
+        }
+        public float GetrefProjectileRange()
+        {
+            return refProjectileRange;
         }
     }
 }

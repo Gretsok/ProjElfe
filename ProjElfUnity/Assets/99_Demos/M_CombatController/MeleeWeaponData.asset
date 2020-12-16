@@ -15,5 +15,5 @@ MonoBehaviour:
   m_weaponName: 
   m_hitDamage: 0
   m_attackSpeed: 0
-  m_weaponPrefab: {fileID: 5165799045979758539, guid: 7e046e5d5cac65440b9027366c4b7049,
+  m_weaponPrefab: {fileID: 7127004067093371887, guid: a9989530436f01144a3a4f662af9a55c,
     type: 3}

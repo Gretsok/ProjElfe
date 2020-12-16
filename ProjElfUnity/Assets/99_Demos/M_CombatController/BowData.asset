@@ -18,7 +18,7 @@ MonoBehaviour:
   m_weaponPrefab: {fileID: 7894183220489267615, guid: b587b936391f69a4b9040be6c7435224,
     type: 3}
   m_projectileRange: 0
-  m_projectileFallSpeed: 0
-  m_projectileSpeed: 0
+  m_projectileDivingRate: 0.9
+  m_projectileSpeed: 15
   m_projectilePrefab: {fileID: -1534790756218406597, guid: 8886b7b999851bd41991c0f9e31992a6,
     type: 3}

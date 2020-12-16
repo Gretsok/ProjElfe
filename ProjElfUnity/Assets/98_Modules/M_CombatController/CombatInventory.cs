@@ -21,7 +21,6 @@ namespace ProjElf.CombatController
         [SerializeField] private Transform posGrimoireEquip;
         [SerializeField] private Transform posBowEquip;
 
-
         // Start is called before the first frame update
         void Start()
         {
@@ -63,6 +62,7 @@ namespace ProjElf.CombatController
             }
             Grimoire newGrimoire;
             newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire.position, posGrimoire.rotation, posGrimoire);
+            newGrimoire.InitGrimoire(newGrimoireData);
             m_grimoire = newGrimoire;
         }
         public void ChangeBow(BowData newBowData)
@@ -73,6 +73,7 @@ namespace ProjElf.CombatController
             }
             Bow newBow;
             newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow.position, posBow.rotation, posBow);
+            newBow.InitBow(newBowData);//init les valeurs du bow
             m_bow = newBow;
         }
         public void SelectNextWeapon()
@@ -152,10 +153,38 @@ namespace ProjElf.CombatController
                 }
             }
         }
-        public void UseSelectedWeapon()
+        public void UseMeleeWeapon()
         {
-            //Aucune idée
-            //on utilise cette methode ou CombatController.UseWeapon() plutot nan ? Ou même AWeapon.Use() ?
+            if(selectedWeapon is MeleeWeapon)
+            {
+
+            }
+            else
+            {
+                Debug.LogError("UseMeleeWeapon avec mauvaise arme");
+            }
+        }
+        public void UseBowWeapon(Vector3 direction)
+        {
+            if (selectedWeapon is Bow)
+            {
+                ((Bow)selectedWeapon).BowAttack(direction);
+            }
+            else
+            {
+                Debug.LogError("UseBowWeapon avec mauvaise arme");
+            }
+        }
+        public void UseGrimoireWeapon(Vector3 direction)
+        {
+            if (selectedWeapon is Grimoire)
+            {
+                ((Grimoire)selectedWeapon).GrimoireAttack(direction);
+            }
+            else
+            {
+                Debug.LogError("UseGrimoireWeapon avec mauvaise arme");
+            }
         }
     }
 }
