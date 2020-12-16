@@ -3,17 +3,20 @@ using UnityEditor;
 using UnityEngine;
 
 #if UNITY_EDITOR
-[CustomEditor(typeof(LocalizationManager))]
-public class LocalizationManagerEditor : Editor
+namespace MOtter.Localization
 {
-    public override void OnInspectorGUI()
+    [CustomEditor(typeof(LocalizationManager))]
+    public class LocalizationManagerEditor : Editor
     {
-        base.OnInspectorGUI();
-
-
-        if (GUILayout.Button("Generate Localization Data"))
+        public override void OnInspectorGUI()
         {
-            ((LocalizationManager)target).GenerateLocalizationData();
+            base.OnInspectorGUI();
+
+
+            if (GUILayout.Button("Generate Localization Data"))
+            {
+                ((LocalizationManager)target).GenerateLocalizationData();
+            }
         }
     }
 }
