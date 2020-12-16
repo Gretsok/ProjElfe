@@ -234,6 +234,28 @@ namespace ProjElf.CombatController
                     }
                 }
             }
+            //Si encore rien d'équipé
+            if (selectedWeapon == null)
+            {
+                if (m_bow != null)
+                {
+                    //On sort le bow
+                    ChangeWeaponTransform(m_bow, posBowEquip);
+                    selectedWeapon = m_bow;
+                }
+                else if (m_grimoire != null)
+                {
+                    //On sort le grimoire
+                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    selectedWeapon = m_grimoire;
+                }
+                else if (m_meleeWeapon != null)
+                {
+                    //On sort le melee
+                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    selectedWeapon = m_meleeWeapon;
+                }
+            }
         }
         public void UseMeleeWeapon()
         {
