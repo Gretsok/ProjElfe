@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using ProjElf.AI;
+using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.AI;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -8,7 +9,8 @@ namespace ProjElf.ProceduraleGeneration
     {
         private DunjeonRoomData m_dunjeonRoomData = null;
         private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
-
+        private List<GenericAI> m_AISpawnedInThisRoom = new List<GenericAI>();
+        public List<GenericAI> AISpawnedInThisRoom => m_AISpawnedInThisRoom;
         #region LifeCycle Attributes
         private bool m_isInit = false;
         private bool m_roomSetUp = false;
@@ -270,7 +272,7 @@ namespace ProjElf.ProceduraleGeneration
         /// </summary>
         public void ActivateRoom()
         {
-            
+            //GetComponent<NavMeshSurface>().BuildNavMesh();
             if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
@@ -281,9 +283,40 @@ namespace ProjElf.ProceduraleGeneration
                 {
                     GameObject ennemyToSpawnGO = m_dunjeonRoomData.GetRandomEnnemy();
                     m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
+                    if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
+                    {
+                        m_AISpawnedInThisRoom.Add(newAI);
+                        newAI.Init(this);
+                    }
                 }
             }
         }
+
+
+        public void UpdateAIInRoom()
+        {
+            for(int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoUpdate();
+            }
+        }
+
+        public void FixedUpdateAIInRoom()
+        {
+            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoFixedUpdate();
+            }
+        }
+
+        public void LateUpdateAIInRoom()
+        {
+            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            {
+                m_AISpawnedInThisRoom[i].DoLateUpdate();
+            }
+        }
+
         /// <summary>
         /// Gets a point on the ground of the room. Mainly used to move AI and spawn objects
         /// </summary>
@@ -293,28 +326,32 @@ namespace ProjElf.ProceduraleGeneration
             float x, z;
             Ray ray;
             RaycastHit hitInfos;
+            NavMeshHit navHitInfos = new NavMeshHit();
             int MAX_ITERATION = 100;
             int nbIteration = 0;
-            
+
             // We'll randomly raycast until we hit something or reach the MAX_ITERATION
             do
             {
-                
-                System.Random rnd = new System.Random(Random.Range(0, 10000000));
-                Random.InitState(rnd.Next(0, 100000000));
-                x = Random.Range(-m_width / 2f, m_width / 2f);
-                Random.InitState(rnd.Next(0, 100000000));
-                z = Random.Range(-m_width / 2f, m_width / 2f);
+                do
+                {
 
-                ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
-                nbIteration++;
-                //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
+                    System.Random rnd = new System.Random(Random.Range(0, 10000000));
+                    Random.InitState(rnd.Next(0, 100000000));
+                    x = Random.Range(-m_width / 2f, m_width / 2f);
+                    Random.InitState(rnd.Next(0, 100000000));
+                    z = Random.Range(-m_width / 2f, m_width / 2f);
 
-                Debug.DrawRay(ray.origin, ray.direction * 40f, Color.red, 200f);
+                    ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
+                    nbIteration++;
+                    //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
 
-            } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
+                    Debug.DrawRay(ray.origin, ray.direction * 40f, Color.red, 200f);
+
+                } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
+            } while (!NavMesh.SamplePosition(hitInfos.point, out navHitInfos, 1, 1) && nbIteration < MAX_ITERATION);
             Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
-
+            Debug.Log("NavMesh:" + navHitInfos.position + " hitPoint: " + hitInfos.point + "navHitDist" + navHitInfos.distance);
             if (nbIteration >= MAX_ITERATION)
             {
                 Debug.LogError($"MAX ITERATION HIT while trying to find a random walkable point on {gameObject.name}");
@@ -325,7 +362,7 @@ namespace ProjElf.ProceduraleGeneration
             {
                 Debug.DrawLine(ray.origin, ray.origin + ray.direction * 40, Color.green, 120f);
             }
-            return hitInfos.point;
+            return navHitInfos.position;
             
             
         }

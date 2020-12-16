@@ -45,10 +45,10 @@ namespace MOtter.StatesMachine
             if (m_currentState != null)
             {
                 state.PreviousState = m_currentState;
-                m_currentState.ExitState();
+                m_currentState?.ExitState();
             }
             m_currentState = state;
-            m_currentState.EnterState();
+            m_currentState?.EnterState();
         }
 
         public void SwitchToNextState()
@@ -56,11 +56,22 @@ namespace MOtter.StatesMachine
             SwitchToState(m_currentState.NextState);
         }
 
+        public void SwitchToPreviousState()
+        {
+            if (m_currentState != null)
+            {
+                m_currentState?.ExitState();
+            }
+            m_currentState = m_currentState.PreviousState;
+            m_currentState?.EnterState();
+        }
+
         public virtual IEnumerator LoadAsync()
         {
             yield return null;
             m_isLoaded = true;
             EnterStateMachine();
+            MOtterApplication.GetInstance().GAMEMANAGER.DisactivateLoadingScreen();
         }
 
         public virtual IEnumerator UnloadAsync(Action onUnloadEnded)
@@ -68,6 +79,7 @@ namespace MOtter.StatesMachine
 
             yield return null;
             m_isUnloaded = true;
+            MOtterApplication.GetInstance().GAMEMANAGER.ActivateLoadingScreen();
             ExitStateMachine();
             if(onUnloadEnded != null) onUnloadEnded();
         }

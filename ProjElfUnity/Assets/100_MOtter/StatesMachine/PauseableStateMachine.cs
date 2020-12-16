@@ -13,11 +13,11 @@ namespace MOtter.StatesMachine
         {
             if (isPaused)
             {
-                m_pauseState.UpdateState();
+                m_pauseState?.UpdateState();
             }
             else
             {
-                m_currentState.UpdateState();
+                m_currentState?.UpdateState();
             }
 
         }

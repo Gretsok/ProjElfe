@@ -6,12 +6,24 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/4_Scenes/Root.unity
+    guid: b5bd2209e5e3ec94995c4143cf7b5c6a
+  - enabled: 1
+    path: Assets/4_Scenes/Forest/HUB_Forest.unity
+    guid: 51a5dc1625051c742a7dc2bfc6a6deca
+  - enabled: 0
     path: Assets/99_Demos/M_SceneLoader/Scene_A.unity
     guid: ef7d6de8d7f576541850ccb97116525a
-  - enabled: 1
+  - enabled: 0
     path: Assets/99_Demos/M_SceneLoader/Scene_B.unity
     guid: 4efe002d2adcdbd4296258f37f81cbfe
-  - enabled: 1
+  - enabled: 0
     path: Assets/99_Demos/M_SceneLoader/Scene_C.unity
     guid: c0f5a9bbf85568d47a3001fe308f34fc
+  - enabled: 1
+    path: Assets/99_Demos/M_ProceduraleGeneration/DemoProceduraleGeneration.unity
+    guid: 8b0028304db7aea4b84207af721f236f
+  - enabled: 1
+    path: Assets/4_Scenes/Global/LoadingScenes/DunjeonLoadingScene.unity
+    guid: dc393080a268e2b48a2c649ed2ff0ba4
   m_configObjects: {}
