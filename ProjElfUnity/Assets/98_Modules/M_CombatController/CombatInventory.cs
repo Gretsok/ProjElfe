@@ -79,76 +79,158 @@ namespace ProjElf.CombatController
         public void SelectNextWeapon()
         {
             //On part sur Epee / Grimoire / Arc donc :
-            if((selectedWeapon is MeleeWeapon) && (m_grimoire != null))
+
+            if (selectedWeapon is MeleeWeapon)
             {
-                //On range le melee
-                ChangeWeaponTransform(m_meleeWeapon, posMelee);
-                //On sort le grimoire
-                ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
-                selectedWeapon = m_grimoire;
-            }
-            else
-            {
-                if((selectedWeapon is Grimoire) && (m_bow != null))
+                if (m_grimoire != null)
                 {
-                    //On range le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoire);
+                    //On range le melee
+                    ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                    //On sort le grimoire
+                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    selectedWeapon = m_grimoire;
+                }
+                else if (m_bow != null)
+                {
+                    //On range le melee
+                    ChangeWeaponTransform(m_meleeWeapon, posMelee);
                     //On sort le bow
                     ChangeWeaponTransform(m_bow, posBowEquip);
                     selectedWeapon = m_bow;
                 }
-                else
-                {
-                    if((selectedWeapon is Bow) && (m_meleeWeapon != null))
-                    {
-                        //On range le bow
-                        ChangeWeaponTransform(m_bow, posBow);
-                        //On sort le melee
-                        ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
-                        selectedWeapon = m_meleeWeapon;
-                    }
-                    else //cas où on a pas d'arme, on équipe melee
-                    {
-                        ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
-                        selectedWeapon = m_meleeWeapon;
-                    }
-                }
-            }
-        }
-        public void SelectPreviousWeapon()
-        {
-            if((selectedWeapon is Bow) && (m_grimoire != null))
-            {
-                //On range le bow
-                ChangeWeaponTransform(m_bow,posBow);
-                //On sort le grimoire
-                ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
-                selectedWeapon = m_grimoire;
             }
             else
             {
-                if((selectedWeapon is Grimoire) && (m_meleeWeapon != null))
+                if (selectedWeapon is Grimoire)
                 {
-                    //On range le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoire);
-                    //On sort le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
-                    selectedWeapon = m_meleeWeapon;
-                }
-                else
-                {
-                    if ((selectedWeapon is MeleeWeapon) && (m_bow != null))
+                    if (m_bow != null)
                     {
-                        //On range le melee
-                        ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                        //On range le grimoire
+                        ChangeWeaponTransform(m_grimoire, posGrimoire);
                         //On sort le bow
                         ChangeWeaponTransform(m_bow, posBowEquip);
                         selectedWeapon = m_bow;
                     }
-                    else //cas où on a pas d'arme, on équipe melee
+                    else if (m_meleeWeapon != null)
                     {
+                        //On range le grimoire
+                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        //On sort le melee
                         ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
                         selectedWeapon = m_meleeWeapon;
+                    }
+                }
+                else
+                {
+                    if (selectedWeapon is Bow)
+                    {
+                        if (m_meleeWeapon != null)
+                        {
+                            //On range le bow
+                            ChangeWeaponTransform(m_bow, posBow);
+                            //On sort le melee
+                            ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                            selectedWeapon = m_meleeWeapon;
+                        }
+                        else if (m_grimoire != null)
+                        {
+                            //On range le bow
+                            ChangeWeaponTransform(m_bow, posBow);
+                            //On sort le grimoire
+                            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                            selectedWeapon = m_grimoire;
+                        }
+                    }
+                }
+            }
+
+            //Si encore rien d'équipé
+            if(selectedWeapon == null)
+            {
+                if (m_meleeWeapon != null)
+                {
+                    //On sort le melee
+                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    selectedWeapon = m_meleeWeapon;
+                }
+                else if (m_grimoire != null)
+                {
+                    //On sort le grimoire
+                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    selectedWeapon = m_grimoire;
+                }
+                else if (m_bow != null)
+                {
+                    //On sort le bow
+                    ChangeWeaponTransform(m_bow, posBowEquip);
+                    selectedWeapon = m_bow;
+                }
+            }
+                
+        }
+
+        public void SelectPreviousWeapon()
+        {
+            if(selectedWeapon is Bow)
+            {
+                if(m_grimoire != null)
+                {
+                    //On range le bow
+                    ChangeWeaponTransform(m_bow, posBow);
+                    //On sort le grimoire
+                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    selectedWeapon = m_grimoire;
+                }
+                else if(m_meleeWeapon != null)
+                {
+                    //On range le bow
+                    ChangeWeaponTransform(m_bow, posBow);
+                    //On sort le melee
+                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    selectedWeapon = m_meleeWeapon;
+                }
+            }
+            else
+            {
+                if(selectedWeapon is Grimoire)
+                {
+                    if(m_meleeWeapon != null)
+                    {
+                        //On range le grimoire
+                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        //On sort le melee
+                        ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                        selectedWeapon = m_meleeWeapon;
+                    }
+                    else if(m_bow != null)
+                    {
+                        //On range le grimoire
+                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        //On sort le bow
+                        ChangeWeaponTransform(m_bow, posBowEquip);
+                        selectedWeapon = m_bow;
+                    }
+                }
+                else
+                {
+                    if (selectedWeapon is MeleeWeapon)
+                    {
+                        if(m_bow != null)
+                        {
+                            //On range le melee
+                            ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                            //On sort le bow
+                            ChangeWeaponTransform(m_bow, posBowEquip);
+                            selectedWeapon = m_bow;
+                        }
+                        else if(m_grimoire != null)
+                        {
+                            //On range le melee
+                            ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                            //On sort le grimoire
+                            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                            selectedWeapon = m_grimoire;
+                        }
                     }
                 }
             }
