@@ -30,7 +30,7 @@ namespace MOtter.Localization
         #region Methods
         #region Language Management
         private void Start()
-        {
+        { 
             if (!isInit)
             {
                 Init();
@@ -39,9 +39,6 @@ namespace MOtter.Localization
 
         private void Init()
         {
-#if UNITY_EDITOR
-            GenerateLocalizationData();
-#endif
             SwitchLanguage(m_currentLanguageIndex);
             isInit = true;
         }
@@ -286,8 +283,9 @@ namespace MOtter.Localization
         #endregion
     }
 
-    internal class LanguageDictionary : Dictionary<string, string>
+    [System.Serializable]
+    internal class LanguageDictionary : SerializableDictionary<string, string>
     {
-
+         
     }
 }

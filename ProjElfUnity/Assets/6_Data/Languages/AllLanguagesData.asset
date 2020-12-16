@@ -12,3 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 48eca2de2fee5a442bf36171c7656cef, type: 3}
   m_Name: AllLanguagesData
   m_EditorClassIdentifier: 
+  m_languagesData:
+  - {fileID: 11400000, guid: 890bc713f60314d40b826c1580635271, type: 2}
