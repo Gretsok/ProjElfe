@@ -8,6 +8,7 @@ namespace ProjElf.AI
     {
         [SerializeField]
         private float m_sqrDistanceToStopFollowPlayer = 900f;
+        
         public override void LateUpdateState()
         {
             base.LateUpdateState();
