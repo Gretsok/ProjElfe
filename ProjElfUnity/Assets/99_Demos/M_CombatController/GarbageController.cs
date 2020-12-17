@@ -24,33 +24,29 @@ public class GarbageController : MonoBehaviour
         //Pour equiper les armes
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
-            combatInv.ChangeMeleeWeapon(meleeData);
+            combatCont.ChangeWeapon(meleeData);
         }
         if (Input.GetKeyDown(KeyCode.Alpha2))
         {
-            combatInv.ChangeGrimoire(grimoireData);
+            combatCont.ChangeWeapon(grimoireData);
         }
         if (Input.GetKeyDown(KeyCode.Alpha3))
         {
-            combatInv.ChangeBow(bowData);
+            combatCont.ChangeWeapon(bowData);
         }
         //Pour changer d'arme
         if(Input.GetKeyDown(KeyCode.Alpha4))//Next
         {
-            combatInv.SelectNextWeapon();
+            combatCont.SelectNextWeapon();
         }
         if (Input.GetKeyDown(KeyCode.Alpha5))//Previous
         {
-            combatInv.SelectPreviousWeapon();
+            combatCont.SelectPreviousWeapon();
         }
         //Pour attaquer
         if (Input.GetKeyDown(KeyCode.Alpha6))//Bow
         {
-            combatInv.UseBowWeapon(Vector3.zero);//Mettre le point visé
-        }
-        if (Input.GetKeyDown(KeyCode.Alpha7))//Bow
-        {
-            combatInv.UseGrimoireWeapon(Vector3.zero);//Mettre le point visé
+            combatCont.UseWeapon(Vector3.zero);//Mettre le point visé
         }
     }
 }

@@ -290,6 +290,11 @@ namespace ProjElf.CombatController
                 Debug.LogError("UseGrimoireWeapon avec mauvaise arme");
             }
         }
+
+        public AWeapon GetUsedWeapon()
+        {
+            return selectedWeapon;
+        }
     }
 }
 
