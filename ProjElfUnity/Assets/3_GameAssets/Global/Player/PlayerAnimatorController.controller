@@ -90,7 +90,7 @@ AnimatorStateMachine:
   m_ChildStates:
   - serializedVersion: 1
     m_State: {fileID: 4032570515449803191}
-    m_Position: {x: 390, y: 40, z: 0}
+    m_Position: {x: 360, y: 50, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -99,7 +99,7 @@ AnimatorStateMachine:
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_EntryPosition: {x: 50, y: 120, z: 0}
   m_ExitPosition: {x: 800, y: 120, z: 0}
-  m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
+  m_ParentStateMachinePosition: {x: 780, y: 10, z: 0}
   m_DefaultState: {fileID: 4032570515449803191}
 --- !u!206 &6097046624947394767
 BlendTree:
@@ -121,8 +121,8 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 2af0696f80083d34a9be6782612e7ea5,
       type: 3}
-    m_Threshold: 0.125
-    m_Position: {x: -1, y: 0}
+    m_Threshold: 0.033333335
+    m_Position: {x: -0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeedRatio
@@ -130,8 +130,8 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 4f570f7a0e1a5514f8b230d2f6aac377,
       type: 3}
-    m_Threshold: 0.25
-    m_Position: {x: 1, y: 0}
+    m_Threshold: 0.06666667
+    m_Position: {x: 0.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeedRatio
@@ -139,8 +139,8 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: 08c7ee1f5367323479a6cfda747450bd,
       type: 3}
-    m_Threshold: 0.375
-    m_Position: {x: 0, y: -1}
+    m_Threshold: 0.1
+    m_Position: {x: 0, y: -0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeedRatio
@@ -148,16 +148,88 @@ BlendTree:
   - serializedVersion: 2
     m_Motion: {fileID: -203655887218126122, guid: e7224ae5cdd713c4ea8891b6aca86340,
       type: 3}
-    m_Threshold: 0.5
-    m_Position: {x: 0, y: 1}
+    m_Threshold: 0.13333334
+    m_Position: {x: 0, y: 0.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: forwardSpeedRatio
     m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: ba3086d905263a94ca42e8909e2a6740,
+      type: 3}
+    m_Threshold: 0.16666667
+    m_Position: {x: -1, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 3e2dc7fafe2b6ab48b9ca302bfad7be8,
+      type: 3}
+    m_Threshold: 0.2
+    m_Position: {x: 1, y: 0}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 77260ffe09e97dd499d5cc10e54c07ab,
+      type: 3}
+    m_Threshold: 0.23333333
+    m_Position: {x: 0, y: -1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: b6b68ff176cf5024f8281e9ee505145b,
+      type: 3}
+    m_Threshold: 0.26666668
+    m_Position: {x: 0, y: 1}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 0827c26de3714bb4e818bfb619027e95,
+      type: 3}
+    m_Threshold: 0.3
+    m_Position: {x: -0.75, y: -0.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 83a1ad39ab006df4ab2b617cdb2bdfe1,
+      type: 3}
+    m_Threshold: 0.33333334
+    m_Position: {x: 0.75, y: -0.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 87cec63476dace1428e97cc134771c2b,
+      type: 3}
+    m_Threshold: 0.36666667
+    m_Position: {x: -0.75, y: 0.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
+  - serializedVersion: 2
+    m_Motion: {fileID: -203655887218126122, guid: 897ac973dfcf849449125181e39fe906,
+      type: 3}
+    m_Threshold: 0.4
+    m_Position: {x: 0.75, y: 0.75}
+    m_TimeScale: 1
+    m_CycleOffset: 0
+    m_DirectBlendParameter: ForwardSpeedRatio
+    m_Mirror: 0
   m_BlendParameter: ForwardSpeedRatio
   m_BlendParameterY: RightSpeedRatio
   m_MinThreshold: 0
-  m_MaxThreshold: 0.5
+  m_MaxThreshold: 0.4
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 2
@@ -173,13 +245,13 @@ AnimatorStateMachine:
   m_ChildStateMachines:
   - serializedVersion: 1
     m_StateMachine: {fileID: 6055127277665808593}
-    m_Position: {x: 280, y: -50, z: 0}
+    m_Position: {x: 290, y: -60, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: 8400970664276327181}
-    m_Position: {x: 290, y: 50, z: 0}
+    m_Position: {x: 290, y: 70, z: 0}
   - serializedVersion: 1
     m_StateMachine: {fileID: -2801876916541817581}
-    m_Position: {x: 290, y: 160, z: 0}
+    m_Position: {x: 290, y: 180, z: 0}
   m_AnyStateTransitions: []
   m_EntryTransitions: []
   m_StateMachineTransitions: {}

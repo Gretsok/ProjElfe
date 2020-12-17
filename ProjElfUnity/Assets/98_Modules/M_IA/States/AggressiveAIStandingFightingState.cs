@@ -5,6 +5,12 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class AggressiveAIStandingFightingState : GenericAIState
-{
-    
+{   
+    public override void LateUpdateState()
+    {
+        base.LateUpdateState();
+
+    }
+
+
 }
