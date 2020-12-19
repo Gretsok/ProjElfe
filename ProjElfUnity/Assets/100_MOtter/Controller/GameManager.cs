@@ -15,11 +15,14 @@ namespace MOtter.StatesMachine
 
         private MainStatesMachine m_mainStatesMachine = null;
         private List<SceneData> m_currentSceneData = new List<SceneData>();
-        
+
+        private SaveDataManager m_saveDataManager = null;
+        public SaveDataManager SaveDataManager => m_saveDataManager;
 
         private void Start()
         {
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
+            m_saveDataManager = new SaveDataManager();
         }
 
         private void Update()
@@ -78,6 +81,11 @@ namespace MOtter.StatesMachine
                 return null;
             }
 
+        }
+
+        private void OnDestroy()
+        {
+            m_saveDataManager.SaveSaveDataManager();
         }
 
         #region LoadingScreenManagement

@@ -38,5 +38,6 @@ namespace MOtter
         public GeneralDataReferences DATA => m_generalDataReferences;
         public ContextManager CONTEXT => m_contextManager;
         public MOtterUtils UTILS { get; } = new MOtterUtils();
+        public SaveDataManager SAVE => GAMEMANAGER.SaveDataManager;
     }
 }
