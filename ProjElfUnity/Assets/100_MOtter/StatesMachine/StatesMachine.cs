@@ -40,7 +40,7 @@ namespace MOtter.StatesMachine
 
         }
 
-        public void SwitchToState(State state)
+        public virtual void SwitchToState(State state)
         {
             if (m_currentState != null)
             {
@@ -51,12 +51,12 @@ namespace MOtter.StatesMachine
             m_currentState?.EnterState();
         }
 
-        public void SwitchToNextState()
+        public virtual void SwitchToNextState()
         {
             SwitchToState(m_currentState.NextState);
         }
 
-        public void SwitchToPreviousState()
+        public virtual void SwitchToPreviousState()
         {
             if (m_currentState != null)
             {
