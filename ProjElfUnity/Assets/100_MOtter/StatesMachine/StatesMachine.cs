@@ -15,7 +15,7 @@ namespace MOtter.StatesMachine
         public bool IsLoaded => m_isLoaded;
         public bool IsUnloaded => m_isUnloaded;
 
-        protected virtual void EnterStateMachine()
+        internal virtual void EnterStateMachine()
         {
             SwitchToState(m_defaultState);
         }
@@ -35,7 +35,7 @@ namespace MOtter.StatesMachine
             m_currentState?.LateUpdateState();
         }
 
-        protected virtual void ExitStateMachine()
+        internal virtual void ExitStateMachine()
         {
 
         }

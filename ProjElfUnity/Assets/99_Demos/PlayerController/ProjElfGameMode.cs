@@ -7,7 +7,7 @@ public class ProjElfGameMode : PauseableStateMachine
     [SerializeField]
     protected Player m_player = null;
     public Player Player => m_player;
-    protected override void EnterStateMachine()
+    internal override void EnterStateMachine()
     {
         base.EnterStateMachine();
         Cursor.visible = false;
@@ -31,7 +31,7 @@ public class ProjElfGameMode : PauseableStateMachine
         m_player.DoLateUpdate();
     }
 
-    protected override void ExitStateMachine()
+    internal override void ExitStateMachine()
     {
         m_player.CleanUp();
         base.ExitStateMachine();

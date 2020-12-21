@@ -67,7 +67,7 @@ namespace ProjElf.PlayerController
             ExitStateMachine();
         }
 
-        protected override void EnterStateMachine()
+        internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
             SetUpInput();
@@ -79,7 +79,7 @@ namespace ProjElf.PlayerController
             base.DoFixedUpdate();
         }
 
-        protected override void ExitStateMachine()
+        internal override void ExitStateMachine()
         {
             CleanUpInput();
             base.ExitStateMachine();

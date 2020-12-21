@@ -41,7 +41,6 @@ namespace ProjElf.MainMenu
             {
                 GoDown();
             }
-            Debug.Log(m_movement);
         }
 
         protected virtual void GoLeft()

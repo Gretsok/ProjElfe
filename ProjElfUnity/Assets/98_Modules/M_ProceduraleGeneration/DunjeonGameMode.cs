@@ -33,7 +33,7 @@ namespace ProjElf.ProceduraleGeneration
             yield return base.LoadAsync();
         }
 
-        protected override void EnterStateMachine()
+        internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
             Debug.Log("GM READY");

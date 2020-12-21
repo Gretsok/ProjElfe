@@ -33,13 +33,8 @@ namespace ProjElf.MainMenu
         }
 
         
-        protected override void EnterStateMachine()
-        {
-            base.EnterStateMachine();
-            
-        }
 
-        protected override void ExitStateMachine()
+        internal override void ExitStateMachine()
         {
             base.ExitStateMachine();
             m_actions.Disable();
