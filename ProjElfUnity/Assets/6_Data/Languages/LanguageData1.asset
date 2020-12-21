@@ -17,7 +17,13 @@ MonoBehaviour:
     - LANGUAGE_SHORTNAME
     - PROJECT_NAME
     - LOADING_SCENE
+    - GENERIC_PLAY
+    - GENERIC_OPTIONS
+    - GENERIC_CREDITS
     m_values:
     - FR
     - ProjElf
     - Chargement...
+    - Jouer
+    - Options
+    - "Cr\xE9dits"

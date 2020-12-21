@@ -1,3 +1,6 @@
 LANGUAGE_SHORTNAME	EN	FR	ES
 PROJECT_NAME	ProjElf	ProjElf	ProjElf
 LOADING_SCENE	Loading...	Chargement...	Cargando...
+GENERIC_PLAY	Play	Jouer	Jugar
+GENERIC_OPTIONS	Options	Options	Opciones
+GENERIC_CREDITS	Credits	Crédits	Créditos
