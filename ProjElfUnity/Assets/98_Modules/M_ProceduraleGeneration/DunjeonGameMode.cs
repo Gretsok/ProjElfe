@@ -50,7 +50,7 @@ namespace ProjElf.ProceduraleGeneration
 
         public override void DoFixedUpdate()
         {
-            base.DoUpdate();
+            base.DoFixedUpdate();
             foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
             {
                 room.FixedUpdateAIInRoom();
@@ -66,7 +66,7 @@ namespace ProjElf.ProceduraleGeneration
 
         public override void DoLateUpdate()
         {
-            base.DoUpdate();
+            base.DoLateUpdate();
             foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
             {
                 room.LateUpdateAIInRoom();

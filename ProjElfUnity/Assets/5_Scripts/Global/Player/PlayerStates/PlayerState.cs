@@ -40,7 +40,7 @@ namespace ProjElf.PlayerController
 
         protected virtual void UpdatePosition()
         {
-            m_player.CharacterController.Move(Vector3.up * m_fallSpeed * -1 * Time.deltaTime);
+            m_player.CharacterController.Move(Vector3.up * m_fallSpeed * -1 * Time.fixedDeltaTime);
         }
 
         protected virtual void OnStartFalling()
