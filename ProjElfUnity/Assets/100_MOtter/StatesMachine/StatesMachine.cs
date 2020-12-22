@@ -80,13 +80,12 @@ namespace MOtter.StatesMachine
             yield return null;
             m_isUnloaded = true;
             MOtterApplication.GetInstance().GAMEMANAGER.ActivateLoadingScreen();
+            yield return null;
             ExitStateMachine();
+            yield return null;
             if(onUnloadEnded != null) onUnloadEnded();
         }
 
-        private void OnDestroy()
-        {
-            ExitStateMachine();
-        }
+
     }
 }

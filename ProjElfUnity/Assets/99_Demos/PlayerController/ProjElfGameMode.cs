@@ -1,5 +1,8 @@
-﻿using MOtter.StatesMachine;
+﻿using MOtter;
+using MOtter.StatesMachine;
 using ProjElf.PlayerController;
+using System;
+using System.Collections;
 using UnityEngine;
 
 public class ProjElfGameMode : PauseableStateMachine
@@ -33,7 +36,10 @@ public class ProjElfGameMode : PauseableStateMachine
 
     internal override void ExitStateMachine()
     {
+        MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
         m_player.CleanUp();
         base.ExitStateMachine();
     }
+
+
 }

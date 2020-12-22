@@ -84,11 +84,6 @@ namespace MOtter.StatesMachine
 
         }
 
-        private void OnDestroy()
-        {
-            m_saveDataManager.SaveSaveDataManager();
-        }
-
         #region LoadingScreenManagement
         public void ActivateLoadingScreen()
         {

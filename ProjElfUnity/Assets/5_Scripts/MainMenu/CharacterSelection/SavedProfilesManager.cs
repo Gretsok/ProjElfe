@@ -1,6 +1,8 @@
-﻿using System.Collections;
+﻿using MOtter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static SaveDataManager;
 
 public class SavedProfilesManager : MonoBehaviour
 {
@@ -18,11 +20,16 @@ public class SavedProfilesManager : MonoBehaviour
     [SerializeField]
     private SaveData m_testSaveData = null;
 
-    public void Inflate()
+    public void Inflate(SaveDataElement[] allSaveData)
     {
-        for(int i = 0; i < 4; ++i)
+        for(int i = 0; i < allSaveData.Length; ++i)
         {
-            AddSavedProfileModule(m_testSaveData);
+            /*SaveData saveData = new SaveData();
+            SaveDataManager.LoadFromFile(allSaveData[i].FileName, out string json);
+            saveData.LoadFromJson(json);*/
+
+            SaveData saveData = MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.LoadSaveData(allSaveData[i].SaveName);
+            AddSavedProfileModule(saveData);
         }
 
         if(m_instantiatedNavigationPositions.Count < MAX_PROFILES)
@@ -30,8 +37,6 @@ public class SavedProfilesManager : MonoBehaviour
             CreateCreateNewCharacterButton();
         }
         
-
-        m_instantiatedNavigationPositions[0].OnSelected();
     }
 
     public void SelectPosition(int index)

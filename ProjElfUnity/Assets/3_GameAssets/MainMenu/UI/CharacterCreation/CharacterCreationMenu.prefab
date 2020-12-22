@@ -234,7 +234,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2026507304493494188}
-  - component: {fileID: 104864865104183869}
+  - component: {fileID: 5248300623599022866}
   m_Layer: 5
   m_Name: CharacterCreationMenu
   m_TagString: Untagged
@@ -263,7 +263,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &104864865104183869
+--- !u!114 &5248300623599022866
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -272,9 +272,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 2026507304493494191}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a7b08257a4fa1743832b8a24f7980cf, type: 3}
+  m_Script: {fileID: 11500000, guid: df6946f4ffa340049bb990c6a72beb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_nameInputField: {fileID: 2026507304313074413}
 --- !u!1 &2026507305297496806
 GameObject:
   m_ObjectHideFlags: 0

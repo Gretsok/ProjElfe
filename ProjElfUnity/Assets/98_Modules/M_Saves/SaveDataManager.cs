@@ -84,7 +84,7 @@ public class SaveDataManager
         if (SaveDataList.FindAll(x => x.SaveName == saveDataName).Count > 0)
         {
             SaveDataElement dataElement = SaveDataList.Find(x => x.SaveName == saveDataName);
-            if (LoadFromFile(dataElement.SaveName, out string jsonContent))
+            if (LoadFromFile(dataElement.FileName, out string jsonContent))
             {
                 SaveData saveData = new SaveData();
                 saveData.LoadFromJson(jsonContent);

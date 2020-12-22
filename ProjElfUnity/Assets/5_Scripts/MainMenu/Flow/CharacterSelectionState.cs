@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MOtter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,7 +19,7 @@ namespace ProjElf.MainMenu
             base.EnterState();
             if(!m_hasInflate)
             {
-                m_savedProfilesManager.Inflate();
+                m_savedProfilesManager.Inflate(MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveDataList.ToArray());
                 m_hasInflate = true;
             }
             m_positionIndex = m_savedProfilesManager.NumberOfNavigationPositions;
