@@ -20,6 +20,15 @@ MonoBehaviour:
     - GENERIC_PLAY
     - GENERIC_OPTIONS
     - GENERIC_CREDITS
+    - GENERIC_AND
+    - TIME_PLAYED
+    - ANIMALS_SAVED
+    - HOURS
+    - HOUR
+    - MINUTES
+    - MINUTE
+    - HAVE_NOT_PLAYED_YET
+    - CREATE_NEW_CHARACTER
     m_values:
     - FR
     - ProjElf
@@ -27,3 +36,12 @@ MonoBehaviour:
     - Jouer
     - Options
     - "Cr\xE9dits"
+    - et
+    - 'Temps de jeu :'
+    - "Animaux sauv\xE9s :"
+    - heures
+    - heure
+    - minutes
+    - minute
+    - "Pas encore jou\xE9"
+    - "Cr\xE9er un nouveau personnage"

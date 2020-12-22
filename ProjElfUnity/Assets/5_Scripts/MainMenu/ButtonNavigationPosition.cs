@@ -5,6 +5,7 @@ using UnityEngine.UI;
 
 public class ButtonNavigationPosition : MonoBehaviour, INavigationPosition
 {
+    [SerializeField]
     private Image m_image = null;
     [SerializeField]
     private Color32 m_selectedColor;
@@ -12,7 +13,10 @@ public class ButtonNavigationPosition : MonoBehaviour, INavigationPosition
     private Color32 m_unselectedColor;
     private void Awake()
     {
-        m_image = GetComponent<Image>();
+        if(m_image == null)
+        {
+            m_image = GetComponent<Image>();
+        }
         OnUnselected();
     }
 
