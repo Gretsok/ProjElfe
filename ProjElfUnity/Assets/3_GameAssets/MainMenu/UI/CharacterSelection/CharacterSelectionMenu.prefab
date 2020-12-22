@@ -125,7 +125,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_savedProfileModulePrefab: {fileID: 2834653403587892509, guid: efbc74beb29b5ff428651e72034ba111,
     type: 3}
-  m_createNewCharacterButtonPrefab: {fileID: 7523808079981193380, guid: ca43f0a933c1b9d4ea5ca2e946392b02,
+  m_createNewCharacterButtonPrefab: {fileID: 2590710898456538431, guid: ca43f0a933c1b9d4ea5ca2e946392b02,
     type: 3}
   m_testSaveData:
     SaveName: Prout

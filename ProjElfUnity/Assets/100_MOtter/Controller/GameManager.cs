@@ -23,6 +23,7 @@ namespace MOtter.StatesMachine
         {
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
             m_saveDataManager = new SaveDataManager();
+            m_saveDataManager.Load();
         }
 
         private void Update()

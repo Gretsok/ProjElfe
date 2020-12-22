@@ -19,6 +19,11 @@ public class SaveDataManager
 
     public SaveDataManager()
     {
+        
+    }
+
+    public void Load()
+    {
         LoadFromFile(FileName, out string jsonContent);
         LoadFromJson(jsonContent);
     }

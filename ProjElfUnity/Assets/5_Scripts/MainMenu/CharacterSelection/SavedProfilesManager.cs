@@ -20,12 +20,16 @@ public class SavedProfilesManager : MonoBehaviour
 
     public void Inflate()
     {
-        for(int i = 0; i < MAX_PROFILES; ++i)
+        for(int i = 0; i < 4; ++i)
         {
             AddSavedProfileModule(m_testSaveData);
         }
 
-        CreateCreateNewCharacterButton();
+        if(m_instantiatedNavigationPositions.Count < MAX_PROFILES)
+        {
+            CreateCreateNewCharacterButton();
+        }
+        
 
         m_instantiatedNavigationPositions[0].OnSelected();
     }
@@ -38,6 +42,16 @@ public class SavedProfilesManager : MonoBehaviour
         }
         m_selectedPosition =  m_instantiatedNavigationPositions[index];
         m_selectedPosition.OnSelected();
+    }
+
+    public void UnselectCurrentSelection()
+    {
+        m_selectedPosition?.OnUnselected();
+    }
+
+    public bool IsCurrentSelectionCreateCharacterButton()
+    {
+        return m_selectedPosition is CreateCharacterButtonNavigationPosition;
     }
 
     private void AddSavedProfileModule(SaveData saveData)

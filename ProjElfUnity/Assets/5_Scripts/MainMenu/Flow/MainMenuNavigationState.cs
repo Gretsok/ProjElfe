@@ -17,7 +17,18 @@ namespace ProjElf.MainMenu
         public override void EnterState()
         {
             base.EnterState();
-           
+            m_mainStateMachine.Actions.UI.Confirm.performed += Confirm_performed;
+            m_mainStateMachine.Actions.UI.Back.performed += Back_performed;
+        }
+
+        private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            Back();
+        }
+
+        private void Confirm_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            Confirm();
         }
 
         public override void UpdateState()
@@ -67,10 +78,16 @@ namespace ProjElf.MainMenu
             Debug.Log("Confirm");
         }
 
+        protected virtual void Back()
+        {
+            Debug.Log("Back");
+        }
+
         public override void ExitState()
         {
+            m_mainStateMachine.Actions.UI.Confirm.performed -= Confirm_performed;
+            m_mainStateMachine.Actions.UI.Back.performed -= Back_performed;
             base.ExitState();
-
         }
     }
 }

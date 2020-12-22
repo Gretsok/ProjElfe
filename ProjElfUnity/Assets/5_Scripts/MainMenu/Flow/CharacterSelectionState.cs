@@ -19,41 +19,57 @@ namespace ProjElf.MainMenu
             if(!m_hasInflate)
             {
                 m_savedProfilesManager.Inflate();
+                m_hasInflate = true;
             }
             m_positionIndex = m_savedProfilesManager.NumberOfNavigationPositions;
-            
+            m_savedProfilesManager.UnselectCurrentSelection();
         }
 
         protected override void GoLeft()
         {
             base.GoLeft();
-
             if (m_positionIndex == m_savedProfilesManager.NumberOfNavigationPositions)
             {
                 m_mainStateMachine.SwitchToOptionsState();
+            }
+            else
+            {
+                if (!m_mainStateMachine.CanSwitch())
+                {
+                    return;
+                }
             }
         }
 
         protected override void GoRight()
         {
             base.GoRight();
-
             if (m_positionIndex == m_savedProfilesManager.NumberOfNavigationPositions)
             {
                 m_mainStateMachine.SwitchToCreditsState();
             }   
+            else
+            {
+                if (!m_mainStateMachine.CanSwitch())
+                {
+                    return;
+                }
+            }
         }
 
         protected override void GoUp()
         {
             base.GoUp();
-
-            if (m_positionIndex == m_savedProfilesManager.NumberOfNavigationPositions)
+            if (!m_mainStateMachine.CanSwitch())
+            {
+                return;
+            }
+            /*if (m_positionIndex == m_savedProfilesManager.NumberOfNavigationPositions)
             {
                 m_positionIndex = 0;
                 m_savedProfilesManager.SelectPosition(m_positionIndex);
             }
-            else if(m_positionIndex > 0)
+            else*/ if(m_positionIndex > 0)
             {
                 m_positionIndex--;
                 m_savedProfilesManager.SelectPosition(m_positionIndex);
@@ -62,6 +78,7 @@ namespace ProjElf.MainMenu
             {
                 m_positionIndex = m_savedProfilesManager.NumberOfNavigationPositions;
                 // back to navigation bar
+                m_savedProfilesManager.UnselectCurrentSelection();
             }
 
         }
@@ -69,7 +86,10 @@ namespace ProjElf.MainMenu
         protected override void GoDown()
         {
             base.GoDown();
-
+            if (!m_mainStateMachine.CanSwitch())
+            {
+                return;
+            }
             if (m_positionIndex == m_savedProfilesManager.NumberOfNavigationPositions)
             {
                 m_positionIndex = 0;
@@ -84,7 +104,27 @@ namespace ProjElf.MainMenu
             {
                 m_positionIndex = m_savedProfilesManager.NumberOfNavigationPositions;
                 // back to navigation bar
+                m_savedProfilesManager.UnselectCurrentSelection();
             }
+        }
+
+        protected override void Confirm()
+        {
+            base.Confirm();
+            if(m_positionIndex < m_savedProfilesManager.NumberOfNavigationPositions)
+            {
+                if(m_savedProfilesManager.IsCurrentSelectionCreateCharacterButton())
+                {
+                    m_mainStateMachine.SwitchToCreateCharacterState();
+                }
+                else
+                {
+                    // Load Game with correct Save Data
+                    Debug.Log("TRYING TO LOAD A SAVE");
+                    m_mainStateMachine.HubData.LoadLevel();
+                }
+            }
+           
         }
 
     }

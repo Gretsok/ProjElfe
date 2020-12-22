@@ -1,6 +1,7 @@
 ﻿using MOtter.StatesMachine;
 using System.Collections;
 using System.Collections.Generic;
+using ProjElf.SceneData;
 using UnityEngine;
 
 namespace ProjElf.MainMenu
@@ -24,6 +25,11 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private float m_timeToWaitBetweenTwoSwitch = 1f;
         private float m_timeLastSwitched = -10f;
+
+        [Header("LevelLoader")]
+        [SerializeField]
+        private SceneData.SceneData m_hubData = null;
+        public SceneData.SceneData HubData => m_hubData;
 
         public override IEnumerator LoadAsync()
         {
@@ -68,11 +74,21 @@ namespace ProjElf.MainMenu
 
         public override void SwitchToState(State state)
         {
-            if(Time.time - m_timeLastSwitched > m_timeToWaitBetweenTwoSwitch)
+            if (CanSwitch())
             {
                 base.SwitchToState(state);
                 m_timeLastSwitched = Time.time;
             }
+        }
+
+        public bool CanSwitch()
+        {
+            if (Time.time - m_timeLastSwitched > m_timeToWaitBetweenTwoSwitch)
+            {
+                m_timeLastSwitched = Time.time;
+                return true;
+            }
+            return false;
         }
     }
 }
