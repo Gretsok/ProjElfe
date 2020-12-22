@@ -21,7 +21,6 @@ public class AnimalsManager : MonoBehaviour
     private List<SavedAnimalData> m_savedAnimals = new List<SavedAnimalData>();
     [SerializeField]
     private AllAnimalsData m_allAnimalsData = null;
-    public List<SavedAnimalData> SavedAnimals => m_savedAnimals;
 
     private void Start()
     {
