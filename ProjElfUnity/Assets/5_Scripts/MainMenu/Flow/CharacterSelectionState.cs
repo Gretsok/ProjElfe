@@ -122,7 +122,7 @@ namespace ProjElf.MainMenu
                 {
                     // Load Game with correct Save Data
                     Debug.Log("TRYING TO LOAD A SAVE");
-                    m_mainStateMachine.HubData.LoadLevel();
+                    m_mainStateMachine.LoadHub(m_savedProfilesManager.GetSaveDataByPositionIndex(m_positionIndex));
                 }
             }
            

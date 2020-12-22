@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using ProjElf.SceneData;
 using UnityEngine;
+using MOtter;
 
 namespace ProjElf.MainMenu
 { 
@@ -29,7 +30,6 @@ namespace ProjElf.MainMenu
         [Header("LevelLoader")]
         [SerializeField]
         private SceneData.SceneData m_hubData = null;
-        public SceneData.SceneData HubData => m_hubData;
 
         public override IEnumerator LoadAsync()
         {
@@ -89,6 +89,12 @@ namespace ProjElf.MainMenu
                 return true;
             }
             return false;
+        }
+
+        public void LoadHub(SaveData saveDataToUse)
+        {
+            MOtterApplication.GetInstance().GAMEMANAGER.UseSaveData(saveDataToUse);
+            m_hubData.LoadLevel();
         }
     }
 }

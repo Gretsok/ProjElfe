@@ -12,6 +12,12 @@ namespace MOtter
 {
     public class MOtterApplication : MonoBehaviour
     {
+        private void Awake()
+        {
+            s_instance = this;
+            DontDestroyOnLoad(s_instance);
+        }
+
         private static MOtterApplication s_instance;
         public static MOtterApplication GetInstance()
         {

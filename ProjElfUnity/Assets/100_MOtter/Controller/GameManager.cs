@@ -19,6 +19,9 @@ namespace MOtter.StatesMachine
         private SaveDataManager m_saveDataManager = null;
         public SaveDataManager SaveDataManager => m_saveDataManager;
 
+        private SaveData m_currentSaveData = null;
+
+
         private void Start()
         {
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
@@ -35,7 +38,7 @@ namespace MOtter.StatesMachine
                     m_mainStatesMachine.DoUpdate();
                 }  
             }
-            MOtterApplication.GetInstance().SOUND.CheckIfAudioSourcesPlayingStoppedPlaying();
+            //MOtterApplication.GetInstance().SOUND.CheckIfAudioSourcesPlayingStoppedPlaying();
         }
 
         private void FixedUpdate()
@@ -123,6 +126,26 @@ namespace MOtter.StatesMachine
             SceneData lastAdded = m_currentSceneData[m_currentSceneData.Count - 1];
             m_currentSceneData.Clear();
             m_currentSceneData.Add(lastAdded);
+        }
+        #endregion
+
+        #region SaveManagement
+        public void UseSaveData(SaveData saveData)
+        {
+            m_currentSaveData = saveData;
+        }
+
+        public void SaveCurrentData()
+        {
+            if(m_currentSaveData != null)
+            {
+                m_saveDataManager.SaveSaveData(m_currentSaveData);
+            }
+        }
+
+        public T GetSaveData<T>() where T : SaveData
+        {
+            return (m_currentSaveData as T);
         }
         #endregion
     }

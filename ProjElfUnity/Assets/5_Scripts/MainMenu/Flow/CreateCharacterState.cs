@@ -20,13 +20,12 @@ namespace ProjElf.MainMenu
             newSaveData.SaveName = GetPanel<CharacterCreationPanel>().NameInputField.text;
             newSaveData.SavedPlayerStats.TimePlayed = 0;
             newSaveData.SavedPlayerStats.DunjeonFinished = 0;
-            newSaveData.SavedPlayerStats.AnimalsSaved = 0;
             newSaveData.SavedPlayerStats.MonsterKilled = 0;
             newSaveData.SavedPlayerStats.NumberOfDeath = 0;
 
             MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveData(newSaveData);
             MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
-            m_mainStateMachine.HubData.LoadLevel();
+            m_mainStateMachine.LoadHub(newSaveData);
         }
     }
 }

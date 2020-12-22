@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using static SaveDataManager;
 
+
 public class SavedProfilesManager : MonoBehaviour
 {
     [SerializeField]
@@ -65,6 +66,15 @@ public class SavedProfilesManager : MonoBehaviour
         newSaveProfileModule.Inflate(saveData);
         newSaveProfileModule.OnUnselected();
         m_instantiatedNavigationPositions.Add(newSaveProfileModule);
+    }
+
+    public SaveData GetSaveDataByPositionIndex(int index)
+    {
+        if(m_instantiatedNavigationPositions[index] is SavedProfileModule)
+        {
+            return (m_instantiatedNavigationPositions[index] as SavedProfileModule).SaveData;
+        }
+        return null;
     }
 
     private void CreateCreateNewCharacterButton()

@@ -21,10 +21,11 @@ public class SaveData
     {
         public int TimePlayed;
         public int DunjeonFinished;
-        public int AnimalsSaved;
         public int MonsterKilled;
         public int NumberOfDeath;
     }
+
+    public List<SavedAnimalData> SavedAnimalDatas = new List<SavedAnimalData>();
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
     public PlayerStats SavedPlayerStats;

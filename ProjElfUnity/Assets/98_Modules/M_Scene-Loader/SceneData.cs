@@ -33,6 +33,8 @@ namespace ProjElf.SceneData
         private LoadSceneMode m_currentLoadSceneMode;
         private Scene sceneToActivate;
 
+        AsyncOperation op;
+
         #region LevelLoading
         public void LoadLevel()
         {
@@ -42,6 +44,7 @@ namespace ProjElf.SceneData
 
         public void LoadLevel(LoadSceneMode loadMode)
         {
+            op = null;
             var currentGameMode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainStatesMachine>();
             m_currentLoadSceneMode = loadMode;
             if (currentGameMode != null)
@@ -59,7 +62,7 @@ namespace ProjElf.SceneData
             //On load une scene(main + additionalScenes[])
 
             MOtterApplication.GetInstance().GAMEMANAGER.RegisterNewLevel(this);
-            AsyncOperation op = SceneManager.LoadSceneAsync(m_mainScene.SceneName, LoadSceneMode.Additive);
+            op = SceneManager.LoadSceneAsync(m_mainScene.SceneName, LoadSceneMode.Additive);
             Debug.Log("LOADING " + m_mainScene.SceneName);
             op.completed += OnLevelLoaded;
             //charger additionalScenes 
@@ -89,6 +92,7 @@ namespace ProjElf.SceneData
         {
             SceneManager.SetActiveScene(sceneToActivate);
             obj.completed -= OnLevelLoaded;
+            MOtterApplication.GetInstance().GAMEMANAGER.SaveCurrentData();
             if (m_currentLoadSceneMode == LoadSceneMode.Single)
             {
                 MOtterApplication.GetInstance().GAMEMANAGER.UnloadScenesData();
@@ -99,11 +103,19 @@ namespace ProjElf.SceneData
         #region LevelUnloading
         public void UnloadLevel()
         {
-            SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(m_mainScene.SceneName).buildIndex);
+            MOtterApplication.GetInstance().StartCoroutine(UnloadingRoutine());
+        }
+
+        IEnumerator UnloadingRoutine()
+        {
+            AsyncOperation op;
+            op = SceneManager.UnloadSceneAsync(SceneManager.GetSceneByName(m_mainScene.SceneName).buildIndex);
+            yield return op;
             Debug.Log("UNLOADING " + m_mainScene.SceneName);
             for (int i = 0; i < m_additionalScenes.Length; i++)
             {
-                SceneManager.UnloadSceneAsync(m_additionalScenes[i].SceneName);
+                op = SceneManager.UnloadSceneAsync(m_additionalScenes[i].SceneName);
+                yield return op;
             }
         }
         #endregion

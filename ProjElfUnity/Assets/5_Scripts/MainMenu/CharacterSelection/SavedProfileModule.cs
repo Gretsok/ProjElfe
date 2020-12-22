@@ -22,6 +22,9 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
     [SerializeField]
     private TextMeshProUGUI m_animalsSavedText = null;
 
+    private SaveData m_saveData = null;
+    public SaveData SaveData => m_saveData;
+
     public void OnSelected()
     {
         m_layoutElement.preferredHeight = 200;
@@ -41,6 +44,8 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
 
     public void Inflate(SaveData saveData)
     {
+        m_saveData = saveData;
+        
         m_selectedSaveNameText.text = saveData.SaveName;
         m_unselectedSaveNameText.text = saveData.SaveName;
         int secondsPlayed = saveData.SavedPlayerStats.TimePlayed;
@@ -75,7 +80,13 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
             }
         }
 
-        m_animalsSavedText.text = saveData.SavedPlayerStats.AnimalsSaved.ToString();
+        int animalsSaved = 0;
+        for(int i = 0; i < saveData.SavedAnimalDatas.Count; ++i)
+        {
+            animalsSaved += saveData.SavedAnimalDatas[i].Amount;
+        }
+
+        m_animalsSavedText.text = animalsSaved.ToString();
         
     }
 }
