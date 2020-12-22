@@ -8,13 +8,14 @@ namespace ProjElf.CombatController
     {
         //Var
         private float m_speed;
-        private float m_range;
+        private float m_lifeTime;
+        private float m_actualLifeTime;
 
         //Initialisateur
         public void InitMagicSpellProjectile(float speed,float range)
         {
             m_speed = speed;
-            m_range = range;
+            m_lifeTime = range;
         }
 
         // Start is called before the first frame update
@@ -27,7 +28,12 @@ namespace ProjElf.CombatController
         void Update()
         {
             this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
-            //Destroy si arrive à sa range maj à rajouter
+            m_actualLifeTime++;
+            //Gerer destroy
+            if (m_actualLifeTime >= m_lifeTime)
+            {
+                Destroy(this.gameObject);
+            }
         }
     }
 }

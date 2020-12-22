@@ -36,9 +36,21 @@ namespace ProjElf.PlayerController
 
             Vector3 camFollowTargetEulerRotation = m_player.CamFollowTarget.rotation.eulerAngles;
             camFollowTargetEulerRotation.x -= m_lookAroundInputs.y * m_cameraSensibility * Time.deltaTime;
-            camFollowTargetEulerRotation.x = Mathf.Clamp(camFollowTargetEulerRotation.x, m_clampedYCAmAngle.x, m_clampedYCAmAngle.y);
+
+            // Clamping x angle
+            if(camFollowTargetEulerRotation.x > 180 && camFollowTargetEulerRotation.x < 360 + m_clampedYCAmAngle.x) // m_clampedYCAmAngle.x is negative
+            {
+                camFollowTargetEulerRotation.x = 360 + m_clampedYCAmAngle.x;
+            }
+            else if(camFollowTargetEulerRotation.x < 180 && camFollowTargetEulerRotation.x > m_clampedYCAmAngle.y)
+            {
+                camFollowTargetEulerRotation.x = m_clampedYCAmAngle.y;
+            }
+
+            //camFollowTargetEulerRotation.x = Mathf.Clamp(camFollowTargetEulerRotation.x, m_clampedYCAmAngle.x, m_clampedYCAmAngle.y);
             camFollowTargetEulerRotation.z = 0;
             m_player.CamFollowTarget.rotation = Quaternion.Euler(camFollowTargetEulerRotation);
+
         }
     
 
