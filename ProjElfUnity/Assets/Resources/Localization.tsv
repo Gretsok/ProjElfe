@@ -13,3 +13,8 @@ MINUTES	minutes	minutes	minutos
 MINUTE	minute	minute	minuto
 HAVE_NOT_PLAYED_YET	Have not played it	Pas encore joué	No han jugado todavía
 CREATE_NEW_CHARACTER	Create new character	Créer un nouveau personnage	Crear nuevo personaje
+OPTIONS_GAMEPLAY	Gameplay	Jouabilité	Jugabilidad
+OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
+OPTIONS_CAMERA_SENSIBILITY	Camera Sensibility	Sensibilité de la caméra	Sensibilidad de la cámara
+OPTIONS_SOUND_VOLUME	Sound Volume	Volume du son	volumen de sonido
+OPTIONS_LANGUAGE	Language	Langue	Idioma

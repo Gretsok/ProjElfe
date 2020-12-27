@@ -29,6 +29,11 @@ MonoBehaviour:
     - MINUTE
     - HAVE_NOT_PLAYED_YET
     - CREATE_NEW_CHARACTER
+    - OPTIONS_GAMEPLAY
+    - OPTIONS_CONFIGURATION
+    - OPTIONS_CAMERA_SENSIBILITY
+    - OPTIONS_SOUND_VOLUME
+    - OPTIONS_LANGUAGE
     m_values:
     - EN
     - ProjElf
@@ -45,3 +50,8 @@ MonoBehaviour:
     - minute
     - Have not played it
     - Create new character
+    - Gameplay
+    - Configuration
+    - Camera Sensibility
+    - Sound Volume
+    - Language

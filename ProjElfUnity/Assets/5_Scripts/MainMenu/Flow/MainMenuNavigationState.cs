@@ -7,7 +7,10 @@ namespace ProjElf.MainMenu
     {
         protected MainMenuStateMachine m_mainStateMachine = null;
 
-        private Vector2 m_movement = Vector2.zero;
+        [SerializeField]
+        protected NavigationState m_nextSectionState = null;
+        [SerializeField]
+        protected NavigationState m_previousSectionState = null;
 
         private void Start()
         {
@@ -19,6 +22,42 @@ namespace ProjElf.MainMenu
             base.EnterState();
             m_mainStateMachine.Actions.UI.Confirm.performed += Confirm_performed;
             m_mainStateMachine.Actions.UI.Back.performed += Back_performed;
+            m_mainStateMachine.Actions.UI.MoveDown.performed += MoveDown_performed;
+            m_mainStateMachine.Actions.UI.MoveUp.performed += MoveUp_performed;
+            m_mainStateMachine.Actions.UI.MoveLeft.performed += MoveLeft_performed;
+            m_mainStateMachine.Actions.UI.MoveRight.performed += MoveRight_performed;
+            m_mainStateMachine.Actions.UI.NextSection.performed += NextSection_performed;
+            m_mainStateMachine.Actions.UI.PreviousSection.performed += PreviousSection_performed;
+        }
+        #region InputsHandling
+        private void PreviousSection_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoToPreviousSection();
+        }
+
+        private void NextSection_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoToNextSection();
+        }
+
+        private void MoveRight_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoRight();
+        }
+
+        private void MoveLeft_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoLeft();
+        }
+
+        private void MoveUp_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoUp();
+        }
+
+        private void MoveDown_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            GoDown();
         }
 
         private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -31,29 +70,14 @@ namespace ProjElf.MainMenu
             Confirm();
         }
 
+        #endregion
+
         public override void UpdateState()
         {
             base.UpdateState();
-
-            m_movement = m_mainStateMachine.Actions.Generic.Move.ReadValue<Vector2>();
-            if (m_movement.x > 0.3 && Mathf.Abs(m_movement.y) < 0.3)
-            {
-                GoRight();
-            }
-            else if(m_movement.x < -0.3 && Mathf.Abs(m_movement.y) < 0.3)
-            {
-                GoLeft();
-            }
-            else if (m_movement.y > 0.3 && Mathf.Abs(m_movement.x) < 0.3)
-            {
-                GoUp();
-            }
-            else if (m_movement.y < -0.3 && Mathf.Abs(m_movement.x) < 0.3)
-            {
-                GoDown();
-            }
         }
 
+        #region Navigation
         protected virtual void GoLeft()
         {
             Debug.Log("Going Left");
@@ -73,6 +97,16 @@ namespace ProjElf.MainMenu
             Debug.Log("Going Down");
         }
 
+        protected virtual void GoToNextSection()
+        {
+            m_mainStateMachine.SwitchToState(m_nextSectionState);
+        }
+
+        protected virtual void GoToPreviousSection()
+        {
+            m_mainStateMachine.SwitchToState(m_previousSectionState);
+        }
+
         protected virtual void Confirm()
         {
             Debug.Log("Confirm");
@@ -82,11 +116,17 @@ namespace ProjElf.MainMenu
         {
             Debug.Log("Back");
         }
-
+        #endregion
         public override void ExitState()
         {
             m_mainStateMachine.Actions.UI.Confirm.performed -= Confirm_performed;
             m_mainStateMachine.Actions.UI.Back.performed -= Back_performed;
+            m_mainStateMachine.Actions.UI.MoveDown.performed -= MoveDown_performed;
+            m_mainStateMachine.Actions.UI.MoveUp.performed -= MoveUp_performed;
+            m_mainStateMachine.Actions.UI.MoveLeft.performed -= MoveLeft_performed;
+            m_mainStateMachine.Actions.UI.MoveRight.performed -= MoveRight_performed;
+            m_mainStateMachine.Actions.UI.NextSection.performed -= NextSection_performed;
+            m_mainStateMachine.Actions.UI.PreviousSection.performed -= PreviousSection_performed;
             base.ExitState();
         }
     }

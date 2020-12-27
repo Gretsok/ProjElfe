@@ -7,7 +7,7 @@ using MOtter;
 
 namespace ProjElf.MainMenu
 { 
-    public class MainMenuStateMachine : MainStatesMachine
+    public class MainMenuStateMachine : ProjElfMenuStateMachine
     {
         [SerializeField]
         private HomeState m_homeState = null;
@@ -19,9 +19,6 @@ namespace ProjElf.MainMenu
         private OptionsState m_optionsState = null;
         [SerializeField]
         private CreditsState m_creditsState = null;
-
-        private PlayerInputsActions m_actions = null;
-        public PlayerInputsActions Actions => m_actions;
 
         [SerializeField]
         private float m_timeToWaitBetweenTwoSwitch = 1f;
@@ -36,15 +33,6 @@ namespace ProjElf.MainMenu
             m_actions = new PlayerInputsActions();
             m_actions.Enable();
             return base.LoadAsync();
-        }
-
-        
-
-        internal override void ExitStateMachine()
-        {
-            base.ExitStateMachine();
-            m_actions.Disable();
-            m_actions.Dispose();
         }
 
         public void SwitchToHomeState()
@@ -72,23 +60,11 @@ namespace ProjElf.MainMenu
             SwitchToState(m_creditsState);
         }
 
-        public override void SwitchToState(State state)
+        internal override void ExitStateMachine()
         {
-            if (CanSwitch())
-            {
-                base.SwitchToState(state);
-                m_timeLastSwitched = Time.time;
-            }
-        }
-
-        public bool CanSwitch()
-        {
-            if (Time.time - m_timeLastSwitched > m_timeToWaitBetweenTwoSwitch)
-            {
-                m_timeLastSwitched = Time.time;
-                return true;
-            }
-            return false;
+            base.ExitStateMachine();
+            m_actions.Disable();
+            m_actions.Dispose();
         }
 
         public void LoadHub(SaveData saveDataToUse)

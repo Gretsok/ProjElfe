@@ -6,11 +6,6 @@ namespace ProjElf.MainMenu
 {
     public class CreditsState : MainMenuNavigationState
     {
-        protected override void GoLeft()
-        {
-            base.GoLeft();
-            m_mainStateMachine.SwitchToCharacterSelectionState();
-        }
 
     }
 }

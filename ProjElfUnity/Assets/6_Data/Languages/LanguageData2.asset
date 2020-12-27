@@ -29,6 +29,11 @@ MonoBehaviour:
     - MINUTE
     - HAVE_NOT_PLAYED_YET
     - CREATE_NEW_CHARACTER
+    - OPTIONS_GAMEPLAY
+    - OPTIONS_CONFIGURATION
+    - OPTIONS_CAMERA_SENSIBILITY
+    - OPTIONS_SOUND_VOLUME
+    - OPTIONS_LANGUAGE
     m_values:
     - ES
     - ProjElf
@@ -45,3 +50,8 @@ MonoBehaviour:
     - minuto
     - "No han jugado todav\xEDa"
     - Crear nuevo personaje
+    - Jugabilidad
+    - "Configuraci\xF3n"
+    - "Sensibilidad de la c\xE1mara"
+    - volumen de sonido
+    - Idioma

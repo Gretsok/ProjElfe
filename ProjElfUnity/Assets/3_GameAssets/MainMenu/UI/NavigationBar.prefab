@@ -66,8 +66,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: a7005fc4c7b451c47afd82bac7b462b2, type: 3}
-  m_Type: 0
+  m_Sprite: {fileID: 21300000, guid: e54a8cd25df32544fa71ff8c0b93b10b, type: 3}
+  m_Type: 1
   m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
@@ -88,6 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b07fcdac2f68249ab9a512cf13448c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 0}
   m_selectedColor:
     serializedVersion: 2
     rgba: 4283337684
@@ -403,6 +404,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b07fcdac2f68249ab9a512cf13448c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 0}
   m_selectedColor:
     serializedVersion: 2
     rgba: 4293045597
@@ -496,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b07fcdac2f68249ab9a512cf13448c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 0}
   m_selectedColor:
     serializedVersion: 2
     rgba: 4294967295
@@ -827,6 +830,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b07fcdac2f68249ab9a512cf13448c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 0}
   m_selectedColor:
     serializedVersion: 2
     rgba: 4283337684
@@ -1067,6 +1071,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75b07fcdac2f68249ab9a512cf13448c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_image: {fileID: 0}
   m_selectedColor:
     serializedVersion: 2
     rgba: 4294967295

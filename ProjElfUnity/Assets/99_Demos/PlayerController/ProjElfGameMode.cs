@@ -5,11 +5,15 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class ProjElfGameMode : PauseableStateMachine
+public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
 {
     [SerializeField]
     protected Player m_player = null;
     public Player Player => m_player;
+
+    protected PlayerInputsActions m_actions = null;
+    public PlayerInputsActions Actions => m_actions;
+
     internal override void EnterStateMachine()
     {
         base.EnterStateMachine();

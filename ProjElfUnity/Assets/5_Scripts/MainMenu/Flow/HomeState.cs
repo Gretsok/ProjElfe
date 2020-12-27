@@ -6,10 +6,6 @@ namespace ProjElf.MainMenu
 {
     public class HomeState : MainMenuNavigationState
     {
-        protected override void GoRight()
-        {
-            base.GoRight();
-            m_mainStateMachine.SwitchToOptionsState();
-        }
+
     }
 }
