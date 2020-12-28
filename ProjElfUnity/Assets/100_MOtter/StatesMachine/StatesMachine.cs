@@ -42,16 +42,18 @@ namespace MOtter.StatesMachine
 
         public virtual void SwitchToState(State state)
         {
-            if(state != null)
+
+            if (m_currentState != null)
             {
-                if (m_currentState != null)
+                if(state != null)
                 {
                     state.PreviousState = m_currentState;
-                    m_currentState?.ExitState();
                 }
-                m_currentState = state;
-                m_currentState?.EnterState();
+                m_currentState?.ExitState();
             }
+
+            m_currentState = state;
+            m_currentState?.EnterState();
         }
 
         public virtual void SwitchToNextState()

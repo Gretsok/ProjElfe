@@ -8,7 +8,7 @@ namespace ProjElf.MainMenu
     public class OptionsState : MainMenuNavigationState
     {
         [SerializeField]
-        private StatesMachine m_subStateMachine = null;
+        private OptionsStateMachine m_subStateMachine = null;
 
         public override void EnterState()
         {
@@ -40,6 +40,40 @@ namespace ProjElf.MainMenu
             base.ExitState();
         }
 
-       
+        protected override void GoDown()
+        {
+            base.GoDown();
+            m_subStateMachine.GoDown();
+        }
+
+        protected override void GoLeft()
+        {
+            base.GoLeft();
+            m_subStateMachine.GoLeft();
+        }
+
+        protected override void GoRight()
+        {
+            base.GoRight();
+            m_subStateMachine.GoRight();
+        }
+
+        protected override void GoUp()
+        {
+            base.GoUp();
+            m_subStateMachine.GoUp();
+        }
+
+        protected override void Confirm()
+        {
+            base.Confirm();
+        }
+
+        protected override void Back()
+        {
+            base.Back();
+            m_subStateMachine.Back();
+        }
+
     }
 }

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionsSoundManagementState : OptionsModuleState
+public class LanguageModule : OptionsMenuModule
 {
 
 }

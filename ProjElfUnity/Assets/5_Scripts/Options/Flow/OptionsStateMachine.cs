@@ -12,33 +12,53 @@ public class OptionsStateMachine : StatesMachine
     public GameplayOptionsState GameplayState => m_gameplayState;
 
 
-    public bool GoLeft()
+    public void GoLeft()
     {
         if (m_currentState != null)
         {
-            (m_currentState as OptionsNavigationTabState).GoLeft();
-            return true;
+            if((m_currentState as OptionsNavigationTabState).PositionIndex == 0)
+            {
+                SwitchToState(m_configurationState);
+            }
+            else
+            {
+                (m_currentState as OptionsNavigationTabState).GoLeft();
+            }
         }
-        return false;
     }
 
-    public bool GoRight()
+    public void GoRight()
     {
         if(m_currentState != null)
         {
-            (m_currentState as OptionsNavigationTabState).GoRight();
-            return true;
+            if ((m_currentState as OptionsNavigationTabState).PositionIndex == 0)
+            {
+                SwitchToState(m_gameplayState);
+            }
+            else
+            {
+                (m_currentState as OptionsNavigationTabState).GoRight();
+            }
         }
-        return false;
     }
 
     public void GoUp()
     {
         if(m_currentState != null)
-        { }
+        {
+            (m_currentState as OptionsNavigationTabState).GoUp();
+        }
     }
 
     public void GoDown()
+    {
+        if (m_currentState != null)
+        {
+            (m_currentState as OptionsNavigationTabState).GoDown();
+        }
+    }
+
+    public void Back()
     {
 
     }

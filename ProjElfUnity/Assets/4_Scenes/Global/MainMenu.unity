@@ -761,7 +761,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 264933624}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac459e478251fe4e8122e45bfccebd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 4948a933a4f609049954b2ed78ced52e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_selectedScale: {x: 1.2, y: 1.2, z: 1.2}
@@ -843,8 +843,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271019033}
-  m_LocalRotation: {x: 0.06689568, y: 0.157959, z: -0.010776002, w: 0.9851182}
-  m_LocalPosition: {x: 69.953766, y: 1.0407653, z: 47.114845}
+  m_LocalRotation: {x: 0.12699431, y: 0.4803943, z: -0.070588686, w: 0.86493415}
+  m_LocalPosition: {x: 7.6645517, y: 1.690722, z: 26.229033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -1346,9 +1346,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_panels:
-  - {fileID: 0}
+  - {fileID: 1150464123}
   m_navigationPositionsGO: []
   m_subStateMachine: {fileID: 479749968}
+  m_modulesNavigationStates: []
 --- !u!114 &479749968
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2438,11 +2439,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1054547657}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac459e478251fe4e8122e45bfccebd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 0268ceb4b457bd7448d86e7067554c89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_selectedScale: {x: 1.2, y: 1.2, z: 1.2}
   m_unselectedScale: {x: 1, y: 1, z: 1}
+  m_sensibilitySlider: {fileID: 210211389}
 --- !u!1 &1081042944
 GameObject:
   m_ObjectHideFlags: 3
@@ -3204,11 +3206,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1537780578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ac459e478251fe4e8122e45bfccebd2, type: 3}
+  m_Script: {fileID: 11500000, guid: 7eff7c46c25c9b84e99eb7f283b6f1b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_selectedScale: {x: 1.2, y: 1.2, z: 1.2}
   m_unselectedScale: {x: 1, y: 1, z: 1}
+  m_volumeSlider: {fileID: 1979111930}
 --- !u!1 &1563119330
 GameObject:
   m_ObjectHideFlags: 0
@@ -3582,11 +3585,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_panels:
-  - {fileID: 0}
+  - {fileID: 562325909}
   m_navigationPositionsGO: []
   m_subStateMachine: {fileID: 1689833919}
-  m_soundManagementState: {fileID: 1807515526}
-  m_languageManagementState: {fileID: 1922002787}
+  m_modulesNavigationStates:
+  - {fileID: 1807515526}
+  - {fileID: 1922002787}
 --- !u!114 &1745546064 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3911543152840945021, guid: 3d46e6eeeea98de4e9e43420a21048e4,
