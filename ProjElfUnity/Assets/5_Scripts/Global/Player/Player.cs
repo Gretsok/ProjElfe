@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using MOtter.StatesMachine;
 using ProjElf.Interaction;
+using MOtter;
 
 namespace ProjElf.PlayerController
 {
     public class Player : StatesMachine
     {
+        private ProjElfGameMode m_gamemode = null;
         [SerializeField]
         private CharacterController m_characterController = null;
         [SerializeField]
@@ -55,6 +57,11 @@ namespace ProjElf.PlayerController
             m_actions = new PlayerInputsActions();
         }
 
+        private void Start()
+        {
+            m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
+        }
+
         public void Init()
         {
             EnterStateMachine();
@@ -71,6 +78,9 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
+            m_gamemode.OnPause += CleanUpInput;
+            m_gamemode.OnUnpause += SetUpInput;
+            
         }
 
         public override void DoFixedUpdate()
@@ -81,6 +91,8 @@ namespace ProjElf.PlayerController
 
         internal override void ExitStateMachine()
         {
+            m_gamemode.OnPause -= CleanUpInput;
+            m_gamemode.OnUnpause -= SetUpInput;
             CleanUpInput();
             base.ExitStateMachine();
         }

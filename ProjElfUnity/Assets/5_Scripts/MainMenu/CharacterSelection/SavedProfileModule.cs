@@ -1,4 +1,5 @@
 ﻿using MOtter;
+using MOtter.Localization;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
     [SerializeField]
     private TextMeshProUGUI m_unselectedSaveNameText = null;
     [SerializeField]
-    private TextMeshProUGUI m_timePlayedText = null;
+    private TextLocalizer m_timePlayedText = null;
     [SerializeField]
     private TextMeshProUGUI m_animalsSavedText = null;
 
@@ -46,8 +47,11 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
     {
         m_saveData = saveData;
         
+        // Inflates name
         m_selectedSaveNameText.text = saveData.SaveName;
         m_unselectedSaveNameText.text = saveData.SaveName;
+
+        // Inflates time played, converting seconds to minutes, to hours
         int secondsPlayed = saveData.SavedPlayerStats.TimePlayed;
         int minutesPlayed = secondsPlayed / 60;
         int hoursPlayed = minutesPlayed / 60;
@@ -55,31 +59,45 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
 
         if(minutesPlayed > 0)
         {
-            string minuteText = (minutesPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTES") : MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTE");
             if (hoursPlayed > 0)
             {
-                string hourText = (hoursPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("HOURS") : MOtterApplication.GetInstance().LOCALIZATION.Localize("HOUR");
-                string andText = MOtterApplication.GetInstance().LOCALIZATION.Localize("GENERIC_AND");
-                m_timePlayedText.text = $"{hoursPlayed} {hourText} {andText} {minutesPlayed} {minuteText}";
+                
+                m_timePlayedText.SetFormatter((text, localizer) =>
+                {
+                    string minuteText = (minutesPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTES") : MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTE");
+                    string hourText = (hoursPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("HOURS") : MOtterApplication.GetInstance().LOCALIZATION.Localize("HOUR");
+                    string andText = MOtterApplication.GetInstance().LOCALIZATION.Localize("GENERIC_AND");
+                    localizer.TextTarget.text = $"{hoursPlayed} {hourText} {andText} {minutesPlayed} {minuteText}";
+                });
             }
             else
             {
-                m_timePlayedText.text = $"{minutesPlayed} {minuteText}";
+                m_timePlayedText.SetFormatter((text, localizer) =>
+                {
+                    string minuteText = (minutesPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTES") : MOtterApplication.GetInstance().LOCALIZATION.Localize("MINUTE");
+                    localizer.TextTarget.text = $"{minutesPlayed} {minuteText}";
+                });
             }
         }
         else
         {
             if (hoursPlayed > 0)
             {
-                string hourText = (hoursPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("HOURS") : MOtterApplication.GetInstance().LOCALIZATION.Localize("HOUR");
-                m_timePlayedText.text = $"{hoursPlayed} {hourText}";
+                
+                m_timePlayedText.SetFormatter((text, localizer) => 
+                {
+                    string hourText = (hoursPlayed > 1) ? MOtterApplication.GetInstance().LOCALIZATION.Localize("HOURS") : MOtterApplication.GetInstance().LOCALIZATION.Localize("HOUR");
+                    localizer.TextTarget.text = $"{hoursPlayed} {hourText}";
+                });
             }
             else
             {
-                m_timePlayedText.text = $"{MOtterApplication.GetInstance().LOCALIZATION.Localize("HAVE_NOT_PLAYED_YET")}";
+                m_timePlayedText.SetFormatter((text, localizer) => localizer.TextTarget.text = $"{MOtterApplication.GetInstance().LOCALIZATION.Localize("HAVE_NOT_PLAYED_YET")}");
             }
         }
 
+
+        // Inflates number of animals saved
         int animalsSaved = 0;
         for(int i = 0; i < saveData.SavedAnimalDatas.Count; ++i)
         {

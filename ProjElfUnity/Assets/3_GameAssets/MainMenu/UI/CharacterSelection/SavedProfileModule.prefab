@@ -291,6 +291,7 @@ GameObject:
   - component: {fileID: 6160582328796920256}
   - component: {fileID: 9077856397389463876}
   - component: {fileID: 2590151005128461850}
+  - component: {fileID: 7973588552628007560}
   m_Layer: 0
   m_Name: TimePlayedText
   m_TagString: Untagged
@@ -413,6 +414,19 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &7973588552628007560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 788778226793610945}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 657e76c109deda44ba61790467109196, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_key: 
 --- !u!1 &2834653401666934952
 GameObject:
   m_ObjectHideFlags: 0
@@ -715,7 +729,7 @@ MonoBehaviour:
   m_unselectedElementDisplay: {fileID: 2834653402689718272}
   m_selectedSaveNameText: {fileID: 2049902941579293422}
   m_unselectedSaveNameText: {fileID: 4685609898375096145}
-  m_timePlayedText: {fileID: 2590151005128461850}
+  m_timePlayedText: {fileID: 7973588552628007560}
   m_animalsSavedText: {fileID: 2420465867484136960}
 --- !u!1 &3544834210778212251
 GameObject:
