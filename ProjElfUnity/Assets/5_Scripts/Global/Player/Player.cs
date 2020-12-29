@@ -101,12 +101,18 @@ namespace ProjElf.PlayerController
         protected void SetUpInput()
         {
             m_actions.Enable();
+            m_actions.UI.Back.performed += Pause_performed;
+        }
+
+        private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_gamemode.Pause();
         }
 
         protected void CleanUpInput()
         {
+            m_actions.UI.Back.performed -= Pause_performed;
             m_actions.Disable();
-            m_actions.Dispose();
         }
         #endregion
     }

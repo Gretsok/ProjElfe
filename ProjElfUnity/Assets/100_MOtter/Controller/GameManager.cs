@@ -65,10 +65,6 @@ namespace MOtter.StatesMachine
 
         public void RegisterNewMainStateMachine(MainStatesMachine statesmachine)
         {
-            if (m_mainStatesMachine != null)
-            {
-                StartCoroutine(m_mainStatesMachine.UnloadAsync(null));
-            }
             m_mainStatesMachine = statesmachine;
             StartCoroutine(statesmachine.LoadAsync());
             

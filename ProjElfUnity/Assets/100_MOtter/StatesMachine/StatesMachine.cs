@@ -37,7 +37,7 @@ namespace MOtter.StatesMachine
 
         internal virtual void ExitStateMachine()
         {
-
+            m_currentState?.ExitState();
         }
 
         public virtual void SwitchToState(State state)

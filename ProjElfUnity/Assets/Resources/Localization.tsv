@@ -5,6 +5,9 @@ GENERIC_PLAY	Play	Jouer	Jugar
 GENERIC_OPTIONS	Options	Options	Opciones
 GENERIC_CREDITS	Credits	Crédits	Créditos
 GENERIC_AND	and	et	y
+GENERIC_KEEP_PLAYING	Keep playing	Continuer à jouer	Seguir jugando
+GENERIC_QUIT_GAME	Quit game	Quitter le jeu	Salir del juego
+GENERIC_BACK_TO_MENU	Back to menu	Retour au menu	
 TIME_PLAYED	Time played :	Temps de jeu :	Tiempo jugado :
 ANIMALS_SAVED	Animals saved :	Animaux sauvés :	Animales salvados :
 HOURS	hours	heures	horas

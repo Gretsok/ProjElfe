@@ -21,6 +21,9 @@ MonoBehaviour:
     - GENERIC_OPTIONS
     - GENERIC_CREDITS
     - GENERIC_AND
+    - GENERIC_KEEP_PLAYING
+    - GENERIC_QUIT_GAME
+    - GENERIC_BACK_TO_MENU
     - TIME_PLAYED
     - ANIMALS_SAVED
     - HOURS
@@ -42,6 +45,9 @@ MonoBehaviour:
     - Options
     - "Cr\xE9dits"
     - et
+    - "Continuer \xE0 jouer"
+    - Quitter le jeu
+    - Retour au menu
     - 'Temps de jeu :'
     - "Animaux sauv\xE9s :"
     - heures

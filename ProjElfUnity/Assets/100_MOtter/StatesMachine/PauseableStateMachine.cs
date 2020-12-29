@@ -65,8 +65,8 @@ namespace MOtter.StatesMachine
             isPaused = false;
             if (StopTimeInPause)
                 Time.timeScale = 1;
-            OnUnpause?.Invoke();
             m_pauseStatesMachine.ExitStateMachine();
+            OnUnpause?.Invoke();
         }
     }
 }
