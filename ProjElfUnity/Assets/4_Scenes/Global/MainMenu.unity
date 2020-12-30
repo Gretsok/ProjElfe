@@ -343,7 +343,7 @@ MonoBehaviour:
   - {fileID: 121143453}
   - {fileID: 419972728}
   m_nextSectionState: {fileID: 910092208}
-  m_previousSectionState: {fileID: 0}
+  m_previousSectionState: {fileID: 220912714}
 --- !u!1 &226685802 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 8619910075469094135, guid: dcacdd778a52e404d80a253aa1336ab8,
@@ -1430,7 +1430,7 @@ MonoBehaviour:
   m_navigationPositionsGO:
   - {fileID: 2009799263}
   - {fileID: 156512412}
-  m_nextSectionState: {fileID: 0}
+  m_nextSectionState: {fileID: 1378490696}
   m_previousSectionState: {fileID: 425751561}
 --- !u!1 &1461736320 stripped
 GameObject:
