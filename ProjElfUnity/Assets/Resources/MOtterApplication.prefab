@@ -229,6 +229,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8d577e9919336cf4b992fdb73c3643ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_debugData: {fileID: 11400000, guid: fecca78899b34ab4bab76d086929d260, type: 2}
   m_loadingScreens:
   - m_SceneAsset: {fileID: 102900000, guid: dc393080a268e2b48a2c649ed2ff0ba4, type: 3}
     m_SceneName: DunjeonLoadingScene

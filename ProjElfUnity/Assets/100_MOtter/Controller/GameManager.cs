@@ -8,6 +8,10 @@ namespace MOtter.StatesMachine
 {
     public class GameManager : MonoBehaviour
     {
+#if UNITY_EDITOR
+        [SerializeField]
+        private DebugData m_debugData = null;
+#endif
         [SerializeField]
         private SceneField[] m_loadingScreens = null;
         private string m_currentLoadingScreenSceneName = "";
@@ -30,7 +34,7 @@ namespace MOtter.StatesMachine
 
 #if UNITY_EDITOR
             // Create Debug Data and register the default SceneData
-
+            RegisterNewLevel(m_debugData.DefaultSceneData);
 #endif
 
         }
