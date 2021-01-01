@@ -27,6 +27,12 @@ namespace MOtter.StatesMachine
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
             m_saveDataManager = new SaveDataManager();
             m_saveDataManager.Load();
+
+#if UNITY_EDITOR
+            // Create Debug Data and register the default SceneData
+
+#endif
+
         }
 
         private void Update()

@@ -42,7 +42,8 @@ public class OptionsNavigationTabState : NavigationTabState
         {
             m_positionIndex--;
         }
-        if(m_positionIndex > 0)
+        Debug.Log("UP : " + m_positionIndex);
+        if (m_positionIndex > 0)
         {
             m_subStateMachine.SwitchToState(m_modulesNavigationStates[m_positionIndex - 1]);
         }
@@ -50,7 +51,7 @@ public class OptionsNavigationTabState : NavigationTabState
         {
             m_subStateMachine.SwitchToState(null);
         }
-        Debug.Log("UP : " + m_positionIndex);
+        
     }
 
     public virtual void GoDown()
@@ -59,8 +60,8 @@ public class OptionsNavigationTabState : NavigationTabState
         {
             m_positionIndex++;
         }
-        m_subStateMachine.SwitchToState(m_modulesNavigationStates[m_positionIndex - 1]);
         Debug.Log("DOWN : " + m_positionIndex);
+        m_subStateMachine.SwitchToState(m_modulesNavigationStates[m_positionIndex - 1]);
     }
 
     public virtual void Back()

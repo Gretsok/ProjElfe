@@ -110,6 +110,7 @@ public class SaveDataManager
         string fullPath = Path.Combine(Application.persistentDataPath, a_FileName);
         try
         {
+            CreateFileIfDoesntExist(fullPath);
             File.WriteAllText(fullPath, a_FileContents);
             return true;
         }
@@ -125,14 +126,25 @@ public class SaveDataManager
         string fullPath = Path.Combine(Application.persistentDataPath, a_FileName);
         try
         {
+            CreateFileIfDoesntExist(fullPath);
             result = File.ReadAllText(fullPath);
+            
             return true;
         }
         catch(Exception e)
         {
-            Debug.LogError($"Failed to read from {fullPath} with exception {e}");
+            Debug.LogError($"Failed to read from {fullPath} with exception {e.InnerException}");
             result = "";
             return false;
+        }
+    }
+
+    private static void CreateFileIfDoesntExist(string path)
+    {
+        if(!File.Exists(path))
+        {
+            FileStream stream = File.Create(path);
+            stream.Close();
         }
     }
     #endregion

@@ -9,7 +9,7 @@ public class AggressiveAIStandingFightingState : GenericAIState
     public override void LateUpdateState()
     {
         base.LateUpdateState();
-
+        (m_owner as AggressiveAI).CombatController.UseWeapon();
     }
 
 
