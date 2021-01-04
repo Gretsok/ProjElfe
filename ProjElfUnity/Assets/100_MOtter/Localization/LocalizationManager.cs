@@ -172,8 +172,7 @@ namespace MOtter.Localization
 
             if (textLocalizerToRemoveIndex == -1)
             {
-                Debug.LogError("TextLocalizer to delete not found !");
-                Debug.Assert(textLocalizer.gameObject.activeInHierarchy, "TextLocalizer is inactive ! ");
+                Debug.Assert(!textLocalizer.gameObject.activeInHierarchy, "TextLocalizer to delete not found !");
                 return;
             }
             m_registeredTextLocalizers.RemoveAt(textLocalizerToRemoveIndex);

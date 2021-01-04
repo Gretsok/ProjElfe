@@ -12,4 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530f0f4aac478e641b59724446d26bfc, type: 3}
   m_Name: DebugData
   m_EditorClassIdentifier: 
-  m_defaultSceneData: {fileID: 11400000, guid: 30059720a6735e4488f522952354f660, type: 2}
+  m_defaultSceneData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603, type: 2}
+  m_useDefaultSaveData: 1
+  m_defaultSaveData:
+    SaveName: TESTSAVEDATA
+    SavedAnimalDatas: []
+    SavedPlayerWeaponInventory:
+      EquippedMeleeWeapon: {fileID: 0}
+      EquippedGrimoire: {fileID: 0}
+      EquippedBow: {fileID: 0}
+    SavedPlayerStats:
+      TimePlayed: 0
+      DunjeonFinished: 0
+      MonsterKilled: 0
+      NumberOfDeath: 0
+    EarnedWeapon: []

@@ -30,7 +30,6 @@ namespace ProjElf.PlayerController
             m_player.CharacterController.Move(m_player.Direction * m_movingSpeed * Time.fixedDeltaTime);
             m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).z);
             m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).x);
-            Debug.Log("coucou");
         }
 
         protected override void UpdateLookAround()
