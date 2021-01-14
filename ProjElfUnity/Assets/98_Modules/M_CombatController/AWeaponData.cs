@@ -11,6 +11,13 @@ namespace ProjElf.CombatController
         [SerializeField] private int m_hitDamage;
         [SerializeField] private float m_attackSpeed;
         [SerializeField] private AWeapon m_weaponPrefab;
+        [SerializeField] private bool m_allowContinueFiring;
+        public bool refAllowContinueFiring => m_allowContinueFiring;
+        public float AttackSpeed => m_attackSpeed;
+        public float HitDamage => m_hitDamage;
+        public string WeaponName => m_weaponName;
+
+
         public AWeapon WeaponPrefab => m_weaponPrefab;
 
         // Start is called before the first frame update

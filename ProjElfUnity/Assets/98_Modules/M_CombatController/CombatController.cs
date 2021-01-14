@@ -15,6 +15,11 @@ namespace ProjElf.CombatController
 
         private AWeapon m_usedWeapon;
 
+        private bool m_isShooting;
+        private float m_timeLastShoot = float.MinValue;
+
+        [SerializeField] private CharacterAnimatorHandler m_characterAnimatorHandler;
+
         // Start is called before the first frame update
         void Start()
         {
@@ -26,6 +31,28 @@ namespace ProjElf.CombatController
         {
 
         }
+
+        public void DoUpdate(Vector3 direction = default(Vector3))//appelé depuis le player ou l'ia pour maj combatcontroller
+        {
+            if (m_isShooting && m_usedWeapon.AllowContinueFiring && (Time.time-m_timeLastShoot > (1/m_usedWeapon.AttackSpeed)))
+            {
+                if (m_usedWeapon is MeleeWeapon)
+                {
+                    m_combatInventory.UseMeleeWeapon();
+                    //m_characterAnimatorHandler
+                }
+                else if (m_usedWeapon is Grimoire)
+                {
+                    m_combatInventory.UseGrimoireWeapon(direction);
+                }
+                else if (m_usedWeapon is Bow)
+                {
+                    m_combatInventory.UseBowWeapon(direction);
+                }
+                m_timeLastShoot = Time.time;
+            }
+        }
+
         /// <summary>
         /// Récupère l'arme équipée
         /// </summary>
@@ -62,22 +89,32 @@ namespace ProjElf.CombatController
             GetUsedWeapon();
         }
 
-        public void UseWeapon(Vector3 direction = default(Vector3)) //default(Vector3) car argument optionnel
+        public void StartUseWeapon(Vector3 direction = default(Vector3)) //default(Vector3) car argument optionnel
         {
-            if (m_usedWeapon is MeleeWeapon)
+            m_isShooting = true;
+            if (Time.time - m_timeLastShoot > (1 / m_usedWeapon.AttackSpeed))
             {
-                m_combatInventory.UseMeleeWeapon();
-            }
-            else if (m_usedWeapon is Grimoire)
-            {
-                m_combatInventory.UseGrimoireWeapon(direction);
-            }
-            else if (m_usedWeapon is Bow)
-            {
-                m_combatInventory.UseBowWeapon(direction);
+                if (m_usedWeapon is MeleeWeapon)
+                {
+                    m_combatInventory.UseMeleeWeapon();
+                }
+                else if (m_usedWeapon is Grimoire)
+                {
+                    m_combatInventory.UseGrimoireWeapon(direction);
+                }
+                else if (m_usedWeapon is Bow)
+                {
+                    m_combatInventory.UseBowWeapon(direction);
+                }
+                m_timeLastShoot = Time.time;
             }
         }
-        
+
+        public void StopUseWeapon()
+        {
+            m_isShooting = false;
+        }
+
         public void TakeDamage(int damage)
         {
             m_lifePoints -= damage;

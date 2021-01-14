@@ -21,6 +21,7 @@ public class GarbageController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        combatCont.DoUpdate();
         //Pour equiper les armes
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -44,9 +45,14 @@ public class GarbageController : MonoBehaviour
             combatCont.SelectPreviousWeapon();
         }
         //Pour attaquer
-        if (Input.GetKeyDown(KeyCode.Alpha6))//Bow
+        if (Input.GetKeyDown(KeyCode.Alpha6))//ATK
         {
-            combatCont.UseWeapon(Vector3.zero);//Mettre le point visé
+            combatCont.StartUseWeapon(Vector3.zero);//Mettre le point visé
+        }
+        //Pour attaquer
+        if (Input.GetKeyUp(KeyCode.Alpha6))//ATK
+        {
+            combatCont.StopUseWeapon();//Mettre le point visé
         }
     }
 }

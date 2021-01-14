@@ -9,7 +9,6 @@ namespace ProjElf.CombatController
         //Var 
         private float m_projectileSpeed;
         private float m_projectileLifeTime;
-        private bool m_allowContinueFiring;
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private Transform posMagicSpell;
 
@@ -29,6 +28,7 @@ namespace ProjElf.CombatController
             m_projectileLifeTime = grimoireToInit.GetrefProjectileLifeTime();
             m_allowContinueFiring = grimoireToInit.GetrefAllowContinueFiring();
             m_projectileSpeed = grimoireToInit.GetrefProjectileSpeed();
+            m_attackSpeed = grimoireToInit.AttackSpeed;
         }
         /// <summary>
         /// Instantie un MagicSpellProjectile qui ira vers la direction ciblée
@@ -44,7 +44,7 @@ namespace ProjElf.CombatController
             return newProjectile;
         }
 
-        internal void GrimoireAttack(Vector3 direction)
+        internal void GrimoireAttack(Vector3 direction)//aspd du joueur à rajouter
         {
             MagicSpellProjectile newProjectile = InstantiateInitializedProjectile(direction);
         }
