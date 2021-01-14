@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponName: 
   m_hitDamage: 0
-  m_attackSpeed: 0
+  m_attackSpeed: 2
   m_weaponPrefab: {fileID: 7894183220489267615, guid: b587b936391f69a4b9040be6c7435224,
     type: 3}
+  m_allowContinueFiring: 0
   m_projectileRange: 0
   m_projectileDivingRate: 0.9
   m_projectileSpeed: 15
