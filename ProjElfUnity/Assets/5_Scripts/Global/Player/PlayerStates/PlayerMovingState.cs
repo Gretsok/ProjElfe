@@ -79,9 +79,38 @@ namespace ProjElf.PlayerController
            /* m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.canceled += SecondaryAttack_canceled;*/
             m_player.Actions.Generic.Interact.performed += Interact_performed;
+
+            /*m_player.Actions.Generic.SelectMeleeWeapon.performed += SelectMeleeWeapon_performed;
+            m_player.Actions.Generic.SelectBow.performed += SelectBow_performed;
+            m_player.Actions.Generic.SelectGrimoire.performed += SelectGrimoire_performed;*/
+            m_player.Actions.Generic.SelectNextWeapon.performed += SelectNextWeapon_performed;
+            m_player.Actions.Generic.SelectPreviousWeapon.performed += SelectPreviousWeapon_performed;
         }
 
-        
+        private void SelectPreviousWeapon_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_player.CombatController.SelectPreviousWeapon();
+        }
+
+        private void SelectNextWeapon_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_player.CombatController.SelectNextWeapon();
+        }
+
+        private void SelectGrimoire_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void SelectBow_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        private void SelectMeleeWeapon_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            throw new System.NotImplementedException();
+        }
 
         protected override void CleanUpInputs()
         {
@@ -92,6 +121,12 @@ namespace ProjElf.PlayerController
             /*m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.canceled -= SecondaryAttack_canceled;*/
             m_player.Actions.Generic.Interact.performed -= Interact_performed;
+
+            /*m_player.Actions.Generic.SelectMeleeWeapon.performed -= SelectMeleeWeapon_performed;
+            m_player.Actions.Generic.SelectBow.performed -= SelectBow_performed;
+            m_player.Actions.Generic.SelectGrimoire.performed -= SelectGrimoire_performed;*/
+            m_player.Actions.Generic.SelectNextWeapon.performed -= SelectNextWeapon_performed;
+            m_player.Actions.Generic.SelectPreviousWeapon.performed -= SelectPreviousWeapon_performed;
             base.CleanUpInputs();
         }
         #endregion

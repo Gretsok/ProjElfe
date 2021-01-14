@@ -73,6 +73,46 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectNextWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""af334d07-ab19-4643-9587-a54ae529ef53"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectPreviousWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""5e0b9961-67ec-4251-8d38-64727e90ec18"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectGrimoire"",
+                    ""type"": ""Button"",
+                    ""id"": ""3a883fa9-91be-4648-889d-64d666159e1f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectBow"",
+                    ""type"": ""Button"",
+                    ""id"": ""fd06b8d4-6c55-4ea6-aa7b-486cec020ad9"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""SelectMeleeWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""27b13ef0-10ba-4367-9c4b-ea0c6b64376f"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -271,6 +311,105 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Interact"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""664889c1-51bd-4201-85d3-4cf60dae26af"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectNextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""12e5c71a-57de-4bd7-8d11-d8a2912daf86"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectNextWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fc09945a-a144-48d0-b205-91fb488be6f6"",
+                    ""path"": """",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectPreviousWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c35c6445-0d1e-4828-b298-48a939d3c80c"",
+                    ""path"": ""<Gamepad>/dpad/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectGrimoire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e2799e79-e132-40f6-a1b8-fc260c961e60"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectGrimoire"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a46f2169-2009-4be7-bc6d-f6ba11cf81ee"",
+                    ""path"": ""<Gamepad>/dpad/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectBow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2af51987-8735-4f88-9d43-fc06a6ee3a9b"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectBow"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""023ef842-98ba-4b80-aaa6-dd3565f9e59e"",
+                    ""path"": ""<Gamepad>/dpad/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMeleeWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b5fa7fe3-077b-43bc-97ed-19c34d84c7e2"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""SelectMeleeWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -536,6 +675,11 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_Generic_PrimaryAttack = m_Generic.FindAction("PrimaryAttack", throwIfNotFound: true);
         m_Generic_SecondaryAttack = m_Generic.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Generic_Interact = m_Generic.FindAction("Interact", throwIfNotFound: true);
+        m_Generic_SelectNextWeapon = m_Generic.FindAction("SelectNextWeapon", throwIfNotFound: true);
+        m_Generic_SelectPreviousWeapon = m_Generic.FindAction("SelectPreviousWeapon", throwIfNotFound: true);
+        m_Generic_SelectGrimoire = m_Generic.FindAction("SelectGrimoire", throwIfNotFound: true);
+        m_Generic_SelectBow = m_Generic.FindAction("SelectBow", throwIfNotFound: true);
+        m_Generic_SelectMeleeWeapon = m_Generic.FindAction("SelectMeleeWeapon", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
@@ -602,6 +746,11 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
     private readonly InputAction m_Generic_PrimaryAttack;
     private readonly InputAction m_Generic_SecondaryAttack;
     private readonly InputAction m_Generic_Interact;
+    private readonly InputAction m_Generic_SelectNextWeapon;
+    private readonly InputAction m_Generic_SelectPreviousWeapon;
+    private readonly InputAction m_Generic_SelectGrimoire;
+    private readonly InputAction m_Generic_SelectBow;
+    private readonly InputAction m_Generic_SelectMeleeWeapon;
     public struct GenericActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -613,6 +762,11 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         public InputAction @PrimaryAttack => m_Wrapper.m_Generic_PrimaryAttack;
         public InputAction @SecondaryAttack => m_Wrapper.m_Generic_SecondaryAttack;
         public InputAction @Interact => m_Wrapper.m_Generic_Interact;
+        public InputAction @SelectNextWeapon => m_Wrapper.m_Generic_SelectNextWeapon;
+        public InputAction @SelectPreviousWeapon => m_Wrapper.m_Generic_SelectPreviousWeapon;
+        public InputAction @SelectGrimoire => m_Wrapper.m_Generic_SelectGrimoire;
+        public InputAction @SelectBow => m_Wrapper.m_Generic_SelectBow;
+        public InputAction @SelectMeleeWeapon => m_Wrapper.m_Generic_SelectMeleeWeapon;
         public InputActionMap Get() { return m_Wrapper.m_Generic; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -643,6 +797,21 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @Interact.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
                 @Interact.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
                 @Interact.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnInteract;
+                @SelectNextWeapon.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectNextWeapon;
+                @SelectNextWeapon.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectNextWeapon;
+                @SelectNextWeapon.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectNextWeapon;
+                @SelectPreviousWeapon.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectPreviousWeapon;
+                @SelectPreviousWeapon.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectPreviousWeapon;
+                @SelectPreviousWeapon.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectPreviousWeapon;
+                @SelectGrimoire.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectGrimoire;
+                @SelectGrimoire.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectGrimoire;
+                @SelectGrimoire.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectGrimoire;
+                @SelectBow.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectBow;
+                @SelectBow.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectBow;
+                @SelectBow.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectBow;
+                @SelectMeleeWeapon.started -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectMeleeWeapon;
+                @SelectMeleeWeapon.performed -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectMeleeWeapon;
+                @SelectMeleeWeapon.canceled -= m_Wrapper.m_GenericActionsCallbackInterface.OnSelectMeleeWeapon;
             }
             m_Wrapper.m_GenericActionsCallbackInterface = instance;
             if (instance != null)
@@ -668,6 +837,21 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @Interact.started += instance.OnInteract;
                 @Interact.performed += instance.OnInteract;
                 @Interact.canceled += instance.OnInteract;
+                @SelectNextWeapon.started += instance.OnSelectNextWeapon;
+                @SelectNextWeapon.performed += instance.OnSelectNextWeapon;
+                @SelectNextWeapon.canceled += instance.OnSelectNextWeapon;
+                @SelectPreviousWeapon.started += instance.OnSelectPreviousWeapon;
+                @SelectPreviousWeapon.performed += instance.OnSelectPreviousWeapon;
+                @SelectPreviousWeapon.canceled += instance.OnSelectPreviousWeapon;
+                @SelectGrimoire.started += instance.OnSelectGrimoire;
+                @SelectGrimoire.performed += instance.OnSelectGrimoire;
+                @SelectGrimoire.canceled += instance.OnSelectGrimoire;
+                @SelectBow.started += instance.OnSelectBow;
+                @SelectBow.performed += instance.OnSelectBow;
+                @SelectBow.canceled += instance.OnSelectBow;
+                @SelectMeleeWeapon.started += instance.OnSelectMeleeWeapon;
+                @SelectMeleeWeapon.performed += instance.OnSelectMeleeWeapon;
+                @SelectMeleeWeapon.canceled += instance.OnSelectMeleeWeapon;
             }
         }
     }
@@ -770,6 +954,11 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnPrimaryAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+        void OnSelectNextWeapon(InputAction.CallbackContext context);
+        void OnSelectPreviousWeapon(InputAction.CallbackContext context);
+        void OnSelectGrimoire(InputAction.CallbackContext context);
+        void OnSelectBow(InputAction.CallbackContext context);
+        void OnSelectMeleeWeapon(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

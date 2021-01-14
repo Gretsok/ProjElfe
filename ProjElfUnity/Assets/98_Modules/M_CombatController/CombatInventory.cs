@@ -41,6 +41,7 @@ namespace ProjElf.CombatController
             }
             MeleeWeapon newMeleeWeapon;
             newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee.position, posMelee.rotation ,posMelee);
+            newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData);
             m_meleeWeapon = newMeleeWeapon;
             Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
         }
@@ -250,6 +251,22 @@ namespace ProjElf.CombatController
                 }
             }
         }
+
+        public void SelectGrimoire()
+        {
+
+        }
+
+        public void SelectBow()
+        {
+
+        }
+
+        public void SelectMeleeWeapon()
+        {
+
+        }
+
         public void UseMeleeWeapon()
         {
             if(m_selectedWeapon is MeleeWeapon)

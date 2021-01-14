@@ -88,6 +88,7 @@ namespace ProjElf.CombatController
                     if (UsedWeapon is MeleeWeapon)
                     {
                         m_combatInventory.UseMeleeWeapon();
+                        m_characterAnimatorHandler.AttackWithSword();
                     }
                     else if (UsedWeapon is Grimoire)
                     {
