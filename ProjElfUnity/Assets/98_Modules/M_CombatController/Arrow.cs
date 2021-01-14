@@ -27,7 +27,7 @@ namespace ProjElf.CombatController
         void Update()
         {
             this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
-            Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.deltaTime);
+            transform.forward = Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.deltaTime);
         }
     }
 }

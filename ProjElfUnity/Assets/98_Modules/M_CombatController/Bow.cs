@@ -30,6 +30,8 @@ namespace ProjElf.CombatController
             m_projectileRange = bowToInit.GetrefProjectileRange();
             m_projectileDivingRate = bowToInit.GetrefProjectileDivingRate();
             m_projectileSpeed = bowToInit.GetrefProjectileSpeed();
+            m_allowContinueFiring = bowToInit.refAllowContinueFiring;
+            m_attackSpeed = bowToInit.AttackSpeed;
         }
         /// <summary>
         /// Instantie une arrow qui ira vers la direction ciblée

@@ -7,9 +7,12 @@ namespace ProjElf.CombatController
     public abstract class AWeapon : MonoBehaviour
     {
         //Var
-        private string m_weaponName;
-        private Damage m_damage;
-        private float m_attackSpeed;
+        protected string m_weaponName;
+        protected Damage m_damage;
+        protected float m_attackSpeed;
+        protected bool m_allowContinueFiring;
+        public bool AllowContinueFiring => m_allowContinueFiring;// c un get
+        public float AttackSpeed => m_attackSpeed;//c ossi un get
 
         // Start is called before the first frame update
         void Start()
@@ -19,11 +22,6 @@ namespace ProjElf.CombatController
 
         // Update is called once per frame
         void Update()
-        {
-
-        }
-
-        public void Use()
         {
 
         }
