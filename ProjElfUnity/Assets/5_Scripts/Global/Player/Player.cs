@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using MOtter.StatesMachine;
 using ProjElf.Interaction;
+using MOtter;
 
 namespace ProjElf.PlayerController
 {
     public class Player : StatesMachine
     {
+        private ProjElfGameMode m_gamemode = null;
         [SerializeField]
         private CharacterController m_characterController = null;
         [SerializeField]
@@ -26,17 +28,25 @@ namespace ProjElf.PlayerController
 
         internal Ray Sight = new Ray();
 
+        [Header("Movement Properties")]
+        [SerializeField]
+        private float m_gravity = 14f;
+        private float m_verticalVelocity = 0f;
+        [SerializeField]
+        private float m_inAirDistanceFromGround = 0.5f;
+        internal float InAirDistanceFromGround => m_inAirDistanceFromGround;
+
         #region States
         [Header("Player States")]
         [SerializeField]
         private PlayerMovingState m_movingState = null;
         [SerializeField]
-        private PlayerJumpingState m_jumpingState = null;
+        private PlayerInAirState m_inAirState = null;
         [SerializeField]
         private PlayerSlidingState m_slidingState = null;
 
         public PlayerMovingState MovingState => m_movingState;
-        public PlayerJumpingState JumpingState => m_jumpingState;
+        public PlayerInAirState InAirState => m_inAirState;
         public PlayerSlidingState SlidingState => m_slidingState;
         #endregion
 
@@ -55,6 +65,11 @@ namespace ProjElf.PlayerController
             m_actions = new PlayerInputsActions();
         }
 
+        private void Start()
+        {
+            m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
+        }
+
         public void Init()
         {
             EnterStateMachine();
@@ -67,34 +82,96 @@ namespace ProjElf.PlayerController
             ExitStateMachine();
         }
 
-        protected override void EnterStateMachine()
+        internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
             SetUpInput();
+            m_gamemode.OnPause += CleanUpInput;
+            m_gamemode.OnUnpause += SetUpInput;
+            
         }
 
         public override void DoFixedUpdate()
         {
-            Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
             base.DoFixedUpdate();
+            Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
+            m_interactor.ManageSight(Sight);
+            Vector3 verticalMovement = Vector3.up * m_verticalVelocity;
+            m_characterController.Move((Direction + verticalMovement) * Time.fixedDeltaTime);
+            
+            if(m_characterController.isGrounded)
+            {
+                m_verticalVelocity = -m_gravity * Time.fixedDeltaTime;
+                if(m_currentState == m_inAirState)
+                {
+
+                    SwitchToState(m_movingState);
+                }
+            }
+            else
+            {
+                m_verticalVelocity -= m_gravity * Time.fixedDeltaTime; 
+                if(m_currentState == m_movingState)
+                {
+                    if(GetDistanceFromGround() > m_inAirDistanceFromGround)
+                    {
+                        SwitchToState(m_inAirState);
+                    }
+                    
+                }
+            }
         }
 
-        protected override void ExitStateMachine()
+        internal override void ExitStateMachine()
         {
+            m_gamemode.OnPause -= CleanUpInput;
+            m_gamemode.OnUnpause -= SetUpInput;
             CleanUpInput();
             base.ExitStateMachine();
         }
+
+        #region GenericBehaviour
+        internal IEnumerator StartJumpRoutine()
+        {
+            Debug.Log("JUMP");
+            m_characterAnimatorHandler.StartJump();
+            yield return new WaitForSeconds(0.4f);
+            m_verticalVelocity = 10f;
+        }
+
+
+
+        #endregion
+
+        #region PlayerUtils
+        internal float GetDistanceFromGround()
+        {
+            float distanceFromGround = 10f;
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, distanceFromGround))
+            {
+                distanceFromGround = hitInfo.distance;
+
+            }
+            return distanceFromGround;
+        }
+        #endregion
 
         #region Inputs
         protected void SetUpInput()
         {
             m_actions.Enable();
+            m_actions.UI.Back.performed += Pause_performed;
+        }
+
+        private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_gamemode.Pause();
         }
 
         protected void CleanUpInput()
         {
+            m_actions.UI.Back.performed -= Pause_performed;
             m_actions.Disable();
-            m_actions.Dispose();
         }
         #endregion
     }

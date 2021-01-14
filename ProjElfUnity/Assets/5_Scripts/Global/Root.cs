@@ -1,4 +1,5 @@
 ﻿using ProjElf.SceneData;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -9,11 +10,18 @@ public class Root : MonoBehaviour
 
     private void Awake()
     {
-        m_firstSceneData.LoadLevel();
+        
     }
 
     private void Start()
     {
+        StartCoroutine(StartGameApplicationAndCloseRoot());
+    }
+
+    IEnumerator StartGameApplicationAndCloseRoot()
+    {
+        m_firstSceneData.LoadLevel();
+        yield return new WaitForSeconds(5f);
         SceneManager.UnloadSceneAsync(0);
     }
 }

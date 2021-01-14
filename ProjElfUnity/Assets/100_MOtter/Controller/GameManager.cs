@@ -8,6 +8,9 @@ namespace MOtter.StatesMachine
 {
     public class GameManager : MonoBehaviour
     {
+#if UNITY_EDITOR
+        private DebugData m_debugData = null;
+#endif
         [SerializeField]
         private SceneField[] m_loadingScreens = null;
         private string m_currentLoadingScreenSceneName = "";
@@ -15,11 +18,29 @@ namespace MOtter.StatesMachine
 
         private MainStatesMachine m_mainStatesMachine = null;
         private List<SceneData> m_currentSceneData = new List<SceneData>();
-        
+
+        private SaveDataManager m_saveDataManager = null;
+        public SaveDataManager SaveDataManager => m_saveDataManager;
+
+        private SaveData m_currentSaveData = null;
+
 
         private void Start()
         {
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
+            m_saveDataManager = new SaveDataManager();
+            m_saveDataManager.Load();
+
+#if UNITY_EDITOR
+            // Get Debug Data and register the default SceneData
+            m_debugData = Resources.Load<DebugData>("DebugData");
+            RegisterNewLevel(m_debugData.DefaultSceneData);
+            if(m_debugData.UseDefaultSaveData)
+            {
+                UseSaveData(m_debugData.DefaultSaveData);
+            }
+#endif
+
         }
 
         private void Update()
@@ -31,7 +52,7 @@ namespace MOtter.StatesMachine
                     m_mainStatesMachine.DoUpdate();
                 }  
             }
-            MOtterApplication.GetInstance().SOUND.CheckIfAudioSourcesPlayingStoppedPlaying();
+            //MOtterApplication.GetInstance().SOUND.CheckIfAudioSourcesPlayingStoppedPlaying();
         }
 
         private void FixedUpdate()
@@ -58,10 +79,6 @@ namespace MOtter.StatesMachine
 
         public void RegisterNewMainStateMachine(MainStatesMachine statesmachine)
         {
-            if (m_mainStatesMachine != null)
-            {
-                StartCoroutine(m_mainStatesMachine.UnloadAsync(null));
-            }
             m_mainStatesMachine = statesmachine;
             StartCoroutine(statesmachine.LoadAsync());
             
@@ -119,6 +136,26 @@ namespace MOtter.StatesMachine
             SceneData lastAdded = m_currentSceneData[m_currentSceneData.Count - 1];
             m_currentSceneData.Clear();
             m_currentSceneData.Add(lastAdded);
+        }
+        #endregion
+
+        #region SaveManagement
+        public void UseSaveData(SaveData saveData)
+        {
+            m_currentSaveData = saveData;
+        }
+
+        public void SaveCurrentData()
+        {
+            if(m_currentSaveData != null)
+            {
+                m_saveDataManager.SaveSaveData(m_currentSaveData);
+            }
+        }
+
+        public T GetSaveData<T>() where T : SaveData
+        {
+            return (m_currentSaveData as T);
         }
         #endregion
     }

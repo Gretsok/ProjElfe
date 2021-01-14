@@ -1,3 +1,23 @@
 LANGUAGE_SHORTNAME	EN	FR	ES
 PROJECT_NAME	ProjElf	ProjElf	ProjElf
 LOADING_SCENE	Loading...	Chargement...	Cargando...
+GENERIC_PLAY	Play	Jouer	Jugar
+GENERIC_OPTIONS	Options	Options	Opciones
+GENERIC_CREDITS	Credits	Crédits	Créditos
+GENERIC_AND	and	et	y
+GENERIC_KEEP_PLAYING	Keep playing	Continuer à jouer	Seguir jugando
+GENERIC_QUIT_GAME	Quit game	Quitter le jeu	Salir del juego
+GENERIC_BACK_TO_MENU	Back to menu	Retour au menu	
+TIME_PLAYED	Time played :	Temps de jeu :	Tiempo jugado :
+ANIMALS_SAVED	Animals saved :	Animaux sauvés :	Animales salvados :
+HOURS	hours	heures	horas
+HOUR	hour 	heure	hora
+MINUTES	minutes	minutes	minutos
+MINUTE	minute	minute	minuto
+HAVE_NOT_PLAYED_YET	Have not played it	Pas encore joué	No han jugado todavía
+CREATE_NEW_CHARACTER	Create new character	Créer un nouveau personnage	Crear nuevo personaje
+OPTIONS_GAMEPLAY	Gameplay	Jouabilité	Jugabilidad
+OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
+OPTIONS_CAMERA_SENSIBILITY	Camera Sensibility	Sensibilité de la caméra	Sensibilidad de la cámara
+OPTIONS_SOUND_VOLUME	Sound Volume	Volume du son	volumen de sonido
+OPTIONS_LANGUAGE	Language	Langue	Idioma

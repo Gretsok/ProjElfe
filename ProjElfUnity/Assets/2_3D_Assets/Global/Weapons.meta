@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:ProjElfUnity/Assets/6_Data.meta
+guid: 07ddd7fc417e634429af212ba6dd8e68
+=======
 guid: 69fc50c93a9214443b57d01d56d3b1ed
+>>>>>>> origin/Module-CombatController:ProjElfUnity/Assets/2_3D_Assets/Global/Weapons.meta
 folderAsset: yes
 DefaultImporter:
   externalObjects: {}

@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using UnityEditor;
 using UnityEngine;
 
 
@@ -16,20 +17,20 @@ namespace MOtter.Localization
         #region Language Management
         private int m_currentLanguageIndex = 0;
         private Dictionary<string, int> m_indexesOfLanguagesShortNames = new Dictionary<string, int>();
-        private int m_numberOfLanguages = 0;
-        public int NumberOfLanguages => m_numberOfLanguages;
+        [SerializeField]
+        private AllLanguagesData m_allLanguagesData = null;
+        private LanguageData m_currentLanguageData = null;
         #endregion
 
         #region Localizers
-        private Dictionary<string, string> m_currentLanguageDictionary = new Dictionary<string, string>();
-        private TextLocalizer[] m_registeredTextLocalizers = new TextLocalizer[0];
+        private List<TextLocalizer> m_registeredTextLocalizers = new List<TextLocalizer>();
         #endregion
         #endregion
 
         #region Methods
         #region Language Management
         private void Start()
-        {
+        { 
             if (!isInit)
             {
                 Init();
@@ -38,20 +39,15 @@ namespace MOtter.Localization
 
         private void Init()
         {
-            m_numberOfLanguages = GetNumberMaxOfLanguages();
             SwitchLanguage(m_currentLanguageIndex);
             isInit = true;
         }
 
         public void SwitchLanguage(int languageIndex)
         {
-            m_currentLanguageIndex = languageIndex % NumberOfLanguages;
-            if (m_currentLanguageIndex < 0)
-            {
-                m_currentLanguageIndex = NumberOfLanguages + m_currentLanguageIndex;
-            }
+            m_currentLanguageIndex = GetValidIndex(languageIndex);
             Debug.Log("language index : " + m_currentLanguageIndex);
-            m_currentLanguageDictionary = LoadCurrentLanguage();
+            m_currentLanguageData = LoadCurrentLanguage();
             UpdateLocalizers();
         }
 
@@ -65,31 +61,32 @@ namespace MOtter.Localization
             SwitchLanguage(m_currentLanguageIndex - 1);
         }
 
-        private int GetNumberMaxOfLanguages()
+        private LanguageData LoadLanguage(int index)
         {
-            StreamReader reader = new StreamReader(path);
-            string line = reader.ReadLine();
-            int charIndex = 0;
-            int numberOfTabs = 0;
-            while (charIndex < line.Length)
-            {
-                if (line[charIndex] == '\t')
-                {
-                    numberOfTabs++;
-                }
-                charIndex++;
-            }
-            return numberOfTabs;
+            return m_allLanguagesData.GetLanguageData(index);
         }
+        
 
+        /// <summary>
+        /// Returns the dictonary of the current Language
+        /// </summary>
+        /// <param name="languageIndex"></param>
+        /// <returns></returns>
+        private LanguageData LoadCurrentLanguage()
+        {
+            return LoadLanguage(m_currentLanguageIndex);
+        }
+        #endregion
+
+        #region ReadingLanguageManagement
         /// <summary>
         /// Returns the dictonary of the language defined by languageIndex
         /// </summary>
         /// <param name="languageIndex"></param>
         /// <returns></returns>
-        private Dictionary<string, string> LoadLanguage(int languageIndex)
+        private LanguageDictionary ReadLanguage(int languageIndex)
         {
-            Dictionary<string, string> languageDictionary = new Dictionary<string, string>();
+            LanguageDictionary languageDictionary = new LanguageDictionary();
             StreamReader reader = new StreamReader(path);
             while (!reader.EndOfStream)
             {
@@ -135,16 +132,6 @@ namespace MOtter.Localization
             reader.Close();
             return languageDictionary;
         }
-
-        /// <summary>
-        /// Returns the dictonary of the current Language
-        /// </summary>
-        /// <param name="languageIndex"></param>
-        /// <returns></returns>
-        private Dictionary<string, string> LoadCurrentLanguage()
-        {
-            return LoadLanguage(m_currentLanguageIndex);
-        }
         #endregion
 
         #region Localizers
@@ -159,14 +146,7 @@ namespace MOtter.Localization
                 Init();
             }
             Debug.Log("Register new text localizer on " + textLocalizer.name);
-            TextLocalizer[] tempRegisteredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length];
-            tempRegisteredTextLocalizers = m_registeredTextLocalizers;
-            m_registeredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length + 1];
-            for (int i = 0; i < m_registeredTextLocalizers.Length - 1; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i];
-            }
-            m_registeredTextLocalizers[m_registeredTextLocalizers.Length - 1] = textLocalizer;
+            m_registeredTextLocalizers.Add(textLocalizer);
             UpdateLocalizers();
         }
 
@@ -176,15 +156,13 @@ namespace MOtter.Localization
         /// <param name="textLocalizer"></param>
         public void UnregisterTextLocalizer(TextLocalizer textLocalizer)
         {
-            TextLocalizer[] tempRegisteredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length];
-            tempRegisteredTextLocalizers = m_registeredTextLocalizers;
             int textLocalizerToRemoveIndex = -1;
-            Debug.Log("Unregister new text localizer on " + textLocalizer.name + " | the total of text Localizers is " + m_registeredTextLocalizers.Length);
+            Debug.Log("Unregister new text localizer on " + textLocalizer.name + " | the total of text Localizers is " + m_registeredTextLocalizers.Count);
             int index = 0;
-            while (index < m_registeredTextLocalizers.Length)
+            while (index < m_registeredTextLocalizers.Count)
             {
                 Debug.Log(index);
-                if (textLocalizer == m_registeredTextLocalizers[index])
+                if (textLocalizer.GetInstanceID() == m_registeredTextLocalizers[index].GetInstanceID())
                 {
                     textLocalizerToRemoveIndex = index;
                     break;
@@ -194,24 +172,16 @@ namespace MOtter.Localization
 
             if (textLocalizerToRemoveIndex == -1)
             {
-                Debug.LogError("TextLocalizer to delete not found !");
+                Debug.Assert(!textLocalizer.gameObject.activeInHierarchy, "TextLocalizer to delete not found !");
                 return;
             }
-            m_registeredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length - 1];
-            for (int i = 0; i < textLocalizerToRemoveIndex; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i];
-            }
-            for (int i = textLocalizerToRemoveIndex; i < m_registeredTextLocalizers.Length; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i + 1];
-            }
+            m_registeredTextLocalizers.RemoveAt(textLocalizerToRemoveIndex);
         }
 
         public string Localize(string key)
         {
             string translation = "";
-            if (m_currentLanguageDictionary.TryGetValue(key, out translation))
+            if (m_currentLanguageData.LanguageDictionary.TryGetValue(key, out translation))
             {
                 return translation;
             }
@@ -224,17 +194,21 @@ namespace MOtter.Localization
 
         public string Localize(string key, int languageIndex)
         {
-            Debug.LogWarning("NOT IMPLEMENTED YET");
-            if (languageIndex == m_currentLanguageIndex)
+            string translation = "";
+            if (m_allLanguagesData.GetLanguageData(GetValidIndex(languageIndex)).LanguageDictionary.TryGetValue(key, out translation))
             {
-                return Localize(key);
+                return translation;
             }
-            return key;
+            else
+            {
+                Debug.LogWarning("No translation found for key : " + key);
+                return key;
+            }
         }
 
         private void UpdateLocalizers()
         {
-            for (int i = 0; i < m_registeredTextLocalizers.Length; i++)
+            for (int i = 0; i < m_registeredTextLocalizers.Count; i++)
             {
                 var textLocalizer = m_registeredTextLocalizers[i];
                 textLocalizer.TextTarget.text = Localize(textLocalizer.Key);
@@ -243,6 +217,58 @@ namespace MOtter.Localization
             }
         }
         #endregion
+
+        #region Utils
+#if UNITY_EDITOR
+        public void GenerateLocalizationData()
+        {
+            Debug.Log("Generate Languages Data");
+
+            StreamReader reader = new StreamReader(path);
+            string line = reader.ReadLine();
+            int charIndex = 0;
+            int numberOfLanguage = 0;
+            while (charIndex < line.Length)
+            {
+                if (line[charIndex] == '\t')
+                {
+                    numberOfLanguage++;
+                }
+                charIndex++;
+            }
+
+            for(int i = 0; i < numberOfLanguage; i++)
+            {
+                LanguageData newLanguageData = ScriptableObject.CreateInstance<LanguageData>();
+                newLanguageData.SetLanguageDictionary(ReadLanguage(i));
+
+                string languageDataPath = "Assets/6_Data/Languages/LanguageData" + i + ".asset";
+                AssetDatabase.CreateAsset(newLanguageData, languageDataPath);
+                m_allLanguagesData.AddOrModifiyLanguageData(newLanguageData, i);
+                AssetDatabase.SaveAssets();
+                AssetDatabase.Refresh();
+            }
+        }
+#endif
+
+        public int GetValidIndex(int index)
+        {
+            int indexToReturn = 0;
+            indexToReturn = index % m_allLanguagesData.NumberOfLanguages;
+            if (indexToReturn < 0)
+            {
+                indexToReturn = m_allLanguagesData.NumberOfLanguages + indexToReturn;
+            }
+
+            return indexToReturn;
+        }
         #endregion
+        #endregion
+    }
+
+    [System.Serializable]
+    internal class LanguageDictionary : SerializableDictionary<string, string>
+    {
+         
     }
 }

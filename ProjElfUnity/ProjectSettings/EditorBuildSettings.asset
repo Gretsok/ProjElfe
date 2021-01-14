@@ -26,4 +26,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/4_Scenes/Global/LoadingScenes/DunjeonLoadingScene.unity
     guid: dc393080a268e2b48a2c649ed2ff0ba4
+  - enabled: 1
+    path: Assets/4_Scenes/Global/MainMenu.unity
+    guid: 84b6858995f92774d93533934f798ff9
   m_configObjects: {}
