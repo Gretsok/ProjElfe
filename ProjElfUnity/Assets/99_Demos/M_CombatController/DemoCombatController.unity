@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_combatInventory
       value: 
       objectReference: {fileID: 408433884}
+    - target: {fileID: 342333819, guid: c7130590766023a42ae215a65168bfde, type: 3}
+      propertyPath: m_characterAnimatorHandler
+      value: 
+      objectReference: {fileID: 613229487}
     - target: {fileID: 1251163303, guid: c7130590766023a42ae215a65168bfde, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
@@ -320,6 +324,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cc1353d5d07a5b54f9e3c3d5f2f4324e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &613229487 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8727076818978162109, guid: c7130590766023a42ae215a65168bfde,
+    type: 3}
+  m_PrefabInstance: {fileID: 342333814}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5c7cf36df79f024e9df2f04741ef525, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1116533011
