@@ -22,7 +22,7 @@ namespace ProjElf.PlayerController
         public override void UpdateState()
         {
             base.UpdateState();
-            UpdatePosition();
+            //UpdatePosition();
         }
 
         protected override void UpdatePosition()

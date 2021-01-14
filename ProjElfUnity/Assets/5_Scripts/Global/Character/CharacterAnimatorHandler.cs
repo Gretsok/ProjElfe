@@ -28,4 +28,9 @@ public class CharacterAnimatorHandler : MonoBehaviour
         speedRatio = Mathf.Clamp(speedRatio, -1, 1);
         m_characterAnimator.SetFloat(anim_rightRatioSpeed, speedRatio);
     }
+
+    public void AttackWithSword()
+    {
+
+    }
 }

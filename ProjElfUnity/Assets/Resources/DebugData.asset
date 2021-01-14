@@ -22,7 +22,7 @@ MonoBehaviour:
       EquippedGrimoire: {fileID: 0}
       EquippedBow: {fileID: 0}
     SavedPlayerStats:
-      TimePlayed: 0
+      TimePlayed: 10000000
       DunjeonFinished: 0
       MonsterKilled: 0
       NumberOfDeath: 0
