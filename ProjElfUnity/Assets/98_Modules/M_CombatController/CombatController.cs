@@ -36,7 +36,7 @@ namespace ProjElf.CombatController
                     if (UsedWeapon is MeleeWeapon)
                     {
                         m_combatInventory.UseMeleeWeapon();
-                        //m_characterAnimatorHandler
+                        m_characterAnimatorHandler.AttackWithSword();
                     }
                     else if (UsedWeapon is Grimoire)
                     {
@@ -47,6 +47,7 @@ namespace ProjElf.CombatController
                         m_combatInventory.UseBowWeapon(direction);
                     }
                     m_timeLastShoot = Time.time;
+                    
                 }
             }
         }
