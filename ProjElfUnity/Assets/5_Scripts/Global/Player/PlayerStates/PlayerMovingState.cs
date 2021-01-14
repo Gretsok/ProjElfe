@@ -39,7 +39,17 @@ namespace ProjElf.PlayerController
 
         private void PrimaryAttack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
+            m_player.CombatController.StartUseWeapon(m_player.Sight.direction);
+        }
+
+        private void SecondaryAttack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
             throw new System.NotImplementedException();
+        }
+
+        private void PrimaryAttack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            m_player.CombatController.StopUseWeapon();
         }
 
         private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -65,7 +75,9 @@ namespace ProjElf.PlayerController
             m_player.Actions.Generic.Slide.performed += Slide_performed;
             m_player.Actions.Generic.Jump.performed += Jump_performed;
             m_player.Actions.Generic.PrimaryAttack.performed += PrimaryAttack_performed;
-            m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
+            m_player.Actions.Generic.PrimaryAttack.canceled += PrimaryAttack_canceled;
+           /* m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
+            m_player.Actions.Generic.SecondaryAttack.canceled += SecondaryAttack_canceled;*/
             m_player.Actions.Generic.Interact.performed += Interact_performed;
         }
 
@@ -76,7 +88,9 @@ namespace ProjElf.PlayerController
             m_player.Actions.Generic.Slide.performed -= Slide_performed;
             m_player.Actions.Generic.Jump.performed -= Jump_performed;
             m_player.Actions.Generic.PrimaryAttack.performed -= PrimaryAttack_performed;
-            m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
+            m_player.Actions.Generic.PrimaryAttack.canceled -= PrimaryAttack_canceled;
+            /*m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
+            m_player.Actions.Generic.SecondaryAttack.canceled -= SecondaryAttack_canceled;*/
             m_player.Actions.Generic.Interact.performed -= Interact_performed;
             base.CleanUpInputs();
         }

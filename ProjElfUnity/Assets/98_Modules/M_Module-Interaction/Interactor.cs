@@ -14,7 +14,7 @@ namespace ProjElf.Interaction
         private IInteractable m_currentInteractableInSight = null; // objet en vue 
         public void Interact()
         {
-            m_currentInteractableInSight?.DoInteraction();
+            m_currentInteractableInSight?.DoInteraction(this);
         }
         /// <summary>
         /// Cette methode va gerer les ray cast et peut etre l'affichage d'un billboard au dessus du cube 

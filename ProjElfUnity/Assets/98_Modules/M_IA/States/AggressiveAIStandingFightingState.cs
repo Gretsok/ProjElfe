@@ -19,12 +19,13 @@ public class AggressiveAIStandingFightingState : GenericAIState
     {
         base.EnterState();
         m_owner.Agent.SetDestination(m_owner.transform.position);
+        (m_owner as AggressiveAI).CombatController.StartUseWeapon();
     }
 
     public override void LateUpdateState()
     {
         base.LateUpdateState();
-        (m_owner as AggressiveAI).CombatController.UseWeapon();
+        
         if ((m_owner.transform.position - m_owner.Player.transform.position).sqrMagnitude < m_sqrDistanceFromPlayerComingCloser)
         {
             m_owner.SwitchToState(m_playerComingCloserAction);
@@ -36,6 +37,10 @@ public class AggressiveAIStandingFightingState : GenericAIState
         }
         Debug.Log("Attack");
     }
-
+    public override void ExitState()
+    {
+        (m_owner as AggressiveAI).CombatController.StopUseWeapon();
+        base.ExitState();
+    }
 
 }
