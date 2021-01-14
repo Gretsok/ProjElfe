@@ -8,7 +8,7 @@ namespace ProjElf.CombatController
     {
         //Var 
         private float m_projectileSpeed;
-        private float m_projectileRange;
+        private float m_projectileLifeTime;
         private bool m_allowContinueFiring;
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private Transform posMagicSpell;
@@ -26,7 +26,7 @@ namespace ProjElf.CombatController
         }
         public void InitGrimoire(GrimoireData grimoireToInit)
         {
-            m_projectileRange = grimoireToInit.GetrefProjectileRange();
+            m_projectileLifeTime = grimoireToInit.GetrefProjectileLifeTime();
             m_allowContinueFiring = grimoireToInit.GetrefAllowContinueFiring();
             m_projectileSpeed = grimoireToInit.GetrefProjectileSpeed();
         }
@@ -40,7 +40,7 @@ namespace ProjElf.CombatController
             MagicSpellProjectile newProjectile;
             newProjectile = Instantiate<MagicSpellProjectile>(m_projectilePrefab, posMagicSpell.position, posMagicSpell.rotation);//Voir bow si jamais
             newProjectile.transform.LookAt(posMagicSpell.position + direction);
-            newProjectile.InitMagicSpellProjectile(m_projectileSpeed, m_projectileRange);
+            newProjectile.InitMagicSpellProjectile(m_projectileSpeed, m_projectileLifeTime);
             return newProjectile;
         }
 

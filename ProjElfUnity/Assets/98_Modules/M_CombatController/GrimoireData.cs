@@ -10,11 +10,11 @@ namespace ProjElf.CombatController
     {
         //Var
         [SerializeField] private float m_projectileSpeed;
-        [SerializeField] private float m_projectileRange;
+        [SerializeField] private float m_projectileLifeTime;
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private bool m_allowContinueFiring;
 
-        public float refProjectileRange => m_projectileRange;
+        public float refProjectileLifeTime => m_projectileLifeTime;
         public bool refAllowContinueFiring => m_allowContinueFiring;
         public float refProjectileSpeed => m_projectileSpeed;
 
@@ -37,9 +37,9 @@ namespace ProjElf.CombatController
         {
             return refAllowContinueFiring;
         }
-        public float GetrefProjectileRange()
+        public float GetrefProjectileLifeTime()
         {
-            return refProjectileRange;
+            return refProjectileLifeTime;
         }
     }
 }

@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using MOtter;
 
+[System.Serializable]
 public  class SavedAnimalData
 {
     
@@ -46,6 +48,12 @@ public class AnimalsManager : MonoBehaviour
         }
         return saveAnimal;
     }
+
+    private void Start()
+    {
+        m_savedAnimals = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedAnimalDatas;
+    }
+
     public AnimalData GetRandomAnimal()
     {
         //retourne AniamalData generer aleatoirement 
@@ -54,6 +62,11 @@ public class AnimalsManager : MonoBehaviour
         int rand = UnityEngine.Random.Range(0,m_allAnimalsData.Animals.Length);//2nd generation aleatoire
         AnimalData Animal = m_allAnimalsData.Animals[rand];
         return Animal;
+    }
+
+    public void SaveSavedAnimalsData()
+    {
+        MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedAnimalDatas = m_savedAnimals;
     }
                             
 }

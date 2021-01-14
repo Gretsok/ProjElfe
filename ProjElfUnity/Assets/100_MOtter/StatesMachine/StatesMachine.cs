@@ -15,7 +15,7 @@ namespace MOtter.StatesMachine
         public bool IsLoaded => m_isLoaded;
         public bool IsUnloaded => m_isUnloaded;
 
-        protected virtual void EnterStateMachine()
+        internal virtual void EnterStateMachine()
         {
             SwitchToState(m_defaultState);
         }
@@ -35,28 +35,33 @@ namespace MOtter.StatesMachine
             m_currentState?.LateUpdateState();
         }
 
-        protected virtual void ExitStateMachine()
+        internal virtual void ExitStateMachine()
         {
-
+            m_currentState?.ExitState();
         }
 
-        public void SwitchToState(State state)
+        public virtual void SwitchToState(State state)
         {
+
             if (m_currentState != null)
             {
-                state.PreviousState = m_currentState;
+                if(state != null)
+                {
+                    state.PreviousState = m_currentState;
+                }
                 m_currentState?.ExitState();
             }
+
             m_currentState = state;
             m_currentState?.EnterState();
         }
 
-        public void SwitchToNextState()
+        public virtual void SwitchToNextState()
         {
             SwitchToState(m_currentState.NextState);
         }
 
-        public void SwitchToPreviousState()
+        public virtual void SwitchToPreviousState()
         {
             if (m_currentState != null)
             {
@@ -80,13 +85,12 @@ namespace MOtter.StatesMachine
             yield return null;
             m_isUnloaded = true;
             MOtterApplication.GetInstance().GAMEMANAGER.ActivateLoadingScreen();
+            yield return null;
             ExitStateMachine();
+            yield return null;
             if(onUnloadEnded != null) onUnloadEnded();
         }
 
-        private void OnDestroy()
-        {
-            ExitStateMachine();
-        }
+
     }
 }

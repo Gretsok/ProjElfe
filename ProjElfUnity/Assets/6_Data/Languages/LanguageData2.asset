@@ -17,7 +17,47 @@ MonoBehaviour:
     - LANGUAGE_SHORTNAME
     - PROJECT_NAME
     - LOADING_SCENE
+    - GENERIC_PLAY
+    - GENERIC_OPTIONS
+    - GENERIC_CREDITS
+    - GENERIC_AND
+    - GENERIC_KEEP_PLAYING
+    - GENERIC_QUIT_GAME
+    - GENERIC_BACK_TO_MENU
+    - TIME_PLAYED
+    - ANIMALS_SAVED
+    - HOURS
+    - HOUR
+    - MINUTES
+    - MINUTE
+    - HAVE_NOT_PLAYED_YET
+    - CREATE_NEW_CHARACTER
+    - OPTIONS_GAMEPLAY
+    - OPTIONS_CONFIGURATION
+    - OPTIONS_CAMERA_SENSIBILITY
+    - OPTIONS_SOUND_VOLUME
+    - OPTIONS_LANGUAGE
     m_values:
     - ES
     - ProjElf
     - Cargando...
+    - Jugar
+    - Opciones
+    - "Cr\xE9ditos"
+    - y
+    - Seguir jugando
+    - Salir del juego
+    - 
+    - 'Tiempo jugado :'
+    - 'Animales salvados :'
+    - horas
+    - hora
+    - minutos
+    - minuto
+    - "No han jugado todav\xEDa"
+    - Crear nuevo personaje
+    - Jugabilidad
+    - "Configuraci\xF3n"
+    - "Sensibilidad de la c\xE1mara"
+    - volumen de sonido
+    - Idioma

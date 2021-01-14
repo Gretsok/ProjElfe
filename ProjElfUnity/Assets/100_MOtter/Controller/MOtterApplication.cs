@@ -4,6 +4,7 @@ using MOtter.PlayersManagement;
 using MOtter.SoundManagement;
 using MOtter.StatesMachine;
 using MOtter.Utils;
+using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
@@ -11,6 +12,12 @@ namespace MOtter
 {
     public class MOtterApplication : MonoBehaviour
     {
+        private void Awake()
+        {
+            s_instance = this;
+            DontDestroyOnLoad(s_instance);
+        }
+
         private static MOtterApplication s_instance;
         public static MOtterApplication GetInstance()
         {
@@ -30,7 +37,7 @@ namespace MOtter
         [SerializeField] private PlayerProfileManager m_playerProfileManager = null;
         [SerializeField] private GeneralDataReferences m_generalDataReferences = null;
         [SerializeField] private ContextManager m_contextManager = null;
-
+        
         public GameManager GAMEMANAGER => m_gameManager;
         public LocalizationManager LOCALIZATION => m_localizationManager;
         public SoundManager SOUND => m_soundManager;
@@ -38,5 +45,7 @@ namespace MOtter
         public GeneralDataReferences DATA => m_generalDataReferences;
         public ContextManager CONTEXT => m_contextManager;
         public MOtterUtils UTILS { get; } = new MOtterUtils();
+        public SaveDataManager SAVE => GAMEMANAGER.SaveDataManager;
+
     }
 }

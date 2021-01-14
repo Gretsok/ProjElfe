@@ -23,7 +23,7 @@ namespace MOtter.Localization
         #endregion
 
         #region Localizers
-        private TextLocalizer[] m_registeredTextLocalizers = new TextLocalizer[0];
+        private List<TextLocalizer> m_registeredTextLocalizers = new List<TextLocalizer>();
         #endregion
         #endregion
 
@@ -146,14 +146,7 @@ namespace MOtter.Localization
                 Init();
             }
             Debug.Log("Register new text localizer on " + textLocalizer.name);
-            TextLocalizer[] tempRegisteredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length];
-            tempRegisteredTextLocalizers = m_registeredTextLocalizers;
-            m_registeredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length + 1];
-            for (int i = 0; i < m_registeredTextLocalizers.Length - 1; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i];
-            }
-            m_registeredTextLocalizers[m_registeredTextLocalizers.Length - 1] = textLocalizer;
+            m_registeredTextLocalizers.Add(textLocalizer);
             UpdateLocalizers();
         }
 
@@ -163,15 +156,13 @@ namespace MOtter.Localization
         /// <param name="textLocalizer"></param>
         public void UnregisterTextLocalizer(TextLocalizer textLocalizer)
         {
-            TextLocalizer[] tempRegisteredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length];
-            tempRegisteredTextLocalizers = m_registeredTextLocalizers;
             int textLocalizerToRemoveIndex = -1;
-            Debug.Log("Unregister new text localizer on " + textLocalizer.name + " | the total of text Localizers is " + m_registeredTextLocalizers.Length);
+            Debug.Log("Unregister new text localizer on " + textLocalizer.name + " | the total of text Localizers is " + m_registeredTextLocalizers.Count);
             int index = 0;
-            while (index < m_registeredTextLocalizers.Length)
+            while (index < m_registeredTextLocalizers.Count)
             {
                 Debug.Log(index);
-                if (textLocalizer == m_registeredTextLocalizers[index])
+                if (textLocalizer.GetInstanceID() == m_registeredTextLocalizers[index].GetInstanceID())
                 {
                     textLocalizerToRemoveIndex = index;
                     break;
@@ -181,18 +172,10 @@ namespace MOtter.Localization
 
             if (textLocalizerToRemoveIndex == -1)
             {
-                Debug.LogError("TextLocalizer to delete not found !");
+                Debug.Assert(!textLocalizer.gameObject.activeInHierarchy, "TextLocalizer to delete not found !");
                 return;
             }
-            m_registeredTextLocalizers = new TextLocalizer[m_registeredTextLocalizers.Length - 1];
-            for (int i = 0; i < textLocalizerToRemoveIndex; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i];
-            }
-            for (int i = textLocalizerToRemoveIndex; i < m_registeredTextLocalizers.Length; i++)
-            {
-                m_registeredTextLocalizers[i] = tempRegisteredTextLocalizers[i + 1];
-            }
+            m_registeredTextLocalizers.RemoveAt(textLocalizerToRemoveIndex);
         }
 
         public string Localize(string key)
@@ -225,7 +208,7 @@ namespace MOtter.Localization
 
         private void UpdateLocalizers()
         {
-            for (int i = 0; i < m_registeredTextLocalizers.Length; i++)
+            for (int i = 0; i < m_registeredTextLocalizers.Count; i++)
             {
                 var textLocalizer = m_registeredTextLocalizers[i];
                 textLocalizer.TextTarget.text = Localize(textLocalizer.Key);

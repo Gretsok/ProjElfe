@@ -15,26 +15,33 @@ namespace ProjElf.PlayerController
         {
             base.EnterState();
             m_distanceTraveled = 0;
+            m_player.CharacterAnimatorHandler.StartSlide();
         }
 
         public override void UpdateState()
         {
             base.UpdateState();
-            UpdatePosition();
+            UpdatePositionInputs();
         }
 
-        protected override void UpdatePosition()
+        protected override void UpdatePositionInputs()
         {
-            base.UpdatePosition();
-            float distanceToTravel = m_movingSpeed * Time.deltaTime;
-            m_player.CharacterController.Move(distanceToTravel * m_player.transform.forward);
-            m_distanceTraveled += distanceToTravel;
+            base.UpdatePositionInputs();
+            float distanceToTravel = m_movingSpeed;
+            m_player.Direction = m_movingSpeed * m_player.transform.forward;
+            m_distanceTraveled += m_player.Direction.magnitude * Time.deltaTime;
 
             if(m_distanceTraveled >= m_dashDistance)
             {
                 m_player.SwitchToState(m_player.MovingState);
             }
 
+        }
+
+        public override void ExitState()
+        {
+            m_player.CharacterAnimatorHandler.StopSlide();
+            base.ExitState();
         }
     }
 }

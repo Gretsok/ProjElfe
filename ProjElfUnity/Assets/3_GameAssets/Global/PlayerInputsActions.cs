@@ -81,7 +81,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""id"": ""42e74cd5-8558-466a-b7e7-506a1922e42b"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": """",
                     ""action"": ""Move"",
                     ""isComposite"": false,
@@ -169,7 +169,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""id"": ""6dac7309-c893-4d94-bf63-fff960d0a7f6"",
                     ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""ScaleVector2(x=10,y=10)"",
                     ""groups"": """",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,
@@ -275,6 +275,254 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 }
             ]
+        },
+        {
+            ""name"": ""UI"",
+            ""id"": ""0167f467-2a7e-45f1-9643-3573f8a2c147"",
+            ""actions"": [
+                {
+                    ""name"": ""Confirm"",
+                    ""type"": ""Button"",
+                    ""id"": ""afabc476-5967-417c-a968-6542341e0858"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""Back"",
+                    ""type"": ""Button"",
+                    ""id"": ""db5aada0-48dc-4b08-9374-0161aa09bdcf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveLeft"",
+                    ""type"": ""Button"",
+                    ""id"": ""7b928c87-4a19-4b9d-8c08-5622a224aef1"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveRight"",
+                    ""type"": ""Button"",
+                    ""id"": ""e0e923c6-4324-4785-adc4-ee538e05dbe3"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveUp"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d245e2d-5139-4906-871b-4af48402b337"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""MoveDown"",
+                    ""type"": ""Button"",
+                    ""id"": ""15f8bba1-1ce9-41ed-8d00-bcadfa6a5363"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""NextSection"",
+                    ""type"": ""Button"",
+                    ""id"": ""530ca813-4dd6-4edb-958a-991c67c853cf"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""PreviousSection"",
+                    ""type"": ""Button"",
+                    ""id"": ""ee896904-fce9-4166-876a-732da14cbefa"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                }
+            ],
+            ""bindings"": [
+                {
+                    ""name"": """",
+                    ""id"": ""1576c170-3bbf-4bc1-936a-f2522fd33d7c"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffbeba6e-eca7-4a1c-9946-c47f0a6dd0ee"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""69a9abce-e97c-40d1-ad1c-9a589c76200c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bd7e18a3-59a2-4bc7-a8e2-8fdcf141dd05"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Back"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""dcfc5d28-851b-480c-97e1-33cf4f0577e5"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""434eaaa5-f4b6-44db-8629-5913b699c734"",
+                    ""path"": ""<Gamepad>/leftStick/left"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveLeft"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""4401fd32-2d0d-46e2-8a03-1f125b350bb3"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f3bd29c7-bc5b-48c7-a1c5-5e844c6e9a55"",
+                    ""path"": ""<Gamepad>/leftStick/right"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveRight"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7873aba-3040-41ee-beac-088adadd96ab"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""16902f6a-5c08-45d3-986b-b73d45cc9877"",
+                    ""path"": ""<Gamepad>/leftStick/up"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveUp"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""02ccf38d-0d39-4ac6-99f3-38f6f97cf289"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d489a261-0a62-41f9-ae17-9c3ffbda3942"",
+                    ""path"": ""<Gamepad>/leftStick/down"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MoveDown"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e86d4ea6-302d-4748-a8bd-dde5876be3cb"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""cb97c4e7-fba2-42dc-bb6e-04e40ccff9cd"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""NextSection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""36682b43-391e-450b-b66a-41da2d9c5461"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""158f1a20-4620-4622-b9dd-752711ad540c"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PreviousSection"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                }
+            ]
         }
     ],
     ""controlSchemes"": []
@@ -288,6 +536,16 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_Generic_PrimaryAttack = m_Generic.FindAction("PrimaryAttack", throwIfNotFound: true);
         m_Generic_SecondaryAttack = m_Generic.FindAction("SecondaryAttack", throwIfNotFound: true);
         m_Generic_Interact = m_Generic.FindAction("Interact", throwIfNotFound: true);
+        // UI
+        m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
+        m_UI_Confirm = m_UI.FindAction("Confirm", throwIfNotFound: true);
+        m_UI_Back = m_UI.FindAction("Back", throwIfNotFound: true);
+        m_UI_MoveLeft = m_UI.FindAction("MoveLeft", throwIfNotFound: true);
+        m_UI_MoveRight = m_UI.FindAction("MoveRight", throwIfNotFound: true);
+        m_UI_MoveUp = m_UI.FindAction("MoveUp", throwIfNotFound: true);
+        m_UI_MoveDown = m_UI.FindAction("MoveDown", throwIfNotFound: true);
+        m_UI_NextSection = m_UI.FindAction("NextSection", throwIfNotFound: true);
+        m_UI_PreviousSection = m_UI.FindAction("PreviousSection", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -414,6 +672,95 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         }
     }
     public GenericActions @Generic => new GenericActions(this);
+
+    // UI
+    private readonly InputActionMap m_UI;
+    private IUIActions m_UIActionsCallbackInterface;
+    private readonly InputAction m_UI_Confirm;
+    private readonly InputAction m_UI_Back;
+    private readonly InputAction m_UI_MoveLeft;
+    private readonly InputAction m_UI_MoveRight;
+    private readonly InputAction m_UI_MoveUp;
+    private readonly InputAction m_UI_MoveDown;
+    private readonly InputAction m_UI_NextSection;
+    private readonly InputAction m_UI_PreviousSection;
+    public struct UIActions
+    {
+        private @PlayerInputsActions m_Wrapper;
+        public UIActions(@PlayerInputsActions wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Confirm => m_Wrapper.m_UI_Confirm;
+        public InputAction @Back => m_Wrapper.m_UI_Back;
+        public InputAction @MoveLeft => m_Wrapper.m_UI_MoveLeft;
+        public InputAction @MoveRight => m_Wrapper.m_UI_MoveRight;
+        public InputAction @MoveUp => m_Wrapper.m_UI_MoveUp;
+        public InputAction @MoveDown => m_Wrapper.m_UI_MoveDown;
+        public InputAction @NextSection => m_Wrapper.m_UI_NextSection;
+        public InputAction @PreviousSection => m_Wrapper.m_UI_PreviousSection;
+        public InputActionMap Get() { return m_Wrapper.m_UI; }
+        public void Enable() { Get().Enable(); }
+        public void Disable() { Get().Disable(); }
+        public bool enabled => Get().enabled;
+        public static implicit operator InputActionMap(UIActions set) { return set.Get(); }
+        public void SetCallbacks(IUIActions instance)
+        {
+            if (m_Wrapper.m_UIActionsCallbackInterface != null)
+            {
+                @Confirm.started -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Confirm.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Confirm.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnConfirm;
+                @Back.started -= m_Wrapper.m_UIActionsCallbackInterface.OnBack;
+                @Back.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnBack;
+                @Back.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnBack;
+                @MoveLeft.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveLeft;
+                @MoveLeft.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveLeft;
+                @MoveRight.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveRight;
+                @MoveRight.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveRight;
+                @MoveRight.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveRight;
+                @MoveUp.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveUp;
+                @MoveUp.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveUp;
+                @MoveUp.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveUp;
+                @MoveDown.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveDown;
+                @MoveDown.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveDown;
+                @MoveDown.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMoveDown;
+                @NextSection.started -= m_Wrapper.m_UIActionsCallbackInterface.OnNextSection;
+                @NextSection.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnNextSection;
+                @NextSection.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnNextSection;
+                @PreviousSection.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
+                @PreviousSection.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
+                @PreviousSection.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
+            }
+            m_Wrapper.m_UIActionsCallbackInterface = instance;
+            if (instance != null)
+            {
+                @Confirm.started += instance.OnConfirm;
+                @Confirm.performed += instance.OnConfirm;
+                @Confirm.canceled += instance.OnConfirm;
+                @Back.started += instance.OnBack;
+                @Back.performed += instance.OnBack;
+                @Back.canceled += instance.OnBack;
+                @MoveLeft.started += instance.OnMoveLeft;
+                @MoveLeft.performed += instance.OnMoveLeft;
+                @MoveLeft.canceled += instance.OnMoveLeft;
+                @MoveRight.started += instance.OnMoveRight;
+                @MoveRight.performed += instance.OnMoveRight;
+                @MoveRight.canceled += instance.OnMoveRight;
+                @MoveUp.started += instance.OnMoveUp;
+                @MoveUp.performed += instance.OnMoveUp;
+                @MoveUp.canceled += instance.OnMoveUp;
+                @MoveDown.started += instance.OnMoveDown;
+                @MoveDown.performed += instance.OnMoveDown;
+                @MoveDown.canceled += instance.OnMoveDown;
+                @NextSection.started += instance.OnNextSection;
+                @NextSection.performed += instance.OnNextSection;
+                @NextSection.canceled += instance.OnNextSection;
+                @PreviousSection.started += instance.OnPreviousSection;
+                @PreviousSection.performed += instance.OnPreviousSection;
+                @PreviousSection.canceled += instance.OnPreviousSection;
+            }
+        }
+    }
+    public UIActions @UI => new UIActions(this);
     public interface IGenericActions
     {
         void OnMove(InputAction.CallbackContext context);
@@ -423,5 +770,16 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnPrimaryAttack(InputAction.CallbackContext context);
         void OnSecondaryAttack(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
+    }
+    public interface IUIActions
+    {
+        void OnConfirm(InputAction.CallbackContext context);
+        void OnBack(InputAction.CallbackContext context);
+        void OnMoveLeft(InputAction.CallbackContext context);
+        void OnMoveRight(InputAction.CallbackContext context);
+        void OnMoveUp(InputAction.CallbackContext context);
+        void OnMoveDown(InputAction.CallbackContext context);
+        void OnNextSection(InputAction.CallbackContext context);
+        void OnPreviousSection(InputAction.CallbackContext context);
     }
 }

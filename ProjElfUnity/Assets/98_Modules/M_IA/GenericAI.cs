@@ -10,20 +10,11 @@ namespace ProjElf.AI
 {
     public class GenericAI : StatesMachine
     {
-        [System.Serializable]
-        struct StateToActivateCloseToPlayerData
-        {
-            [Tooltip("Type the squared distance (for optimization purpose)")]
-            public float m_sqrDistanceToPlayer;
-            public GenericAIState m_stateToActivate;
-        }
 
         [SerializeField]
         private Player m_player = null;
         [SerializeField]
         private NavMeshAgent m_agent = null;
-        [SerializeField, Tooltip("The lower the index is, the higher its priority is")]
-        private List<StateToActivateCloseToPlayerData> m_listOfStatesToActivateWhenCloseToPlayer = new List<StateToActivateCloseToPlayerData>();
 
         public Player Player => m_player;
         public NavMeshAgent Agent => m_agent;
@@ -42,25 +33,7 @@ namespace ProjElf.AI
         public override void DoLateUpdate()
         {
             base.DoLateUpdate();
-            ManageStateToActivate();
         }
-
-        public void ManageStateToActivate()
-        {
-            GenericAIState stateToSwitchTo = null;
-            for(int i = m_listOfStatesToActivateWhenCloseToPlayer.Count - 1; i >= 0; --i)
-            {
-                if((m_player.transform.position - transform.position).sqrMagnitude < m_listOfStatesToActivateWhenCloseToPlayer[i].m_sqrDistanceToPlayer)
-                {
-                    stateToSwitchTo = m_listOfStatesToActivateWhenCloseToPlayer[i].m_stateToActivate;
-                }
-            }
-            if(stateToSwitchTo != null && stateToSwitchTo != m_currentState)
-            {
-                SwitchToState(stateToSwitchTo);
-            }
-        }
-
     }
 
     

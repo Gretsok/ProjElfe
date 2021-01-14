@@ -7,12 +7,23 @@ namespace ProjElf.AI
 {
     public class GenericAIWalkingState : GenericAIState
     {
+
         protected Vector3 m_currentLocationToGo = Vector3.zero;
         [SerializeField, Tooltip("Only works when no dunjeon room is associated to this AI")]
         protected Vector2 m_rangeDistanceBetweenTwoLocations = Vector2.zero;
         [SerializeField]
         protected float m_distanceToCurrentLocationToGoToChangeLocationToGo = 1f;
+        [Header("If close enough to player")]
+        [SerializeField]
+        private float m_sqrDistanceToPlayerToSwitch = 5f;
+        [SerializeField]
+        private GenericAIState m_stateWhenPlayerClose = null;
 
+        public override void LateUpdateState()
+        {
+            base.LateUpdateState();
+            ManageStateToActivate();
+        }
 
         protected Vector3 GetRandomLocationToGo()
         {
@@ -36,6 +47,14 @@ namespace ProjElf.AI
                 NavMesh.SamplePosition(randomDirection, out hit, distanceFromActualPosition, 1);
                 Vector3 finalPosition = hit.position;
                 return finalPosition;
+            }
+        }
+
+        public void ManageStateToActivate()
+        {
+            if((m_owner.Player.transform.position - m_owner.transform.position).sqrMagnitude < m_sqrDistanceToPlayerToSwitch)
+            {
+                m_owner.SwitchToState(m_stateWhenPlayerClose);
             }
         }
     }
