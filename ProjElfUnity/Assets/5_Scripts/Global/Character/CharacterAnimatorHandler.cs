@@ -8,6 +8,10 @@ public class CharacterAnimatorHandler : MonoBehaviour
     private Animator m_characterAnimator = null;
     int anim_forwardRatioSpeed = Animator.StringToHash("ForwardSpeedRatio");
     int anim_rightRatioSpeed = Animator.StringToHash("RightSpeedRatio");
+    int anim_inAir = Animator.StringToHash("InAir");
+    int anim_startJump = Animator.StringToHash("StartJump");
+    int anim_startSlide = Animator.StringToHash("StartSlide");
+    int anim_stopSlide = Animator.StringToHash("StopSlide");
     
     /// <summary>
     /// Send the actual forward speed ratio to the animator
@@ -27,6 +31,26 @@ public class CharacterAnimatorHandler : MonoBehaviour
     {
         speedRatio = Mathf.Clamp(speedRatio, -1, 1);
         m_characterAnimator.SetFloat(anim_rightRatioSpeed, speedRatio);
+    }
+
+    public void SetInAir(bool inAir)
+    {
+        m_characterAnimator.SetBool(anim_inAir, inAir);
+    }
+
+    public void StartJump()
+    {
+        m_characterAnimator.SetTrigger(anim_startJump);
+    }
+
+    public void StartSlide()
+    {
+        m_characterAnimator.SetTrigger(anim_startSlide);
+    }
+
+    public void StopSlide()
+    {
+        m_characterAnimator.SetTrigger(anim_stopSlide);
     }
 
     public void AttackWithSword()

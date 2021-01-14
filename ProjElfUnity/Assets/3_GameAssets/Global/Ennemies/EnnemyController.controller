@@ -136,7 +136,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: ba3086d905263a94ca42e8909e2a6740,
       type: 3}
     m_Threshold: 0.16666667
-    m_Position: {x: -1, y: 0}
+    m_Position: {x: -1.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -145,7 +145,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 3e2dc7fafe2b6ab48b9ca302bfad7be8,
       type: 3}
     m_Threshold: 0.2
-    m_Position: {x: 1, y: 0}
+    m_Position: {x: 1.5, y: 0}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -154,7 +154,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 77260ffe09e97dd499d5cc10e54c07ab,
       type: 3}
     m_Threshold: 0.23333333
-    m_Position: {x: 0, y: -1}
+    m_Position: {x: 0, y: -1.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -163,7 +163,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: b6b68ff176cf5024f8281e9ee505145b,
       type: 3}
     m_Threshold: 0.26666668
-    m_Position: {x: 0, y: 1}
+    m_Position: {x: 0, y: 1.5}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -172,7 +172,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 0827c26de3714bb4e818bfb619027e95,
       type: 3}
     m_Threshold: 0.3
-    m_Position: {x: -0.75, y: -0.75}
+    m_Position: {x: -1.1, y: -1.1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -181,7 +181,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 83a1ad39ab006df4ab2b617cdb2bdfe1,
       type: 3}
     m_Threshold: 0.33333334
-    m_Position: {x: 0.75, y: -0.75}
+    m_Position: {x: 1.1, y: -1.1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -190,7 +190,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 87cec63476dace1428e97cc134771c2b,
       type: 3}
     m_Threshold: 0.36666667
-    m_Position: {x: -0.75, y: 0.75}
+    m_Position: {x: -1.1, y: 1.1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio
@@ -199,7 +199,7 @@ BlendTree:
     m_Motion: {fileID: -203655887218126122, guid: 897ac973dfcf849449125181e39fe906,
       type: 3}
     m_Threshold: 0.4
-    m_Position: {x: 0.75, y: 0.75}
+    m_Position: {x: 1.1, y: 1.1}
     m_TimeScale: 1
     m_CycleOffset: 0
     m_DirectBlendParameter: ForwardSpeedRatio

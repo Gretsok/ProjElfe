@@ -28,17 +28,25 @@ namespace ProjElf.PlayerController
 
         internal Ray Sight = new Ray();
 
+        [Header("Movement Properties")]
+        [SerializeField]
+        private float m_gravity = 14f;
+        private float m_verticalVelocity = 0f;
+        [SerializeField]
+        private float m_inAirDistanceFromGround = 0.5f;
+        internal float InAirDistanceFromGround => m_inAirDistanceFromGround;
+
         #region States
         [Header("Player States")]
         [SerializeField]
         private PlayerMovingState m_movingState = null;
         [SerializeField]
-        private PlayerJumpingState m_jumpingState = null;
+        private PlayerInAirState m_inAirState = null;
         [SerializeField]
         private PlayerSlidingState m_slidingState = null;
 
         public PlayerMovingState MovingState => m_movingState;
-        public PlayerJumpingState JumpingState => m_jumpingState;
+        public PlayerInAirState InAirState => m_inAirState;
         public PlayerSlidingState SlidingState => m_slidingState;
         #endregion
 
@@ -85,8 +93,33 @@ namespace ProjElf.PlayerController
 
         public override void DoFixedUpdate()
         {
-            Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
             base.DoFixedUpdate();
+            Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
+            m_interactor.ManageSight(Sight);
+            Vector3 verticalMovement = Vector3.up * m_verticalVelocity;
+            m_characterController.Move((Direction + verticalMovement) * Time.fixedDeltaTime);
+            
+            if(m_characterController.isGrounded)
+            {
+                m_verticalVelocity = -m_gravity * Time.fixedDeltaTime;
+                if(m_currentState == m_inAirState)
+                {
+
+                    SwitchToState(m_movingState);
+                }
+            }
+            else
+            {
+                m_verticalVelocity -= m_gravity * Time.fixedDeltaTime; 
+                if(m_currentState == m_movingState)
+                {
+                    if(GetDistanceFromGround() > m_inAirDistanceFromGround)
+                    {
+                        SwitchToState(m_inAirState);
+                    }
+                    
+                }
+            }
         }
 
         internal override void ExitStateMachine()
@@ -96,6 +129,32 @@ namespace ProjElf.PlayerController
             CleanUpInput();
             base.ExitStateMachine();
         }
+
+        #region GenericBehaviour
+        internal IEnumerator StartJumpRoutine()
+        {
+            Debug.Log("JUMP");
+            m_characterAnimatorHandler.StartJump();
+            yield return new WaitForSeconds(0.4f);
+            m_verticalVelocity = 10f;
+        }
+
+
+
+        #endregion
+
+        #region PlayerUtils
+        internal float GetDistanceFromGround()
+        {
+            float distanceFromGround = 10f;
+            if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hitInfo, distanceFromGround))
+            {
+                distanceFromGround = hitInfo.distance;
+
+            }
+            return distanceFromGround;
+        }
+        #endregion
 
         #region Inputs
         protected void SetUpInput()
