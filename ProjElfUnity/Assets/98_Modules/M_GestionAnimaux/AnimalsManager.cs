@@ -8,19 +8,44 @@ public  class SavedAnimalData
     
     public AnimalData AnimalData; 
     public int Amount;
-
     //1 
 }
 public class AnimalsManager : MonoBehaviour
 {
-    // ajouter une methode saveAnamal(AnimalData saveAnimal)
-        //check dans la liste SaveAnimal si il y a un saveAnimal 
+   
+    
     //j'instentie car savedAnimalData ne depend pas ni de monoBehaviour ni de Scriptable objet.
     private List<SavedAnimalData> m_savedAnimals = new List<SavedAnimalData>();
     [SerializeField]
     private AllAnimalsData m_allAnimalsData = null;
     public List<SavedAnimalData> SavedAnimals => m_savedAnimals;
-
+    // ajouter une methode saveAnamal(AnimalData saveAnimal)
+    //check dans la liste SaveAnimal si il y a un saveAnimal 
+    public AnimalData saveAnimal(AnimalData saveAnimal)
+    {
+        //Contains : cherche dans la liste m_saveAnimalData pas ouf 
+        //Find(avec predicat)
+        //La methode return un bool 
+        SavedAnimalData anmial_exist =  m_savedAnimals.Find(x => x.AnimalData == saveAnimal);
+        Debug.Log(anmial_exist);
+        if(anmial_exist == null)
+        {
+            // new save (= j'instancie ) + amount = 1 + AnimalData = newAnimal
+            // + j'atoute la class a la list m_savedAnimals 
+            SavedAnimalData newAnimal = new SavedAnimalData();
+            newAnimal.Amount = 1;
+            newAnimal.AnimalData = saveAnimal;
+            m_savedAnimals.Add(newAnimal);
+            Debug.Log(m_savedAnimals);
+        }
+                
+        else
+        {
+            anmial_exist.Amount++;
+            Console.WriteLine(m_savedAnimals);
+        }
+        return saveAnimal;
+    }
     public AnimalData GetRandomAnimal()
     {
         //retourne AniamalData generer aleatoirement 
