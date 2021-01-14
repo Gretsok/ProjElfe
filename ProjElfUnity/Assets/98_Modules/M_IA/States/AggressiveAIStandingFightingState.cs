@@ -35,7 +35,6 @@ public class AggressiveAIStandingFightingState : GenericAIState
         {
             m_owner.SwitchToState(m_playerGoingFurtherAction);
         }
-        Debug.Log("Attack");
     }
     public override void ExitState()
     {

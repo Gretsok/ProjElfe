@@ -17,17 +17,8 @@ namespace ProjElf.CombatController
         
         public float refProjectileSpeed => m_projectileSpeed;
 
-        // Start is called before the first frame update
-        void Start()
-        {
+        public MagicSpellProjectile ProjectilePrefab => m_projectilePrefab;
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         public float GetrefProjectileSpeed()
         {
             return refProjectileSpeed;

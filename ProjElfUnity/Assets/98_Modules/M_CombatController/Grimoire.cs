@@ -9,26 +9,16 @@ namespace ProjElf.CombatController
         //Var 
         private float m_projectileSpeed;
         private float m_projectileLifeTime;
-        [SerializeField] private MagicSpellProjectile m_projectilePrefab;
+        private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private Transform posMagicSpell;
 
-        // Start is called before the first frame update
-        void Start()
-        {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
         public void InitGrimoire(GrimoireData grimoireToInit)
         {
             m_projectileLifeTime = grimoireToInit.GetrefProjectileLifeTime();
             m_allowContinueFiring = grimoireToInit.GetrefAllowContinueFiring();
             m_projectileSpeed = grimoireToInit.GetrefProjectileSpeed();
             m_attackSpeed = grimoireToInit.AttackSpeed;
+            m_projectilePrefab = grimoireToInit.ProjectilePrefab;
         }
         /// <summary>
         /// Instantie un MagicSpellProjectile qui ira vers la direction ciblée
