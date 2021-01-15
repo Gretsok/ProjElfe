@@ -38,13 +38,13 @@ MonoBehaviour:
         HitDamage: 0
         AttackSpeed: 0
         WeaponPrefab: {fileID: 0}
-        AllowContinueFiring: 1
+        AllowContinueFiring: 0
         ProjectileRange: 0
         ProjectileDivingRate: 0
         ProjectileSpeed: 0
         ProjectilePrefab: {fileID: 0}
     SavedPlayerStats:
-      TimePlayed: 10000014
+      TimePlayed: 10000032
       DunjeonFinished: 0
       MonsterKilled: 0
       NumberOfDeath: 0
