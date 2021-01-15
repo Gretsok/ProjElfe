@@ -44,7 +44,7 @@ MonoBehaviour:
         ProjectileSpeed: 0
         ProjectilePrefab: {fileID: 0}
     SavedPlayerStats:
-      TimePlayed: 10000032
+      TimePlayed: 10000035
       DunjeonFinished: 0
       MonsterKilled: 0
       NumberOfDeath: 0

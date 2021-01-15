@@ -34,10 +34,10 @@ namespace ProjElf.CombatController
         }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
-            transform.forward = Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.deltaTime);
+            this.transform.position += this.transform.forward * Time.fixedDeltaTime * m_speed;
+            transform.forward = Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.fixedDeltaTime);
         }
 
     }

@@ -138,10 +138,12 @@ namespace ProjElf.CombatController
                     else if (UsedWeapon is Grimoire)
                     {
                         m_combatInventory.UseGrimoireWeapon(direction);
+                        m_characterAnimatorHandler.AttackWithMagic();
                     }
                     else if (UsedWeapon is Bow)
                     {
                         m_combatInventory.UseBowWeapon(direction);
+                        m_characterAnimatorHandler.AttackWithBow();
                     }
                     m_timeLastShoot = Time.time;
                     
@@ -190,10 +192,12 @@ namespace ProjElf.CombatController
                     else if (UsedWeapon is Grimoire)
                     {
                         m_combatInventory.UseGrimoireWeapon(direction);
+                        m_characterAnimatorHandler.AttackWithMagic();
                     }
                     else if (UsedWeapon is Bow)
                     {
                         m_combatInventory.UseBowWeapon(direction);
+                        m_characterAnimatorHandler.AttackWithBow();
                     }
                     m_timeLastShoot = Time.time;
                 }
