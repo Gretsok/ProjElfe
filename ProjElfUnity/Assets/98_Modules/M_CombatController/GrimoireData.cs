@@ -19,10 +19,6 @@ namespace ProjElf.CombatController
 
         public MagicSpellProjectile ProjectilePrefab => m_projectilePrefab;
 
-        public float GetrefProjectileSpeed()
-        {
-            return refProjectileSpeed;
-        }
         public bool GetrefAllowContinueFiring()
         {
             return refAllowContinueFiring;

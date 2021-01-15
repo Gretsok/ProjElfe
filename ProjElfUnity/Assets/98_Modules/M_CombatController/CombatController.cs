@@ -60,7 +60,7 @@ namespace ProjElf.CombatController
                     }
                     #endregion
                     Debug.Log("Dealing Damage");
-                    m_lifePoints -= damageGiverData.DamageGiver.Damage;
+                    m_lifePoints -= damageGiverData.DamageGiver.Damage.HitDamage;
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
                     if (m_lifePoints <= 0)
                     {
