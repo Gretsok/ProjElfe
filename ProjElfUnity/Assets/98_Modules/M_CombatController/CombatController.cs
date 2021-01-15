@@ -12,6 +12,7 @@ namespace ProjElf.CombatController
         private int m_lifePoints;
         private int m_maxLifePoints;
         private Action m_onLifeReachZero;
+        public bool ForceContinueFiring = false;
 
         internal AWeapon UsedWeapon {
             get
@@ -31,7 +32,7 @@ namespace ProjElf.CombatController
         {
             if (UsedWeapon != null)
             {
-                if (m_isShooting && UsedWeapon.AllowContinueFiring && (Time.time - m_timeLastShoot > (1 / UsedWeapon.AttackSpeed)))
+                if (m_isShooting && (UsedWeapon.AllowContinueFiring || ForceContinueFiring) && (Time.time - m_timeLastShoot > (1 / UsedWeapon.AttackSpeed)))
                 {
                     if (UsedWeapon is MeleeWeapon)
                     {

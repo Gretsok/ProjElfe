@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8117989186896987006}
   - component: {fileID: 3991483171199732513}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: MagicSpellProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -56,7 +56,7 @@ GameObject:
   - component: {fileID: 3460305841084912492}
   - component: {fileID: 5003242133658129744}
   - component: {fileID: 5667162082778247016}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}

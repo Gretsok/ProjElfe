@@ -217,7 +217,7 @@ MonoBehaviour:
   m_owner: {fileID: 1775483264393991750}
   m_walkingSpeed: 5
   m_sqrDistanceToStopFollowPlayer: 900
-  m_sqrDistanceToSwitchAction: 4
+  m_sqrDistanceToSwitchAction: 9
   m_actionState: {fileID: 6624242453976967303}
 --- !u!1 &6112993681216962618
 GameObject:
@@ -339,7 +339,7 @@ Animator:
   m_GameObject: {fileID: 7075523202498217024}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 9019f9451a4ba394291c156aabc1f958, type: 2}
+  m_Controller: {fileID: 9100000, guid: a5f901ae2b8339b48984cb119c99e437, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -572,6 +572,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_combatInventory: {fileID: 2302924208941665941}
+  ForceContinueFiring: 0
   m_characterAnimatorHandler: {fileID: 7993932275165632121}
 --- !u!114 &2302924208941665941
 MonoBehaviour:
@@ -591,9 +592,9 @@ MonoBehaviour:
   posMeleeEquip: {fileID: 9121685933558337558}
   posGrimoireEquip: {fileID: 6587168621645551245}
   posBowEquip: {fileID: 4076027991333973624}
-  m_grimoireData: {fileID: 11400000, guid: 090670dbe5025134397aa21a2a6e7c97, type: 2}
+  m_grimoireData: {fileID: 0}
   m_bowData: {fileID: 0}
-  m_meleeWeaponData: {fileID: 0}
+  m_meleeWeaponData: {fileID: 11400000, guid: cefb04cbfd4af5944a25d7cc7b94e754, type: 2}
 --- !u!1 &7993932275165632127
 GameObject:
   m_ObjectHideFlags: 0

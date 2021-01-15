@@ -1,4 +1,5 @@
 ﻿using ProjElf.CombatController;
+using ProjElf.ProceduraleGeneration;
 using UnityEngine;
 
 namespace ProjElf.AI
@@ -13,10 +14,17 @@ namespace ProjElf.AI
         private CharacterAnimatorHandler m_characterAnimatorHandler = null;
         public CharacterAnimatorHandler CharacterAnimatorHandler => m_characterAnimatorHandler;
 
+        internal override void EnterStateMachine()
+        {
+            base.EnterStateMachine();
+            m_combatController.ForceContinueFiring = true;
+        }
+
         public override void DoLateUpdate()
         {
             base.DoLateUpdate();
             m_characterAnimatorHandler.SetForwardSpeed(Agent.velocity.magnitude / Agent.speed);
+            m_combatController.DoUpdate(Vector3.zero);
         }
     }
 }

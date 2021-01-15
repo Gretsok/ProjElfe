@@ -25,7 +25,7 @@ public class AggressiveAIStandingFightingState : GenericAIState
     public override void LateUpdateState()
     {
         base.LateUpdateState();
-        
+        m_owner.transform.LookAt(m_owner.Player.transform.position);
         if ((m_owner.transform.position - m_owner.Player.transform.position).sqrMagnitude < m_sqrDistanceFromPlayerComingCloser)
         {
             m_owner.SwitchToState(m_playerComingCloserAction);
