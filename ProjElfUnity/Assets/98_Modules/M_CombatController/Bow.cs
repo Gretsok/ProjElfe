@@ -13,24 +13,12 @@ namespace ProjElf.CombatController
         [SerializeField] private Arrow m_projectilePrefab;
         [SerializeField] private Transform posArrow;
 
-        // Start is called before the first frame update
-        void Start()
+        public void InitBow(BowData.BowSaveData bowToInit)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        public void InitBow(BowData bowToInit)
-        {
-            m_projectileRange = bowToInit.GetrefProjectileRange();
-            m_projectileDivingRate = bowToInit.GetrefProjectileDivingRate();
-            m_projectileSpeed = bowToInit.GetrefProjectileSpeed();
-            m_allowContinueFiring = bowToInit.refAllowContinueFiring;
+            m_projectileRange = bowToInit.ProjectileRange;
+            m_projectileDivingRate = bowToInit.ProjectileDivingRate;
+            m_projectileSpeed = bowToInit.ProjectileSpeed;
+            m_allowContinueFiring = bowToInit.AllowContinueFiring;
             m_attackSpeed = bowToInit.AttackSpeed;
         }
         /// <summary>

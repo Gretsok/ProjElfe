@@ -8,7 +8,7 @@ public class EquipMeleeWeaponInteractable : MonoBehaviour, IInteractable
     private MeleeWeaponData m_meleeWeaponData = null;
     public void DoInteraction(Interactor interactor)
     {
-        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeMeleeWeapon(m_meleeWeaponData);
+        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeMeleeWeapon(m_meleeWeaponData.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
     }
 
     public void StartBeingWatched()

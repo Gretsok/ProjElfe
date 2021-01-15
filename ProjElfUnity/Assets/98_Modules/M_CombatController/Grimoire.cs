@@ -12,13 +12,14 @@ namespace ProjElf.CombatController
         private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private Transform posMagicSpell;
 
-        public void InitGrimoire(GrimoireData grimoireToInit)
+        public void InitGrimoire(GrimoireData.GrimoireSaveData grimoireToInit)
         {
-            m_projectileLifeTime = grimoireToInit.GetrefProjectileLifeTime();
-            m_allowContinueFiring = grimoireToInit.GetrefAllowContinueFiring();
-            m_projectileSpeed = grimoireToInit.GetrefProjectileSpeed();
+            m_projectileLifeTime = grimoireToInit.ProjectileLifeTime;
+            m_allowContinueFiring = grimoireToInit.AllowContinueFiring;
+            m_projectileSpeed = grimoireToInit.ProjectileSpeed;
             m_attackSpeed = grimoireToInit.AttackSpeed;
             m_projectilePrefab = grimoireToInit.ProjectilePrefab;
+            m_weaponSaveData = grimoireToInit;
         }
         /// <summary>
         /// Instantie un MagicSpellProjectile qui ira vers la direction ciblée

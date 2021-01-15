@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: GrimoireData
   m_EditorClassIdentifier: 
   m_weaponName: 
-  m_hitDamage: 0
-  m_attackSpeed: 10
+  m_hitDamage: {x: 10, y: 15}
+  m_attackSpeed: {x: 1, y: 1.2}
   m_weaponPrefab: {fileID: 374369559574428934, guid: 33f4237523f753e4c86b15250f337cef,
     type: 3}
   m_allowContinueFiring: 1
-  m_projectileSpeed: 15
-  m_projectileLifeTime: 250
+  m_projectileSpeed: {x: 5, y: 5}
+  m_projectileLifeTime: {x: 30, y: 30}
   m_projectilePrefab: {fileID: 3991483171199732513, guid: 512d7115325869f4d87c8e978d97262a,
     type: 3}

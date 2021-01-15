@@ -8,7 +8,7 @@ public class EquipBowInteractable : MonoBehaviour, IInteractable
     private BowData m_bowData = null;
     public void DoInteraction(Interactor interactor)
     {
-        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeBow(m_bowData);
+        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeBow(m_bowData.GetWeaponSaveData<BowData.BowSaveData>());
     }
 
     public void StartBeingWatched()

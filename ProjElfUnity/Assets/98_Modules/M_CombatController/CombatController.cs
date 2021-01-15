@@ -57,15 +57,15 @@ namespace ProjElf.CombatController
         {
             if(newWeaponData is MeleeWeaponData)
             {
-                m_combatInventory.ChangeMeleeWeapon((MeleeWeaponData)newWeaponData);
+                m_combatInventory.ChangeMeleeWeapon((newWeaponData as MeleeWeaponData).GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
             }
             else if(newWeaponData is GrimoireData)
             {
-                m_combatInventory.ChangeGrimoire((GrimoireData)newWeaponData);
+                m_combatInventory.ChangeGrimoire((newWeaponData as GrimoireData).GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
             }
             else if(newWeaponData is BowData)
             {
-                m_combatInventory.ChangeBow((BowData)newWeaponData);
+                m_combatInventory.ChangeBow((newWeaponData as BowData).GetWeaponSaveData<BowData.BowSaveData>());
             }
         }
 

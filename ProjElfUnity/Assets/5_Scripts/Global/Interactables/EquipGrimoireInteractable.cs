@@ -8,7 +8,7 @@ public class EquipGrimoireInteractable : MonoBehaviour, IInteractable
     private GrimoireData m_grimoireData = null;
     public void DoInteraction(Interactor interactor)
     {
-        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeGrimoire(m_grimoireData);
+        interactor?.GetComponent<CombatController>()?.CombatInventory.ChangeGrimoire(m_grimoireData.GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
     }
 
     public void StartBeingWatched()

@@ -49,6 +49,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
     internal override void ExitStateMachine()
     {
         float m_timePassed = Time.time - m_timeOfStart;
+
         MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerStats.TimePlayed += (int) m_timePassed;
         MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
         base.ExitStateMachine();

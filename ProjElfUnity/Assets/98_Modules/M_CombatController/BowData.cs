@@ -7,39 +7,41 @@ namespace ProjElf.CombatController
     [CreateAssetMenu(fileName = "BowData", menuName = "weaponData/BowData")]
     public class BowData : AWeaponData
     {
+        [System.Serializable]
+        public class BowSaveData : AWeaponSaveData
+        {
+            public float ProjectileRange;
+            public float ProjectileDivingRate;
+            public float ProjectileSpeed;
+            [SerializeField]
+            public Arrow ProjectilePrefab;
+
+            public BowSaveData(BowData bowData) : base(bowData)
+            {
+                Random.InitState((new System.Random()).Next(0, 10000000));
+                ProjectileRange = Random.Range(bowData.ProjectileRange.x, bowData.ProjectileRange.y);
+                Random.InitState((new System.Random()).Next(0, 10000000));
+                ProjectileDivingRate = Random.Range(bowData.ProjectileDivingRate.x, bowData.ProjectileDivingRate.y);
+                Random.InitState((new System.Random()).Next(0, 10000000));
+                ProjectileSpeed = Random.Range(bowData.ProjectileSpeed.x, bowData.ProjectileSpeed.y);
+                ProjectilePrefab = bowData.ProjectilePrefab;
+            }
+        }
         //Var
-        [SerializeField] private float m_projectileRange;
-        [SerializeField] private float m_projectileDivingRate;
-        [SerializeField] private float m_projectileSpeed;
+        [SerializeField] private Vector2 m_projectileRange;
+        [SerializeField] private Vector2 m_projectileDivingRate;
+        [SerializeField] private Vector2 m_projectileSpeed;
         [SerializeField] private Arrow m_projectilePrefab;
-        public float refProjectileRange => m_projectileRange;
-        public float refProjectileDivingRate => m_projectileDivingRate;
-        public float refProjectileSpeed => m_projectileSpeed;
+        public Vector2 ProjectileRange => m_projectileRange;
+        public Vector2 ProjectileDivingRate => m_projectileDivingRate;
+        public Vector2 ProjectileSpeed => m_projectileSpeed;
+        public Arrow ProjectilePrefab => m_projectilePrefab;
 
-        // Start is called before the first frame update
-        void Start()
+        internal override T GetWeaponSaveData<T>()
         {
+            BowSaveData bowSaveData = new BowSaveData(this);
 
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
-
-        //Getter
-        public float GetrefProjectileRange()
-        {
-            return refProjectileRange;
-        }
-        public float GetrefProjectileDivingRate()
-        {
-            return refProjectileDivingRate;
-        }
-        public float GetrefProjectileSpeed()
-        {
-            return refProjectileSpeed;
+            return (bowSaveData as T);
         }
     }
 }

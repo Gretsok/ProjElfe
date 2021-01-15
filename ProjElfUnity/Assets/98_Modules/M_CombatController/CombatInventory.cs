@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MOtter;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -21,6 +22,9 @@ namespace ProjElf.CombatController
         [SerializeField] private Transform posGrimoireEquip;
         [SerializeField] private Transform posBowEquip;
 
+        
+        
+
         /// <summary>
         /// Change le parent et la position de l'arme.
         /// </summary>
@@ -33,10 +37,11 @@ namespace ProjElf.CombatController
             changePosOf.transform.localRotation = Quaternion.identity; //Rotation à 0
         }
 
-        public void ChangeMeleeWeapon(MeleeWeaponData newMeleeWeaponData)
+        public void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
         {
             if(newMeleeWeaponData != null)
             {
+                
                 if (m_meleeWeapon != null)
                 {
                     Destroy(m_meleeWeapon.gameObject);
@@ -48,7 +53,7 @@ namespace ProjElf.CombatController
                 Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
             }
         }
-        public void ChangeGrimoire(GrimoireData newGrimoireData)
+        public void ChangeGrimoire(GrimoireData.GrimoireSaveData newGrimoireData)
         {
             if(newGrimoireData != null)
             {
@@ -63,7 +68,7 @@ namespace ProjElf.CombatController
                 Debug.Log("Equipped new Grimoire : " + newGrimoire.name);
             }
         }
-        public void ChangeBow(BowData newBowData)
+        public void ChangeBow(BowData.BowSaveData newBowData)
         {
             if(newBowData != null)
             {
@@ -313,6 +318,7 @@ namespace ProjElf.CombatController
         {
             return m_selectedWeapon;
         }
+
     }
 }
 

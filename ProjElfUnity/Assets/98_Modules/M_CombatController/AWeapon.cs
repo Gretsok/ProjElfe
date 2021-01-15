@@ -11,20 +11,13 @@ namespace ProjElf.CombatController
         protected Damage m_damage;
         protected float m_attackSpeed;
         protected bool m_allowContinueFiring;
+        protected AWeaponData.AWeaponSaveData m_weaponSaveData = null;
         public bool AllowContinueFiring => m_allowContinueFiring;// c un get
         public float AttackSpeed => m_attackSpeed;//c ossi un get
+        public AWeaponData.AWeaponSaveData WeaponSaveData => m_weaponSaveData;
 
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 }
 
