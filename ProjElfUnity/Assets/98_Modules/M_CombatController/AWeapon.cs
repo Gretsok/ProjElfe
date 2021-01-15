@@ -16,7 +16,9 @@ namespace ProjElf.CombatController
         public float AttackSpeed => m_attackSpeed;//c ossi un get
         public AWeaponData.AWeaponSaveData WeaponSaveData => m_weaponSaveData;
 
+        //private CombatController m_owner;
 
+        public Damage Damage => m_damage;
 
     }
 }
