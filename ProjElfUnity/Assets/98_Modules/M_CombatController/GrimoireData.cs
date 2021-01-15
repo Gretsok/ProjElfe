@@ -13,9 +13,9 @@ namespace ProjElf.CombatController
         [SerializeField] private float m_projectileLifeTime;
         [SerializeField] private MagicSpellProjectile m_projectilePrefab;
         
-        public float refProjectileLifeTime => m_projectileLifeTime;
+        public float ProjectileLifeTime => m_projectileLifeTime;
         
-        public float refProjectileSpeed => m_projectileSpeed;
+        public float ProjectileSpeed => m_projectileSpeed;
 
         // Start is called before the first frame update
         void Start()
@@ -28,18 +28,12 @@ namespace ProjElf.CombatController
         {
 
         }
-        public float GetrefProjectileSpeed()
-        {
-            return refProjectileSpeed;
-        }
+
         public bool GetrefAllowContinueFiring()
         {
             return refAllowContinueFiring;
         }
-        public float GetrefProjectileLifeTime()
-        {
-            return refProjectileLifeTime;
-        }
+
     }
 }
 

@@ -25,9 +25,9 @@ namespace ProjElf.CombatController
         }
         public void InitGrimoire(GrimoireData grimoireToInit)
         {
-            m_projectileLifeTime = grimoireToInit.GetrefProjectileLifeTime();
+            m_projectileLifeTime = grimoireToInit.ProjectileLifeTime;
             m_allowContinueFiring = grimoireToInit.GetrefAllowContinueFiring();
-            m_projectileSpeed = grimoireToInit.GetrefProjectileSpeed();
+            m_projectileSpeed = grimoireToInit.ProjectileSpeed;
             m_attackSpeed = grimoireToInit.AttackSpeed;
         }
         /// <summary>

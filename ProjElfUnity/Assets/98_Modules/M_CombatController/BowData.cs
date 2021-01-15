@@ -28,19 +28,6 @@ namespace ProjElf.CombatController
 
         }
 
-        //Getter
-        public float GetrefProjectileRange()
-        {
-            return refProjectileRange;
-        }
-        public float GetrefProjectileDivingRate()
-        {
-            return refProjectileDivingRate;
-        }
-        public float GetrefProjectileSpeed()
-        {
-            return refProjectileSpeed;
-        }
     }
 }
 

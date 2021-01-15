@@ -4,23 +4,33 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Arrow : MonoBehaviour
+    public class Arrow : MonoBehaviour, IDamageGiver
     {
         //Var
         private float m_speed;
+        private float m_range;
         private float m_divingRate;
+        private Damage m_damage;
+        private float m_lifeTime; //à implémenter
 
-        //Initialisateur
-        public void InitArrow(float speed, float divingRate)
+        public CombatController Owner { get; private set; }
+
+        public Damage Damage => m_damage;
+        public float Cooldown => 5f;
+
+        public void OnCombatControllerHit(CombatController hitController)
         {
-            m_speed = speed;
-            m_divingRate = divingRate;
+            Destroy(gameObject);
         }
 
-        // Start is called before the first frame update
-        void Start()
+        //Initialisateur
+        public void InitArrow(CombatController owner, float speed, float range, float divingRate, Damage damage)
         {
-
+            Owner = owner;
+            m_speed = speed;
+            m_range = range;
+            m_divingRate = divingRate;
+            m_damage = damage;
         }
 
         // Update is called once per frame
@@ -29,6 +39,7 @@ namespace ProjElf.CombatController
             this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
             transform.forward = Vector3.Lerp(transform.forward, Vector3.down, m_divingRate * Time.deltaTime);
         }
+
     }
 }
 

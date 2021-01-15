@@ -14,6 +14,11 @@ namespace ProjElf.CombatController
         public bool AllowContinueFiring => m_allowContinueFiring;// c un get
         public float AttackSpeed => m_attackSpeed;//c ossi un get
 
+        //private CombatController m_owner;
+
+        public Damage Damage => m_damage;
+
+
         // Start is called before the first frame update
         void Start()
         {
