@@ -13,9 +13,9 @@ public class EnnemyAICombatInventory : CombatInventory
     private MeleeWeaponData m_meleeWeaponData = null;
     private void Awake()
     {
-        ChangeGrimoire(m_grimoireData.GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
-        ChangeBow(m_bowData.GetWeaponSaveData<BowData.BowSaveData>());
-        ChangeMeleeWeapon(m_meleeWeaponData.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
+        ChangeGrimoire(m_grimoireData?.GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
+        ChangeBow(m_bowData?.GetWeaponSaveData<BowData.BowSaveData>());
+        ChangeMeleeWeapon(m_meleeWeaponData?.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
         SelectNextWeapon();
     }
 }

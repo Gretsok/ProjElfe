@@ -79,7 +79,6 @@ namespace ProjElf.PlayerController
            /* m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.canceled += SecondaryAttack_canceled;*/
             m_player.Actions.Generic.Interact.performed += Interact_performed;
-
             /*m_player.Actions.Generic.SelectMeleeWeapon.performed += SelectMeleeWeapon_performed;
             m_player.Actions.Generic.SelectBow.performed += SelectBow_performed;
             m_player.Actions.Generic.SelectGrimoire.performed += SelectGrimoire_performed;*/

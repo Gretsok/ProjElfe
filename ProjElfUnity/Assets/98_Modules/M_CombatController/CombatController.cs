@@ -10,9 +10,14 @@ namespace ProjElf.CombatController
         //Var
         [SerializeField] private CombatInventory m_combatInventory;
         private int m_lifePoints;
-        private int m_maxLifePoints;
-        private Action m_onLifeReachZero;
+        private int m_maxLifePoints = 100;
+        public Action OnLifeReachedZero;
+
+        /// <summary>
+        /// Meant for AI
+        /// </summary>
         public bool ForceContinueFiring = false;
+
 
         public CombatInventory CombatInventory => m_combatInventory;
 
@@ -64,7 +69,7 @@ namespace ProjElf.CombatController
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
                     if (m_lifePoints <= 0)
                     {
-                        m_onLifeReachZero?.Invoke();
+                        OnLifeReachedZero?.Invoke();
                     }
                     damageGiverData.TimeOfLastDamage = Time.time;
                     StartCoroutine(TriggerNextAttackRoutine(damageGiverData));
@@ -206,7 +211,7 @@ namespace ProjElf.CombatController
             m_lifePoints -= damage;
             if(m_lifePoints<=0)
             {
-                m_onLifeReachZero?.Invoke();//Lance l'action si pas null
+                OnLifeReachedZero?.Invoke();//Lance l'action si pas null
             }
         }
     }

@@ -7,6 +7,7 @@ namespace ProjElf.CombatController
     [CreateAssetMenu(fileName = "MeleeWeaponData", menuName = "weaponData/MeleeWeaponData")]
     public class MeleeWeaponData : AWeaponData
     {
+        [System.Serializable]
         public class MeleeWeaponSaveData : AWeaponSaveData
         {
             public MeleeWeaponSaveData(MeleeWeaponData meleeWeaponData) : base(meleeWeaponData)

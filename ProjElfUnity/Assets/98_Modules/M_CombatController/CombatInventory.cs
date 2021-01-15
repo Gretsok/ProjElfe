@@ -11,6 +11,11 @@ namespace ProjElf.CombatController
         private MeleeWeapon m_meleeWeapon;
         private Grimoire m_grimoire;
         private Bow m_bow;
+
+        public MeleeWeapon MeleeWeapon => m_meleeWeapon;
+        public Grimoire Grimoire => m_grimoire;
+        public Bow Bow => m_bow;
+
         //private AWeapon[] m_weapons = new AWeapon[3];
         private AWeapon m_selectedWeapon;
         //Ref transform quand équipé
@@ -21,8 +26,6 @@ namespace ProjElf.CombatController
         [SerializeField] private Transform posMeleeEquip;
         [SerializeField] private Transform posGrimoireEquip;
         [SerializeField] private Transform posBowEquip;
-
-        
         
 
         /// <summary>
@@ -41,46 +44,54 @@ namespace ProjElf.CombatController
         {
             if(newMeleeWeaponData != null)
             {
-                
-                if (m_meleeWeapon != null)
+                if(newMeleeWeaponData.WeaponPrefab != null)
                 {
-                    Destroy(m_meleeWeapon.gameObject);
+                    if (m_meleeWeapon != null)
+                    {
+                        Destroy(m_meleeWeapon.gameObject);
+                    }
+                    MeleeWeapon newMeleeWeapon;
+                    newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee.position, posMelee.rotation, posMelee);
+                    newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData);
+                    m_meleeWeapon = newMeleeWeapon;
+                    Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
                 }
-                MeleeWeapon newMeleeWeapon;
-                newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponPrefab, posMelee.position, posMelee.rotation, posMelee);
-                newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData);
-                m_meleeWeapon = newMeleeWeapon;
-                Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
             }
         }
         public void ChangeGrimoire(GrimoireData.GrimoireSaveData newGrimoireData)
         {
             if(newGrimoireData != null)
             {
-                if (m_grimoire != null)
+                if(newGrimoireData.WeaponPrefab != null)
                 {
-                    Destroy(m_grimoire.gameObject);
+                    if (m_grimoire != null)
+                    {
+                        Destroy(m_grimoire.gameObject);
+                    }
+                    Grimoire newGrimoire;
+                    newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire.position, posGrimoire.rotation, posGrimoire);
+                    newGrimoire.InitGrimoire(newGrimoireData);
+                    m_grimoire = newGrimoire;
+                    Debug.Log("Equipped new Grimoire : " + newGrimoire.name);
                 }
-                Grimoire newGrimoire;
-                newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponPrefab, posGrimoire.position, posGrimoire.rotation, posGrimoire);
-                newGrimoire.InitGrimoire(newGrimoireData);
-                m_grimoire = newGrimoire;
-                Debug.Log("Equipped new Grimoire : " + newGrimoire.name);
             }
         }
         public void ChangeBow(BowData.BowSaveData newBowData)
         {
             if(newBowData != null)
             {
-                if (m_bow != null)
+                if(newBowData.WeaponPrefab != null)
                 {
-                    Destroy(m_bow.gameObject);
+                    if (m_bow != null)
+                    {
+                        Destroy(m_bow.gameObject);
+                    }
+                    Bow newBow;
+                    newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow.position, posBow.rotation, posBow);
+                    newBow.InitBow(newBowData);//init les valeurs du bow
+                    m_bow = newBow;
+                    Debug.Log("Equipped new Bow : " + newBow.name);
                 }
-                Bow newBow;
-                newBow = Instantiate<Bow>((Bow)newBowData.WeaponPrefab, posBow.position, posBow.rotation, posBow);
-                newBow.InitBow(newBowData);//init les valeurs du bow
-                m_bow = newBow;
-                Debug.Log("Equipped new Bow : " + newBow.name);
             }
         }
         public void SelectNextWeapon()

@@ -29,6 +29,8 @@ namespace ProjElf.ProceduraleGeneration
             }*/
 
             #endregion
+            yield return 0;
+            InstantiatePlayer();
 
             yield return base.LoadAsync();
         }

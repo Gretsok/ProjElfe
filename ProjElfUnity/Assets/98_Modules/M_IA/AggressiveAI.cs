@@ -1,5 +1,6 @@
 ﻿using ProjElf.CombatController;
 using ProjElf.ProceduraleGeneration;
+using System;
 using UnityEngine;
 
 namespace ProjElf.AI
@@ -18,6 +19,13 @@ namespace ProjElf.AI
         {
             base.EnterStateMachine();
             m_combatController.ForceContinueFiring = true;
+            m_combatController.OnLifeReachedZero += Die;
+        }
+
+        private void Die()
+        {
+            Debug.Log("AI Died");
+            Destroy(gameObject);
         }
 
         public override void DoLateUpdate()

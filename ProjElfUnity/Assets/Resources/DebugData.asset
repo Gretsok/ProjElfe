@@ -18,11 +18,33 @@ MonoBehaviour:
     SaveName: TESTSAVEDATA
     SavedAnimalDatas: []
     SavedPlayerWeaponInventory:
-      EquippedMeleeWeapon: {fileID: 0}
-      EquippedGrimoire: {fileID: 0}
-      EquippedBow: {fileID: 0}
+      EquippedMeleeWeapon:
+        WeaponName: 
+        HitDamage: 0
+        AttackSpeed: 0
+        WeaponPrefab: {fileID: 0}
+        AllowContinueFiring: 0
+      EquippedGrimoire:
+        WeaponName: 
+        HitDamage: 0
+        AttackSpeed: 0
+        WeaponPrefab: {fileID: 0}
+        AllowContinueFiring: 0
+        ProjectileSpeed: 0
+        ProjectileLifeTime: 0
+        ProjectilePrefab: {fileID: 0}
+      EquippedBow:
+        WeaponName: 
+        HitDamage: 0
+        AttackSpeed: 0
+        WeaponPrefab: {fileID: 0}
+        AllowContinueFiring: 1
+        ProjectileRange: 0
+        ProjectileDivingRate: 0
+        ProjectileSpeed: 0
+        ProjectilePrefab: {fileID: 0}
     SavedPlayerStats:
-      TimePlayed: 10000000
+      TimePlayed: 10000014
       DunjeonFinished: 0
       MonsterKilled: 0
       NumberOfDeath: 0

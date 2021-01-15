@@ -11,9 +11,12 @@ public class SaveData
     [System.Serializable]
     public struct PlayerWeaponInventory
     {
-        public MeleeWeaponData EquippedMeleeWeapon;
-        public GrimoireData EquippedGrimoire;
-        public BowData EquippedBow;
+        [SerializeField]
+        public MeleeWeaponData.MeleeWeaponSaveData EquippedMeleeWeapon;
+        [SerializeField]
+        public GrimoireData.GrimoireSaveData EquippedGrimoire;
+        [SerializeField]
+        public BowData.BowSaveData EquippedBow;
     }
 
     [System.Serializable]

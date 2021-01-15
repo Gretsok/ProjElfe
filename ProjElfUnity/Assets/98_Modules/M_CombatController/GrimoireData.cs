@@ -8,6 +8,7 @@ namespace ProjElf.CombatController
     [CreateAssetMenu(fileName = "GrimoireData", menuName = "weaponData/GrimoireData")] //instancie un scripatble object
     public class GrimoireData : AWeaponData
     {
+        [System.Serializable]
         public class GrimoireSaveData : AWeaponSaveData
         {
             public float ProjectileSpeed;

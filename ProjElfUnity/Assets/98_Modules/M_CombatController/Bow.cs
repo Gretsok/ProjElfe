@@ -23,6 +23,7 @@ namespace ProjElf.CombatController
             m_allowContinueFiring = bowToInit.AllowContinueFiring;
             m_attackSpeed = bowToInit.AttackSpeed;
             m_damage = Damage;
+            m_weaponSaveData = bowToInit;
         }
         /// <summary>
         /// Instantie une arrow qui ira vers la direction ciblée
