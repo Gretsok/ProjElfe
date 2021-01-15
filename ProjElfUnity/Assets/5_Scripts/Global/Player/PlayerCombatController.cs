@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ProjElf.PlayerController
 {
-    public class PlayerCombatController : MonoBehaviour
+    public class PlayerCombatController : CombatController.CombatController
     {
         public void UpdateStatsAccordingToSavedAnimals()
         {

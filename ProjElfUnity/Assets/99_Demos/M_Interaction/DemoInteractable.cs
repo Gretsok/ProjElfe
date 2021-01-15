@@ -6,7 +6,7 @@ using UnityEngine;
 public class DemoInteractable : MonoBehaviour, IInteractable
 {
     bool isWatched = false;
-    public void DoInteraction()
+    public void DoInteraction(Interactor iteractor = null)
     {
         Debug.Log("DoIneraction");
     }

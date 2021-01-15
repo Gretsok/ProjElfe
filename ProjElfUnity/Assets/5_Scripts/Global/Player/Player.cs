@@ -18,11 +18,14 @@ namespace ProjElf.PlayerController
         private Interactor m_interactor = null;
         [SerializeField]
         private CharacterAnimatorHandler m_characterAnimatorHandler = null;
+        [SerializeField]
+        private PlayerCombatController m_combatController = null;
 
         public CharacterController CharacterController => m_characterController;
         public PlayerCameraController CameraController => m_cameraController;
         public Interactor Interactor => m_interactor;
         public CharacterAnimatorHandler CharacterAnimatorHandler => m_characterAnimatorHandler;
+        public PlayerCombatController CombatController => m_combatController;
 
         internal bool IsFalling = false;
 
@@ -89,6 +92,12 @@ namespace ProjElf.PlayerController
             m_gamemode.OnPause += CleanUpInput;
             m_gamemode.OnUnpause += SetUpInput;
             
+        }
+
+        public override void DoUpdate()
+        {
+            base.DoUpdate();
+            m_combatController.DoUpdate(Sight.direction);
         }
 
         public override void DoFixedUpdate()

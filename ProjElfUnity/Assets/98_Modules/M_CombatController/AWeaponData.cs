@@ -9,12 +9,12 @@ namespace ProjElf.CombatController
         //Var
         [SerializeField] private string m_weaponName;
         [SerializeField] private int m_hitDamage;
-        [SerializeField] private float m_attackSpeed;
+        [SerializeField] private int m_attackSpeed;
         [SerializeField] private AWeapon m_weaponPrefab;
         [SerializeField] private bool m_allowContinueFiring;
         public bool refAllowContinueFiring => m_allowContinueFiring;
         public float AttackSpeed => m_attackSpeed;
-        public float HitDamage => m_hitDamage;
+        public int HitDamage => m_hitDamage;
         public string WeaponName => m_weaponName;
 
 

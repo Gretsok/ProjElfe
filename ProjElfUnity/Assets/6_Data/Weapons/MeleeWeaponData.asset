@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: MeleeWeaponData
   m_EditorClassIdentifier: 
   m_weaponName: 
-  m_hitDamage: 0
-  m_attackSpeed: 0
+  m_hitDamage: 10
+  m_attackSpeed: 1
   m_weaponPrefab: {fileID: 7127004067093371887, guid: a9989530436f01144a3a4f662af9a55c,
     type: 3}
+  m_allowContinueFiring: 1

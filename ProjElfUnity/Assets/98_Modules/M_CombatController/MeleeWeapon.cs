@@ -6,16 +6,14 @@ namespace ProjElf.CombatController
 {
     public class MeleeWeapon : AWeapon
     {
-        // Start is called before the first frame update
-        void Start()
+        public void InitMeleeWeapon(MeleeWeaponData meleeWeaponData)
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-
+            m_attackSpeed = meleeWeaponData.AttackSpeed;
+            m_damage = new Damage();
+            m_damage.HitDamage = meleeWeaponData.HitDamage;
+            m_damage.DamageType = EDamageType.Physical;
+            m_allowContinueFiring = meleeWeaponData.refAllowContinueFiring;
+            m_weaponName = meleeWeaponData.WeaponName;
         }
     }
 }

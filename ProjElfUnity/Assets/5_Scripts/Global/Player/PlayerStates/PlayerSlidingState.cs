@@ -16,6 +16,7 @@ namespace ProjElf.PlayerController
             base.EnterState();
             m_distanceTraveled = 0;
             m_player.CharacterAnimatorHandler.StartSlide();
+            m_player.transform.LookAt(transform.position + m_player.Direction);
         }
 
         public override void UpdateState()
