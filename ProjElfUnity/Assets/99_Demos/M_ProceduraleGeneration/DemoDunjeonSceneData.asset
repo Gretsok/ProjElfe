@@ -16,5 +16,8 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 8b0028304db7aea4b84207af721f236f, type: 3}
     m_SceneName: DemoProceduraleGeneration
   m_additionalScenes: []
+  m_loadingScreen:
+    m_SceneAsset: {fileID: 102900000, guid: dc393080a268e2b48a2c649ed2ff0ba4, type: 3}
+    m_SceneName: DunjeonLoadingScene
   m_levelName: DemoDunjeon
   m_defaultLoadMode: 0

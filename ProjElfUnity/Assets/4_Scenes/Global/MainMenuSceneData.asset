@@ -16,5 +16,8 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 84b6858995f92774d93533934f798ff9, type: 3}
     m_SceneName: MainMenu
   m_additionalScenes: []
+  m_loadingScreen:
+    m_SceneAsset: {fileID: 102900000, guid: dc393080a268e2b48a2c649ed2ff0ba4, type: 3}
+    m_SceneName: DunjeonLoadingScene
   m_levelName: MainMenu
   m_defaultLoadMode: 0
