@@ -24,6 +24,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
     {
         base.EnterStateMachine();
         Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
         m_timeOfStart = Time.time;
     }
     public override void DoUpdate()
