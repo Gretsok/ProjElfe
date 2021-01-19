@@ -1,9 +1,14 @@
 fileFormatVersion: 2
-guid: 1e15bc61f20956d4897cf353431a723d
+guid: 97ac82ed470909940908abc5358d2150
 ModelImporter:
   serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Grimoire
+    second: {fileID: 2100000, guid: c6ef4dd48cbad964bb5f0a1752706841, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
