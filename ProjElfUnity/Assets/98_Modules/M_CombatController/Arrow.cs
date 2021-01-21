@@ -8,7 +8,7 @@ namespace ProjElf.CombatController
     {
         //Var
         private float m_speed;
-        private float m_range;
+        private float m_range; //à implémenter
         private float m_divingRate;
         private Damage m_damage;
         private float m_lifeTime; //à implémenter

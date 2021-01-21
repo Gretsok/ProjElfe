@@ -11,6 +11,11 @@ namespace ProjElf.CombatController
         [SerializeField] private CombatInventory m_combatInventory;
         private int m_lifePoints;
         private int m_maxLifePoints = 100;
+        private int m_armor;
+        private int m_magicResist;
+        private int m_attackSpeed;
+        private int m_moveSpeed;
+
         public Action OnLifeReachedZero;
 
         /// <summary>
