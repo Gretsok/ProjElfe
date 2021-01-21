@@ -39,7 +39,7 @@ namespace ProjElf.PlayerController
 
         private void PrimaryAttack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            m_player.CombatController.StartUseWeapon(m_player.Sight.direction);
+            m_player.CombatController.StartUseWeapon(m_player.WeaponSight.direction);
         }
 
         private void SecondaryAttack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)

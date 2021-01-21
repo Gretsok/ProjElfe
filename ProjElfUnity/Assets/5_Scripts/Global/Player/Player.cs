@@ -147,6 +147,7 @@ namespace ProjElf.PlayerController
                 {
                     Vector3 arrowStartPosition = m_combatController.CombatInventory.Bow.PosArrow.transform.position;
                     WeaponSight = new Ray(arrowStartPosition, (hitInfo.point - arrowStartPosition));
+                    Debug.DrawLine(arrowStartPosition, arrowStartPosition + (hitInfo.point - arrowStartPosition), Color.yellow);
                 } 
             }
             else if(m_combatController.UsedWeapon is Grimoire)
