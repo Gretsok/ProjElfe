@@ -11,10 +11,9 @@ namespace MOtter.StatesMachine
 #if UNITY_EDITOR
         private DebugData m_debugData = null;
 #endif
-        [SerializeField]
-        private SceneField[] m_loadingScreens = null;
-        private string m_currentLoadingScreenSceneName = "";
+
         private bool m_isInLoadingScreen = false;
+
 
         private MainStatesMachine m_mainStatesMachine = null;
         private List<SceneData> m_currentSceneData = new List<SceneData>();
@@ -34,8 +33,11 @@ namespace MOtter.StatesMachine
 #if UNITY_EDITOR
             // Get Debug Data and register the default SceneData
             m_debugData = Resources.Load<DebugData>("DebugData");
+
             RegisterNewLevel(m_debugData.DefaultSceneData);
-            if(m_debugData.UseDefaultSaveData)
+            if(m_debugData.DefaultSceneData != null)
+                m_debugData.DefaultSceneData.LoadLevel();
+            if (m_debugData.UseDefaultSaveData)
             {
                 UseSaveData(m_debugData.DefaultSaveData);
             }
@@ -97,45 +99,10 @@ namespace MOtter.StatesMachine
 
         }
 
-        #region LoadingScreenManagement
-        public void ActivateLoadingScreen()
-        {
-            if(!m_isInLoadingScreen)
-            {
-                Debug.Log("LOADING SCREEN");
-                m_currentLoadingScreenSceneName = m_loadingScreens[(new System.Random((int)Time.time)).Next(0, m_loadingScreens.Length)];
-                SceneManager.LoadSceneAsync(m_currentLoadingScreenSceneName, LoadSceneMode.Additive);
-                m_isInLoadingScreen = true;
-            }
-            
-        }
-        public void DisactivateLoadingScreen()
-        {
-            if(m_isInLoadingScreen)
-            {
-                Debug.Log("END LOADING SCREEN");
-                SceneManager.UnloadSceneAsync(m_currentLoadingScreenSceneName);
-                m_isInLoadingScreen = false;
-            }
-        }
-        #endregion
-
         #region SceneDataManagement
         public void RegisterNewLevel(SceneData sceneData)
         {
             m_currentSceneData.Add(sceneData);
-        }
-
-        public void UnloadScenesData()
-        {
-            // We unload all levels but the one we just added
-            for (int i = 0; i < m_currentSceneData.Count - 1; i++)
-            {
-                m_currentSceneData[i].UnloadLevel();
-            }
-            SceneData lastAdded = m_currentSceneData[m_currentSceneData.Count - 1];
-            m_currentSceneData.Clear();
-            m_currentSceneData.Add(lastAdded);
         }
         #endregion
 

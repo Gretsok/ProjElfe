@@ -76,7 +76,6 @@ namespace MOtter.StatesMachine
             yield return null;
             m_isLoaded = true;
             EnterStateMachine();
-            MOtterApplication.GetInstance().GAMEMANAGER.DisactivateLoadingScreen();
         }
 
         public virtual IEnumerator UnloadAsync(Action onUnloadEnded)
@@ -84,7 +83,6 @@ namespace MOtter.StatesMachine
 
             yield return null;
             m_isUnloaded = true;
-            MOtterApplication.GetInstance().GAMEMANAGER.ActivateLoadingScreen();
             yield return null;
             ExitStateMachine();
             yield return null;

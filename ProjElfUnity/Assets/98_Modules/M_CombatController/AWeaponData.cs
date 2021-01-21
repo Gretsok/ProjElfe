@@ -12,8 +12,7 @@ namespace ProjElf.CombatController
             public string WeaponName;
             public int HitDamage;
             public float AttackSpeed;
-            [SerializeField]
-            public AWeapon WeaponPrefab;
+            public AWeaponData WeaponData;
             public bool AllowContinueFiring;
 
             public AWeaponSaveData(AWeaponData weaponData)
@@ -23,7 +22,7 @@ namespace ProjElf.CombatController
                 HitDamage = Random.Range(weaponData.HitDamage.x, weaponData.HitDamage.y);
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 AttackSpeed = Random.Range(weaponData.AttackSpeed.x, weaponData.AttackSpeed.y);
-                WeaponPrefab = weaponData.WeaponPrefab;
+                WeaponData = weaponData;
                 AllowContinueFiring = weaponData.AllowContinueFiring;
             }
         }

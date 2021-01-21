@@ -8,6 +8,7 @@ public class HubForestGameMode : ProjElfGameMode
     {
         yield return 0;
         InstantiatePlayer();
+        yield return 0;
         yield return base.LoadAsync();
         
     }

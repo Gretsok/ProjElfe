@@ -12,6 +12,7 @@ namespace ProjElf.CombatController
         private MagicSpellProjectile m_projectilePrefab;
         [SerializeField] private Transform posMagicSpell;
 
+        public Transform PosMagicSpell => posMagicSpell;
         public void InitGrimoire(GrimoireData.GrimoireSaveData grimoireToInit)
         {
             m_projectileLifeTime = grimoireToInit.ProjectileLifeTime;

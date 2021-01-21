@@ -4,6 +4,7 @@ using UnityEngine;
 using MOtter.StatesMachine;
 using ProjElf.Interaction;
 using MOtter;
+using ProjElf.CombatController;
 
 namespace ProjElf.PlayerController
 {
@@ -30,6 +31,7 @@ namespace ProjElf.PlayerController
         internal bool IsFalling = false;
 
         internal Ray Sight = new Ray();
+        internal Ray WeaponSight = new Ray();
 
         [Header("Movement Properties")]
         [SerializeField]
@@ -97,14 +99,19 @@ namespace ProjElf.PlayerController
         public override void DoUpdate()
         {
             base.DoUpdate();
-            m_combatController.DoUpdate(Sight.direction);
+            m_combatController.DoUpdate(WeaponSight.direction);
         }
+
 
         public override void DoFixedUpdate()
         {
             base.DoFixedUpdate();
             Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
             m_interactor.ManageSight(Sight);
+
+            UpdateWeaponSight();
+
+
             Vector3 verticalMovement = Vector3.up * m_verticalVelocity;
             m_characterController.Move((Direction + verticalMovement) * Time.fixedDeltaTime);
             
@@ -128,6 +135,33 @@ namespace ProjElf.PlayerController
                     }
                     
                 }
+            }
+        }
+
+        private void UpdateWeaponSight()
+        {
+            if(m_combatController.UsedWeapon is Bow)
+            {
+                WeaponSight = Sight;
+                if(Physics.Raycast(Sight, out RaycastHit hitInfo, 30))
+                {
+                    Vector3 arrowStartPosition = m_combatController.CombatInventory.Bow.PosArrow.transform.position;
+                    WeaponSight = new Ray(arrowStartPosition, (hitInfo.point - arrowStartPosition));
+                    Debug.DrawLine(arrowStartPosition, arrowStartPosition + (hitInfo.point - arrowStartPosition), Color.yellow);
+                } 
+            }
+            else if(m_combatController.UsedWeapon is Grimoire)
+            {
+                WeaponSight = Sight;
+                if (Physics.Raycast(Sight, out RaycastHit hitInfo, 30))
+                {
+                    Vector3 projectileStartPosition = m_combatController.CombatInventory.Grimoire.PosMagicSpell.transform.position;
+                    WeaponSight = new Ray(projectileStartPosition, (hitInfo.point - projectileStartPosition));
+                }
+            }
+            else if(m_combatController.UsedWeapon is MeleeWeapon)
+            {
+                WeaponSight = Sight;
             }
         }
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 530f0f4aac478e641b59724446d26bfc, type: 3}
   m_Name: DebugData
   m_EditorClassIdentifier: 
-  m_defaultSceneData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603, type: 2}
+  m_defaultSceneData: {fileID: 0}
   m_useDefaultSaveData: 1
   m_defaultSaveData:
     SaveName: TESTSAVEDATA
@@ -44,7 +44,7 @@ MonoBehaviour:
         ProjectileSpeed: 0
         ProjectilePrefab: {fileID: 0}
     SavedPlayerStats:
-      TimePlayed: 10000032
+      TimePlayed: 10000039
       DunjeonFinished: 0
       MonsterKilled: 0
       NumberOfDeath: 0

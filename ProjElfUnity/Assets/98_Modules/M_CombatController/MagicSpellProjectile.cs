@@ -18,17 +18,13 @@ namespace ProjElf.CombatController
             m_lifeTime = range;
         }
 
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
 
         // Update is called once per frame
-        void Update()
+        void FixedUpdate()
         {
-            this.transform.position += this.transform.forward * Time.deltaTime * m_speed;
-            m_actualLifeTime++;
+            this.transform.position += this.transform.forward * Time.fixedDeltaTime * m_speed;
+            m_actualLifeTime += Time.fixedDeltaTime;
             //Gerer destroy
             if (m_actualLifeTime >= m_lifeTime)
             {
