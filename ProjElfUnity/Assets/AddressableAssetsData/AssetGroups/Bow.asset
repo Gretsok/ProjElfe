@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Bow
+  m_EditorClassIdentifier: 
+  m_GroupName: Bow
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 3748a6986df7ff046bf70c7eb9b74fe5
+  m_SerializeEntries:
+  - m_GUID: 79f4d7361713e334f9d1a5ab6e4c1e82
+    m_Address: Assets/6_Data/Weapons/BowData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - bow
+    - weapon
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 9916ae19e8a75a34b81fc6ebd100eb0f, type: 2}
+    - {fileID: 11400000, guid: b6546b1f98f4186419bad80d8cd1cfd6, type: 2}

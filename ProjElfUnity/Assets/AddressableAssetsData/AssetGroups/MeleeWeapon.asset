@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: MeleeWeapon
+  m_EditorClassIdentifier: 
+  m_GroupName: MeleeWeapon
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 11c825f80b33f504b996861d6ca1694f
+  m_SerializeEntries:
+  - m_GUID: cefb04cbfd4af5944a25d7cc7b94e754
+    m_Address: Assets/6_Data/Weapons/MeleeWeaponData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - weapon
+    - meleeweapon
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 7a249d69aa6dd1b4cac7d704e0a873f4, type: 2}
+    - {fileID: 11400000, guid: 0490a26d6a1a69b499056aeea29b6cf9, type: 2}
