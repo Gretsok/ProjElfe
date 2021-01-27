@@ -44,7 +44,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoUpdate()
         {
             base.DoUpdate();
-            foreach(DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach(DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.UpdateAIInRoom();
             }
@@ -53,7 +53,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoFixedUpdate()
         {
             base.DoFixedUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.FixedUpdateAIInRoom();
             }
@@ -61,7 +61,7 @@ namespace ProjElf.ProceduraleGeneration
             {
                 if(hitInfo.transform.TryGetComponent<DunjeonRoom>(out DunjeonRoom room))
                 {
-                    room.ActivateRoom();
+                    room.ActivateSurroundingRooms();
                 }
             }
         }
@@ -69,7 +69,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoLateUpdate()
         {
             base.DoLateUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.LateUpdateAIInRoom();
             }

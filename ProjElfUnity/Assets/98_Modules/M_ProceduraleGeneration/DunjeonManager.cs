@@ -17,6 +17,7 @@ namespace ProjElf.ProceduraleGeneration
         private List<List<DunjeonRoom>> m_instantiatedRoomsGrid = new List<List<DunjeonRoom>>();
         private List<DunjeonRoom> m_instantiatedRooms = new List<DunjeonRoom>();
         public List<DunjeonRoom> InstantiatedRooms => m_instantiatedRooms;
+        internal List<DunjeonRoom> RoomsToUpdate = new List<DunjeonRoom>();
 
         private int m_generatingRoomsRoomIndex = 0;
         private int m_intersectionSpawningRate = 0;
@@ -48,6 +49,55 @@ namespace ProjElf.ProceduraleGeneration
             }
 
 
+        }
+
+        internal void ActivateRoomsAroundRoom(DunjeonRoom room)
+        {
+            RoomsToUpdate.Clear();
+            RoomsToUpdate.Add(room);
+            if(!room.IsInit)
+            {
+                room.ActivateRoom();
+            }
+            try
+            {
+                if(room.CanGoNorth)
+                {
+                    m_instantiatedRoomsGrid[room.PosX][room.PosY + 1].ActivateRoom();
+                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY + 1]);
+                }
+                    
+            }catch(System.Exception e){}
+            try
+            {
+                if(room.CanGoEast)
+                {
+                    m_instantiatedRoomsGrid[room.PosX + 1][room.PosY].ActivateRoom();
+                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX + 1][room.PosY]);
+                }
+                    
+            }
+            catch (System.Exception e) { }
+            try
+            {
+                if(room.CanGoSouth)
+                {
+                    m_instantiatedRoomsGrid[room.PosX][room.PosY - 1].ActivateRoom();
+                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY - 1]);
+                }
+                    
+            }
+            catch (System.Exception e) { }
+            try
+            {
+                if(room.CanGoWest)
+                {
+                    m_instantiatedRoomsGrid[room.PosX - 1][room.PosY].ActivateRoom();
+                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX - 1][room.PosY]);
+                }
+                    
+            }
+            catch (System.Exception e) { }
         }
 
         internal void StartDunjeonGeneration()
@@ -157,7 +207,7 @@ namespace ProjElf.ProceduraleGeneration
                 room.PosY = posY;
                 room.RoomsLeftUntilTheEnd = --roomsLeft;
                 room.IsLeadingToTheEnd = onRightWay;
-                room.SetUpRoom(roomData);
+                room.SetUpRoom(roomData, m_currentDunjeonData.DunjeonDifficulty);
                 RegisterRoomAtPosition(room, posX, posY);
                 
             }

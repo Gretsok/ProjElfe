@@ -1,4 +1,5 @@
-﻿using ProjElf.AI;
+﻿using MOtter;
+using ProjElf.AI;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -13,6 +14,7 @@ namespace ProjElf.ProceduraleGeneration
         public List<GenericAI> AISpawnedInThisRoom => m_AISpawnedInThisRoom;
         #region LifeCycle Attributes
         private bool m_isInit = false;
+        internal bool IsInit => m_isInit;
         private bool m_roomSetUp = false;
         #endregion
 
@@ -27,6 +29,8 @@ namespace ProjElf.ProceduraleGeneration
         internal bool HasForwardGate = false;
         internal bool HasLeftGate = false;
         internal bool HasRightGate = false;
+
+        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.easy;
 
         [SerializeField, Tooltip("Wiil affect random walkable point")]
         private float m_width = 10f;
@@ -257,7 +261,7 @@ namespace ProjElf.ProceduraleGeneration
         /// Initialize room
         /// </summary>
         /// <param name="dunjeonRoomData"></param>
-        internal void SetUpRoom(DunjeonRoomData dunjeonRoomData)
+        internal void SetUpRoom(DunjeonRoomData dunjeonRoomData, EDunjeonDifficulty dunjeonDifficulty)
         {
             if (dunjeonRoomData == null) Debug.LogError("DUNJEON ROOM DATA NULL");
             m_dunjeonRoomData = dunjeonRoomData;
@@ -265,6 +269,7 @@ namespace ProjElf.ProceduraleGeneration
             HasLeftGate = m_dunjeonRoomData.LeftGate;
             HasRightGate = m_dunjeonRoomData.RightGate;
             m_roomSetUp = true;
+            m_dunjeonDifficulty = dunjeonDifficulty;
         }
 
         /// <summary>
@@ -276,7 +281,7 @@ namespace ProjElf.ProceduraleGeneration
             if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
-                int numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn();
+                int numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn(m_dunjeonDifficulty);
                 m_isInit = true;
 
                 for(int i = 0; i < numberOfEnnemisToSpawn; i++)
@@ -290,6 +295,11 @@ namespace ProjElf.ProceduraleGeneration
                     }
                 }
             }
+        }
+
+        public void ActivateSurroundingRooms()
+        {
+            MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>().DunjeonManager.ActivateRoomsAroundRoom(this);
         }
 
 
@@ -342,7 +352,11 @@ namespace ProjElf.ProceduraleGeneration
                     Random.InitState(rnd.Next(0, 100000000));
                     z = Random.Range(-m_width / 2f, m_width / 2f);
 
-                    ray = new Ray(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), Vector3.down);
+                    Vector3 rayOrigin = transform.position
+                        + x * transform.right
+                        + z * transform.forward
+                        + 20 * transform.up;
+                    ray = new Ray(rayOrigin, Vector3.down);
                     nbIteration++;
                     //Debug.DrawLine(new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z), new Vector3(transform.position.x + x, transform.position.y + 20, transform.position.z + z) + Vector3.down * 40, Color.red, 120f);
 
@@ -350,8 +364,9 @@ namespace ProjElf.ProceduraleGeneration
 
                 } while (!Physics.Raycast(ray, out hitInfos, 40f, m_spawningLayerMask) && nbIteration < MAX_ITERATION);
             } while (!NavMesh.SamplePosition(hitInfos.point, out navHitInfos, 1, 1) && nbIteration < MAX_ITERATION);
-            Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
-            Debug.Log("NavMesh:" + navHitInfos.position + " hitPoint: " + hitInfos.point + "navHitDist" + navHitInfos.distance);
+
+            //Debug.Log("Pos to spawn : x: " + (transform.position.x + x) + " z: " + (transform.position.z + z) + "   Pos room: x: " + transform.position.x + " z: " + transform.position.z);
+            //Debug.Log("NavMesh:" + navHitInfos.position + " hitPoint: " + hitInfos.point + "navHitDist" + navHitInfos.distance);
             if (nbIteration >= MAX_ITERATION)
             {
                 Debug.LogError($"MAX ITERATION HIT while trying to find a random walkable point on {gameObject.name}");
@@ -362,10 +377,12 @@ namespace ProjElf.ProceduraleGeneration
             {
                 Debug.DrawLine(ray.origin, ray.origin + ray.direction * 40, Color.green, 120f);
             }
+
             return navHitInfos.position;
             
             
         }
+
 
         private void OnDestroy()
         {

@@ -18,6 +18,9 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField, Tooltip("Data of all rooms. It has to contain a room for each case (Mixing: canGoForward, canGoLeft, canGoRight)")]
         private List<DunjeonRoomData> m_rooms = new List<DunjeonRoomData>();
 
+        [SerializeField, Tooltip("Dunjeon Difficulty")]
+        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.easy;
+
         internal DunjeonRoomData FinalRoomData => m_finalRoomData;
 
         /// <summary>
@@ -65,5 +68,7 @@ namespace ProjElf.ProceduraleGeneration
             //Debug.Log("forw: " + hasForwardGate + " left: " + hasLeftGate + " right: " + hasRightGate);
             return tempList[randomIndex];
         }
+
+        public EDunjeonDifficulty DunjeonDifficulty => m_dunjeonDifficulty;
     }
 }

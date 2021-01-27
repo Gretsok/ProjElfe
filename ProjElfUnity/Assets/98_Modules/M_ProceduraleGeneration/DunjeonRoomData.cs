@@ -11,8 +11,14 @@ namespace ProjElf.ProceduraleGeneration
         private DunjeonRoom m_roomPrefab = null;
         [SerializeField, Tooltip("List of all ennemis prefab with their weight which impacts how often they will spawn")]
         private EnnemySpawnData[] m_ennemiesToSpawn = null;
+
+        [Header("Range of numbers of ennemies to spawn")]
         [SerializeField, Tooltip("Range of the number of ennemies to spawn")]
-        private Vector2Int m_numberOfEnnemiesToSpawn = Vector2Int.zero;
+        private Vector2Int m_easyModeNumberOfEnnemiesToSpawn = Vector2Int.zero;
+        [SerializeField, Tooltip("Range of the number of ennemies to spawn")]
+        private Vector2Int m_mediumModeNumberOfEnnemiesToSpawn = Vector2Int.zero;
+        [SerializeField, Tooltip("Range of the number of ennemies to spawn")]
+        private Vector2Int m_hardModeNumberOfEnnemiesToSpawn = Vector2Int.zero;
 
         [SerializeField]
         private bool m_forwardGate = false;
@@ -32,10 +38,23 @@ namespace ProjElf.ProceduraleGeneration
             return m_ennemiesToSpawn[0].EnnemyPrefab;
         }
 
-        public int GetRandomNumberOfEnnemisToSpawn()
+        public int GetRandomNumberOfEnnemisToSpawn(EDunjeonDifficulty difficulty)
         {
             Random.InitState((new System.Random()).Next(0, 1000000));
-            return Random.Range(m_numberOfEnnemiesToSpawn.x, m_numberOfEnnemiesToSpawn.y);
+            if(difficulty == EDunjeonDifficulty.easy)
+            {
+                return Random.Range(m_easyModeNumberOfEnnemiesToSpawn.x, m_easyModeNumberOfEnnemiesToSpawn.y);
+            }
+            else if(difficulty == EDunjeonDifficulty.medium)
+            {
+                return Random.Range(m_mediumModeNumberOfEnnemiesToSpawn.x, m_mediumModeNumberOfEnnemiesToSpawn.y);
+            }
+            else if(difficulty == EDunjeonDifficulty.hard)
+            {
+                return Random.Range(m_hardModeNumberOfEnnemiesToSpawn.x, m_hardModeNumberOfEnnemiesToSpawn.y);
+            }
+            Debug.LogError("No valid difficulty");
+            return 0;
         }
     }
 }
