@@ -61,7 +61,7 @@ namespace ProjElf.ProceduraleGeneration
             }
             try
             {
-                if(room.CanGoNorth)
+                if(room.CanGoNorth || room.RoomOrientation == ERoomOrientation.South)
                 {
                     m_instantiatedRoomsGrid[room.PosX][room.PosY + 1].ActivateRoom();
                     RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY + 1]);
@@ -70,7 +70,7 @@ namespace ProjElf.ProceduraleGeneration
             }catch(System.Exception e){}
             try
             {
-                if(room.CanGoEast)
+                if(room.CanGoEast || room.RoomOrientation == ERoomOrientation.West)
                 {
                     m_instantiatedRoomsGrid[room.PosX + 1][room.PosY].ActivateRoom();
                     RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX + 1][room.PosY]);
@@ -80,7 +80,7 @@ namespace ProjElf.ProceduraleGeneration
             catch (System.Exception e) { }
             try
             {
-                if(room.CanGoSouth)
+                if(room.CanGoSouth || room.RoomOrientation == ERoomOrientation.North)
                 {
                     m_instantiatedRoomsGrid[room.PosX][room.PosY - 1].ActivateRoom();
                     RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY - 1]);
@@ -90,7 +90,7 @@ namespace ProjElf.ProceduraleGeneration
             catch (System.Exception e) { }
             try
             {
-                if(room.CanGoWest)
+                if(room.CanGoWest || room.RoomOrientation == ERoomOrientation.East)
                 {
                     m_instantiatedRoomsGrid[room.PosX - 1][room.PosY].ActivateRoom();
                     RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX - 1][room.PosY]);
