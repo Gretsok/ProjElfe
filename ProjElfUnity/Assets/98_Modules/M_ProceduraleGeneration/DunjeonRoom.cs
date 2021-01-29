@@ -30,7 +30,7 @@ namespace ProjElf.ProceduraleGeneration
         internal bool HasLeftGate = false;
         internal bool HasRightGate = false;
 
-        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.easy;
+        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.RescuerI;
 
         [SerializeField, Tooltip("Wiil affect random walkable point")]
         private float m_width = 10f;

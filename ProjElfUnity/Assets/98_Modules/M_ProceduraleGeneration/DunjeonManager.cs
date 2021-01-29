@@ -10,6 +10,8 @@ namespace ProjElf.ProceduraleGeneration
     {
         [SerializeField]
         private DunjeonData m_currentDunjeonData = null;
+
+        public DunjeonData CurrentDunjeonData => m_currentDunjeonData;
         [SerializeField]
         private DunjeonRoom m_firstRoom = null;
         [SerializeField]

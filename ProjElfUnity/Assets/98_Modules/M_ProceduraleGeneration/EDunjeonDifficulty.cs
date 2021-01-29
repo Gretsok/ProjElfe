@@ -6,8 +6,12 @@ namespace ProjElf.ProceduraleGeneration
 { 
     public enum EDunjeonDifficulty
     {
-        easy,
-        medium,
-        hard        
+        RescuerI,
+        RescuerII,
+        RescuerIII,
+        LifeSaverI,
+        LifeSaverII,
+        LifeSaverIII,
+        AbsoluteMasterGuardian
     }
 }

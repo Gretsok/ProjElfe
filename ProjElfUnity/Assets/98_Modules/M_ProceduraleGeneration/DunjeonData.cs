@@ -19,7 +19,7 @@ namespace ProjElf.ProceduraleGeneration
         private List<DunjeonRoomData> m_rooms = new List<DunjeonRoomData>();
 
         [SerializeField, Tooltip("Dunjeon Difficulty")]
-        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.easy;
+        private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.RescuerI;
 
         internal DunjeonRoomData FinalRoomData => m_finalRoomData;
 
