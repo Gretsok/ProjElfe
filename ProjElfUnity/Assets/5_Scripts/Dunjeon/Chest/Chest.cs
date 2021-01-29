@@ -20,15 +20,16 @@ namespace ProjElf.DunjeonGameplay
         [SerializeField]
         private bool m_canDropGrimoire = false;
 
+        AWeaponData.AWeaponSaveData weaponSaveData = null;
+        Interactor currentInteractor = null;
+
         private void Start()
         {
-            MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
+            m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
         }
 
-        private AWeaponData.AWeaponSaveData GetRandomWeapon()
+        private void LoadWeaponsDataToGet()
         {
-            AWeaponData.AWeaponSaveData weaponToReturn = null;
-
             List<AWeaponData> possibleWeaponsData = new List<AWeaponData>();
 
             #region Filling possibleWeaponsData
@@ -45,23 +46,31 @@ namespace ProjElf.DunjeonGameplay
                         possibleWeaponsData.Add(weaponData);
                     }
                 }
+
+                weaponSaveData = GetRandomWeapon(possibleWeaponsData.ToArray());
             };
             #endregion
+            
+        }
+
+        private AWeaponData.AWeaponSaveData GetRandomWeapon(AWeaponData[] weaponsData)
+        {
+            AWeaponData.AWeaponSaveData weaponToReturn = null;
 
             #region Finding a random weapon in possibleWeaponsData
             UnityEngine.Random.InitState((new System.Random(Time.frameCount * this.GetHashCode()).Next()));
-            int index = UnityEngine.Random.Range(0, possibleWeaponsData.Count);
-            AWeaponData weaponDataToReturn = possibleWeaponsData[index];
+            int index = UnityEngine.Random.Range(0, weaponsData.Length);
+            AWeaponData weaponDataToReturn = weaponsData[index];
 
-            if(weaponDataToReturn is BowData)
+            if (weaponDataToReturn is BowData)
             {
                 weaponToReturn = weaponDataToReturn.GetWeaponSaveData<BowData.BowSaveData>();
             }
-            else if(weaponDataToReturn is GrimoireData)
+            else if (weaponDataToReturn is GrimoireData)
             {
                 weaponToReturn = weaponDataToReturn.GetWeaponSaveData<GrimoireData.GrimoireSaveData>();
             }
-            else if(weaponDataToReturn is MeleeWeaponData)
+            else if (weaponDataToReturn is MeleeWeaponData)
             {
                 weaponToReturn = weaponDataToReturn.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>();
             }
@@ -72,9 +81,38 @@ namespace ProjElf.DunjeonGameplay
             return weaponToReturn;
         }
 
+        private IEnumerator OpeningChestRoutine()
+        {
+            weaponSaveData = null;
+            LoadWeaponsDataToGet();
+            float timeOfStart = Time.time;
+            bool success = true;
+            while(weaponSaveData == null)
+            {
+                if(Time.time - timeOfStart > 10f)
+                {
+                    Debug.LogError("COULDN'T FIND A WEAPON");
+                    success = false;
+                    break;
+                }
+                yield return 0;
+            }
+            if(success)
+            {
+                // Do stuff
+                Debug.Log(weaponSaveData);
+                if (currentInteractor != null)
+                {
+                    // Change this : it shouldn't change the equipped weapon of the player but only add it to its collection
+                    currentInteractor.GetComponent<CombatInventory>().ChangeWeapon(weaponSaveData);
+                }
+            }
+        }
+
         public void DoInteraction(Interactor interactor)
         {
-            AWeaponData.AWeaponSaveData weaponToDrop = GetRandomWeapon();
+            currentInteractor = interactor;
+            StartCoroutine(OpeningChestRoutine());
         }
 
         public void StartBeingWatched()

@@ -23,6 +23,7 @@ MonoBehaviour:
     m_SerializedLabels:
     - weapon
     - meleeweapon
+    - rescuer1
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0

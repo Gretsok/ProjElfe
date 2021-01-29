@@ -40,6 +40,22 @@ namespace ProjElf.CombatController
             changePosOf.transform.localRotation = Quaternion.identity; //Rotation à 0
         }
 
+        public void ChangeWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
+        {
+            if(weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
+            {
+                ChangeMeleeWeapon(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+            }
+            else if(weaponSaveData is GrimoireData.GrimoireSaveData)
+            {
+                ChangeGrimoire(weaponSaveData as GrimoireData.GrimoireSaveData);
+            }
+            else if(weaponSaveData is BowData.BowSaveData)
+            {
+                ChangeBow(weaponSaveData as BowData.BowSaveData);
+            }
+        }
+
         public void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
         {
             if(newMeleeWeaponData != null)

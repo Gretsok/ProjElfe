@@ -73,6 +73,13 @@ MonoBehaviour:
     - bow
     - grimoire
     - weapon
+    - rescuer1
+    - rescuer2
+    - rescuer3
+    - lifesaver1
+    - lifesaver2
+    - lifesaver3
+    - absolutemasterguardian
   m_SchemaTemplates: []
   m_GroupTemplateObjects:
   - {fileID: 11400000, guid: c5e6d0aefc488e34c92c489bcc4a5334, type: 2}
