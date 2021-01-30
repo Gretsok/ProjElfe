@@ -2,6 +2,7 @@
 using MOtter.StatesMachine;
 using System.Collections;
 using UnityEngine.AI;
+using MOtter;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -10,6 +11,9 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField]
         private DunjeonManager m_dunjeonManager = null;
         public DunjeonManager DunjeonManager => m_dunjeonManager;
+
+        [SerializeField]
+        private SceneData.SceneData m_hubSceneData = null;
 
         public override IEnumerator LoadAsync()
         {
@@ -73,6 +77,20 @@ namespace ProjElf.ProceduraleGeneration
             {
                 room.LateUpdateAIInRoom();
             }
+        }
+
+        public void WinDunjeon()
+        {
+            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().EarnedWeapon.AddRange(
+                m_player.CombatController.CombatInventory.HoldedWeapons);
+            m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
+            m_hubSceneData.LoadLevel();
+        }
+        
+        public void LoseDunjeon()
+        {
+            m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
+            m_hubSceneData.LoadLevel();
         }
     }
 }

@@ -1,14 +1,13 @@
 ﻿using ProjElf.Interaction;
+using ProjElf.ProceduraleGeneration;
 using ProjElf.SceneData;
 using UnityEngine;
 
 public class DunjeonExit : MonoBehaviour, IInteractable
 {
-    [SerializeField]
-    private SceneData m_hubForestSceneData = null;
     public void DoInteraction(Interactor interactor = null)
     {
-        m_hubForestSceneData.LoadLevel();
+        MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>().WinDunjeon();
     }
 
     public void StartBeingWatched()

@@ -9,9 +9,9 @@ namespace ProjElf.CombatController
     {
         //Var
         [SerializeField] private CombatInventory m_combatInventory;
-        private int m_lifePoints;
+        private int m_lifePoints = 0;
         private int m_maxLifePoints = 100;
-        public Action OnLifeReachedZero;
+        public Action OnLifeReachedZero = null;
 
         /// <summary>
         /// Meant for AI
@@ -65,8 +65,10 @@ namespace ProjElf.CombatController
                     }
                     #endregion
                     Debug.Log("Dealing Damage");
+                    // Use TakeDamage() instead
                     m_lifePoints -= damageGiverData.DamageGiver.Damage.HitDamage;
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
+                    // Remove this when TakeDamage() will be used
                     if (m_lifePoints <= 0)
                     {
                         OnLifeReachedZero?.Invoke();

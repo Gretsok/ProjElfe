@@ -9,7 +9,7 @@ using ProjElf.Interaction;
 
 namespace ProjElf.DunjeonGameplay
 {
-    public class Chest : MonoBehaviour, IInteractable
+    public class DunjeonChest : MonoBehaviour, IInteractable
     {
         private DunjeonGameMode m_gamemode = null;
 
@@ -103,8 +103,7 @@ namespace ProjElf.DunjeonGameplay
                 Debug.Log(weaponSaveData);
                 if (currentInteractor != null)
                 {
-                    // Change this : it shouldn't change the equipped weapon of the player but only add it to its collection
-                    currentInteractor.GetComponent<CombatInventory>().ChangeWeapon(weaponSaveData);
+                    m_gamemode.Player.CombatController.CombatInventory.HoldedWeapons.Add(weaponSaveData);
                 }
             }
         }

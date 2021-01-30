@@ -5,6 +5,7 @@ using MOtter.StatesMachine;
 using ProjElf.Interaction;
 using MOtter;
 using ProjElf.CombatController;
+using System;
 
 namespace ProjElf.PlayerController
 {
@@ -93,7 +94,17 @@ namespace ProjElf.PlayerController
             SetUpInput();
             m_gamemode.OnPause += CleanUpInput;
             m_gamemode.OnUnpause += SetUpInput;
+
+            m_combatController.OnLifeReachedZero += Die;
             
+        }
+
+        private void Die()
+        {
+            if(m_gamemode is ProceduraleGeneration.DunjeonGameMode)
+            {
+                (m_gamemode as ProceduraleGeneration.DunjeonGameMode).LoseDunjeon();
+            }
         }
 
         public override void DoUpdate()
@@ -167,6 +178,8 @@ namespace ProjElf.PlayerController
 
         internal override void ExitStateMachine()
         {
+            m_combatController.OnLifeReachedZero -= Die;
+
             m_gamemode.OnPause -= CleanUpInput;
             m_gamemode.OnUnpause -= SetUpInput;
             CleanUpInput();
