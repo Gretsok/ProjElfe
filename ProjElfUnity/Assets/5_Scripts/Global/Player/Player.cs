@@ -158,7 +158,13 @@ namespace ProjElf.PlayerController
                 {
                     Vector3 arrowStartPosition = m_combatController.CombatInventory.Bow.PosArrow.transform.position;
                     WeaponSight = new Ray(arrowStartPosition, (hitInfo.point - arrowStartPosition));
+
+                    // Simulate Arrow to reorientate it
+                    // Use CalculateArrowPosition() in Arrow (maybe has to be moved) to find when the arrow will go below initPosY (arrowStartPosition.y) and use the x and z values of this point
+
+
                     Debug.DrawLine(arrowStartPosition, arrowStartPosition + (hitInfo.point - arrowStartPosition), Color.yellow);
+                    
                 } 
             }
             else if(m_combatController.UsedWeapon is Grimoire)
