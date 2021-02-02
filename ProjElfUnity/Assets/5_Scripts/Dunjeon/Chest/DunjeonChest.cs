@@ -100,6 +100,7 @@ namespace ProjElf.DunjeonGameplay
             if(success)
             {
                 // Do stuff
+
                 Debug.Log(weaponSaveData);
                 if (currentInteractor != null)
                 {
