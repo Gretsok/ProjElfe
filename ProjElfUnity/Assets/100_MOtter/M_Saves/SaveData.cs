@@ -32,7 +32,7 @@ public class SaveData
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
     public PlayerStats SavedPlayerStats;
-    public List<AWeaponData> EarnedWeapon = new List<AWeaponData>();
+    public List<AWeaponData.AWeaponSaveData> EarnedWeapon = new List<AWeaponData.AWeaponSaveData>();
 
     public string ToJson()
     {

@@ -700,12 +700,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc1353d5d07a5b54f9e3c3d5f2f4324e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posMelee: {fileID: 384803574}
-  posGrimoire: {fileID: 1486217868}
-  posBow: {fileID: 1567486309}
-  posMeleeEquip: {fileID: 179601381}
-  posGrimoireEquip: {fileID: 1036515533}
-  posBowEquip: {fileID: 1251163303}
+  m_posMelee: {fileID: 384803574}
+  m_posGrimoire: {fileID: 1486217868}
+  m_posBow: {fileID: 1567486309}
+  m_posMeleeEquip: {fileID: 179601381}
+  m_posGrimoireEquip: {fileID: 1036515533}
+  m_posBowEquip: {fileID: 1251163303}
 --- !u!114 &6076565977442820730
 MonoBehaviour:
   m_ObjectHideFlags: 0

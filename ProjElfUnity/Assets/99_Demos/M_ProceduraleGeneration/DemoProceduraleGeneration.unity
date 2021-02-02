@@ -258,6 +258,7 @@ MonoBehaviour:
     type: 3}
   m_playerPositionSpawnPoint: {fileID: 455186698}
   m_dunjeonManager: {fileID: 840883209}
+  m_hubSceneData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603, type: 2}
 --- !u!4 &90943534
 Transform:
   m_ObjectHideFlags: 0

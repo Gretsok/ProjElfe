@@ -83,15 +83,5 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8770263049822384698, guid: 858490ecefa146f46be2f10ca579a42a,
-        type: 3}
-      propertyPath: m_width
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 8770263049822384698, guid: 858490ecefa146f46be2f10ca579a42a,
-        type: 3}
-      propertyPath: m_spawningLayerMask.m_Bits
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 858490ecefa146f46be2f10ca579a42a, type: 3}

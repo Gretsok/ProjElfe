@@ -2,6 +2,7 @@
 using MOtter.StatesMachine;
 using System.Collections;
 using UnityEngine.AI;
+using MOtter;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -10,6 +11,9 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField]
         private DunjeonManager m_dunjeonManager = null;
         public DunjeonManager DunjeonManager => m_dunjeonManager;
+
+        [SerializeField]
+        private SceneData.SceneData m_hubSceneData = null;
 
         public override IEnumerator LoadAsync()
         {
@@ -44,7 +48,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoUpdate()
         {
             base.DoUpdate();
-            foreach(DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach(DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.UpdateAIInRoom();
             }
@@ -53,7 +57,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoFixedUpdate()
         {
             base.DoFixedUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.FixedUpdateAIInRoom();
             }
@@ -61,7 +65,7 @@ namespace ProjElf.ProceduraleGeneration
             {
                 if(hitInfo.transform.TryGetComponent<DunjeonRoom>(out DunjeonRoom room))
                 {
-                    room.ActivateRoom();
+                    room.ActivateSurroundingRooms();
                 }
             }
         }
@@ -69,10 +73,24 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoLateUpdate()
         {
             base.DoLateUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.InstantiatedRooms)
+            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
             {
                 room.LateUpdateAIInRoom();
             }
+        }
+
+        public void WinDunjeon()
+        {
+            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().EarnedWeapon.AddRange(
+                m_player.CombatController.CombatInventory.HoldedWeapons);
+            m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
+            m_hubSceneData.LoadLevel();
+        }
+        
+        public void LoseDunjeon()
+        {
+            m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
+            m_hubSceneData.LoadLevel();
         }
     }
 }

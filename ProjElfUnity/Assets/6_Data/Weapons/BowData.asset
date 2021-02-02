@@ -18,8 +18,7 @@ MonoBehaviour:
   m_weaponPrefab: {fileID: 7117105079358856042, guid: 6dc82ef55d614bc4296c18243b281f54,
     type: 3}
   m_allowContinueFiring: 1
-  m_projectileRange: {x: 10, y: 10}
-  m_projectileDivingRate: {x: 0, y: 0}
-  m_projectileSpeed: {x: 5, y: 5}
+  m_projectileDivingRate: {x: 4, y: 4}
+  m_projectileSpeed: {x: 10, y: 10}
   m_projectilePrefab: {fileID: -1534790756218406597, guid: 8886b7b999851bd41991c0f9e31992a6,
     type: 3}

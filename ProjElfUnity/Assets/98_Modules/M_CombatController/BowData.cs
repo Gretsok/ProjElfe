@@ -10,7 +10,6 @@ namespace ProjElf.CombatController
         [System.Serializable]
         public class BowSaveData : AWeaponSaveData
         {
-            public float ProjectileRange;
             public float ProjectileDivingRate;
             public float ProjectileSpeed;
             [SerializeField]
@@ -18,8 +17,7 @@ namespace ProjElf.CombatController
 
             public BowSaveData(BowData bowData) : base(bowData)
             {
-                Random.InitState((new System.Random()).Next(0, 10000000));
-                ProjectileRange = Random.Range(bowData.ProjectileRange.x, bowData.ProjectileRange.y);
+
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileDivingRate = Random.Range(bowData.ProjectileDivingRate.x, bowData.ProjectileDivingRate.y);
                 Random.InitState((new System.Random()).Next(0, 10000000));
@@ -28,11 +26,9 @@ namespace ProjElf.CombatController
             }
         }
         //Var
-        [SerializeField] private Vector2 m_projectileRange;
         [SerializeField] private Vector2 m_projectileDivingRate;
         [SerializeField] private Vector2 m_projectileSpeed;
         [SerializeField] private Arrow m_projectilePrefab;
-        public Vector2 ProjectileRange => m_projectileRange;
         public Vector2 ProjectileDivingRate => m_projectileDivingRate;
         public Vector2 ProjectileSpeed => m_projectileSpeed;
         public Arrow ProjectilePrefab => m_projectilePrefab;

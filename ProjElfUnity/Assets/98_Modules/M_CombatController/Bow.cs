@@ -7,7 +7,6 @@ namespace ProjElf.CombatController
     public class Bow : AWeapon
     {
         //Var
-        private float m_projectileRange;//À voir
         private float m_projectileDivingRate;
         private float m_projectileSpeed;
         [SerializeField] private Arrow m_projectilePrefab;
@@ -18,7 +17,6 @@ namespace ProjElf.CombatController
         
         public void InitBow(BowData.BowSaveData bowToInit)
         {
-            m_projectileRange = bowToInit.ProjectileRange;
             m_projectileDivingRate = bowToInit.ProjectileDivingRate;
             m_projectileSpeed = bowToInit.ProjectileSpeed;
             m_allowContinueFiring = bowToInit.AllowContinueFiring;
@@ -35,8 +33,7 @@ namespace ProjElf.CombatController
         {
             Arrow newArrow;
             newArrow = Instantiate<Arrow>(m_projectilePrefab, posArrow.position, Quaternion.identity);//instancie dans la scene du bow | transform = "position" du bow mais enfant
-            newArrow.transform.LookAt(posArrow.position + direction);//Peut etre à changer (à mettre dans arrow ptetre) //Change la rotation de la fleche dans la direction visée
-            newArrow.InitArrow(m_owner, m_projectileSpeed, m_projectileRange, m_projectileDivingRate, m_damage);
+            newArrow.InitArrow(m_owner, m_projectileSpeed * direction.normalized, m_projectileDivingRate, m_damage);
             return newArrow;
         }
 

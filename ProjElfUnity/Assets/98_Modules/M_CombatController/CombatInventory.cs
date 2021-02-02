@@ -19,14 +19,16 @@ namespace ProjElf.CombatController
         //private AWeapon[] m_weapons = new AWeapon[3];
         private AWeapon m_selectedWeapon;
         //Ref transform quand équipé
-        [SerializeField] private Transform posMelee;
-        [SerializeField] private Transform posGrimoire;
-        [SerializeField] private Transform posBow;
+        [SerializeField] private Transform m_posMelee;
+        [SerializeField] private Transform m_posGrimoire;
+        [SerializeField] private Transform m_posBow;
         //Ref transform quand rangé
-        [SerializeField] private Transform posMeleeEquip;
-        [SerializeField] private Transform posGrimoireEquip;
-        [SerializeField] private Transform posBowEquip;
-        
+        [SerializeField] private Transform m_posMeleeEquip;
+        [SerializeField] private Transform m_posGrimoireEquip;
+        [SerializeField] private Transform m_posBowEquip;
+
+        private List<AWeaponData.AWeaponSaveData> m_holdedWeapons = new List<AWeaponData.AWeaponSaveData>();
+        public List<AWeaponData.AWeaponSaveData> HoldedWeapons => m_holdedWeapons;
 
         /// <summary>
         /// Change le parent et la position de l'arme.
@@ -40,6 +42,22 @@ namespace ProjElf.CombatController
             changePosOf.transform.localRotation = Quaternion.identity; //Rotation à 0
         }
 
+        public void ChangeWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
+        {
+            if(weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
+            {
+                ChangeMeleeWeapon(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+            }
+            else if(weaponSaveData is GrimoireData.GrimoireSaveData)
+            {
+                ChangeGrimoire(weaponSaveData as GrimoireData.GrimoireSaveData);
+            }
+            else if(weaponSaveData is BowData.BowSaveData)
+            {
+                ChangeBow(weaponSaveData as BowData.BowSaveData);
+            }
+        }
+
         public void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
         {
             if(newMeleeWeaponData != null)
@@ -51,7 +69,7 @@ namespace ProjElf.CombatController
                         Destroy(m_meleeWeapon.gameObject);
                     }
                     MeleeWeapon newMeleeWeapon;
-                    newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponData.WeaponPrefab, posMelee.position, posMelee.rotation, posMelee);
+                    newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponData.WeaponPrefab, m_posMelee.position, m_posMelee.rotation, m_posMelee);
                     newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData);
                     m_meleeWeapon = newMeleeWeapon;
                     Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
@@ -69,7 +87,7 @@ namespace ProjElf.CombatController
                         Destroy(m_grimoire.gameObject);
                     }
                     Grimoire newGrimoire;
-                    newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponData.WeaponPrefab, posGrimoire.position, posGrimoire.rotation, posGrimoire);
+                    newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponData.WeaponPrefab, m_posGrimoire.position, m_posGrimoire.rotation, m_posGrimoire);
                     newGrimoire.InitGrimoire(newGrimoireData);
                     m_grimoire = newGrimoire;
                     Debug.Log("Equipped new Grimoire : " + newGrimoire.name);
@@ -87,7 +105,7 @@ namespace ProjElf.CombatController
                         Destroy(m_bow.gameObject);
                     }
                     Bow newBow;
-                    newBow = Instantiate<Bow>((Bow)newBowData.WeaponData.WeaponPrefab, posBow.position, posBow.rotation, posBow);
+                    newBow = Instantiate<Bow>((Bow)newBowData.WeaponData.WeaponPrefab, m_posBow.position, m_posBow.rotation, m_posBow);
                     newBow.InitBow(newBowData);//init les valeurs du bow
                     m_bow = newBow;
                     Debug.Log("Equipped new Bow : " + newBow.name);
@@ -103,17 +121,17 @@ namespace ProjElf.CombatController
                 if (m_grimoire != null)
                 {
                     //On range le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                    ChangeWeaponTransform(m_meleeWeapon, m_posMelee);
                     //On sort le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                     m_selectedWeapon = m_grimoire;
                 }
                 else if (m_bow != null)
                 {
                     //On range le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                    ChangeWeaponTransform(m_meleeWeapon, m_posMelee);
                     //On sort le bow
-                    ChangeWeaponTransform(m_bow, posBowEquip);
+                    ChangeWeaponTransform(m_bow, m_posBowEquip);
                     m_selectedWeapon = m_bow;
                 }
             }
@@ -124,17 +142,17 @@ namespace ProjElf.CombatController
                     if (m_bow != null)
                     {
                         //On range le grimoire
-                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        ChangeWeaponTransform(m_grimoire, m_posGrimoire);
                         //On sort le bow
-                        ChangeWeaponTransform(m_bow, posBowEquip);
+                        ChangeWeaponTransform(m_bow, m_posBowEquip);
                         m_selectedWeapon = m_bow;
                     }
                     else if (m_meleeWeapon != null)
                     {
                         //On range le grimoire
-                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        ChangeWeaponTransform(m_grimoire, m_posGrimoire);
                         //On sort le melee
-                        ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                        ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                         m_selectedWeapon = m_meleeWeapon;
                     }
                 }
@@ -145,17 +163,17 @@ namespace ProjElf.CombatController
                         if (m_meleeWeapon != null)
                         {
                             //On range le bow
-                            ChangeWeaponTransform(m_bow, posBow);
+                            ChangeWeaponTransform(m_bow, m_posBow);
                             //On sort le melee
-                            ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                            ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                             m_selectedWeapon = m_meleeWeapon;
                         }
                         else if (m_grimoire != null)
                         {
                             //On range le bow
-                            ChangeWeaponTransform(m_bow, posBow);
+                            ChangeWeaponTransform(m_bow, m_posBow);
                             //On sort le grimoire
-                            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                            ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                             m_selectedWeapon = m_grimoire;
                         }
                     }
@@ -168,19 +186,19 @@ namespace ProjElf.CombatController
                 if (m_meleeWeapon != null)
                 {
                     //On sort le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                     m_selectedWeapon = m_meleeWeapon;
                 }
                 else if (m_grimoire != null)
                 {
                     //On sort le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                     m_selectedWeapon = m_grimoire;
                 }
                 else if (m_bow != null)
                 {
                     //On sort le bow
-                    ChangeWeaponTransform(m_bow, posBowEquip);
+                    ChangeWeaponTransform(m_bow, m_posBowEquip);
                     m_selectedWeapon = m_bow;
                 }
             }
@@ -194,17 +212,17 @@ namespace ProjElf.CombatController
                 if(m_grimoire != null)
                 {
                     //On range le bow
-                    ChangeWeaponTransform(m_bow, posBow);
+                    ChangeWeaponTransform(m_bow, m_posBow);
                     //On sort le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                     m_selectedWeapon = m_grimoire;
                 }
                 else if(m_meleeWeapon != null)
                 {
                     //On range le bow
-                    ChangeWeaponTransform(m_bow, posBow);
+                    ChangeWeaponTransform(m_bow, m_posBow);
                     //On sort le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                     m_selectedWeapon = m_meleeWeapon;
                 }
             }
@@ -215,17 +233,17 @@ namespace ProjElf.CombatController
                     if(m_meleeWeapon != null)
                     {
                         //On range le grimoire
-                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        ChangeWeaponTransform(m_grimoire, m_posGrimoire);
                         //On sort le melee
-                        ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                        ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                         m_selectedWeapon = m_meleeWeapon;
                     }
                     else if(m_bow != null)
                     {
                         //On range le grimoire
-                        ChangeWeaponTransform(m_grimoire, posGrimoire);
+                        ChangeWeaponTransform(m_grimoire, m_posGrimoire);
                         //On sort le bow
-                        ChangeWeaponTransform(m_bow, posBowEquip);
+                        ChangeWeaponTransform(m_bow, m_posBowEquip);
                         m_selectedWeapon = m_bow;
                     }
                 }
@@ -236,17 +254,17 @@ namespace ProjElf.CombatController
                         if(m_bow != null)
                         {
                             //On range le melee
-                            ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                            ChangeWeaponTransform(m_meleeWeapon, m_posMelee);
                             //On sort le bow
-                            ChangeWeaponTransform(m_bow, posBowEquip);
+                            ChangeWeaponTransform(m_bow, m_posBowEquip);
                             m_selectedWeapon = m_bow;
                         }
                         else if(m_grimoire != null)
                         {
                             //On range le melee
-                            ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                            ChangeWeaponTransform(m_meleeWeapon, m_posMelee);
                             //On sort le grimoire
-                            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                            ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                             m_selectedWeapon = m_grimoire;
                         }
                     }
@@ -258,19 +276,19 @@ namespace ProjElf.CombatController
                 if (m_bow != null)
                 {
                     //On sort le bow
-                    ChangeWeaponTransform(m_bow, posBowEquip);
+                    ChangeWeaponTransform(m_bow, m_posBowEquip);
                     m_selectedWeapon = m_bow;
                 }
                 else if (m_grimoire != null)
                 {
                     //On sort le grimoire
-                    ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+                    ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
                     m_selectedWeapon = m_grimoire;
                 }
                 else if (m_meleeWeapon != null)
                 {
                     //On sort le melee
-                    ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+                    ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
                     m_selectedWeapon = m_meleeWeapon;
                 }
             }
