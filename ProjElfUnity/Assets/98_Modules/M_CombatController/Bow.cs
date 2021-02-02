@@ -15,7 +15,7 @@ namespace ProjElf.CombatController
         private CombatController m_owner;
 
         public Transform PosArrow => posArrow;
-
+        
         public void InitBow(BowData.BowSaveData bowToInit)
         {
             m_projectileRange = bowToInit.ProjectileRange;
@@ -23,7 +23,7 @@ namespace ProjElf.CombatController
             m_projectileSpeed = bowToInit.ProjectileSpeed;
             m_allowContinueFiring = bowToInit.AllowContinueFiring;
             m_attackSpeed = bowToInit.AttackSpeed;
-            m_damage = Damage;
+            m_damage = bowToInit.HitDamage;
             m_weaponSaveData = bowToInit;
         }
         /// <summary>
