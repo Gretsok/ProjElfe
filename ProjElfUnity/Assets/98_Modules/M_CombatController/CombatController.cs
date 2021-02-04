@@ -103,17 +103,16 @@ namespace ProjElf.CombatController
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
+                #region Manage DamageGiversData
+                if (damageGiverData == null)
+                {
+                    damageGiverData = new DamageGiverData();
+                    damageGiverData.DamageGiver = damageGiver;
+                    m_damageGivers.Add(damageGiverData);
+                    damageGiverData.TimeOfLastDamage = float.MinValue;
+                }
                 if (damageGiverData.DamageGiver.Owner != this)
                 {
-                    #region Manage DamageGiversData
-                    if (damageGiverData == null)
-                    {
-                        damageGiverData = new DamageGiverData();
-                        damageGiverData.DamageGiver = damageGiver;
-                        m_damageGivers.Add(damageGiverData);
-                        damageGiverData.TimeOfLastDamage = float.MinValue;
-                    }
-
                     damageGiverData.Colliding = true;
                     #endregion
                     if (Time.time - damageGiverData.TimeOfLastDamage > damageGiver.Cooldown)
@@ -121,9 +120,11 @@ namespace ProjElf.CombatController
                         GetAttacked(damageGiverData);
                     }
                 }
-                    
+                
             }
+                    
         }
+
 
         private void OnTriggerExit(Collider other)
         {

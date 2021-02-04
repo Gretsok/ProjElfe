@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Damage : MonoBehaviour
+    public class Damage
     {
         //Var
         internal int HitDamage;
