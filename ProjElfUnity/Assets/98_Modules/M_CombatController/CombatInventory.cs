@@ -16,6 +16,8 @@ namespace ProjElf.CombatController
         public Grimoire Grimoire => m_grimoire;
         public Bow Bow => m_bow;
 
+        private CombatController m_combatController = null;
+
         //private AWeapon[] m_weapons = new AWeapon[3];
         private AWeapon m_selectedWeapon;
         //Ref transform quand équipé
@@ -29,6 +31,11 @@ namespace ProjElf.CombatController
 
         private List<AWeaponData.AWeaponSaveData> m_holdedWeapons = new List<AWeaponData.AWeaponSaveData>();
         public List<AWeaponData.AWeaponSaveData> HoldedWeapons => m_holdedWeapons;
+
+        internal void RegisterCombatController(CombatController thisCombatController)
+        {
+            m_combatController = thisCombatController;
+        }
 
         /// <summary>
         /// Change le parent et la position de l'arme.
@@ -70,7 +77,7 @@ namespace ProjElf.CombatController
                     }
                     MeleeWeapon newMeleeWeapon;
                     newMeleeWeapon = Instantiate<MeleeWeapon>((MeleeWeapon)newMeleeWeaponData.WeaponData.WeaponPrefab, m_posMelee.position, m_posMelee.rotation, m_posMelee);
-                    newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData);
+                    newMeleeWeapon.InitMeleeWeapon(newMeleeWeaponData, m_combatController);
                     m_meleeWeapon = newMeleeWeapon;
                     Debug.Log("Equipped new MeleeWeapon : " + newMeleeWeapon.name);
                 }
@@ -88,7 +95,7 @@ namespace ProjElf.CombatController
                     }
                     Grimoire newGrimoire;
                     newGrimoire = Instantiate<Grimoire>((Grimoire)newGrimoireData.WeaponData.WeaponPrefab, m_posGrimoire.position, m_posGrimoire.rotation, m_posGrimoire);
-                    newGrimoire.InitGrimoire(newGrimoireData);
+                    newGrimoire.InitGrimoire(newGrimoireData, m_combatController);
                     m_grimoire = newGrimoire;
                     Debug.Log("Equipped new Grimoire : " + newGrimoire.name);
                 }
@@ -106,7 +113,7 @@ namespace ProjElf.CombatController
                     }
                     Bow newBow;
                     newBow = Instantiate<Bow>((Bow)newBowData.WeaponData.WeaponPrefab, m_posBow.position, m_posBow.rotation, m_posBow);
-                    newBow.InitBow(newBowData);//init les valeurs du bow
+                    newBow.InitBow(newBowData, m_combatController);//init les valeurs du bow
                     m_bow = newBow;
                     Debug.Log("Equipped new Bow : " + newBow.name);
                 }
@@ -299,21 +306,21 @@ namespace ProjElf.CombatController
             if (m_selectedWeapon is MeleeWeapon)
             {
                 //On range le melee
-                ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                ChangeWeaponTransform(m_meleeWeapon, m_posMelee);
                 m_selectedWeapon = null;
             }
 
             if (m_selectedWeapon is Bow)
             {
                 //On range le bow
-                ChangeWeaponTransform(m_bow, posBow);
+                ChangeWeaponTransform(m_bow, m_posBow);
                 m_selectedWeapon = null;
             }
 
             if (m_selectedWeapon is Grimoire)
             {
                 //On range le grimoire
-                ChangeWeaponTransform(m_grimoire, posGrimoire);
+                ChangeWeaponTransform(m_grimoire, m_posGrimoire);
                 m_selectedWeapon = null;
             }
         }
@@ -321,21 +328,21 @@ namespace ProjElf.CombatController
         public void SelectGrimoire()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
-            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+            ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
             m_selectedWeapon = m_grimoire;
         }
 
         public void SelectBow()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
-            ChangeWeaponTransform(m_bow, posBowEquip);
+            ChangeWeaponTransform(m_bow, m_posBowEquip);
             m_selectedWeapon = m_bow;
         }
 
         public void SelectMeleeWeapon()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
-            ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+            ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
             m_selectedWeapon = m_meleeWeapon;
         }
 

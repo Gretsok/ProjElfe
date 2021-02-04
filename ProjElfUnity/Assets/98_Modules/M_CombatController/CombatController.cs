@@ -50,6 +50,7 @@ namespace ProjElf.CombatController
         private void Start()
         {
             m_lifePoints = m_maxLifePoints;
+            CombatInventory.RegisterCombatController(this);
         }
 
         #region DamageGiver
@@ -101,22 +102,26 @@ namespace ProjElf.CombatController
             Debug.Log("OnTriggerEnter");
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
-                #region Manage DamageGiversData
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
-                if (damageGiverData == null)
+                if (damageGiverData.DamageGiver.Owner != this)
                 {
-                    damageGiverData = new DamageGiverData();
-                    damageGiverData.DamageGiver = damageGiver;
-                    m_damageGivers.Add(damageGiverData);
-                    damageGiverData.TimeOfLastDamage = float.MinValue;
-                }
+                    #region Manage DamageGiversData
+                    if (damageGiverData == null)
+                    {
+                        damageGiverData = new DamageGiverData();
+                        damageGiverData.DamageGiver = damageGiver;
+                        m_damageGivers.Add(damageGiverData);
+                        damageGiverData.TimeOfLastDamage = float.MinValue;
+                    }
 
-                damageGiverData.Colliding = true;
-                #endregion
-                if (Time.time - damageGiverData.TimeOfLastDamage > damageGiver.Cooldown)
-                {
-                    GetAttacked(damageGiverData);
+                    damageGiverData.Colliding = true;
+                    #endregion
+                    if (Time.time - damageGiverData.TimeOfLastDamage > damageGiver.Cooldown)
+                    {
+                        GetAttacked(damageGiverData);
+                    }
                 }
+                    
             }
         }
 

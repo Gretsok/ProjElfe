@@ -7,15 +7,15 @@ namespace ProjElf.CombatController
     public class Bow : AWeapon
     {
         //Var
-        private float m_projectileDivingRate;
-        private float m_projectileSpeed;
-        [SerializeField] private Arrow m_projectilePrefab;
-        [SerializeField] private Transform posArrow;
-        private CombatController m_owner;
+        private float m_projectileDivingRate = 0;
+        private float m_projectileSpeed = 0;
+        [SerializeField] private Arrow m_projectilePrefab = null;
+        [SerializeField] private Transform posArrow = null;
+        private CombatController m_owner = null;
 
         public Transform PosArrow => posArrow;
         
-        public void InitBow(BowData.BowSaveData bowToInit)
+        public void InitBow(BowData.BowSaveData bowToInit, CombatController Owner)
         {
             m_projectileDivingRate = bowToInit.ProjectileDivingRate;
             m_projectileSpeed = bowToInit.ProjectileSpeed;
@@ -23,6 +23,7 @@ namespace ProjElf.CombatController
             m_attackSpeed = bowToInit.AttackSpeed;
             m_damage = bowToInit.HitDamage;
             m_weaponSaveData = bowToInit;
+            m_owner = Owner;
         }
         /// <summary>
         /// Instantie une arrow qui ira vers la direction ciblée

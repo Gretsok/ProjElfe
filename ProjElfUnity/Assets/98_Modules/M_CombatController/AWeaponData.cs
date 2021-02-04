@@ -19,7 +19,9 @@ namespace ProjElf.CombatController
             {
                 WeaponName = weaponData.WeaponName;
                 Random.InitState((new System.Random()).Next(0, 10000000));
+                HitDamage = new Damage();
                 HitDamage.HitDamage = Random.Range(weaponData.HitDamage.x, weaponData.HitDamage.y);
+                HitDamage.DamageType = EDamageType.Physical;
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 AttackSpeed = Random.Range(weaponData.AttackSpeed.x, weaponData.AttackSpeed.y);
                 WeaponData = weaponData;

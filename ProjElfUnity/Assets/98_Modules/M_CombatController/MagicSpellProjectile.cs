@@ -10,15 +10,24 @@ namespace ProjElf.CombatController
         private float m_speed;
         private float m_lifeTime;
         private float m_actualLifeTime;
+        private Damage m_damage;
+        public Damage Damage => m_damage;
+
+        public CombatController Owner { get; private set; }
 
         //Initialisateur
-        public void InitMagicSpellProjectile(float speed,float range)
+        public void InitMagicSpellProjectile(CombatController owner, float speed, float range, Damage damage)
         {
+            Owner = owner;
             m_speed = speed;
             m_lifeTime = range;
+            m_damage = damage;
         }
 
-
+        public void OnCombatControllerHit(CombatController hitController)
+        {
+            Destroy(gameObject);
+        }
 
         // Update is called once per frame
         void FixedUpdate()
