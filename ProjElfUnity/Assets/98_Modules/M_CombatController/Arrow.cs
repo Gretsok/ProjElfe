@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Arrow : MonoBehaviour, IDamageGiver
+    public class Arrow : MonoBehaviour, IDamageGiver, IndependantObject.IndependantObject
     {
         //Var
         private Vector3 m_initialVelocity;
@@ -36,6 +36,7 @@ namespace ProjElf.CombatController
             m_damage = damage;
             m_initialPosition = transform.position;
             m_timePassed = 0f;
+            IndependantObject.IndependantObjectManager.Instance.RegisterNewIndependantObject(this);
         }
 
         public Vector3 CalculateArrowPosition(float time)
@@ -49,8 +50,12 @@ namespace ProjElf.CombatController
             return pos;
         }
 
-        // Update is called once per frame
-        void FixedUpdate()
+        public void DoUpdate()
+        {
+            
+        }
+
+        public void DoFixedUpdate()
         {
             Vector3 newPosition = CalculateArrowPosition(m_timePassed);
             transform.LookAt(newPosition);
@@ -58,6 +63,10 @@ namespace ProjElf.CombatController
             m_timePassed += Time.fixedDeltaTime;
         }
 
+        public void DoLateUpdate()
+        {
+            
+        }
     }
 }
 
