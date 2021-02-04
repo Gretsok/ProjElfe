@@ -586,12 +586,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c0974062914f1ec4f892271b6abba1ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  posMelee: {fileID: 2677226579245506460}
-  posGrimoire: {fileID: 2958757180811564559}
-  posBow: {fileID: 2989107119699077848}
-  posMeleeEquip: {fileID: 9121685933558337558}
-  posGrimoireEquip: {fileID: 6587168621645551245}
-  posBowEquip: {fileID: 4076027991333973624}
+  m_posMelee: {fileID: 2677226579245506460}
+  m_posGrimoire: {fileID: 2958757180811564559}
+  m_posBow: {fileID: 2989107119699077848}
+  m_posMeleeEquip: {fileID: 9121685933558337558}
+  m_posGrimoireEquip: {fileID: 6587168621645551245}
+  m_posBowEquip: {fileID: 4076027991333973624}
   m_grimoireData: {fileID: 0}
   m_bowData: {fileID: 0}
   m_meleeWeaponData: {fileID: 11400000, guid: cefb04cbfd4af5944a25d7cc7b94e754, type: 2}
