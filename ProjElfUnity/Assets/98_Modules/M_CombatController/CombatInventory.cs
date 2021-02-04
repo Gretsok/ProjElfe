@@ -294,19 +294,49 @@ namespace ProjElf.CombatController
             }
         }
 
+        public void UnEquipWeapon()
+        {
+            if (m_selectedWeapon is MeleeWeapon)
+            {
+                //On range le melee
+                ChangeWeaponTransform(m_meleeWeapon, posMelee);
+                m_selectedWeapon = null;
+            }
+
+            if (m_selectedWeapon is Bow)
+            {
+                //On range le bow
+                ChangeWeaponTransform(m_bow, posBow);
+                m_selectedWeapon = null;
+            }
+
+            if (m_selectedWeapon is Grimoire)
+            {
+                //On range le grimoire
+                ChangeWeaponTransform(m_grimoire, posGrimoire);
+                m_selectedWeapon = null;
+            }
+        }
+
         public void SelectGrimoire()
         {
-
+            UnEquipWeapon(); //On enleve l'arme actuelle
+            ChangeWeaponTransform(m_grimoire, posGrimoireEquip);
+            m_selectedWeapon = m_grimoire;
         }
 
         public void SelectBow()
         {
-
+            UnEquipWeapon(); //On enleve l'arme actuelle
+            ChangeWeaponTransform(m_bow, posBowEquip);
+            m_selectedWeapon = m_bow;
         }
 
         public void SelectMeleeWeapon()
         {
-
+            UnEquipWeapon(); //On enleve l'arme actuelle
+            ChangeWeaponTransform(m_meleeWeapon, posMeleeEquip);
+            m_selectedWeapon = m_meleeWeapon;
         }
 
         public void UseMeleeWeapon()

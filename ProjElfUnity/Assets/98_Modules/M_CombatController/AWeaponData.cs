@@ -10,7 +10,7 @@ namespace ProjElf.CombatController
         public class AWeaponSaveData
         {
             public string WeaponName;
-            public int HitDamage;
+            public Damage HitDamage;
             public float AttackSpeed;
             public AWeaponData WeaponData;
             public bool AllowContinueFiring;
@@ -19,7 +19,7 @@ namespace ProjElf.CombatController
             {
                 WeaponName = weaponData.WeaponName;
                 Random.InitState((new System.Random()).Next(0, 10000000));
-                HitDamage = Random.Range(weaponData.HitDamage.x, weaponData.HitDamage.y);
+                HitDamage.HitDamage = Random.Range(weaponData.HitDamage.x, weaponData.HitDamage.y);
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 AttackSpeed = Random.Range(weaponData.AttackSpeed.x, weaponData.AttackSpeed.y);
                 WeaponData = weaponData;

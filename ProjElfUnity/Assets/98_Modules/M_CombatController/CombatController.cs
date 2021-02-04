@@ -11,6 +11,11 @@ namespace ProjElf.CombatController
         [SerializeField] private CombatInventory m_combatInventory;
         private int m_lifePoints = 0;
         private int m_maxLifePoints = 100;
+        private int m_armor = 0;
+        private int m_magicResist = 0;
+        private int m_attackSpeed = 0;
+        private int m_moveSpeed = 0;
+
         public Action OnLifeReachedZero = null;
 
         /// <summary>
@@ -50,6 +55,7 @@ namespace ProjElf.CombatController
         #region DamageGiver
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
+            Debug.Log("GetAttacked");
             if (damageGiverData.DamageGiver.Owner != this)
             {
 
@@ -85,12 +91,14 @@ namespace ProjElf.CombatController
 
         IEnumerator TriggerNextAttackRoutine(DamageGiverData damageGiverData)
         {
+            Debug.Log("TriggerNextAttackRoutine");
             yield return new WaitForSeconds(damageGiverData.DamageGiver.Cooldown);
             GetAttacked(damageGiverData);
         }
 
         private void OnTriggerEnter(Collider other)
         {
+            Debug.Log("OnTriggerEnter");
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
                 #region Manage DamageGiversData
@@ -109,13 +117,12 @@ namespace ProjElf.CombatController
                 {
                     GetAttacked(damageGiverData);
                 }
-
-
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
+            Debug.Log("OnTriggerExit");
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
