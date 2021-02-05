@@ -49,6 +49,7 @@ namespace ProjElf.CombatController
             changePosOf.transform.localRotation = Quaternion.identity; //Rotation à 0
         }
 
+        #region Change Weapon
         public void ChangeWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
         {
             if(weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
@@ -119,6 +120,9 @@ namespace ProjElf.CombatController
                 }
             }
         }
+        #endregion
+
+        #region WeaponSelection
         public void SelectNextWeapon()
         {
             //On part sur Epee / Grimoire / Arc donc :
@@ -345,7 +349,9 @@ namespace ProjElf.CombatController
             ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
             m_selectedWeapon = m_meleeWeapon;
         }
+        #endregion
 
+        #region UseWeapons
         public void UseMeleeWeapon()
         {
             if(m_selectedWeapon is MeleeWeapon)
@@ -379,6 +385,45 @@ namespace ProjElf.CombatController
                 Debug.LogError("UseGrimoireWeapon avec mauvaise arme");
             }
         }
+        #endregion
+
+        #region DestroyWeapons
+        public void DestroyMeleeWeapon()
+        {
+            if (m_meleeWeapon != null)
+            {
+                if(m_selectedWeapon == m_meleeWeapon)
+                {
+                    m_selectedWeapon = null;
+                }
+                Destroy(m_meleeWeapon.gameObject);
+            }
+        }
+
+        public void DestroyGrimoire()
+        {
+            if (m_grimoire != null)
+            {
+                if (m_selectedWeapon == m_grimoire)
+                {
+                    m_selectedWeapon = null;
+                }
+                Destroy(m_grimoire.gameObject);
+            }
+        }
+
+        public void DestroyBow()
+        {
+            if (m_bow != null)
+            {
+                if (m_selectedWeapon == m_bow)
+                {
+                    m_selectedWeapon = null;
+                }
+                Destroy(m_bow.gameObject);
+            }
+        }
+        #endregion
 
         public AWeapon GetUsedWeapon()
         {

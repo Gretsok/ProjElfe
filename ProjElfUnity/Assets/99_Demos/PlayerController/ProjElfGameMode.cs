@@ -75,5 +75,4 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
         base.ExitStateMachine();
     }
 
-
 }
