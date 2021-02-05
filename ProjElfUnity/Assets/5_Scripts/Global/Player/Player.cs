@@ -22,6 +22,8 @@ namespace ProjElf.PlayerController
         private CharacterAnimatorHandler m_characterAnimatorHandler = null;
         [SerializeField]
         private PlayerCombatController m_combatController = null;
+        [SerializeField]
+        private PlayerCharacterModelSightBrain m_modelSightBrain = null;
 
         public CharacterController CharacterController => m_characterController;
         public PlayerCameraController CameraController => m_cameraController;
@@ -80,6 +82,7 @@ namespace ProjElf.PlayerController
         {
             EnterStateMachine();
             m_cameraController.Zoom(false);
+            m_modelSightBrain.StartWatchingAlongPlayerSight();
         }
 
 
@@ -111,6 +114,7 @@ namespace ProjElf.PlayerController
         {
             base.DoUpdate();
             m_combatController.DoUpdate(WeaponSight.direction);
+            m_modelSightBrain.DoUpdate();
         }
 
 
