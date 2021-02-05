@@ -63,7 +63,7 @@ namespace ProjElf.PlayerController
         private Transform m_camFollowTarget = null;
         public Transform CamFollowTarget => m_camFollowTarget;
 
-        internal Vector3 Direction = Vector3.zero;
+        internal Vector3 Velocity = Vector3.zero;
 
         private PlayerInputsActions m_actions = null;
         public PlayerInputsActions Actions => m_actions;
@@ -128,7 +128,7 @@ namespace ProjElf.PlayerController
 
 
             Vector3 verticalMovement = Vector3.up * m_verticalVelocity;
-            m_characterController.Move((Direction + verticalMovement) * Time.fixedDeltaTime);
+            m_characterController.Move((Velocity + verticalMovement) * Time.fixedDeltaTime);
             
             if(m_characterController.isGrounded)
             {
