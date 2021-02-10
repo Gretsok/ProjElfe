@@ -16,6 +16,7 @@ namespace ProjElf.CombatController
         public Grimoire Grimoire => m_grimoire;
         public Bow Bow => m_bow;
 
+        [SerializeField]
         private CombatController m_combatController = null;
 
         //private AWeapon[] m_weapons = new AWeapon[3];
@@ -32,10 +33,6 @@ namespace ProjElf.CombatController
         private List<AWeaponData.AWeaponSaveData> m_holdedWeapons = new List<AWeaponData.AWeaponSaveData>();
         public List<AWeaponData.AWeaponSaveData> HoldedWeapons => m_holdedWeapons;
 
-        internal void RegisterCombatController(CombatController thisCombatController)
-        {
-            m_combatController = thisCombatController;
-        }
 
         /// <summary>
         /// Change le parent et la position de l'arme.

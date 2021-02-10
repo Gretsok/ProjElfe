@@ -23,6 +23,9 @@ namespace ProjElf.CombatController
         /// </summary>
         public bool ForceContinueFiring = false;
 
+        [SerializeField]
+        private CombatControllerUIManager m_UIManager = null;
+
 
         public CombatInventory CombatInventory => m_combatInventory;
 
@@ -50,7 +53,6 @@ namespace ProjElf.CombatController
         private void Start()
         {
             m_lifePoints = m_maxLifePoints;
-            CombatInventory.RegisterCombatController(this);
         }
 
         #region DamageGiver
@@ -62,6 +64,7 @@ namespace ProjElf.CombatController
 
                 if (damageGiverData.Colliding)
                 {
+                    Debug.Log(gameObject.name + " is attacked by " + damageGiverData.DamageGiver.Owner.gameObject.name);
                     #region Update other DamageGiversData
                     for (int i = m_damageGivers.Count - 1; i >= 0; i--)
                     {
@@ -95,7 +98,6 @@ namespace ProjElf.CombatController
 
         private void OnTriggerEnter(Collider other)
         {
-            Debug.Log("OnTriggerEnter");
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
@@ -124,7 +126,6 @@ namespace ProjElf.CombatController
 
         private void OnTriggerExit(Collider other)
         {
-            Debug.Log("OnTriggerExit");
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
@@ -224,6 +225,7 @@ namespace ProjElf.CombatController
         public void TakeDamage(int damage)
         {
             m_lifePoints -= damage;
+            m_UIManager?.SetHealthRatio(m_lifePoints / m_maxLifePoints);
             if(m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null

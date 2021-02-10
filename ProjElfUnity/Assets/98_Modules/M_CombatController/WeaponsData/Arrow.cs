@@ -27,6 +27,7 @@ namespace ProjElf.CombatController
 
         public void OnCombatControllerHit(CombatController hitController)
         {
+            Debug.Log(hitController.gameObject.name);
             DestroyArrow();
         }
 
@@ -64,7 +65,6 @@ namespace ProjElf.CombatController
             IndependantObject.IndependantObjectManager.Instance.UnregisterIndependantObject(this);
         }
 
-
         public void DoUpdate()
         {
             
@@ -99,5 +99,3 @@ namespace ProjElf.CombatController
         }
     }
 }
-
-
