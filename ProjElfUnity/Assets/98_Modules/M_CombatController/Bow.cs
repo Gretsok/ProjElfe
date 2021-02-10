@@ -14,7 +14,9 @@ namespace ProjElf.CombatController
         private CombatController m_owner = null;
 
         public Transform PosArrow => posArrow;
-        
+
+        private ObjectPool.ObjectPool m_arrowPool = null;
+
         public void InitBow(BowData.BowSaveData bowToInit, CombatController Owner)
         {
             m_projectileDivingRate = bowToInit.ProjectileDivingRate;
@@ -24,6 +26,7 @@ namespace ProjElf.CombatController
             m_damage = bowToInit.HitDamage;
             m_weaponSaveData = bowToInit;
             m_owner = Owner;
+            m_arrowPool = gameObject.AddComponent<ObjectPool.ObjectPool>();
         }
         /// <summary>
         /// Instantie une arrow qui ira vers la direction ciblée
@@ -33,7 +36,11 @@ namespace ProjElf.CombatController
         public Arrow InstantiateInitializedArrow(Vector3 direction)//A transformer en void
         {
             Arrow newArrow;
-            newArrow = Instantiate<Arrow>(m_projectilePrefab, posArrow.position, Quaternion.identity);//instancie dans la scene du bow | transform = "position" du bow mais enfant
+
+            newArrow = m_arrowPool.GetObject<Arrow>(m_projectilePrefab.gameObject); // Pooling Arrows
+            newArrow.transform.position = posArrow.position;
+            newArrow.transform.rotation = Quaternion.identity;
+
             newArrow.InitArrow(m_owner, m_projectileSpeed * direction.normalized, m_projectileDivingRate, m_damage);
             return newArrow;
         }

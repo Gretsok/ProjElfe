@@ -8,7 +8,7 @@ namespace ProjElf.CombatController
     public class CombatController : MonoBehaviour
     {
         //Var
-        [SerializeField] private CombatInventory m_combatInventory;
+        [SerializeField] private CombatInventory m_combatInventory = null;
         private int m_lifePoints = 0;
         private int m_maxLifePoints = 100;
         private int m_armor = 0;
@@ -36,7 +36,7 @@ namespace ProjElf.CombatController
         private bool m_isShooting;
         private float m_timeLastShoot = float.MinValue;
 
-        [SerializeField] private CharacterAnimatorHandler m_characterAnimatorHandler;
+        [SerializeField] private CharacterAnimatorHandler m_characterAnimatorHandler = null;
 
         protected class DamageGiverData
         {

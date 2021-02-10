@@ -8,9 +8,9 @@ public class ButtonNavigationPosition : MonoBehaviour, INavigationPosition
     [SerializeField]
     private Image m_image = null;
     [SerializeField]
-    private Color32 m_selectedColor;
+    private Color32 m_selectedColor = Color.white;
     [SerializeField]
-    private Color32 m_unselectedColor;
+    private Color32 m_unselectedColor = Color.white;
     private void Awake()
     {
         if(m_image == null)

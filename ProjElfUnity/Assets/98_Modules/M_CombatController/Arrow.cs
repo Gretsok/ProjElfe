@@ -4,27 +4,30 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Arrow : MonoBehaviour, IDamageGiver, IndependantObject.IndependantObject
+    public class Arrow : MonoBehaviour, IDamageGiver, IndependantObject.IndependantObject, ObjectPool.IPoolable
     {
         //Var
         private Vector3 m_initialVelocity;
         private Vector3 m_initialPosition;
         private float m_gravityApplied;
         private Damage m_damage;
-        private float m_lifeTime; //à implémenter
+        private float m_lifeTime = 10f; //à implémenter
 
         public CombatController Owner { get; private set; }
 
         public Damage Damage => m_damage;
         public float Cooldown => 5f;
 
+        private bool m_isPoolable = true;
+        public bool IsPoolable => m_isPoolable;
+        private bool m_isAlive = false;
         #region TimeManagement
         private float m_timePassed = 0f;
         #endregion
 
         public void OnCombatControllerHit(CombatController hitController)
         {
-            Destroy(gameObject);
+            DestroyArrow();
         }
 
         //Initialisateur
@@ -37,6 +40,9 @@ namespace ProjElf.CombatController
             m_initialPosition = transform.position;
             m_timePassed = 0f;
             IndependantObject.IndependantObjectManager.Instance.RegisterNewIndependantObject(this);
+            m_isPoolable = false;
+            gameObject.SetActive(true);
+            m_isAlive = true;
         }
 
         public Vector3 CalculateArrowPosition(float time)
@@ -50,6 +56,14 @@ namespace ProjElf.CombatController
             return pos;
         }
 
+        private void DestroyArrow()
+        {
+            gameObject.SetActive(false);
+            m_isPoolable = true;
+            m_isAlive = false;
+        }
+
+
         public void DoUpdate()
         {
             
@@ -57,15 +71,30 @@ namespace ProjElf.CombatController
 
         public void DoFixedUpdate()
         {
-            Vector3 newPosition = CalculateArrowPosition(m_timePassed);
-            transform.LookAt(newPosition);
-            transform.position = newPosition;
-            m_timePassed += Time.fixedDeltaTime;
+            if(m_isAlive)
+            {
+                if (m_timePassed < m_lifeTime)
+                {
+                    Vector3 newPosition = CalculateArrowPosition(m_timePassed);
+                    transform.LookAt(newPosition);
+                    transform.position = newPosition;
+                    m_timePassed += Time.fixedDeltaTime;
+                }
+                else
+                {
+                    DestroyArrow();
+                }
+            }
         }
 
         public void DoLateUpdate()
         {
             
+        }
+
+        private void OnCollisionEnter(Collision collision)
+        {
+            DestroyArrow();
         }
     }
 }

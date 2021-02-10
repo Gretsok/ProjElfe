@@ -7,11 +7,11 @@ namespace ProjElf.CombatController
     public class Grimoire : AWeapon
     {
         //Var 
-        private float m_projectileSpeed;
-        private float m_projectileLifeTime;
-        private MagicSpellProjectile m_projectilePrefab;
+        private float m_projectileSpeed = 0f;
+        private float m_projectileLifeTime = 0f;
+        private MagicSpellProjectile m_projectilePrefab = null;
         private CombatController m_owner = null;
-        [SerializeField] private Transform posMagicSpell;
+        [SerializeField] private Transform posMagicSpell = null;
 
         public Transform PosMagicSpell => posMagicSpell;
         public void InitGrimoire(GrimoireData.GrimoireSaveData grimoireToInit, CombatController Owner)

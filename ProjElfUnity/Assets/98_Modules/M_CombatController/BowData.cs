@@ -26,9 +26,9 @@ namespace ProjElf.CombatController
             }
         }
         //Var
-        [SerializeField] private Vector2 m_projectileDivingRate;
-        [SerializeField] private Vector2 m_projectileSpeed;
-        [SerializeField] private Arrow m_projectilePrefab;
+        [SerializeField] private Vector2 m_projectileDivingRate = Vector2.zero;
+        [SerializeField] private Vector2 m_projectileSpeed = Vector2.zero;
+        [SerializeField] private Arrow m_projectilePrefab = null;
         public Vector2 ProjectileDivingRate => m_projectileDivingRate;
         public Vector2 ProjectileSpeed => m_projectileSpeed;
         public Arrow ProjectilePrefab => m_projectilePrefab;

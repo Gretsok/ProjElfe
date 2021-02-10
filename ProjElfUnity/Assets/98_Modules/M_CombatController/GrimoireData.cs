@@ -11,10 +11,9 @@ namespace ProjElf.CombatController
         [System.Serializable]
         public class GrimoireSaveData : AWeaponSaveData
         {
-            public float ProjectileSpeed;
-            public float ProjectileLifeTime;
-            [SerializeField]
-            public MagicSpellProjectile ProjectilePrefab;
+            public float ProjectileSpeed = 0f;
+            public float ProjectileLifeTime = 0f;
+            public MagicSpellProjectile ProjectilePrefab = null;
 
             public GrimoireSaveData(GrimoireData grimoireData) : base(grimoireData)
             {
@@ -28,9 +27,9 @@ namespace ProjElf.CombatController
         }
 
         //Var
-        [SerializeField] private Vector2 m_projectileSpeed;
-        [SerializeField] private Vector2 m_projectileLifeTime;
-        [SerializeField] private MagicSpellProjectile m_projectilePrefab;
+        [SerializeField] private Vector2 m_projectileSpeed = Vector2.zero;
+        [SerializeField] private Vector2 m_projectileLifeTime = Vector2.zero;
+        [SerializeField] private MagicSpellProjectile m_projectilePrefab = null;
         
         public Vector2 ProjectileLifeTime => m_projectileLifeTime;
         public Vector2 ProjectileSpeed => m_projectileSpeed;

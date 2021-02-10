@@ -8,9 +8,9 @@ namespace ProjElf.CombatController
     public class CombatInventory : MonoBehaviour
     {
         //Var
-        private MeleeWeapon m_meleeWeapon;
-        private Grimoire m_grimoire;
-        private Bow m_bow;
+        private MeleeWeapon m_meleeWeapon = null;
+        private Grimoire m_grimoire = null;
+        private Bow m_bow = null;
 
         public MeleeWeapon MeleeWeapon => m_meleeWeapon;
         public Grimoire Grimoire => m_grimoire;
@@ -21,13 +21,13 @@ namespace ProjElf.CombatController
         //private AWeapon[] m_weapons = new AWeapon[3];
         private AWeapon m_selectedWeapon;
         //Ref transform quand équipé
-        [SerializeField] private Transform m_posMelee;
-        [SerializeField] private Transform m_posGrimoire;
-        [SerializeField] private Transform m_posBow;
+        [SerializeField] private Transform m_posMelee = null;
+        [SerializeField] private Transform m_posGrimoire = null;
+        [SerializeField] private Transform m_posBow = null;
         //Ref transform quand rangé
-        [SerializeField] private Transform m_posMeleeEquip;
-        [SerializeField] private Transform m_posGrimoireEquip;
-        [SerializeField] private Transform m_posBowEquip;
+        [SerializeField] private Transform m_posMeleeEquip = null;
+        [SerializeField] private Transform m_posGrimoireEquip = null;
+        [SerializeField] private Transform m_posBowEquip = null;
 
         private List<AWeaponData.AWeaponSaveData> m_holdedWeapons = new List<AWeaponData.AWeaponSaveData>();
         public List<AWeaponData.AWeaponSaveData> HoldedWeapons => m_holdedWeapons;

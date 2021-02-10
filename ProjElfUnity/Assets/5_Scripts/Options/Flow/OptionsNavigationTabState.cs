@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class OptionsNavigationTabState : NavigationTabState
 {
-    private Action m_onTabExit;
+    private Action m_onTabExit = null;
     public Action OnTabExit => m_onTabExit;
 
     [SerializeField]

@@ -69,7 +69,7 @@ namespace ProjElf.ProceduraleGeneration
                     RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY + 1]);
                 }
                     
-            }catch(System.Exception e){}
+            }catch(System.Exception){}
             try
             {
                 if(room.CanGoEast || room.RoomOrientation == ERoomOrientation.West)
@@ -79,7 +79,7 @@ namespace ProjElf.ProceduraleGeneration
                 }
                     
             }
-            catch (System.Exception e) { }
+            catch (System.Exception) { }
             try
             {
                 if(room.CanGoSouth || room.RoomOrientation == ERoomOrientation.North)
@@ -89,7 +89,7 @@ namespace ProjElf.ProceduraleGeneration
                 }
                     
             }
-            catch (System.Exception e) { }
+            catch (System.Exception) { }
             try
             {
                 if(room.CanGoWest || room.RoomOrientation == ERoomOrientation.East)
@@ -99,7 +99,7 @@ namespace ProjElf.ProceduraleGeneration
                 }
                     
             }
-            catch (System.Exception e) { }
+            catch (System.Exception) { }
         }
 
         internal void StartDunjeonGeneration()
