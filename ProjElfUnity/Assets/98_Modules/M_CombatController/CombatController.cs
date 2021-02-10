@@ -72,14 +72,10 @@ namespace ProjElf.CombatController
                     }
                     #endregion
                     Debug.Log("Dealing Damage");
-                    // Use TakeDamage() instead
-                    m_lifePoints -= damageGiverData.DamageGiver.Damage.HitDamage;
+                    TakeDamage(damageGiverData.DamageGiver.Damage.HitDamage);
+
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
-                    // Remove this when TakeDamage() will be used
-                    if (m_lifePoints <= 0)
-                    {
-                        OnLifeReachedZero?.Invoke();
-                    }
+
                     damageGiverData.TimeOfLastDamage = Time.time;
                     StartCoroutine(TriggerNextAttackRoutine(damageGiverData));
                 }

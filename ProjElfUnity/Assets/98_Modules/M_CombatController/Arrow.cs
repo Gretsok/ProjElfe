@@ -61,6 +61,7 @@ namespace ProjElf.CombatController
             gameObject.SetActive(false);
             m_isPoolable = true;
             m_isAlive = false;
+            IndependantObject.IndependantObjectManager.Instance.UnregisterIndependantObject(this);
         }
 
 
