@@ -26,6 +26,9 @@ namespace ProjElf.CombatController
         [SerializeField]
         private CombatControllerUIManager m_UIManager = null;
 
+        [SerializeField]
+        private int m_teamIndex = 0;
+        public int TeamIndex => m_teamIndex;
 
         public CombatInventory CombatInventory => m_combatInventory;
 
@@ -59,7 +62,7 @@ namespace ProjElf.CombatController
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
             Debug.Log("GetAttacked");
-            if (damageGiverData.DamageGiver.Owner != this)
+            if (damageGiverData.DamageGiver.Owner.TeamIndex != m_teamIndex)
             {
 
                 if (damageGiverData.Colliding)
@@ -74,9 +77,11 @@ namespace ProjElf.CombatController
                         }
                     }
                     #endregion
-                    Debug.Log("Dealing Damage");
-                    TakeDamage(damageGiverData.DamageGiver.Damage.HitDamage);
-
+                    
+                    if(damageGiverData.DamageGiver.CanDoDamage)
+                    {
+                        TakeDamage(damageGiverData.DamageGiver.Damage.HitDamage);
+                    }
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
 
                     damageGiverData.TimeOfLastDamage = Time.time;
@@ -224,6 +229,7 @@ namespace ProjElf.CombatController
 
         public void TakeDamage(int damage)
         {
+            Debug.Log("Dealing Damage");
             m_lifePoints -= damage;
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             if(m_lifePoints<=0)

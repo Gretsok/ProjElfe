@@ -16,10 +16,13 @@ namespace ProjElf.CombatController
         public CombatController Owner { get; private set; }
 
         public Damage Damage => m_damage;
-        public float Cooldown => 5f;
+        public float Cooldown => 0.1f;
 
         private bool m_isPoolable = true;
         public bool IsPoolable => m_isPoolable;
+
+        public bool CanDoDamage => true;
+
         private bool m_isAlive = false;
         #region TimeManagement
         private float m_timePassed = 0f;

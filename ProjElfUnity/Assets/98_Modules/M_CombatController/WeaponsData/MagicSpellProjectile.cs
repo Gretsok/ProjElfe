@@ -17,6 +17,8 @@ namespace ProjElf.CombatController
 
         public float Cooldown => 10f;
 
+        public bool CanDoDamage => true;
+
         //Initialisateur
         public void InitMagicSpellProjectile(CombatController owner, float speed, float range, Damage damage)
         {

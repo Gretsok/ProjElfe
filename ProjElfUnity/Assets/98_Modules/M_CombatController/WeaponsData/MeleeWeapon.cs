@@ -11,7 +11,10 @@ namespace ProjElf.CombatController
 
         public CombatController Owner => m_owner;
 
-        public float Cooldown => 1 / m_attackSpeed;
+        public float Cooldown => 0.1f;
+
+        private bool m_canDoDamage = false;
+        public bool CanDoDamage => m_canDoDamage;
 
         public void InitMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData meleeWeaponData, CombatController Owner)
         {
@@ -21,6 +24,17 @@ namespace ProjElf.CombatController
             m_weaponName = meleeWeaponData.WeaponName;
             m_weaponSaveData = meleeWeaponData;
             m_owner = Owner;
+            StopDamaging();
+        }
+
+        public void StartDamaging()
+        {
+            m_canDoDamage = true;
+        }
+
+        public void StopDamaging()
+        {
+            m_canDoDamage = false;
         }
 
         public void OnCombatControllerHit(CombatController hitController)
