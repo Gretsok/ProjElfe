@@ -68,7 +68,7 @@ namespace ProjElf.CombatController
                     #region Update other DamageGiversData
                     for (int i = m_damageGivers.Count - 1; i >= 0; i--)
                     {
-                        if (!m_damageGivers[0].Colliding && Time.time - m_damageGivers[0].TimeOfLastDamage > m_damageGivers[0].DamageGiver.Cooldown)
+                        if (!m_damageGivers[i].Colliding && Time.time - m_damageGivers[i].TimeOfLastDamage > m_damageGivers[i].DamageGiver.Cooldown)
                         {
                             m_damageGivers.RemoveAt(i);
                         }
@@ -225,7 +225,7 @@ namespace ProjElf.CombatController
         public void TakeDamage(int damage)
         {
             m_lifePoints -= damage;
-            m_UIManager?.SetHealthRatio(m_lifePoints / m_maxLifePoints);
+            m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             if(m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null

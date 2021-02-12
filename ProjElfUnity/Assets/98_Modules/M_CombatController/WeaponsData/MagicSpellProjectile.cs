@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class MagicSpellProjectile : MonoBehaviour
+    public class MagicSpellProjectile : MonoBehaviour, IDamageGiver
     {
         //Var
         private float m_speed;
@@ -14,6 +14,8 @@ namespace ProjElf.CombatController
         public Damage Damage => m_damage;
 
         public CombatController Owner { get; private set; }
+
+        public float Cooldown => 10f;
 
         //Initialisateur
         public void InitMagicSpellProjectile(CombatController owner, float speed, float range, Damage damage)
