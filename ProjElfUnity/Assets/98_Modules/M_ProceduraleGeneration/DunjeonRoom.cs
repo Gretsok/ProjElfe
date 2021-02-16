@@ -10,8 +10,8 @@ namespace ProjElf.ProceduraleGeneration
     {
         private DunjeonRoomData m_dunjeonRoomData = null;
         private List<GameObject> m_objectSpawnedInThisRoom = new List<GameObject>();
-        private List<GenericAI> m_AISpawnedInThisRoom = new List<GenericAI>();
-        public List<GenericAI> AISpawnedInThisRoom => m_AISpawnedInThisRoom;
+        private List<GenericAI> m_AIInThisRoom = new List<GenericAI>();
+        public List<GenericAI> AISpawnedInThisRoom => m_AIInThisRoom;
         #region LifeCycle Attributes
         private bool m_isInit = false;
         internal bool IsInit => m_isInit;
@@ -290,7 +290,7 @@ namespace ProjElf.ProceduraleGeneration
                     m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
                     if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
                     {
-                        m_AISpawnedInThisRoom.Add(newAI);
+                        m_AIInThisRoom.Add(newAI);
                         newAI.Init(this);
                     }
                 }
@@ -305,26 +305,57 @@ namespace ProjElf.ProceduraleGeneration
 
         public void UpdateAIInRoom()
         {
-            for(int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            for(int i = 0; i < m_AIInThisRoom.Count; i++)
             {
-                m_AISpawnedInThisRoom[i].DoUpdate();
+                m_AIInThisRoom[i].DoUpdate();
             }
         }
 
         public void FixedUpdateAIInRoom()
         {
-            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            for (int i = 0; i < m_AIInThisRoom.Count; i++)
             {
-                m_AISpawnedInThisRoom[i].DoFixedUpdate();
+                m_AIInThisRoom[i].DoFixedUpdate();
             }
         }
 
         public void LateUpdateAIInRoom()
         {
-            for (int i = 0; i < m_AISpawnedInThisRoom.Count; i++)
+            for (int i = 0; i < m_AIInThisRoom.Count; i++)
             {
-                m_AISpawnedInThisRoom[i].DoLateUpdate();
+
+                m_AIInThisRoom[i].DoLateUpdate();
+
+                
             }
+        }
+
+        public bool AddAIToRoom(GenericAI objectToAdd)
+        {
+            if(!m_objectSpawnedInThisRoom.Contains(objectToAdd.gameObject))
+            {
+                m_objectSpawnedInThisRoom.Add(objectToAdd.gameObject);
+            }
+            if (!m_AIInThisRoom.Contains(objectToAdd))
+            {
+                m_AIInThisRoom.Add(objectToAdd);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveAIToRoom(GenericAI objectToRemove)
+        {
+            if(m_objectSpawnedInThisRoom.Contains(objectToRemove.gameObject))
+            {
+                m_objectSpawnedInThisRoom.Remove(objectToRemove.gameObject);
+            }
+            if (m_AIInThisRoom.Contains(objectToRemove))
+            {
+                m_AIInThisRoom.Remove(objectToRemove);
+                return true;
+            }
+            return false;
         }
 
         /// <summary>

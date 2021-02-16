@@ -25,6 +25,7 @@ namespace ProjElf.AI
         private void Die()
         {
             Debug.Log("AI Died");
+            AttachedDunjeonRoom.RemoveAIToRoom(this);
             Destroy(gameObject);
         }
 
