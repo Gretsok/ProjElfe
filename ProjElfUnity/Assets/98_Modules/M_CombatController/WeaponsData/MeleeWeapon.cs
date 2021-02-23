@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -15,6 +16,8 @@ namespace ProjElf.CombatController
 
         private bool m_canDoDamage = false;
         public bool CanDoDamage => m_canDoDamage;
+
+        public Action<IDamageGiver> OnDisappear { get; set; } = null;
 
         public void InitMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData meleeWeaponData, CombatController Owner)
         {
@@ -40,6 +43,11 @@ namespace ProjElf.CombatController
         public void OnCombatControllerHit(CombatController hitController)
         {
             
+        }
+
+        private void OnDestroy()
+        {
+            OnDisappear?.Invoke(this);
         }
     }
 }

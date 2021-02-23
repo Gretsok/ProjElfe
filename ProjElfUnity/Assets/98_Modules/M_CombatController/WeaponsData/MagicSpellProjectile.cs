@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,8 @@ namespace ProjElf.CombatController
         public float Cooldown => 10f;
 
         public bool CanDoDamage => true;
+
+        public Action<IDamageGiver> OnDisappear { get; set; } = null;
 
         //Initialisateur
         public void InitMagicSpellProjectile(CombatController owner, float speed, float range, Damage damage)
@@ -43,6 +46,11 @@ namespace ProjElf.CombatController
             {
                 Destroy(this.gameObject);
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDisappear?.Invoke(this);
         }
     }
 }

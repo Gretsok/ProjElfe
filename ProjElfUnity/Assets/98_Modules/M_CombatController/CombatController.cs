@@ -113,6 +113,7 @@ namespace ProjElf.CombatController
                     damageGiverData.DamageGiver = damageGiver;
                     m_damageGivers.Add(damageGiverData);
                     damageGiverData.TimeOfLastDamage = float.MinValue;
+
                 }
                 if (damageGiverData.DamageGiver.Owner != this)
                 {
@@ -122,6 +123,7 @@ namespace ProjElf.CombatController
                     {
                         GetAttacked(damageGiverData);
                     }
+                    damageGiver.OnDisappear += UnregisterDamageGiver;
                 }
                 
             }
@@ -133,13 +135,20 @@ namespace ProjElf.CombatController
         {
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
-                DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
-                if (damageGiverData != null)
-                {
-                    damageGiverData.Colliding = false;
-                }
+                UnregisterDamageGiver(damageGiver);
             }
         }
+
+        private void UnregisterDamageGiver(IDamageGiver damageGiver)
+        {
+            DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
+            if (damageGiverData != null)
+            {
+                damageGiverData.Colliding = false;
+                damageGiver.OnDisappear -= UnregisterDamageGiver;
+            }
+        }
+
         #endregion
         public void DoUpdate(Vector3 direction = default(Vector3))//appelé depuis le player ou l'ia pour maj combatcontroller
         {

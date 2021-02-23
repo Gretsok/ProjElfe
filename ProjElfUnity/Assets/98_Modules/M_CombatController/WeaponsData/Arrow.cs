@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -22,6 +23,8 @@ namespace ProjElf.CombatController
         public bool IsPoolable => m_isPoolable;
 
         public bool CanDoDamage => true;
+
+        public Action<IDamageGiver> OnDisappear { get; set; } = null;
 
         private bool m_isAlive = false;
         #region TimeManagement
@@ -62,6 +65,7 @@ namespace ProjElf.CombatController
 
         private void DestroyArrow()
         {
+            OnDisappear?.Invoke(this);
             gameObject.SetActive(false);
             m_isPoolable = true;
             m_isAlive = false;
