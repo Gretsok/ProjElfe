@@ -17,6 +17,10 @@ namespace ProjElf.PlayerController
         [SerializeField]
         private Player m_player = null;
 
+        #region SpecificBehavioursAttributes
+        private Transform m_lookAtTarget = null;
+        #endregion
+
         internal void DoUpdate()
         {
             if(m_currentBehaviour != null)
@@ -30,12 +34,22 @@ namespace ProjElf.PlayerController
         {
             m_currentBehaviour = WatchAlongPlayerSight;
         }
+
+        internal void LookAt(Transform lookAtTarget)
+        {
+            m_lookAtTarget = lookAtTarget;
+            m_currentBehaviour = LookAtTarget;
+        }
         #endregion
 
         #region Behaviours
         private void WatchAlongPlayerSight()
         {
             m_characterModelSightTarget.position = m_player.Sight.origin + m_player.Sight.direction * 10f;
+        }
+        private void LookAtTarget()
+        {
+            m_characterModelSightTarget.position = m_lookAtTarget.position;
         }
         #endregion
     }

@@ -68,6 +68,34 @@ namespace ProjElf.PlayerController
         private PlayerInputsActions m_actions = null;
         public PlayerInputsActions Actions => m_actions;
 
+        #region IsBusy
+        private bool m_isBusy = false;
+        public bool IsBusy => m_isBusy;
+        public void MakeBusy(Transform busyWith = null)
+        {
+            if(!m_isBusy)
+            {
+                m_isBusy = true;
+                CleanUpInput();
+                m_characterAnimatorHandler.SetForwardSpeed(0f);
+                m_characterAnimatorHandler.SetRightSpeed(0f);
+                if(busyWith != null)
+                {
+                    m_modelSightBrain.LookAt(busyWith);
+                }
+            }
+        }
+        public void MakeUnbusy()
+        {
+            if(m_isBusy)
+            {
+                m_isBusy = false;
+                SetUpInput();
+                m_modelSightBrain.StartWatchingAlongPlayerSight();
+            }
+        }
+        #endregion
+
         private void Awake()
         {
             m_actions = new PlayerInputsActions();
@@ -112,15 +140,27 @@ namespace ProjElf.PlayerController
 
         public override void DoUpdate()
         {
-            base.DoUpdate();
-            m_combatController.DoUpdate(WeaponSight.direction);
+            if (!m_isBusy)
+            {
+                base.DoUpdate();
+                m_combatController.DoUpdate(WeaponSight.direction);
+            }
+
             m_modelSightBrain.DoUpdate();
         }
 
 
         public override void DoFixedUpdate()
         {
-            base.DoFixedUpdate();
+            if (!m_isBusy)
+            {
+                base.DoFixedUpdate();
+            }
+            else
+            {
+                Velocity = Vector3.zero;
+            }
+            
             Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
             m_interactor.ManageSight(Sight);
 

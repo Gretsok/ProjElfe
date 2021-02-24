@@ -16,7 +16,7 @@ public class Panel : MonoBehaviour
     /// <summary>
     /// Display Panel
     /// </summary>
-    public void Show()
+    public virtual void Show()
     {
         gameObject.SetActive(true);
     }
@@ -24,7 +24,7 @@ public class Panel : MonoBehaviour
     /// <summary>
     /// Hide Panel
     /// </summary>
-    public void Hide()
+    public virtual void Hide()
     {
         gameObject.SetActive(false);
     }

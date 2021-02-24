@@ -27,7 +27,7 @@ namespace ProjElf.PlayerController
         protected override void UpdatePositionInputs()
         {
             base.UpdatePositionInputs();
-            m_player.Velocity = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
+            m_player.Velocity = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y));
             m_player.Velocity *= m_movingSpeed;
             m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).z);
             m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).x);
