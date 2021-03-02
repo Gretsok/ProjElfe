@@ -3,21 +3,24 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class InventoryChest : MonoBehaviour, IInteractable
+namespace ProjElf.HubForest
 {
-    [SerializeField]
-    private InventoryPanel m_inventoryPanel = null;
-
-    public void DoInteraction(Interactor interactor)
+    public class InventoryChest : MonoBehaviour, IInteractable
     {
-        m_inventoryPanel.Show();
-    }
+        [SerializeField]
+        private InventoryPanel m_inventoryPanel = null;
 
-    public void StartBeingWatched()
-    {
-    }
+        public void DoInteraction(Interactor interactor)
+        {
+            m_inventoryPanel.Show();
+        }
 
-    public void StopBeingWatched()
-    {
+        public void StartBeingWatched()
+        {
+        }
+
+        public void StopBeingWatched()
+        {
+        }
     }
 }
