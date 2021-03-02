@@ -32,7 +32,29 @@ public class SaveData
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
     public PlayerStats SavedPlayerStats;
-    public List<AWeaponData.AWeaponSaveData> EarnedWeapon = new List<AWeaponData.AWeaponSaveData>();
+    public List<BowData.BowSaveData> EarnedBows = new List<BowData.BowSaveData>();
+    public List<GrimoireData.GrimoireSaveData> EarnedGrimoires = new List<GrimoireData.GrimoireSaveData>();
+    public List<MeleeWeaponData.MeleeWeaponSaveData> EarnedMeleeWeapons = new List<MeleeWeaponData.MeleeWeaponSaveData>();
+
+    public void EarnNewWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
+    {
+        if(weaponSaveData is BowData.BowSaveData)
+        {
+            EarnedBows.Add(weaponSaveData as BowData.BowSaveData);
+        }
+        else if(weaponSaveData is GrimoireData.GrimoireSaveData)
+        {
+            EarnedGrimoires.Add(weaponSaveData as GrimoireData.GrimoireSaveData);
+        }
+        else if(weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
+        {
+            EarnedMeleeWeapons.Add(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+        }
+        else
+        {
+            Debug.LogError("Incorrect weapon SaveData !");
+        }
+    }
 
     public string ToJson()
     {

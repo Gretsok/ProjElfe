@@ -1,5 +1,11 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
+using static ProjElf.CombatController.AWeaponData;
+using static ProjElf.CombatController.BowData;
+using static ProjElf.CombatController.GrimoireData;
+using static ProjElf.CombatController.MeleeWeaponData;
 
 namespace ProjElf.HubForest
 {
@@ -11,6 +17,11 @@ namespace ProjElf.HubForest
 
         [SerializeField]
         private InventoryChest m_inventoryChest = null;
+
+        [SerializeField]
+        private WeaponInfosPanel m_currentWeaponInfosPanel = null;
+        [SerializeField]
+        private WeaponInfosPanel m_selectedWeaponInfosPanel = null;
 
         [SerializeField]
         private CurrentWeaponSlot m_meleeWeaponSlot = null;
@@ -26,16 +37,19 @@ namespace ProjElf.HubForest
         private StockedWeaponSlot m_stockedWeaponSlotPrefab = null;
         [SerializeField]
         private Transform m_stockedWeaponsContainer = null;
-
+        private List<StockedWeaponSlot> m_stockedWeaponsSlots = new List<StockedWeaponSlot>();
 
         public override void Show()
         {
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_gamemode.Player.MakeBusy(m_inventoryChest.transform);
             base.Show();
+            EventSystem.current.SetSelectedGameObject(m_meleeWeaponSlot.gameObject);
             m_gamemode.Actions.Enable();
             m_gamemode.Actions.UI.Back.performed += Back_performed;
             StartCoroutine(LoadInventoryPanelRoutine());
+
+            
         }
 
         IEnumerator LoadInventoryPanelRoutine()
@@ -62,10 +76,26 @@ namespace ProjElf.HubForest
                 yield return null;
             }
 
-            for(int i = 0; i < m_currentSaveData.EarnedWeapon.Count; ++i)
+
+            for(int i = 0; i < m_currentSaveData.EarnedMeleeWeapons.Count; ++i)
             {
                 var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
-                newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedWeapon[i]);
+                newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedMeleeWeapons[i], this);
+                m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
+            }
+
+            for (int i = 0; i < m_currentSaveData.EarnedGrimoires.Count; ++i)
+            {
+                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
+                newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedGrimoires[i], this);
+                m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
+            }
+
+            for (int i = 0; i < m_currentSaveData.EarnedBows.Count; ++i)
+            {
+                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
+                newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedBows[i], this);
+                m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
             }
 
             yield return null;
@@ -78,6 +108,16 @@ namespace ProjElf.HubForest
             m_meleeWeaponSlot.Clear();
             m_grimoireSlot.Clear();
             m_bowSlot.Clear();
+            yield return null;
+
+            for(int i = m_stockedWeaponsSlots.Count - 1; i >= 0; --i)
+            {
+                var slot = m_stockedWeaponsSlots[i];
+                m_stockedWeaponsSlots.RemoveAt(i);
+                Destroy(slot.gameObject);
+                
+            }
+
 
             yield return null;
             m_isLoaded = false;
@@ -89,6 +129,30 @@ namespace ProjElf.HubForest
             if (m_isLoaded)
             {
                 StartCoroutine(UnloadInventoryPanelRoutine());
+            }
+        }
+
+        public void SetSelectedWeaponSaveData(AWeaponSaveData weaponSaveData)
+        {
+            Debug.Log("weapon selected");
+            if (weaponSaveData is MeleeWeaponSaveData)
+            {
+                m_selectedWeaponInfosPanel.InflateMeleeWeapon(weaponSaveData as MeleeWeaponSaveData);
+                m_currentWeaponInfosPanel.InflateMeleeWeapon(m_currentSaveData.SavedPlayerWeaponInventory.EquippedMeleeWeapon);
+            }
+            else if(weaponSaveData is BowSaveData)
+            {
+                m_selectedWeaponInfosPanel.InflateBow(weaponSaveData as BowSaveData);
+                m_currentWeaponInfosPanel.InflateBow(m_currentSaveData.SavedPlayerWeaponInventory.EquippedBow);
+            }
+            else if(weaponSaveData is GrimoireSaveData)
+            {
+                m_selectedWeaponInfosPanel.InflateGrimoire(weaponSaveData as GrimoireSaveData);
+                m_currentWeaponInfosPanel.InflateGrimoire(m_currentSaveData.SavedPlayerWeaponInventory.EquippedGrimoire);
+            }
+            else
+            {
+                Debug.LogError("Incorrect weapon !");
             }
         }
 

@@ -81,8 +81,13 @@ namespace ProjElf.ProceduraleGeneration
 
         public void WinDunjeon()
         {
-            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().EarnedWeapon.AddRange(
-                m_player.CombatController.CombatInventory.HoldedWeapons);
+            var saveData = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+
+            for(int i = 0; i < m_player.CombatController.CombatInventory.HoldedWeapons.Count; i++)
+            {
+                saveData.EarnNewWeapon(m_player.CombatController.CombatInventory.HoldedWeapons[i]);
+            }
+                
             m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
             m_hubSceneData.LoadLevel();
         }
