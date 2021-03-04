@@ -45,14 +45,46 @@ namespace ProjElf.HubForest
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_gamemode.Player.MakeBusy(m_inventoryChest.transform);
             base.Show();
-
-            m_gamemode.Actions.Enable();
-            m_gamemode.Actions.UI.Back.performed += Back_performed;
+            SetUpInputs();
+   
             StartCoroutine(LoadInventoryPanelRoutine());
 
             
         }
 
+        #region Player Interactions
+        private void Reroll_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            Debug.Log("Trying to reroll : " + EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            StartCoroutine(UnloadInventoryPanelRoutine(true));
+        }
+
+        private void Sell_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            Debug.Log("Trying to sell : " + EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            StartCoroutine(UnloadInventoryPanelRoutine(true));
+        }
+
+        private void Confirm_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            StockedWeaponSlot selectedSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
+
+            m_gamemode.Player.CombatController.CombatInventory.ChangeWeapon(selectedSlot.WeaponSaveData);
+            MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RemoveWeaponFromHoldedWeapons(selectedSlot.WeaponSaveData);
+            Debug.Log("Weapon changed !");
+
+            StartCoroutine(UnloadInventoryPanelRoutine(true));
+        }
+        private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        {
+            if (m_isLoaded)
+            {
+                StartCoroutine(UnloadInventoryPanelRoutine());
+            }
+        }
+        #endregion
+
+        #region Loading&Unloading
         IEnumerator LoadInventoryPanelRoutine()
         {
             m_currentSaveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
@@ -108,7 +140,7 @@ namespace ProjElf.HubForest
             
         }
 
-        IEnumerator UnloadInventoryPanelRoutine()
+        IEnumerator UnloadInventoryPanelRoutine(bool reload = false)
         {
             m_meleeWeaponSlot.Clear();
             m_grimoireSlot.Clear();
@@ -126,16 +158,23 @@ namespace ProjElf.HubForest
 
             yield return null;
             m_isLoaded = false;
-            QuitPanel();
+            m_gamemode.SaveData();
+            m_gamemode.SavePlayerWeapons();
+            EventSystem.current.SetSelectedGameObject(null);
+            if (reload)
+            {
+                StartCoroutine(LoadInventoryPanelRoutine());
+            }
+            else
+            {
+                QuitPanel();
+            }
+
         }
 
-        private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
-        {
-            if (m_isLoaded)
-            {
-                StartCoroutine(UnloadInventoryPanelRoutine());
-            }
-        }
+        #endregion
+
+
 
         public void SetSelectedWeaponSaveData(AWeaponSaveData weaponSaveData)
         {
@@ -168,11 +207,32 @@ namespace ProjElf.HubForest
 
         public void QuitPanel()
         {
-            EventSystem.current.SetSelectedGameObject(null);
-            m_gamemode.Actions.UI.Back.performed -= Back_performed;
-            m_gamemode.Actions.Disable();
+
+
+            CleanUpInputs();
             Hide();
             m_gamemode.Player.MakeUnbusy();
         }
+
+        #region Inputs
+        private void SetUpInputs()
+        {
+            m_gamemode.Actions.Enable();
+            m_gamemode.Actions.UI.Back.performed += Back_performed;
+            m_gamemode.Actions.Generic.PrimaryAttack.performed += Sell_CurrentItem;
+            m_gamemode.Actions.Generic.SecondaryAttack.performed += Reroll_CurrentItem;
+            m_gamemode.Actions.UI.Confirm.performed += Confirm_performed;
+        }
+
+
+        private void CleanUpInputs()
+        {
+            m_gamemode.Actions.UI.Back.performed -= Back_performed;
+            m_gamemode.Actions.Generic.PrimaryAttack.performed -= Sell_CurrentItem;
+            m_gamemode.Actions.Generic.SecondaryAttack.performed -= Reroll_CurrentItem;
+            m_gamemode.Actions.UI.Confirm.performed -= Confirm_performed;
+            m_gamemode.Actions.Disable();
+        }
+        #endregion
     }
 }

@@ -13,6 +13,8 @@ namespace ProjElf.HubForest
         private Image m_weaponIconImage = null;
         private InventoryPanel m_inventoryPanel = null;
 
+        public AWeaponSaveData WeaponSaveData => m_weaponSaveData;
+
         public void Inflate(AWeaponSaveData weaponSaveData, InventoryPanel inventoryPanel)
         {
             m_weaponSaveData = weaponSaveData;

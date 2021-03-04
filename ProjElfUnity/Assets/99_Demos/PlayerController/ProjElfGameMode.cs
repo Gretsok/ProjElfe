@@ -62,17 +62,35 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
 
     internal override void ExitStateMachine()
     {
-        float m_timePassed = Time.time - m_timeOfStart;
-        if(m_player.CombatController.CombatInventory.Bow != null)
-            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedBow = (m_player.CombatController.CombatInventory.Bow.WeaponSaveData as BowData.BowSaveData);
-        if (m_player.CombatController.CombatInventory.Grimoire != null)
-            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedGrimoire = (m_player.CombatController.CombatInventory.Grimoire.WeaponSaveData as GrimoireData.GrimoireSaveData);
-        if (m_player.CombatController.CombatInventory.MeleeWeapon != null)
-            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedMeleeWeapon = (m_player.CombatController.CombatInventory.MeleeWeapon.WeaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
-
-        MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerStats.TimePlayed += (int) m_timePassed;
-        MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
+        SaveData();
         base.ExitStateMachine();
+    }
+
+    public void SaveData()
+    {
+        var saveData = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+        float m_timePassed = Time.time - m_timeOfStart;
+        if (m_player.CombatController.CombatInventory.Bow != null)
+            saveData.SavedPlayerWeaponInventory.EquippedBow = (m_player.CombatController.CombatInventory.Bow.WeaponSaveData as BowData.BowSaveData);
+        if (m_player.CombatController.CombatInventory.Grimoire != null)
+            saveData.SavedPlayerWeaponInventory.EquippedGrimoire = (m_player.CombatController.CombatInventory.Grimoire.WeaponSaveData as GrimoireData.GrimoireSaveData);
+        if (m_player.CombatController.CombatInventory.MeleeWeapon != null)
+            saveData.SavedPlayerWeaponInventory.EquippedMeleeWeapon = (m_player.CombatController.CombatInventory.MeleeWeapon.WeaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+
+        saveData.SavedPlayerStats.TimePlayed += (int)m_timePassed;
+        MOtter.MOtterApplication.GetInstance().GAMEMANAGER.SaveCurrentData();
+        MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
+        m_timeOfStart = Time.time;
+    }
+
+    public void SavePlayerWeapons()
+    {
+        var saveData = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+        for (int i = 0; i < m_player.CombatController.CombatInventory.HoldedWeapons.Count; i++)
+        {
+            saveData.EarnNewWeapon(m_player.CombatController.CombatInventory.HoldedWeapons[i]);
+        }
+        m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
     }
 
 }

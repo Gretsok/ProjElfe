@@ -71,6 +71,7 @@ namespace ProjElf.CombatController
                 {
                     if (m_meleeWeapon != null)
                     {
+                        HoldedWeapons.Add(m_meleeWeapon.WeaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
                         Destroy(m_meleeWeapon.gameObject);
                     }
                     MeleeWeapon newMeleeWeapon;
@@ -89,6 +90,7 @@ namespace ProjElf.CombatController
                 {
                     if (m_grimoire != null)
                     {
+                        HoldedWeapons.Add(m_grimoire.WeaponSaveData as GrimoireData.GrimoireSaveData);
                         Destroy(m_grimoire.gameObject);
                     }
                     Grimoire newGrimoire;
@@ -107,6 +109,7 @@ namespace ProjElf.CombatController
                 {
                     if (m_bow != null)
                     {
+                        HoldedWeapons.Add(m_bow.WeaponSaveData as BowData.BowSaveData);
                         Destroy(m_bow.gameObject);
                     }
                     Bow newBow;

@@ -28,6 +28,8 @@ public class SaveData
         public int NumberOfDeath;
     }
 
+    public int FrancissousMoney = 0;
+
     public List<SavedAnimalData> SavedAnimalDatas = new List<SavedAnimalData>();
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
@@ -49,6 +51,26 @@ public class SaveData
         else if(weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
         {
             EarnedMeleeWeapons.Add(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+        }
+        else
+        {
+            Debug.LogError("Incorrect weapon SaveData !");
+        }
+    }
+
+    public void RemoveWeaponFromHoldedWeapons(AWeaponData.AWeaponSaveData weaponSaveData)
+    {
+        if (weaponSaveData is BowData.BowSaveData)
+        {
+            EarnedBows.Remove(weaponSaveData as BowData.BowSaveData);
+        }
+        else if (weaponSaveData is GrimoireData.GrimoireSaveData)
+        {
+            EarnedGrimoires.Remove(weaponSaveData as GrimoireData.GrimoireSaveData);
+        }
+        else if (weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
+        {
+            EarnedMeleeWeapons.Remove(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
         }
         else
         {
