@@ -29,6 +29,7 @@ namespace ProjElf.HubForest
         private CurrentWeaponSlot m_grimoireSlot = null;
         [SerializeField]
         private CurrentWeaponSlot m_bowSlot = null;
+        private CurrentWeaponSlot m_selectedCurrentWeaponSlot = null;
 
         [SerializeField]
         private WeaponRenderTextureStudio m_renderTextureStudioPrefab = null;
@@ -101,7 +102,10 @@ namespace ProjElf.HubForest
             yield return null;
 
             m_isLoaded = true;
-            EventSystem.current.SetSelectedGameObject(m_meleeWeaponSlot.gameObject);
+
+            EventSystem.current.SetSelectedGameObject(m_stockedWeaponsSlots[0].gameObject);
+
+            
         }
 
         IEnumerator UnloadInventoryPanelRoutine()
@@ -136,25 +140,30 @@ namespace ProjElf.HubForest
         public void SetSelectedWeaponSaveData(AWeaponSaveData weaponSaveData)
         {
             Debug.Log("weapon selected");
+            m_selectedCurrentWeaponSlot?.Unselect();
             if (weaponSaveData is MeleeWeaponSaveData)
             {
                 m_selectedWeaponInfosPanel.InflateMeleeWeapon(weaponSaveData as MeleeWeaponSaveData);
                 m_currentWeaponInfosPanel.InflateMeleeWeapon(m_currentSaveData.SavedPlayerWeaponInventory.EquippedMeleeWeapon);
+                m_selectedCurrentWeaponSlot = m_meleeWeaponSlot;
             }
             else if(weaponSaveData is BowSaveData)
             {
                 m_selectedWeaponInfosPanel.InflateBow(weaponSaveData as BowSaveData);
                 m_currentWeaponInfosPanel.InflateBow(m_currentSaveData.SavedPlayerWeaponInventory.EquippedBow);
+                m_selectedCurrentWeaponSlot = m_bowSlot;
             }
             else if(weaponSaveData is GrimoireSaveData)
             {
                 m_selectedWeaponInfosPanel.InflateGrimoire(weaponSaveData as GrimoireSaveData);
                 m_currentWeaponInfosPanel.InflateGrimoire(m_currentSaveData.SavedPlayerWeaponInventory.EquippedGrimoire);
+                m_selectedCurrentWeaponSlot = m_grimoireSlot;
             }
             else
             {
                 Debug.LogError("Incorrect weapon !");
             }
+            m_selectedCurrentWeaponSlot?.Select();
         }
 
         public void QuitPanel()
