@@ -95,7 +95,7 @@ namespace ProjElf.CombatController
         }
 #endif
     }
-
+#if UNITY_EDITOR
     [CustomEditor(typeof(AWeaponData), true)]
     internal class WeaponIDInspector : Editor
     {
@@ -110,5 +110,6 @@ namespace ProjElf.CombatController
             }
         }
     }
+#endif
 }
 

@@ -8,12 +8,12 @@ namespace ProjElf.PlayerController
     public class PlayerCombatControllerUIManager : CombatController.CombatControllerUIManager
     {
         [SerializeField]
-        private Slider m_healthSlider = null;
+        private Image m_healthSlider = null;
 
         internal override void SetHealthRatio(float healthRatio)
         {
             base.SetHealthRatio(healthRatio);
-            m_healthSlider.value = healthRatio;
+            m_healthSlider.fillAmount = healthRatio;
         }
     }
 }

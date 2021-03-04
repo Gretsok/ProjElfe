@@ -44,7 +44,7 @@ namespace ProjElf.HubForest
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_gamemode.Player.MakeBusy(m_inventoryChest.transform);
             base.Show();
-            EventSystem.current.SetSelectedGameObject(m_meleeWeaponSlot.gameObject);
+
             m_gamemode.Actions.Enable();
             m_gamemode.Actions.UI.Back.performed += Back_performed;
             StartCoroutine(LoadInventoryPanelRoutine());
@@ -101,6 +101,7 @@ namespace ProjElf.HubForest
             yield return null;
 
             m_isLoaded = true;
+            EventSystem.current.SetSelectedGameObject(m_meleeWeaponSlot.gameObject);
         }
 
         IEnumerator UnloadInventoryPanelRoutine()
@@ -158,6 +159,7 @@ namespace ProjElf.HubForest
 
         public void QuitPanel()
         {
+            EventSystem.current.SetSelectedGameObject(null);
             m_gamemode.Actions.UI.Back.performed -= Back_performed;
             m_gamemode.Actions.Disable();
             Hide();
