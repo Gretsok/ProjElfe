@@ -1,11 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using MOtter.StatesMachine;
 using ProjElf.Interaction;
 using MOtter;
 using ProjElf.CombatController;
-using System;
 
 namespace ProjElf.PlayerController
 {
@@ -75,6 +73,7 @@ namespace ProjElf.PlayerController
         {
             if(!m_isBusy)
             {
+                (m_currentState as PlayerState).CleanUpInputs();
                 m_isBusy = true;
                 CleanUpInput();
                 m_characterAnimatorHandler.SetForwardSpeed(0f);
@@ -92,6 +91,7 @@ namespace ProjElf.PlayerController
                 m_isBusy = false;
                 SetUpInput();
                 m_modelSightBrain.StartWatchingAlongPlayerSight();
+                (m_currentState as PlayerState).SetUpInputs();
             }
         }
         #endregion
@@ -127,7 +127,6 @@ namespace ProjElf.PlayerController
             m_gamemode.OnUnpause += SetUpInput;
 
             m_combatController.OnLifeReachedZero += Die;
-            
         }
 
         private void Die()
@@ -175,7 +174,6 @@ namespace ProjElf.PlayerController
                 m_verticalVelocity = -m_gravity * Time.fixedDeltaTime;
                 if(m_currentState == m_inAirState)
                 {
-
                     SwitchToState(m_movingState);
                 }
             }
@@ -205,7 +203,6 @@ namespace ProjElf.PlayerController
 
                     // Simulate Arrow to reorientate it
                     // Use CalculateArrowPosition() in Arrow (maybe has to be moved) to find when the arrow will go below initPosY (arrowStartPosition.y) and use the x and z values of this point
-
 
                     Debug.DrawLine(arrowStartPosition, arrowStartPosition + (hitInfo.point - arrowStartPosition), Color.yellow);
                     
@@ -276,6 +273,7 @@ namespace ProjElf.PlayerController
 
         protected void CleanUpInput()
         {
+
             m_actions.UI.Back.performed -= Pause_performed;
             m_actions.Disable();
         }

@@ -23,6 +23,13 @@ namespace ProjElf.CombatController
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileSpeed = Random.Range(bowData.ProjectileSpeed.x, bowData.ProjectileSpeed.y);
                 ProjectilePrefab = bowData.ProjectilePrefab;
+                s_weaponLabel = "bow";
+            }
+
+            protected override void SetWeaponData(AWeaponData weaponData)
+            {
+                base.SetWeaponData(weaponData);
+                ProjectilePrefab = (weaponData as BowData).ProjectilePrefab;
             }
         }
         //Var

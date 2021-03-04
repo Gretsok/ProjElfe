@@ -64,5 +64,22 @@ public class SaveData
     public void LoadFromJson(string a_Json)
     {
         JsonUtility.FromJsonOverwrite(a_Json, this);
+
+        SavedPlayerWeaponInventory.EquippedBow.Unserialize();
+        SavedPlayerWeaponInventory.EquippedGrimoire.Unserialize();
+        SavedPlayerWeaponInventory.EquippedMeleeWeapon.Unserialize();
+
+        for(int i = 0; i < EarnedBows.Count; ++i)
+        {
+            EarnedBows[i].Unserialize();
+        }
+        for (int i = 0; i < EarnedGrimoires.Count; ++i)
+        {
+            EarnedGrimoires[i].Unserialize();
+        }
+        for (int i = 0; i < EarnedMeleeWeapons.Count; ++i)
+        {
+            EarnedMeleeWeapons[i].Unserialize();
+        }
     }
 }

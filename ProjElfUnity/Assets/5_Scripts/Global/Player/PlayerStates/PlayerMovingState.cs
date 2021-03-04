@@ -76,7 +76,7 @@ namespace ProjElf.PlayerController
         #endregion
 
         #region Inputs
-        protected override void SetUpInputs()
+        internal override void SetUpInputs()
         {
             base.SetUpInputs();
             m_player.Actions.Generic.Slide.performed += Slide_performed;
@@ -118,7 +118,7 @@ namespace ProjElf.PlayerController
             throw new System.NotImplementedException();
         }
 
-        protected override void CleanUpInputs()
+        internal override void CleanUpInputs()
         {
             m_player.Actions.Generic.Slide.performed -= Slide_performed;
             m_player.Actions.Generic.Jump.performed -= Jump_performed;

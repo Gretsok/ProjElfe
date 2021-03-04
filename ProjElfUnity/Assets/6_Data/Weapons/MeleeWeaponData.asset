@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b6b243aa7f1afb146ba44728180fd2e6, type: 3}
   m_Name: MeleeWeaponData
   m_EditorClassIdentifier: 
+  m_weaponID: -601918153
   m_weaponName: Basic MeleeWeapon
   m_weaponSprite: {fileID: 21300000, guid: cd52fe3ebbf07244592ca5c265b4b8d1, type: 3}
   m_hitDamage: {x: 10, y: 20}

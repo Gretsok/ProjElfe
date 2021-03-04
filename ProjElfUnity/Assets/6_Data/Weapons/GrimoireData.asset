@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 006cd38faf4aabd4195cf2ab44034cc1, type: 3}
   m_Name: GrimoireData
   m_EditorClassIdentifier: 
+  m_weaponID: -1461573157
   m_weaponName: Basic Grimoire
   m_weaponSprite: {fileID: 21300000, guid: 97f60c7074005b64a9c4e07f2055f87d, type: 3}
   m_hitDamage: {x: 10, y: 15}

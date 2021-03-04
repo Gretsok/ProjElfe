@@ -12,7 +12,7 @@ namespace ProjElf.CombatController
         {
             public MeleeWeaponSaveData(MeleeWeaponData meleeWeaponData) : base(meleeWeaponData)
             {
-
+                s_weaponLabel = "meleeweapon";
             }
 
         }

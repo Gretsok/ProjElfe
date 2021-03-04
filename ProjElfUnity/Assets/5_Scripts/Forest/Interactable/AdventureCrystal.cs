@@ -7,10 +7,17 @@ public class AdventureCrystal : MonoBehaviour, IInteractable
     [SerializeField]
     private SceneData m_dunjeonSceneData = null;
 
+    private bool m_loadingStarted = false;
+
+
     public void DoInteraction(Interactor interactor = null)
     {
         Debug.Log("Interact with crystal");
-        m_dunjeonSceneData.LoadLevel();
+        if(!m_loadingStarted)
+        {
+            m_dunjeonSceneData.LoadLevel();
+            m_loadingStarted = true;
+        }
     }
 
     public void StartBeingWatched()
