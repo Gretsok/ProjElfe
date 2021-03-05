@@ -1,5 +1,7 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using static ProjElf.CombatController.AWeaponData;
@@ -11,6 +13,10 @@ namespace ProjElf.HubForest
 {
     public class InventoryPanel : Panel
     {
+        private const float m_inputDelay = 0.2f;
+        private float m_timeOfLastInput = float.MinValue;
+
+        private int m_lastSlotIndex = 0;
         private bool m_isLoaded = false;
         private HubForestGameMode m_gamemode = null;
         private SaveData m_currentSaveData = null;
@@ -40,12 +46,15 @@ namespace ProjElf.HubForest
         private Transform m_stockedWeaponsContainer = null;
         private List<StockedWeaponSlot> m_stockedWeaponsSlots = new List<StockedWeaponSlot>();
 
+        [SerializeField]
+        private TextMeshProUGUI m_moneyDisplayText = null;
+
         public override void Show()
         {
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_gamemode.Player.MakeBusy(m_inventoryChest.transform);
             base.Show();
-            SetUpInputs();
+
    
             StartCoroutine(LoadInventoryPanelRoutine());
 
@@ -55,23 +64,69 @@ namespace ProjElf.HubForest
         #region Player Interactions
         private void Reroll_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            Debug.Log("Trying to reroll : " + EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            if (Time.time - m_timeOfLastInput < m_inputDelay)
+            {
+                return;
+            }
+            else
+            {
+                m_timeOfLastInput = Time.time;
+            }
+
+            StockedWeaponSlot stockedWeaponSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
+
+            Debug.Log("Trying to reroll : " + stockedWeaponSlot);
+            if (stockedWeaponSlot != null)
+            {
+                m_currentSaveData.FrancissousMoney -= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice;
+                m_currentSaveData.RerollWeapon(stockedWeaponSlot.WeaponSaveData);
+            }
+
             StartCoroutine(UnloadInventoryPanelRoutine(true));
         }
 
         private void Sell_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            Debug.Log("Trying to sell : " + EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            if (Time.time - m_timeOfLastInput < m_inputDelay)
+            {
+                return;
+            }
+            else
+            {
+                m_timeOfLastInput = Time.time;
+            }
+
+            StockedWeaponSlot stockedWeaponSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
+            Debug.Log("Trying to sell : " + stockedWeaponSlot);
+
+            if(stockedWeaponSlot != null)
+            {
+                m_currentSaveData.FrancissousMoney += stockedWeaponSlot.WeaponSaveData.WeaponData.SellPrice;
+                m_currentSaveData.RemoveWeaponFromHoldedWeapons(stockedWeaponSlot.WeaponSaveData);
+            }
+
             StartCoroutine(UnloadInventoryPanelRoutine(true));
         }
 
         private void Confirm_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
+            if(Time.time - m_timeOfLastInput < m_inputDelay)
+            {
+                return;
+            }
+            else
+            {
+                m_timeOfLastInput = Time.time;
+            }
+
             StockedWeaponSlot selectedSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
 
-            m_gamemode.Player.CombatController.CombatInventory.ChangeWeapon(selectedSlot.WeaponSaveData);
-            MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RemoveWeaponFromHoldedWeapons(selectedSlot.WeaponSaveData);
-            Debug.Log("Weapon changed !");
+            if(selectedSlot != null)
+            {
+                m_gamemode.Player.CombatController.CombatInventory.ChangeWeapon(selectedSlot.WeaponSaveData);
+                MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RemoveWeaponFromHoldedWeapons(selectedSlot.WeaponSaveData);
+                Debug.Log("Weapon changed !");
+            }
 
             StartCoroutine(UnloadInventoryPanelRoutine(true));
         }
@@ -131,17 +186,47 @@ namespace ProjElf.HubForest
                 m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
             }
 
+            m_moneyDisplayText.text = $"{m_currentSaveData.FrancissousMoney} francissous";
+
             yield return null;
+
+
 
             m_isLoaded = true;
 
-            EventSystem.current.SetSelectedGameObject(m_stockedWeaponsSlots[0].gameObject);
+            try
+            {
+                if(m_lastSlotIndex >= m_stockedWeaponsSlots.Count)
+                {
+                    m_lastSlotIndex = m_stockedWeaponsSlots.Count - 1;
+                }
+
+                EventSystem.current.SetSelectedGameObject(m_stockedWeaponsSlots[m_lastSlotIndex].gameObject);
+
+            }
+            catch(Exception)
+            {
+                if (m_stockedWeaponsSlots.Count > 0)
+                {
+                    EventSystem.current.SetSelectedGameObject(m_stockedWeaponsSlots[0].gameObject);
+                }
+                else
+                {
+                    EventSystem.current.SetSelectedGameObject(null);
+                }
+            }
 
             
+
+            SetUpInputs();
+
+
         }
 
         IEnumerator UnloadInventoryPanelRoutine(bool reload = false)
         {
+            m_lastSlotIndex = m_stockedWeaponsSlots.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            CleanUpInputs();
             m_meleeWeaponSlot.Clear();
             m_grimoireSlot.Clear();
             m_bowSlot.Clear();
@@ -163,10 +248,12 @@ namespace ProjElf.HubForest
             EventSystem.current.SetSelectedGameObject(null);
             if (reload)
             {
+                
                 StartCoroutine(LoadInventoryPanelRoutine());
             }
             else
             {
+                m_lastSlotIndex = 0;
                 QuitPanel();
             }
 
@@ -209,7 +296,6 @@ namespace ProjElf.HubForest
         {
 
 
-            CleanUpInputs();
             Hide();
             m_gamemode.Player.MakeUnbusy();
         }
@@ -218,19 +304,19 @@ namespace ProjElf.HubForest
         private void SetUpInputs()
         {
             m_gamemode.Actions.Enable();
-            m_gamemode.Actions.UI.Back.performed += Back_performed;
-            m_gamemode.Actions.Generic.PrimaryAttack.performed += Sell_CurrentItem;
-            m_gamemode.Actions.Generic.SecondaryAttack.performed += Reroll_CurrentItem;
-            m_gamemode.Actions.UI.Confirm.performed += Confirm_performed;
+            m_gamemode.Actions.UI.Back.started += Back_performed;
+            m_gamemode.Actions.Generic.PrimaryAttack.started += Sell_CurrentItem;
+            m_gamemode.Actions.Generic.SecondaryAttack.started += Reroll_CurrentItem;
+            m_gamemode.Actions.UI.Confirm.started += Confirm_performed;
         }
 
 
         private void CleanUpInputs()
         {
-            m_gamemode.Actions.UI.Back.performed -= Back_performed;
-            m_gamemode.Actions.Generic.PrimaryAttack.performed -= Sell_CurrentItem;
-            m_gamemode.Actions.Generic.SecondaryAttack.performed -= Reroll_CurrentItem;
-            m_gamemode.Actions.UI.Confirm.performed -= Confirm_performed;
+            m_gamemode.Actions.UI.Back.started -= Back_performed;
+            m_gamemode.Actions.Generic.PrimaryAttack.started -= Sell_CurrentItem;
+            m_gamemode.Actions.Generic.SecondaryAttack.started -= Reroll_CurrentItem;
+            m_gamemode.Actions.UI.Confirm.started -= Confirm_performed;
             m_gamemode.Actions.Disable();
         }
         #endregion

@@ -69,12 +69,15 @@ namespace ProjElf.CombatController
         [SerializeField] protected Vector2 m_attackSpeed = default;
         [SerializeField] protected AWeapon m_weaponPrefab = null;
         [SerializeField] protected bool m_allowContinueFiring = false;
+        [SerializeField] protected int m_sellPrice = 5;
+        [SerializeField] protected int m_rerollPrice = 5;
         public bool AllowContinueFiring => m_allowContinueFiring;
         public Vector2 AttackSpeed => m_attackSpeed;
         public Vector2Int HitDamage => m_hitDamage;
         public string WeaponName => m_weaponName;
         public Sprite WeaponSprite => m_weaponSprite;
-
+        public int SellPrice => m_sellPrice;
+        public int RerollPrice => m_rerollPrice;
 
         public AWeapon WeaponPrefab => m_weaponPrefab;
 

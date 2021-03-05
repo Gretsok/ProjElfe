@@ -38,6 +38,7 @@ public class SaveData
     public List<GrimoireData.GrimoireSaveData> EarnedGrimoires = new List<GrimoireData.GrimoireSaveData>();
     public List<MeleeWeaponData.MeleeWeaponSaveData> EarnedMeleeWeapons = new List<MeleeWeaponData.MeleeWeaponSaveData>();
 
+    #region HoldedWeaponsManagement
     public void EarnNewWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
     {
         if(weaponSaveData is BowData.BowSaveData)
@@ -77,6 +78,34 @@ public class SaveData
             Debug.LogError("Incorrect weapon SaveData !");
         }
     }
+
+    public void RerollWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
+    {
+        if (weaponSaveData is BowData.BowSaveData)
+        {
+            int index = EarnedBows.IndexOf(weaponSaveData as BowData.BowSaveData);
+            EarnedBows.Insert(index, (weaponSaveData.WeaponData as BowData).GetWeaponSaveData<BowData.BowSaveData>());
+            EarnedBows.Remove(weaponSaveData as BowData.BowSaveData);
+
+        }
+        else if (weaponSaveData is GrimoireData.GrimoireSaveData)
+        {
+            int index = EarnedGrimoires.IndexOf(weaponSaveData as GrimoireData.GrimoireSaveData);
+            EarnedGrimoires.Insert(index, (weaponSaveData.WeaponData as GrimoireData).GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
+            EarnedGrimoires.Remove(weaponSaveData as GrimoireData.GrimoireSaveData);
+        }
+        else if (weaponSaveData is MeleeWeaponData.MeleeWeaponSaveData)
+        {
+            int index = EarnedMeleeWeapons.IndexOf(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+            EarnedMeleeWeapons.Insert(index, (weaponSaveData.WeaponData as MeleeWeaponData).GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
+            EarnedMeleeWeapons.Remove(weaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+        }
+        else
+        {
+            Debug.LogError("Incorrect weapon SaveData !");
+        }
+    }
+    #endregion
 
     public string ToJson()
     {

@@ -70,20 +70,28 @@ namespace ProjElf.PlayerController
         private bool m_isBusy = false;
         public bool IsBusy => m_isBusy;
         public void MakeBusy(Transform busyWith = null)
-        {
+        { 
             if(!m_isBusy)
+            {
+                if (busyWith != null)
+                {
+                    m_modelSightBrain.LookAt(busyWith);
+                }
+                MakeBusy();
+            }
+        }
+        public void MakeBusy()
+        {
+            if (!m_isBusy)
             {
                 (m_currentState as PlayerState).CleanUpInputs();
                 m_isBusy = true;
                 CleanUpInput();
                 m_characterAnimatorHandler.SetForwardSpeed(0f);
                 m_characterAnimatorHandler.SetRightSpeed(0f);
-                if(busyWith != null)
-                {
-                    m_modelSightBrain.LookAt(busyWith);
-                }
             }
         }
+
         public void MakeUnbusy()
         {
             if(m_isBusy)
@@ -123,8 +131,8 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
-            m_gamemode.OnPause += CleanUpInput;
-            m_gamemode.OnUnpause += SetUpInput;
+            m_gamemode.OnPause += MakeBusy;
+            m_gamemode.OnUnpause += MakeUnbusy;
 
             m_combatController.OnLifeReachedZero += Die;
         }
@@ -227,8 +235,8 @@ namespace ProjElf.PlayerController
         {
             m_combatController.OnLifeReachedZero -= Die;
 
-            m_gamemode.OnPause -= CleanUpInput;
-            m_gamemode.OnUnpause -= SetUpInput;
+            m_gamemode.OnPause -= MakeBusy;
+            m_gamemode.OnUnpause -= MakeUnbusy;
             CleanUpInput();
             base.ExitStateMachine();
         }
@@ -268,7 +276,7 @@ namespace ProjElf.PlayerController
 
         private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            m_gamemode.Pause();
+            m_gamemode.Pause();            
         }
 
         protected void CleanUpInput()

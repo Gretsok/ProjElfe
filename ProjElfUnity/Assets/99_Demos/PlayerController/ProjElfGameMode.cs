@@ -3,6 +3,7 @@ using MOtter.StatesMachine;
 using ProjElf.CombatController;
 using ProjElf.PlayerController;
 using UnityEngine;
+using UnityEngine.InputSystem.Users;
 
 public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
 {
@@ -27,6 +28,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
         Cursor.lockState = CursorLockMode.Confined;
         m_timeOfStart = Time.time;
     }
+
     public override void DoUpdate()
     {
         base.DoUpdate();
