@@ -1,10 +1,14 @@
 ﻿using MOtter;
+using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ProjElf.MainMenu
 {
     public class CreateCharacterState : MainMenuNavigationState
     {
-        protected void Confirm()
+
+
+        public void Confirm()
         {
             SaveData newSaveData = new SaveData();
             newSaveData.SaveName = GetPanel<CharacterCreationPanel>().NameInputField.text;

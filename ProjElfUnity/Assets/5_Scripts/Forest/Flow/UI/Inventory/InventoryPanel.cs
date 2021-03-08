@@ -64,7 +64,7 @@ namespace ProjElf.HubForest
         #region Player Interactions
         private void Reroll_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if (Time.time - m_timeOfLastInput < m_inputDelay)
+            if (Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -87,7 +87,7 @@ namespace ProjElf.HubForest
 
         private void Sell_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if (Time.time - m_timeOfLastInput < m_inputDelay)
+            if (Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -110,7 +110,7 @@ namespace ProjElf.HubForest
 
         private void Confirm_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if(Time.time - m_timeOfLastInput < m_inputDelay)
+            if(Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -225,7 +225,11 @@ namespace ProjElf.HubForest
 
         IEnumerator UnloadInventoryPanelRoutine(bool reload = false)
         {
-            m_lastSlotIndex = m_stockedWeaponsSlots.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            if(EventSystem.current.currentSelectedGameObject != null)
+            {
+                m_lastSlotIndex = m_stockedWeaponsSlots.IndexOf(EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>());
+            }
+            
             CleanUpInputs();
             m_meleeWeaponSlot.Clear();
             m_grimoireSlot.Clear();

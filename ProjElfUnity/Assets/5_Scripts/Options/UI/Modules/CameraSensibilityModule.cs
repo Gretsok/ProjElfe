@@ -1,10 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class CameraSensibilityModule : OptionsMenuModule
+public class CameraSensibilityModule : Slider
 {
-    [SerializeField]
-    private Slider m_sensibilitySlider = null;
 
-    public Slider SensibilitySlider => m_sensibilitySlider;
 }

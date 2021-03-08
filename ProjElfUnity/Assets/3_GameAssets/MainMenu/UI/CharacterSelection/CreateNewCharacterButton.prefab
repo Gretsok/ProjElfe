@@ -336,6 +336,7 @@ MonoBehaviour:
   m_unselectedColor:
     serializedVersion: 2
     rgba: 4280039795
+  m_stateActivationType: 1
   m_state: {fileID: 0}
 --- !u!114 &5229022780046554454
 MonoBehaviour:

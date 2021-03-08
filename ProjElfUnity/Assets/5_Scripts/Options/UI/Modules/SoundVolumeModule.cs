@@ -1,10 +1,10 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SoundVolumeModule : OptionsMenuModule
+public class SoundVolumeModule : Slider
 {
-    [SerializeField]
-    private Slider m_volumeSlider = null;
 
-    public Slider VolumeSlider => m_volumeSlider;
 }
+

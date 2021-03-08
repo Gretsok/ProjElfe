@@ -19,6 +19,7 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private CreditsState m_creditsState = null;
         public CharacterSelectionState CharacterSelectionState => m_characterSelectionState;
+        public CreateCharacterState CreateCharacterState => m_createCharacterState;
 
 
         [SerializeField]
