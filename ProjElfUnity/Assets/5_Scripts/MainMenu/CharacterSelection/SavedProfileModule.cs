@@ -2,9 +2,10 @@
 using MOtter.Localization;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class SavedProfileModule : MonoBehaviour, INavigationPosition
+public class SavedProfileModule : MonoBehaviour, INavigationPosition, ISelectHandler, IDeselectHandler
 {
     [SerializeField, Tooltip("")]
     private LayoutElement m_layoutElement = null;
@@ -106,5 +107,15 @@ public class SavedProfileModule : MonoBehaviour, INavigationPosition
 
         m_animalsSavedText.text = animalsSaved.ToString();
         
+    }
+
+    public void OnSelect(BaseEventData eventData)
+    {
+        OnSelected();
+    }
+
+    public void OnDeselect(BaseEventData eventData)
+    {
+        OnUnselected();
     }
 }

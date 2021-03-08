@@ -1,21 +1,11 @@
 ﻿using MOtter;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 namespace ProjElf.MainMenu
 {
     public class CreateCharacterState : MainMenuNavigationState
     {
-        protected override void Back()
+        protected void Confirm()
         {
-            base.Back();
-            m_mainStateMachine.SwitchToCharacterSelectionState();
-        }
-
-        protected override void Confirm()
-        {
-            base.Confirm();
             SaveData newSaveData = new SaveData();
             newSaveData.SaveName = GetPanel<CharacterCreationPanel>().NameInputField.text;
             newSaveData.SavedPlayerStats.TimePlayed = 0;
