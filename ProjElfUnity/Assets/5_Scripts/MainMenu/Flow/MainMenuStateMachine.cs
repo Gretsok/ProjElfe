@@ -28,6 +28,9 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private SavedProfilesManager m_profileManager = null;
         public SavedProfilesManager ProfileManager => m_profileManager;
+        [SerializeField]
+        private MainMenuCameraManager m_cameraManager = null;
+        public MainMenuCameraManager CameraManager => m_cameraManager;
 
         [Header("LevelLoader")]
         [SerializeField]

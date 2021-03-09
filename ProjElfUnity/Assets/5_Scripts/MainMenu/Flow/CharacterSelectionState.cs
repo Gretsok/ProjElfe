@@ -17,6 +17,8 @@ namespace ProjElf.MainMenu
                 m_mainStateMachine.ProfileManager.Inflate(MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveDataList.ToArray());
                 m_hasInflate = true;
             }
+
+            m_mainStateMachine.CameraManager.SetCharacterCamera();
         }
 
        

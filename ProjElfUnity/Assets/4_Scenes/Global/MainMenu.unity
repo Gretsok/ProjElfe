@@ -293,7 +293,6 @@ GameObject:
   m_Component:
   - component: {fileID: 106966060}
   - component: {fileID: 106966061}
-  - component: {fileID: 106966062}
   m_Layer: 0
   m_Name: VCAM_Options
   m_TagString: Untagged
@@ -354,18 +353,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 515603054}
---- !u!114 &106966062
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 106966059}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c12052b5d9100b4b9f8347284998c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &121143453
 GameObject:
   m_ObjectHideFlags: 0
@@ -376,7 +363,6 @@ GameObject:
   m_Component:
   - component: {fileID: 121143454}
   - component: {fileID: 121143455}
-  - component: {fileID: 121143456}
   m_Layer: 0
   m_Name: VCAM_Home
   m_TagString: Untagged
@@ -437,18 +423,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 249772456}
---- !u!114 &121143456
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 121143453}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c12052b5d9100b4b9f8347284998c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &157600207
 GameObject:
   m_ObjectHideFlags: 0
@@ -534,6 +508,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 234474167}
+  - component: {fileID: 234474168}
   m_Layer: 0
   m_Name: CamerasContainer
   m_TagString: Untagged
@@ -559,6 +534,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &234474168
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 234474166}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9b520759894fc4b9cb6da172f88bc6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_characterCamera: {fileID: 1633098412}
+  m_optionsCamera: {fileID: 106966061}
+  m_homeCamera: {fileID: 121143455}
+  m_creditsCamera: {fileID: 2009799265}
+  m_quitCamera: {fileID: 2009799265}
 --- !u!224 &247819850 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 6536173365764171148, guid: 92d9ec27ade10f049ab71c5bfc2e6eee,
@@ -1473,6 +1465,7 @@ MonoBehaviour:
   m_creditsState: {fileID: 1378490696}
   m_firstSelectObject: {fileID: 419972728}
   m_profileManager: {fileID: 1745546064}
+  m_cameraManager: {fileID: 234474168}
   m_hubData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603, type: 2}
 --- !u!4 &1360633676
 Transform:
@@ -1729,7 +1722,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1633098411}
   - component: {fileID: 1633098412}
-  - component: {fileID: 1633098413}
   m_Layer: 0
   m_Name: VCAM_Character
   m_TagString: Untagged
@@ -1790,18 +1782,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1483963477}
---- !u!114 &1633098413
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1633098410}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c12052b5d9100b4b9f8347284998c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &1677678242 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2026507304493494188, guid: 686f7f342a298274e8c5a0efc1c300ee,
@@ -1907,7 +1887,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2009799264}
   - component: {fileID: 2009799265}
-  - component: {fileID: 2009799266}
   m_Layer: 0
   m_Name: VCAM_Credits
   m_TagString: Untagged
@@ -1968,18 +1947,6 @@ MonoBehaviour:
         m_Calls: []
   m_LegacyBlendHint: 0
   m_ComponentOwner: {fileID: 1081042945}
---- !u!114 &2009799266
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2009799263}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c12052b5d9100b4b9f8347284998c4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &2078587764
 GameObject:
   m_ObjectHideFlags: 0

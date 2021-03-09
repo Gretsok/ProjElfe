@@ -6,7 +6,11 @@ namespace ProjElf.MainMenu
 {
     public class CreateCharacterState : MainMenuNavigationState
     {
-
+        public override void EnterState()
+        {
+            base.EnterState();
+            m_mainStateMachine.CameraManager.SetCharacterCamera();
+        }
 
         public void Confirm()
         {
