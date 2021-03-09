@@ -21,6 +21,9 @@ namespace ProjElf.MainMenu
         public CharacterSelectionState CharacterSelectionState => m_characterSelectionState;
         public CreateCharacterState CreateCharacterState => m_createCharacterState;
 
+        [SerializeField]
+        private GameObject m_firstSelectObject = null;
+
 
         [SerializeField]
         private SavedProfilesManager m_profileManager = null;
@@ -40,6 +43,7 @@ namespace ProjElf.MainMenu
         internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
+            EventSystem.current.SetSelectedGameObject(m_firstSelectObject);
         }
 
 
