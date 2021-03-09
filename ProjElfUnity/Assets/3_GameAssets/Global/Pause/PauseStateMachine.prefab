@@ -46,6 +46,7 @@ MonoBehaviour:
   m_nextState: {fileID: 0}
   m_panels: []
   m_pauseStateMachine: {fileID: 8569066701505510732}
+  m_firstSelectedObject: {fileID: 0}
 --- !u!1 &8569066701505510734
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,9 +93,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_defaultState: {fileID: 8569066702369560887}
-  m_pauseMenuState: {fileID: 0}
-  m_pauseOptionsState: {fileID: 0}
-  m_mainMenuSceneData: {fileID: 0}
+  m_pauseMenuState: {fileID: 8569066702369560887}
+  m_pauseOptionsState: {fileID: 7855429847122916202}
+  m_mainMenuSceneData: {fileID: 11400000, guid: 6c36ba7793b55f54985b0b24844320d3,
+    type: 2}
 --- !u!1 &8569066702369560888
 GameObject:
   m_ObjectHideFlags: 0
@@ -142,3 +144,4 @@ MonoBehaviour:
   m_panels:
   - {fileID: 0}
   m_pauseStateMachine: {fileID: 8569066701505510732}
+  m_firstSelectedObject: {fileID: 0}

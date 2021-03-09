@@ -43,18 +43,24 @@ public class ProjElfPauseStateMachine : StatesMachine
         SwitchToState(m_pauseMenuState);
     }
 
-    public void GoToMainMenu()
+    public void GoToMainMenu(bool save)
     {
-        m_gamemode.SaveData();
-        m_gamemode.SavePlayerWeapons();
+        if(save)
+        {
+            m_gamemode.SaveData();
+            m_gamemode.SavePlayerWeapons();
+        }
         m_gamemode.Unpause();
         m_mainMenuSceneData.LoadLevel();
     }
 
-    public void QuitGame()
+    public void QuitGame(bool save)
     {
-        m_gamemode.SaveData();
-        m_gamemode.SavePlayerWeapons();
+        if (save)
+        {
+            m_gamemode.SaveData();
+            m_gamemode.SavePlayerWeapons();
+        }
         Application.Quit();
     }
 }
