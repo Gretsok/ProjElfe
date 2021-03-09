@@ -9,6 +9,9 @@ namespace ProjElf.PlayerController
     {
         [SerializeField]
         private Image m_healthSlider = null;
+        [SerializeField]
+        private PlayerWeaponsDisplay m_weaponsDisplay = null;
+        public PlayerWeaponsDisplay WeaponsDisplay => m_weaponsDisplay;
 
         internal override void SetHealthRatio(float healthRatio)
         {

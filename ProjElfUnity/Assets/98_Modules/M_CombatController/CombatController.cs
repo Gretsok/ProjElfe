@@ -25,6 +25,7 @@ namespace ProjElf.CombatController
 
         [SerializeField]
         private CombatControllerUIManager m_UIManager = null;
+        public CombatControllerUIManager UIManager => m_UIManager;
 
         [SerializeField]
         private int m_teamIndex = 0;

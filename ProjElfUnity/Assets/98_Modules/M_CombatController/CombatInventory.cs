@@ -8,27 +8,27 @@ namespace ProjElf.CombatController
     public class CombatInventory : MonoBehaviour
     {
         //Var
-        private MeleeWeapon m_meleeWeapon = null;
-        private Grimoire m_grimoire = null;
-        private Bow m_bow = null;
+        protected MeleeWeapon m_meleeWeapon = null;
+        protected Grimoire m_grimoire = null;
+        protected Bow m_bow = null;
 
         public MeleeWeapon MeleeWeapon => m_meleeWeapon;
         public Grimoire Grimoire => m_grimoire;
         public Bow Bow => m_bow;
 
         [SerializeField]
-        private CombatController m_combatController = null;
+        protected CombatController m_combatController = null;
 
         //private AWeapon[] m_weapons = new AWeapon[3];
-        private AWeapon m_selectedWeapon;
+        protected AWeapon m_selectedWeapon;
         //Ref transform quand équipé
-        [SerializeField] private Transform m_posMelee = null;
-        [SerializeField] private Transform m_posGrimoire = null;
-        [SerializeField] private Transform m_posBow = null;
+        [SerializeField] protected Transform m_posMelee = null;
+        [SerializeField] protected Transform m_posGrimoire = null;
+        [SerializeField] protected Transform m_posBow = null;
         //Ref transform quand rangé
-        [SerializeField] private Transform m_posMeleeEquip = null;
-        [SerializeField] private Transform m_posGrimoireEquip = null;
-        [SerializeField] private Transform m_posBowEquip = null;
+        [SerializeField] protected Transform m_posMeleeEquip = null;
+        [SerializeField] protected Transform m_posGrimoireEquip = null;
+        [SerializeField] protected Transform m_posBowEquip = null;
 
         private List<AWeaponData.AWeaponSaveData> m_holdedWeapons = new List<AWeaponData.AWeaponSaveData>();
         public List<AWeaponData.AWeaponSaveData> HoldedWeapons => m_holdedWeapons;
@@ -63,7 +63,7 @@ namespace ProjElf.CombatController
             }
         }
 
-        public void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
+        public virtual void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
         {
             if(newMeleeWeaponData != null)
             {
@@ -82,7 +82,7 @@ namespace ProjElf.CombatController
                 }
             }
         }
-        public void ChangeGrimoire(GrimoireData.GrimoireSaveData newGrimoireData)
+        public virtual void ChangeGrimoire(GrimoireData.GrimoireSaveData newGrimoireData)
         {
             if(newGrimoireData != null)
             {
@@ -101,7 +101,7 @@ namespace ProjElf.CombatController
                 }
             }
         }
-        public void ChangeBow(BowData.BowSaveData newBowData)
+        public virtual void ChangeBow(BowData.BowSaveData newBowData)
         {
             if(newBowData != null)
             {
@@ -123,7 +123,7 @@ namespace ProjElf.CombatController
         #endregion
 
         #region WeaponSelection
-        public void SelectNextWeapon()
+        public virtual void SelectNextWeapon()
         {
             //On part sur Epee / Grimoire / Arc donc :
 
@@ -216,7 +216,7 @@ namespace ProjElf.CombatController
                 
         }
 
-        public void SelectPreviousWeapon()
+        public virtual void SelectPreviousWeapon()
         {
             if(m_selectedWeapon is Bow)
             {
@@ -305,7 +305,7 @@ namespace ProjElf.CombatController
             }
         }
 
-        public void UnEquipWeapon()
+        public virtual void UnEquipWeapon()
         {
             if (m_selectedWeapon is MeleeWeapon)
             {
@@ -329,21 +329,21 @@ namespace ProjElf.CombatController
             }
         }
 
-        public void SelectGrimoire()
+        public virtual void SelectGrimoire()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
             ChangeWeaponTransform(m_grimoire, m_posGrimoireEquip);
             m_selectedWeapon = m_grimoire;
         }
 
-        public void SelectBow()
+        public virtual void SelectBow()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
             ChangeWeaponTransform(m_bow, m_posBowEquip);
             m_selectedWeapon = m_bow;
         }
 
-        public void SelectMeleeWeapon()
+        public virtual void SelectMeleeWeapon()
         {
             UnEquipWeapon(); //On enleve l'arme actuelle
             ChangeWeaponTransform(m_meleeWeapon, m_posMeleeEquip);
