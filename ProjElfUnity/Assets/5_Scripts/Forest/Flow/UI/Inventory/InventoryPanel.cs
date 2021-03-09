@@ -43,7 +43,7 @@ namespace ProjElf.HubForest
         [SerializeField]
         private StockedWeaponSlot m_stockedWeaponSlotPrefab = null;
         [SerializeField]
-        private Transform m_stockedWeaponsContainer = null;
+        private FlexibleGrid m_stockedWeaponsGrid = null;
         private List<StockedWeaponSlot> m_stockedWeaponsSlots = new List<StockedWeaponSlot>();
 
         [SerializeField]
@@ -167,27 +167,27 @@ namespace ProjElf.HubForest
 
             for(int i = 0; i < m_currentSaveData.EarnedMeleeWeapons.Count; ++i)
             {
-                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
+                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsGrid.transform);
                 newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedMeleeWeapons[i], this);
                 m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
             }
 
             for (int i = 0; i < m_currentSaveData.EarnedGrimoires.Count; ++i)
             {
-                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
+                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsGrid.transform);
                 newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedGrimoires[i], this);
                 m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
             }
 
             for (int i = 0; i < m_currentSaveData.EarnedBows.Count; ++i)
             {
-                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsContainer);
+                var newStockedWeaponSlot = Instantiate(m_stockedWeaponSlotPrefab, m_stockedWeaponsGrid.transform);
                 newStockedWeaponSlot.Inflate(m_currentSaveData.EarnedBows[i], this);
                 m_stockedWeaponsSlots.Add(newStockedWeaponSlot);
             }
 
             m_moneyDisplayText.text = $"{m_currentSaveData.FrancissousMoney} francissous";
-
+            m_stockedWeaponsGrid.UpdateGrid();
             yield return null;
 
 

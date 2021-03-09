@@ -482,6 +482,14 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Move"",
+                    ""type"": ""Value"",
+                    ""id"": ""6c3fb8e5-ee25-400b-be92-2ec5a75c7758"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -660,6 +668,72 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""action"": ""PreviousSection"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8cc587a8-9c55-486c-99d2-a0b18a1e59a9"",
+                    ""path"": ""<Gamepad>/leftStick"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""f67d7102-c1bd-49fd-abac-44868e96bcbc"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""9058505a-27c8-4343-aeb5-0f24b0f0133d"",
+                    ""path"": ""<Keyboard>/w"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""79bbd10f-c423-4862-92a9-c0520a1da1d6"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""18998b04-336d-4be6-be9c-732138075e71"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""52eee92e-7c42-4527-8ed4-5a9d7afa0104"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -718,6 +792,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_UI_MoveDown = m_UI.FindAction("MoveDown", throwIfNotFound: true);
         m_UI_NextSection = m_UI.FindAction("NextSection", throwIfNotFound: true);
         m_UI_PreviousSection = m_UI.FindAction("PreviousSection", throwIfNotFound: true);
+        m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -896,6 +971,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_MoveDown;
     private readonly InputAction m_UI_NextSection;
     private readonly InputAction m_UI_PreviousSection;
+    private readonly InputAction m_UI_Move;
     public struct UIActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -908,6 +984,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         public InputAction @MoveDown => m_Wrapper.m_UI_MoveDown;
         public InputAction @NextSection => m_Wrapper.m_UI_NextSection;
         public InputAction @PreviousSection => m_Wrapper.m_UI_PreviousSection;
+        public InputAction @Move => m_Wrapper.m_UI_Move;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -941,6 +1018,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @PreviousSection.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
                 @PreviousSection.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
                 @PreviousSection.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPreviousSection;
+                @Move.started -= m_Wrapper.m_UIActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnMove;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -969,6 +1049,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @PreviousSection.started += instance.OnPreviousSection;
                 @PreviousSection.performed += instance.OnPreviousSection;
                 @PreviousSection.canceled += instance.OnPreviousSection;
+                @Move.started += instance.OnMove;
+                @Move.performed += instance.OnMove;
+                @Move.canceled += instance.OnMove;
             }
         }
     }
@@ -1016,5 +1099,6 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnMoveDown(InputAction.CallbackContext context);
         void OnNextSection(InputAction.CallbackContext context);
         void OnPreviousSection(InputAction.CallbackContext context);
+        void OnMove(InputAction.CallbackContext context);
     }
 }
