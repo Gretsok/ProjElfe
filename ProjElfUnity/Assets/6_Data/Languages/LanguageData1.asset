@@ -15,6 +15,7 @@ MonoBehaviour:
   m_languageDictionary:
     m_keys:
     - LANGUAGE_SHORTNAME
+    - LANGUAGE_NAME
     - PROJECT_NAME
     - LOADING_SCENE
     - GENERIC_PLAY
@@ -37,8 +38,33 @@ MonoBehaviour:
     - OPTIONS_CAMERA_SENSIBILITY
     - OPTIONS_SOUND_VOLUME
     - OPTIONS_LANGUAGE
+    - DIFFICULTY_RESCUER_I
+    - DIFFICULTY_RESCUER_II
+    - DIFFICULTY_RESCUER_III
+    - DIFFICULTY_LIFESAVER_I
+    - DIFFICULTY_LIFESAVER_II
+    - DIFFICULTY_LIFESAVER_III
+    - DIFFICULTY_ABSOLUTE_MASTER_GUARDIAN
+    - DUNJEON_TYPE_CASTLE
+    - DUNJEON_TYPE_CAVE
+    - ACTION_PRESS
+    - INVENTORY_CHANGE_WEAPON
+    - INVENTORY_SELL_WEAPON
+    - INVENTORY_REROLL_WEAPON
+    - INVENTORY_LEAVE
+    - WEAPON_STATS_PROJECTILE_GRAVITY
+    - WEAPON_STATS_PROJECTILE_SPEED
+    - WEAPON_STATS_PROJECTILE_LIFETIME
+    - WEAPON_STATS_ATTACK_SPEED
+    - WEAPON_STATS_OF_DAMAGE_TYPE
+    - WEAPON_STATS_ALLOW_CONTINUE_FIRING
+    - GENERIC_YES
+    - GENERIC_NO
+    - DAMAGE_TYPE_PHYSICAL
+    - DAMAGE_TYPE_MAGICAL
     m_values:
     - FR
+    - "Fran\xE7ais"
     - ProjElf
     - Chargement...
     - Jouer
@@ -61,3 +87,27 @@ MonoBehaviour:
     - "Sensibilit\xE9 de la cam\xE9ra"
     - Volume du son
     - Langue
+    - Rescuer I
+    - Rescuer II
+    - Rescuer III
+    - LifeSaver I
+    - LifeSaver II
+    - LifeSaver III
+    - AbsoluteMasterGuardian
+    - "Ch\xE2teau"
+    - Grotte
+    - Appuier sur
+    - "pour changer l'arme actuelle contre l'arme s\xE9lectionn\xE9e"
+    - "pour vendre l'arme s\xE9lectionn\xE9e"
+    - "pour reforger l'arme s\xE9lectionn\xE9e"
+    - pour quitter l'inventaire
+    - "Gravit\xE9 appliqu\xE9e aux projectiles"
+    - Vitesse des projectiles
+    - "Dur\xE9e de vie des projectiles"
+    - Vitesse d'attaque
+    - de dommage de {0}
+    - Tir en continu
+    - Oui
+    - Non
+    - physique
+    - magique

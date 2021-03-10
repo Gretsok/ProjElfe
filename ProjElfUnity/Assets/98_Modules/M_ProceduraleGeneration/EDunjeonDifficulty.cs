@@ -14,4 +14,10 @@ namespace ProjElf.ProceduraleGeneration
         LifeSaverIII,
         AbsoluteMasterGuardian
     }
+
+    public enum EDunjeonType
+    {
+        Castle,
+        Cave
+    }
 }

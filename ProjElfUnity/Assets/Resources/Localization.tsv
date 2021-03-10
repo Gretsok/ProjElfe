@@ -1,4 +1,5 @@
 LANGUAGE_SHORTNAME	EN	FR	ES
+LANGUAGE_NAME	English	Français	Español
 PROJECT_NAME	ProjElf	ProjElf	ProjElf
 LOADING_SCENE	Loading...	Chargement...	Cargando...
 GENERIC_PLAY	Play	Jouer	Jugar
@@ -7,7 +8,7 @@ GENERIC_CREDITS	Credits	Crédits	Créditos
 GENERIC_AND	and	et	y
 GENERIC_KEEP_PLAYING	Keep playing	Continuer à jouer	Seguir jugando
 GENERIC_QUIT_GAME	Quit game	Quitter le jeu	Salir del juego
-GENERIC_BACK_TO_MENU	Back to menu	Retour au menu	
+GENERIC_BACK_TO_MENU	Back to menu	Retour au menu	volver al menú principal
 TIME_PLAYED	Time played :	Temps de jeu :	Tiempo jugado :
 ANIMALS_SAVED	Animals saved :	Animaux sauvés :	Animales salvados :
 HOURS	hours	heures	horas
@@ -21,3 +22,27 @@ OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
 OPTIONS_CAMERA_SENSIBILITY	Camera Sensibility	Sensibilité de la caméra	Sensibilidad de la cámara
 OPTIONS_SOUND_VOLUME	Sound Volume	Volume du son	volumen de sonido
 OPTIONS_LANGUAGE	Language	Langue	Idioma
+DIFFICULTY_RESCUER_I	Rescuer I	Rescuer I	Rescuer I
+DIFFICULTY_RESCUER_II	Rescuer II	Rescuer II	Rescuer II
+DIFFICULTY_RESCUER_III	Rescuer III	Rescuer III	Rescuer III
+DIFFICULTY_LIFESAVER_I	LifeSaver I	LifeSaver I	LifeSaver I
+DIFFICULTY_LIFESAVER_II	LifeSaver II	LifeSaver II	LifeSaver II
+DIFFICULTY_LIFESAVER_III	LifeSaver III	LifeSaver III	LifeSaver III
+DIFFICULTY_ABSOLUTE_MASTER_GUARDIAN	AbsoluteMasterGuardian	AbsoluteMasterGuardian	AbsoluteMasterGuardian
+DUNJEON_TYPE_CASTLE	Castle	Château	Castillo
+DUNJEON_TYPE_CAVE	Cave	Grotte	Cueva
+ACTION_PRESS	Press	Appuier sur	Presionar
+INVENTORY_CHANGE_WEAPON	to change your current weapon against the select weapon	pour changer l'arme actuelle contre l'arme sélectionnée	para cambiar su arma actual contra el arma seleccionada
+INVENTORY_SELL_WEAPON	to sell the selected weapon	pour vendre l'arme sélectionnée	vender el arma seleccionada
+INVENTORY_REROLL_WEAPON	to forge again the selected weapon	pour reforger l'arme sélectionnée	para forjar de nuevo el arma seleccionada
+INVENTORY_LEAVE	to leave inventory	pour quitter l'inventaire	para dejar el inventario
+WEAPON_STATS_PROJECTILE_GRAVITY	Gravity applied to projectile	Gravité appliquée aux projectiles	Gravedad aplicada al proyectil
+WEAPON_STATS_PROJECTILE_SPEED	Projectile speed	Vitesse des projectiles	Velocidad de los proyectiles
+WEAPON_STATS_PROJECTILE_LIFETIME	Projectile life time	Durée de vie des projectiles	Vida útil del proyectil
+WEAPON_STATS_ATTACK_SPEED	Attack Speed	Vitesse d'attaque	Velocidad de ataque
+WEAPON_STATS_OF_DAMAGE_TYPE	of {0} Damage	de dommage de {0}	de daño {0}
+WEAPON_STATS_ALLOW_CONTINUE_FIRING	Allow continue firing	Tir en continu	Fuego continuo
+GENERIC_YES	Yes	Oui	Sí
+GENERIC_NO	No	Non	No
+DAMAGE_TYPE_PHYSICAL	physical	physique	físico
+DAMAGE_TYPE_MAGICAL	magical	magique	mágico

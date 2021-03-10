@@ -161,7 +161,7 @@ namespace MOtter.Localization
             int index = 0;
             while (index < m_registeredTextLocalizers.Count)
             {
-                Debug.Log(index);
+                //Debug.Log(index);
                 if (textLocalizer.GetInstanceID() == m_registeredTextLocalizers[index].GetInstanceID())
                 {
                     textLocalizerToRemoveIndex = index;
@@ -216,6 +216,11 @@ namespace MOtter.Localization
                     textLocalizer.Formatter.Invoke(textLocalizer.TextTarget.text, textLocalizer);
             }
         }
+
+        public void ForceUpdate()
+        {
+            UpdateLocalizers();
+        }
         #endregion
 
         #region Utils
@@ -241,10 +246,11 @@ namespace MOtter.Localization
             {
                 LanguageData newLanguageData = ScriptableObject.CreateInstance<LanguageData>();
                 newLanguageData.SetLanguageDictionary(ReadLanguage(i));
-
+                EditorUtility.SetDirty(newLanguageData);
                 string languageDataPath = "Assets/6_Data/Languages/LanguageData" + i + ".asset";
                 AssetDatabase.CreateAsset(newLanguageData, languageDataPath);
                 m_allLanguagesData.AddOrModifiyLanguageData(newLanguageData, i);
+                EditorUtility.SetDirty(m_allLanguagesData);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
