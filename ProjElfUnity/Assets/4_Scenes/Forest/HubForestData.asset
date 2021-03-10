@@ -16,5 +16,8 @@ MonoBehaviour:
     m_SceneAsset: {fileID: 102900000, guid: 51a5dc1625051c742a7dc2bfc6a6deca, type: 3}
     m_SceneName: HUB_Forest
   m_additionalScenes: []
+  m_loadingScreen:
+    m_SceneAsset: {fileID: 102900000, guid: dc393080a268e2b48a2c649ed2ff0ba4, type: 3}
+    m_SceneName: DunjeonLoadingScene
   m_levelName: HubForest
   m_defaultLoadMode: 0

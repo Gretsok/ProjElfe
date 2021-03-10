@@ -13,9 +13,9 @@ namespace ProjElf.HubForest
         private ForestDunjeonSelectionState m_dunjeonSelectionState = null;
         public override IEnumerator LoadAsync()
         {
-            yield return 0;
+            yield return null;
             InstantiatePlayer();
-            yield return 0;
+
             yield return base.LoadAsync();
 
         }

@@ -10,20 +10,29 @@ namespace ProjElf.PlayerController
         public override void ChangeBow(BowData.BowSaveData newBowData)
         {
             base.ChangeBow(newBowData);
-            (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateBow(m_bow.WeaponSaveData as BowData.BowSaveData);
+            if(m_bow != null)
+            {
+                (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateBow(m_bow.WeaponSaveData as BowData.BowSaveData);
+            }
         }
 
         public override void ChangeGrimoire(GrimoireData.GrimoireSaveData newGrimoireData)
         {
             base.ChangeGrimoire(newGrimoireData);
-            (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateGrimoire(m_grimoire.WeaponSaveData as GrimoireData.GrimoireSaveData);
+            if(m_grimoire != null)
+            {
+                (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateGrimoire(m_grimoire.WeaponSaveData as GrimoireData.GrimoireSaveData);
+            }
 
         }
 
         public override void ChangeMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData newMeleeWeaponData)
         {
             base.ChangeMeleeWeapon(newMeleeWeaponData);
-            (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateMeleeWeapon(m_meleeWeapon.WeaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+            if(m_meleeWeapon != null)
+            {
+                (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.InflateMeleeWeapon(m_meleeWeapon.WeaponSaveData as MeleeWeaponData.MeleeWeaponSaveData);
+            }
         }
 
         public override void SelectBow()

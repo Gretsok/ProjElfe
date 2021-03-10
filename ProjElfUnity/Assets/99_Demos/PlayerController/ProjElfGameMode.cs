@@ -56,7 +56,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
 
     protected virtual void InstantiatePlayer()
     {
-        m_player = Instantiate<Player>(m_playerPrefab, m_playerPositionSpawnPoint.position, m_playerPositionSpawnPoint.rotation);
+        m_player = Instantiate<Player>(m_playerPrefab, m_playerPositionSpawnPoint.position, m_playerPositionSpawnPoint.rotation, m_playerPositionSpawnPoint);
         m_player.CombatController.CombatInventory.ChangeBow(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedBow);
         m_player.CombatController.CombatInventory.ChangeGrimoire(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedGrimoire);
         m_player.CombatController.CombatInventory.ChangeMeleeWeapon(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedMeleeWeapon);

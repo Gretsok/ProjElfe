@@ -19,6 +19,10 @@ namespace ProjElf.CombatController
 
         public Action<IDamageGiver> OnDisappear { get; set; } = null;
 
+
+        [SerializeField]
+        private ParticleSystem m_weaponTrailFX = null;
+
         public void InitMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData meleeWeaponData, CombatController Owner)
         {
             m_attackSpeed = meleeWeaponData.AttackSpeed;
@@ -32,11 +36,19 @@ namespace ProjElf.CombatController
 
         public void StartDamaging()
         {
+            if(m_weaponTrailFX != null)
+            {
+                m_weaponTrailFX.Play();
+            }
             m_canDoDamage = true;
         }
 
         public void StopDamaging()
         {
+            if (m_weaponTrailFX != null)
+            {
+                m_weaponTrailFX.Stop();
+            }
             m_canDoDamage = false;
         }
 

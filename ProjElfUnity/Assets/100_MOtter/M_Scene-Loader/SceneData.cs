@@ -68,9 +68,9 @@ namespace ProjElf.SceneData
                     }
                     m_loadingScreenActive = true;
                 }
-               
 
-                yield return MOtterApplication.GetInstance().StartCoroutine(currentGameMode.UnloadAsync(LoadScenes));
+
+                yield return currentGameMode.UnloadAsync(LoadScenes);
 
             }
             else
