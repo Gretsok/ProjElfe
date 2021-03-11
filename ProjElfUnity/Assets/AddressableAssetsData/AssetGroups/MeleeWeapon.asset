@@ -17,13 +17,14 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 11c825f80b33f504b996861d6ca1694f
   m_SerializeEntries:
-  - m_GUID: cefb04cbfd4af5944a25d7cc7b94e754
-    m_Address: Assets/6_Data/Weapons/MeleeWeaponData.asset
+  - m_GUID: 1fdd83096e313e447b1870e1d75b8428
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon
     m_ReadOnly: 0
     m_SerializedLabels:
-    - weapon
+    - default
     - meleeweapon
     - rescuer1
+    - weapon
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0
