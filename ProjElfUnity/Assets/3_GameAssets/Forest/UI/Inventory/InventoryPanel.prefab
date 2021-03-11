@@ -1397,7 +1397,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 07c28a0c47dcfe749b50bba7a37d767a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_inventoryChest: {fileID: 0}
   m_currentWeaponInfosPanel: {fileID: 5930442740624443926}
   m_selectedWeaponInfosPanel: {fileID: 7725987955921804707}
   m_meleeWeaponSlot: {fileID: 5031545448779753617}

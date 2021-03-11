@@ -35,7 +35,7 @@ public class FlexibleGrid : MonoBehaviour
         float reductionFactor = 1f;
         if(l_childTransforms.Count > l_itemPerColumn * l_itemsPerLine)
         {
-            reductionFactor = (float) (l_itemPerColumn * l_itemsPerLine) / (float) l_childTransforms.Count;
+            reductionFactor = Mathf.Sqrt((float) (l_itemPerColumn * l_itemsPerLine) / (float) l_childTransforms.Count);
         }
 
         l_itemsPerLine = (int)(m_rectTransform.rect.width / ((m_preferedItemSize.x + m_preferedItemSpacing.x) * reductionFactor));

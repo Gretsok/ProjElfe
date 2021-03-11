@@ -11,6 +11,9 @@ namespace ProjElf.HubForest
         private ForestGameplayState m_gameplayState = null;
         [SerializeField]
         private ForestDunjeonSelectionState m_dunjeonSelectionState = null;
+        [SerializeField]
+        private ForestInventoryState m_inventoryState = null;
+
         public override IEnumerator LoadAsync()
         {
             yield return null;
@@ -28,6 +31,11 @@ namespace ProjElf.HubForest
         public void ActivateDunjeonSelectionState()
         {
             SwitchToState(m_dunjeonSelectionState);
+        }
+
+        public void ActivateInventoryState()
+        {
+            SwitchToState(m_inventoryState);
         }
 
     }

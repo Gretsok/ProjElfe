@@ -233,6 +233,8 @@ namespace ProjElf.PlayerController
 
         internal override void ExitStateMachine()
         {
+            m_characterAnimatorHandler.SetForwardSpeed(0f);
+            m_characterAnimatorHandler.SetRightSpeed(0f);
             m_combatController.OnLifeReachedZero -= Die;
 
             m_gamemode.OnPause -= MakeBusy;

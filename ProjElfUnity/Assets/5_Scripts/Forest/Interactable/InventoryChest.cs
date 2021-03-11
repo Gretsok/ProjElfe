@@ -1,18 +1,21 @@
 ﻿using ProjElf.Interaction;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjElf.HubForest
 {
     public class InventoryChest : MonoBehaviour, IInteractable
     {
-        [SerializeField]
-        private InventoryPanel m_inventoryPanel = null;
+
+        private HubForestGameMode m_gamemode = null;
+
+        private void Start()
+        {
+            m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
+        }
 
         public void DoInteraction(Interactor interactor)
         {
-            m_inventoryPanel.Show();
+            m_gamemode.ActivateInventoryState();
         }
 
         public void StartBeingWatched()

@@ -14,3 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_languagesData:
   - {fileID: 11400000, guid: 890bc713f60314d40b826c1580635271, type: 2}
+  - {fileID: 11400000, guid: 3fc4684a01219a84dba234c488f22b48, type: 2}
+  - {fileID: 11400000, guid: e25fc6368a8823a45bce620ee986e48d, type: 2}
