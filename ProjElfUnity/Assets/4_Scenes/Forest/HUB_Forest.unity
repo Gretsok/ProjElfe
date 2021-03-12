@@ -1981,6 +1981,23 @@ PrefabInstance:
       propertyPath: m_Name
       value: DunjeonSelectionPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
+        type: 3}
+      propertyPath: m_dunjeonSelectionData.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
+        type: 3}
+      propertyPath: m_dunjeonSelectionData.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30,
+        type: 2}
+    - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
+        type: 3}
+      propertyPath: m_dunjeonSelectionData.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30,
+        type: 2}
     - target: {fileID: 7978892816846429291, guid: ba54339bd4c45c641864cbe646658c0e,
         type: 3}
       propertyPath: m_LocalPosition.x

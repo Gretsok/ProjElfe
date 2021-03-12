@@ -1877,6 +1877,7 @@ MonoBehaviour:
   m_panels:
   - {fileID: 247819853}
   - {fileID: 2026507306068277519}
+  m_firstSelectedGO: {fileID: 2026507306068277520}
 --- !u!1 &2009799263
 GameObject:
   m_ObjectHideFlags: 0
@@ -2339,6 +2340,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df6946f4ffa340049bb990c6a72beb29, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2026507306068277520 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 466869442358782200, guid: 686f7f342a298274e8c5a0efc1c300ee,
+    type: 3}
+  m_PrefabInstance: {fileID: 2026507306068277518}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3911543151364982317
 PrefabInstance:
   m_ObjectHideFlags: 0

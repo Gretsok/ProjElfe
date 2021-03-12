@@ -24,7 +24,7 @@ namespace ProjElf.MainMenu
         public int NumberOfNavigationPositions => m_instantiatedNavigationPositions.Count;
 
 
-        private const int MAX_PROFILES = 5;
+        private const int MAX_PROFILES = 8;
 
 
         private void Start()
