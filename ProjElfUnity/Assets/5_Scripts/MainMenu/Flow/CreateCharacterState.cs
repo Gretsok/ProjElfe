@@ -1,23 +1,24 @@
 ﻿using MOtter;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ProjElf.MainMenu
 {
     public class CreateCharacterState : MainMenuNavigationState
     {
-        protected override void Back()
+        [SerializeField]
+        private GameObject m_firstSelectedGO = null;
+        public override void EnterState()
         {
-            base.Back();
-            m_mainStateMachine.SwitchToCharacterSelectionState();
+            base.EnterState();
+            EventSystem.current.SetSelectedGameObject(m_firstSelectedGO);
+            m_mainStateMachine.CameraManager.SetCharacterCamera();
         }
 
-        protected override void Confirm()
+        public void Confirm()
         {
-            base.Confirm();
             SaveData newSaveData = new SaveData();
-            newSaveData.SaveName = GetPanel<CharacterCreationPanel>().NameInputField.text;
+            newSaveData.SaveName = GetPanel<CharacterCreationPanel>().NameLabel.text;
             newSaveData.SavedPlayerStats.TimePlayed = 0;
             newSaveData.SavedPlayerStats.DunjeonFinished = 0;
             newSaveData.SavedPlayerStats.MonsterKilled = 0;

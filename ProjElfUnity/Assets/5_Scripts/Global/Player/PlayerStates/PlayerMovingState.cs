@@ -4,6 +4,9 @@ namespace ProjElf.PlayerController
 {
     public class PlayerMovingState : PlayerState
     {
+        [SerializeField]
+        private float m_jumpDelay = 1f;
+        private float m_timeOfLastJump = float.MinValue;
 
         public override void UpdateState()
         {
@@ -24,10 +27,10 @@ namespace ProjElf.PlayerController
         protected override void UpdatePositionInputs()
         {
             base.UpdatePositionInputs();
-            m_player.Direction = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y)).normalized;
-            m_player.Direction *= m_movingSpeed;
-            m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).z);
-            m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Direction).x);
+            m_player.Velocity = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y));
+            m_player.Velocity *= m_movingSpeed;
+            m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).z);
+            m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).x);
         }
     
 
@@ -39,7 +42,7 @@ namespace ProjElf.PlayerController
 
         private void PrimaryAttack_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            m_player.CombatController.StartUseWeapon(m_player.Sight.direction);
+            m_player.CombatController.StartUseWeapon(m_player.WeaponSight.direction);
         }
 
         private void SecondaryAttack_canceled(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -54,7 +57,11 @@ namespace ProjElf.PlayerController
 
         private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            StartCoroutine(m_player.StartJumpRoutine());
+            if(Time.time - m_timeOfLastJump > m_jumpDelay)
+            {
+                StartCoroutine(m_player.StartJumpRoutine());
+                m_timeOfLastJump = Time.time;
+            }
         }
 
         private void Slide_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -69,7 +76,7 @@ namespace ProjElf.PlayerController
         #endregion
 
         #region Inputs
-        protected override void SetUpInputs()
+        internal override void SetUpInputs()
         {
             base.SetUpInputs();
             m_player.Actions.Generic.Slide.performed += Slide_performed;
@@ -111,7 +118,7 @@ namespace ProjElf.PlayerController
             throw new System.NotImplementedException();
         }
 
-        protected override void CleanUpInputs()
+        internal override void CleanUpInputs()
         {
             m_player.Actions.Generic.Slide.performed -= Slide_performed;
             m_player.Actions.Generic.Jump.performed -= Jump_performed;

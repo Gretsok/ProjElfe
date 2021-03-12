@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
+    [System.Serializable]
     public enum EDamageType
     {
         Physical,

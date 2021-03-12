@@ -6,17 +6,11 @@ using ProjElf.CombatController;
 public class GarbageController : MonoBehaviour
 {
     //Var
-    [SerializeField] private MeleeWeaponData meleeData;
-    [SerializeField] private GrimoireData grimoireData;
-    [SerializeField] private BowData bowData;
-    [SerializeField] private CombatController combatCont;
-    [SerializeField] private CombatInventory combatInv;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    [SerializeField] private MeleeWeaponData meleeData = null;
+    [SerializeField] private GrimoireData grimoireData = null;
+    [SerializeField] private BowData bowData = null;
+    [SerializeField] private CombatController combatCont = null;
+    [SerializeField] private CombatInventory combatInv = null;
 
     // Update is called once per frame
     void Update()

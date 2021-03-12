@@ -8,16 +8,28 @@ namespace ProjElf.CombatController
     public class CombatController : MonoBehaviour
     {
         //Var
-        [SerializeField] private CombatInventory m_combatInventory;
-        private int m_lifePoints;
+        [SerializeField] private CombatInventory m_combatInventory = null;
+        private int m_lifePoints = 0;
         private int m_maxLifePoints = 100;
-        public Action OnLifeReachedZero;
+        private int m_armor = 0;
+        private int m_magicResist = 0;
+        private int m_attackSpeed = 0;
+        private int m_moveSpeed = 0;
+
+        public Action OnLifeReachedZero = null;
 
         /// <summary>
         /// Meant for AI
         /// </summary>
         public bool ForceContinueFiring = false;
 
+        [SerializeField]
+        private CombatControllerUIManager m_UIManager = null;
+        public CombatControllerUIManager UIManager => m_UIManager;
+
+        [SerializeField]
+        private int m_teamIndex = 0;
+        public int TeamIndex => m_teamIndex;
 
         public CombatInventory CombatInventory => m_combatInventory;
 
@@ -31,7 +43,7 @@ namespace ProjElf.CombatController
         private bool m_isShooting;
         private float m_timeLastShoot = float.MinValue;
 
-        [SerializeField] private CharacterAnimatorHandler m_characterAnimatorHandler;
+        [SerializeField] private CharacterAnimatorHandler m_characterAnimatorHandler = null;
 
         protected class DamageGiverData
         {
@@ -50,27 +62,29 @@ namespace ProjElf.CombatController
         #region DamageGiver
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
-            if (damageGiverData.DamageGiver.Owner != this)
+            Debug.Log("GetAttacked");
+            if (damageGiverData.DamageGiver.Owner.TeamIndex != m_teamIndex)
             {
 
                 if (damageGiverData.Colliding)
                 {
+                    Debug.Log(gameObject.name + " is attacked by " + damageGiverData.DamageGiver.Owner.gameObject.name);
                     #region Update other DamageGiversData
                     for (int i = m_damageGivers.Count - 1; i >= 0; i--)
                     {
-                        if (!m_damageGivers[0].Colliding && Time.time - m_damageGivers[0].TimeOfLastDamage > m_damageGivers[0].DamageGiver.Cooldown)
+                        if (!m_damageGivers[i].Colliding && Time.time - m_damageGivers[i].TimeOfLastDamage > m_damageGivers[i].DamageGiver.Cooldown)
                         {
                             m_damageGivers.RemoveAt(i);
                         }
                     }
                     #endregion
-                    Debug.Log("Dealing Damage");
-                    m_lifePoints -= damageGiverData.DamageGiver.Damage.HitDamage;
-                    damageGiverData.DamageGiver.OnCombatControllerHit(this);
-                    if (m_lifePoints <= 0)
+                    
+                    if(damageGiverData.DamageGiver.CanDoDamage)
                     {
-                        OnLifeReachedZero?.Invoke();
+                        TakeDamage(damageGiverData.DamageGiver.Damage.HitDamage);
                     }
+                    damageGiverData.DamageGiver.OnCombatControllerHit(this);
+
                     damageGiverData.TimeOfLastDamage = Time.time;
                     StartCoroutine(TriggerNextAttackRoutine(damageGiverData));
                 }
@@ -83,6 +97,7 @@ namespace ProjElf.CombatController
 
         IEnumerator TriggerNextAttackRoutine(DamageGiverData damageGiverData)
         {
+            Debug.Log("TriggerNextAttackRoutine");
             yield return new WaitForSeconds(damageGiverData.DamageGiver.Cooldown);
             GetAttacked(damageGiverData);
         }
@@ -91,38 +106,50 @@ namespace ProjElf.CombatController
         {
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
-                #region Manage DamageGiversData
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
+                #region Manage DamageGiversData
                 if (damageGiverData == null)
                 {
                     damageGiverData = new DamageGiverData();
                     damageGiverData.DamageGiver = damageGiver;
                     m_damageGivers.Add(damageGiverData);
                     damageGiverData.TimeOfLastDamage = float.MinValue;
-                }
 
-                damageGiverData.Colliding = true;
-                #endregion
-                if (Time.time - damageGiverData.TimeOfLastDamage > damageGiver.Cooldown)
+                }
+                if (damageGiverData.DamageGiver.Owner != this)
                 {
-                    GetAttacked(damageGiverData);
+                    damageGiverData.Colliding = true;
+                    #endregion
+                    if (Time.time - damageGiverData.TimeOfLastDamage > damageGiver.Cooldown)
+                    {
+                        GetAttacked(damageGiverData);
+                    }
+                    damageGiver.OnDisappear += UnregisterDamageGiver;
                 }
-
-
+                
             }
+                    
         }
+
 
         private void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
             {
-                DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
-                if (damageGiverData != null)
-                {
-                    damageGiverData.Colliding = false;
-                }
+                UnregisterDamageGiver(damageGiver);
             }
         }
+
+        private void UnregisterDamageGiver(IDamageGiver damageGiver)
+        {
+            DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
+            if (damageGiverData != null)
+            {
+                damageGiverData.Colliding = false;
+                damageGiver.OnDisappear -= UnregisterDamageGiver;
+            }
+        }
+
         #endregion
         public void DoUpdate(Vector3 direction = default(Vector3))//appelé depuis le player ou l'ia pour maj combatcontroller
         {
@@ -212,7 +239,9 @@ namespace ProjElf.CombatController
 
         public void TakeDamage(int damage)
         {
+            Debug.Log("Dealing Damage");
             m_lifePoints -= damage;
+            m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             if(m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null

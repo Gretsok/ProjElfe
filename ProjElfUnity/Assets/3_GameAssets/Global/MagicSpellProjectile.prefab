@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8117989186896987006}
   - component: {fileID: 3991483171199732513}
+  - component: {fileID: 1936782495183445683}
   m_Layer: 8
   m_Name: MagicSpellProjectile
   m_TagString: Untagged
@@ -44,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9598fdfec8b4f764bbf48df96c4a4cbc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!135 &1936782495183445683
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2600159127539008439}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &7965697387917111834
 GameObject:
   m_ObjectHideFlags: 0
@@ -55,7 +69,6 @@ GameObject:
   - component: {fileID: 1539417002312073498}
   - component: {fileID: 3460305841084912492}
   - component: {fileID: 5003242133658129744}
-  - component: {fileID: 5667162082778247016}
   m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
@@ -124,16 +137,3 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!135 &5667162082778247016
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7965697387917111834}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}

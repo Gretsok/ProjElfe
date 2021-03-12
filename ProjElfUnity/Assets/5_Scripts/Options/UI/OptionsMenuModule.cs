@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class OptionsMenuModule : MonoBehaviour, INavigationPosition
+public class OptionsMenuModule : Selectable, INavigationPosition
 {
     [SerializeField]
     private Vector3 m_selectedScale = Vector3.zero;
@@ -14,5 +16,17 @@ public class OptionsMenuModule : MonoBehaviour, INavigationPosition
     public void OnUnselected()
     {
         transform.localScale = m_unselectedScale;
+    }
+
+    public override void OnSelect(BaseEventData eventData)
+    {
+        base.OnSelect(eventData);
+        OnSelected();
+    }
+
+    public override void OnDeselect(BaseEventData eventData)
+    {
+        base.OnDeselect(eventData);
+        OnUnselected();
     }
 }

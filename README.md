@@ -1,6 +1,9 @@
 # ProjElfe
 Un jeu où tout le monde s'appelle Francis. Ou peut-être que pas du tout en fait.
 
+## Unity Version
+Unity Version : 2019.4.12f1
+
 # Development GuideLines
 ## Encapsulation
 -Il faut mettre les variables en private autant que possible. Si on en a besoin depuis l'inpector, on ajoute le tag [SerializeField] devant.
@@ -19,3 +22,6 @@ Les dossiers des modules commence par M_ .
 Les classes abstraites commence par A.
 Les énumérations commence par E.
 Les interfaces commence par I.
+
+
+

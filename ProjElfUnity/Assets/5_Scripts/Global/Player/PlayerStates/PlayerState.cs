@@ -24,12 +24,12 @@ namespace ProjElf.PlayerController
         [SerializeField]
         private Vector2 m_clampedYCAmAngle = Vector2.zero;
 
-        protected virtual void SetUpInputs()
+        internal virtual void SetUpInputs()
         {
             
         }
 
-        protected virtual void CleanUpInputs()
+        internal virtual void CleanUpInputs()
         {
 
         }

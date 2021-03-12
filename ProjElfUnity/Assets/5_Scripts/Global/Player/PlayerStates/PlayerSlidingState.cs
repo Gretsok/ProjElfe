@@ -16,7 +16,7 @@ namespace ProjElf.PlayerController
             base.EnterState();
             m_distanceTraveled = 0;
             m_player.CharacterAnimatorHandler.StartSlide();
-            m_startingDirection = m_player.Direction.magnitude > 0 ?  m_player.Direction.normalized : transform.forward;
+            m_startingDirection = m_player.Velocity.magnitude > 0 ?  m_player.Velocity.normalized : transform.forward;
         }
 
         public override void UpdateState()
@@ -29,8 +29,8 @@ namespace ProjElf.PlayerController
         {
             base.UpdatePositionInputs();
             float distanceToTravel = m_movingSpeed;
-            m_player.Direction = m_movingSpeed * m_startingDirection;
-            m_distanceTraveled += m_player.Direction.magnitude * Time.deltaTime;
+            m_player.Velocity = m_movingSpeed * m_startingDirection;
+            m_distanceTraveled += m_player.Velocity.magnitude * Time.deltaTime;
 
             if(m_distanceTraveled >= m_dashDistance)
             {

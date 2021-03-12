@@ -11,7 +11,7 @@ namespace MOtter.StatesMachine
 
         public virtual void EnterState()
         {
-            Debug.Log("EnterState : " + gameObject.name);
+            //Debug.Log("EnterState : " + gameObject.name);
         }
 
         public virtual void UpdateState()
@@ -31,7 +31,7 @@ namespace MOtter.StatesMachine
 
         public virtual void ExitState()
         {
-            Debug.Log("ExitState : " + gameObject.name);
+            //Debug.Log("ExitState : " + gameObject.name);
         }
     }
 }

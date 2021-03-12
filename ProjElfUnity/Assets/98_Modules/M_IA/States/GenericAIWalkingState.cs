@@ -29,12 +29,10 @@ namespace ProjElf.AI
         {
             if(m_owner.AttachedDunjeonRoom != null)
             {
-                Debug.Log("ATTACHED DUNJEON ROOM");
                 return m_owner.AttachedDunjeonRoom.GetRandomWalkablePoint();
             }
             else
             {
-                Debug.Log("NO PUTIAN DE FUCKING ATTACHED DUNJEON ROOM");
                 // Getting Random Direction
                 Random.InitState((int)Time.time * gameObject.GetHashCode());
                 Vector2 m_random2DDirection = Random.insideUnitCircle;
