@@ -3,154 +3,112 @@ using UnityEngine;
 
 namespace MOtter.SoundManagement
 {
-
     public class SoundManager : MonoBehaviour
     {
-        #region Fields
-        [SerializeField] private AudioSource m_originalAudioSource = null;
-        private AudioSource[] m_audioSourcesPlaying = new AudioSource[0];
-        private AudioSource[] m_audioSourcesNotPlaying = new AudioSource[0];
-        #endregion
+        private float m_musicVolume = 1f;
+        private float m_sfxVolume = 1f;
 
-        #region Methods
-        public AudioSource Play(AudioClip audioClip, bool loop = false, float volume = 1f)
+        [SerializeField, Tooltip("")]
+        private AudioSource m_audioSource = null;
+
+        private List<AudioSource> m_audioSourcesPool = new List<AudioSource>();
+
+        public AudioSource Play2DSound(SoundData soundData, bool loop = false, float volume = 1f)
         {
-            AudioSource audioSource = GetAudioSourceToUse();
+            AudioSource audioSource = GetAudioSource();
             audioSource.loop = loop;
-            audioSource.clip = audioClip;
-            audioSource.volume = volume;
-            audioSource.name = audioClip.name;
-            AddAudioSourceToPlayingArrays(audioSource);
+            audioSource.clip = soundData.AudioClip;
+            audioSource.volume = Mathf.Clamp01(volume) * GetVolume(soundData.CategoryName);
+            audioSource.name = soundData.AudioClip.name;
+            audioSource.spatialBlend = 0f;
             audioSource.Play();
             return audioSource;
         }
 
-        public void PlayInSpace(AudioClip audioClip, Vector3 position, float volume = 1f)
+        public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 0.7f)
         {
-            AudioSource.PlayClipAtPoint(audioClip, position, volume);
+            AudioSource audioSource = GetAudioSource();
+            audioSource.loop = loop;
+            audioSource.clip = soundData.AudioClip;
+            audioSource.volume = Mathf.Clamp01(volume) * GetVolume(soundData.CategoryName);
+            audioSource.name = soundData.AudioClip.name;
+            audioSource.transform.position = position;
+            audioSource.spatialBlend = 0.7f;
+            if (parent != null)
+            {
+                audioSource.transform.SetParent(parent);
+            }
+            audioSource.Play();
+            return audioSource;
         }
 
-        public void Stop(AudioSource audioSource)
+        public void CleanSource(AudioSource audioSource)
         {
             if (audioSource.isPlaying)
             {
                 audioSource.Stop();
-                AddAudioSourceToNotPlayingArrays(audioSource);
-                RemoveAudioSourceToPlayingArrays(audioSource);
+            }
+            if(!m_audioSourcesPool.Contains(audioSource))
+            {
+                m_audioSourcesPool.Add(audioSource);
             }
         }
 
-
-        #region ManageAudioSourcesArrays
-
-        private AudioSource GetAudioSourceToUse()
+        public AudioSource GetAudioSource()
         {
-            if (m_audioSourcesNotPlaying.Length == 0)
+            AudioSource audioSource = null;
+
+            if(m_audioSourcesPool.Count > 0)
             {
-                AudioSource newAudioSource = Instantiate<AudioSource>(m_originalAudioSource, transform);
-                AddAudioSourceToNotPlayingArrays(newAudioSource);
+                audioSource = m_audioSourcesPool[0];
+                m_audioSourcesPool.Remove(audioSource);
             }
-            AudioSource audioSourceToReturn = m_audioSourcesNotPlaying[0];
-            RemoveAudioSourceToNotPlayingArrays(audioSourceToReturn);
-            return audioSourceToReturn;
+            else
+            {
+                audioSource = Instantiate(m_audioSource, this.transform);
+            }
+
+            return audioSource;
         }
 
-        public void CheckIfAudioSourcesPlayingStoppedPlaying()
-        {
-            List<AudioSource> audioSourcesToRemove = new List<AudioSource>();
-            for (int i = 0; i < m_audioSourcesPlaying.Length; i++)
-            {
-                if (!m_audioSourcesPlaying[i].isPlaying)
-                {
-                    audioSourcesToRemove.Add(m_audioSourcesPlaying[i]);
-                }
-            }
-            for (int i = 0; i < audioSourcesToRemove.Count; i++)
-            {
-                AddAudioSourceToNotPlayingArrays(audioSourcesToRemove[i]);
-                RemoveAudioSourceToPlayingArrays(audioSourcesToRemove[i]);
-            }
-        }
 
-        #region AudioSourcesPlaying
-        private void AddAudioSourceToPlayingArrays(AudioSource audioSrc)
+        #region Volume Management
+        public float GetVolume(ESoundCategoryName soundCategory)
         {
-            AudioSource[] tempAudioSources = m_audioSourcesPlaying;
-            m_audioSourcesPlaying = new AudioSource[m_audioSourcesPlaying.Length + 1];
-            for (int i = 0; i < m_audioSourcesPlaying.Length - 1; i++)
+            switch(soundCategory)
             {
-                m_audioSourcesPlaying[i] = tempAudioSources[i];
-            }
-            m_audioSourcesPlaying[m_audioSourcesPlaying.Length - 1] = audioSrc;
-        }
-
-        private void RemoveAudioSourceToPlayingArrays(AudioSource audioSrc)
-        {
-            int indexOfAudioSrcToRemove = -1;
-            for (int i = 0; i < m_audioSourcesPlaying.Length; i++)
-            {
-                if (m_audioSourcesPlaying[i].gameObject == audioSrc.gameObject)
-                {
-                    indexOfAudioSrcToRemove = i;
-                }
-            }
-            if (indexOfAudioSrcToRemove == -1)
-            {
-                Debug.LogError("AudioSource to remove not found");
-                return;
-            }
-            AudioSource[] tempAudioSources = m_audioSourcesPlaying;
-            m_audioSourcesPlaying = new AudioSource[m_audioSourcesPlaying.Length - 1];
-            for (int i = 0; i < indexOfAudioSrcToRemove; i++)
-            {
-                m_audioSourcesPlaying[i] = tempAudioSources[i];
-            }
-            for (int i = indexOfAudioSrcToRemove; i < m_audioSourcesPlaying.Length; i++)
-            {
-                m_audioSourcesPlaying[i] = tempAudioSources[i + 1];
+                case ESoundCategoryName.Music:
+                    return m_musicVolume;
+                case ESoundCategoryName.SFX:
+                    return m_sfxVolume;
+                default:
+                    Debug.LogError("Invalid sound category");
+                    return -1f;
             }
         }
 
-        #endregion
-        #region AudioSourcesNotPlaying
-        private void AddAudioSourceToNotPlayingArrays(AudioSource audioSrc)
+        public void SetVolume(float volume, ESoundCategoryName soundCategory)
         {
-            AudioSource[] tempAudioSources = m_audioSourcesNotPlaying;
-            m_audioSourcesNotPlaying = new AudioSource[m_audioSourcesNotPlaying.Length + 1];
-            for (int i = 0; i < m_audioSourcesNotPlaying.Length - 1; i++)
+            switch (soundCategory)
             {
-                m_audioSourcesNotPlaying[i] = tempAudioSources[i];
-            }
-            m_audioSourcesNotPlaying[m_audioSourcesNotPlaying.Length - 1] = audioSrc;
-        }
-        private void RemoveAudioSourceToNotPlayingArrays(AudioSource audioSrc)
-        {
-            int indexOfAudioSrcToRemove = -1;
-            for (int i = 0; i < m_audioSourcesNotPlaying.Length; i++)
-            {
-                if (m_audioSourcesNotPlaying[i].gameObject == audioSrc.gameObject)
-                {
-                    indexOfAudioSrcToRemove = i;
-                }
-            }
-            if (indexOfAudioSrcToRemove == -1)
-            {
-                Debug.LogError("AudioSource to remove not found");
-                return;
-            }
-            AudioSource[] tempAudioSources = m_audioSourcesNotPlaying;
-            m_audioSourcesNotPlaying = new AudioSource[m_audioSourcesNotPlaying.Length - 1];
-            for (int i = 0; i < indexOfAudioSrcToRemove; i++)
-            {
-                m_audioSourcesNotPlaying[i] = tempAudioSources[i];
-            }
-            for (int i = indexOfAudioSrcToRemove; i < m_audioSourcesNotPlaying.Length; i++)
-            {
-                m_audioSourcesNotPlaying[i] = tempAudioSources[i + 1];
+                case ESoundCategoryName.Music:
+                    m_musicVolume = Mathf.Clamp01(volume);
+                    break;
+                case ESoundCategoryName.SFX:
+                    m_sfxVolume = Mathf.Clamp01(volume);
+                    break;
+                default:
+                    Debug.LogError("Invalid sound category");
+                    break;
             }
         }
         #endregion
-        #endregion
-        #endregion
+
+    }
+
+    public enum ESoundCategoryName
+    {
+        Music,
+        SFX
     }
 }

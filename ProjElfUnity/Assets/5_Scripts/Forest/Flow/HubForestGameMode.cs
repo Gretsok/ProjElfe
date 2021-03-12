@@ -14,6 +14,8 @@ namespace ProjElf.HubForest
         [SerializeField]
         private ForestInventoryState m_inventoryState = null;
 
+        private AudioSource m_ambianceAudioSource = null;
+
         public override IEnumerator LoadAsync()
         {
             yield return null;
@@ -21,6 +23,12 @@ namespace ProjElf.HubForest
 
             yield return base.LoadAsync();
 
+        }
+
+        internal override void EnterStateMachine()
+        {
+            base.EnterStateMachine();
+            m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(ForestHubAudioReferences.Ambiance, true);
         }
 
         public void ActivateGameplayState()
@@ -36,6 +44,12 @@ namespace ProjElf.HubForest
         public void ActivateInventoryState()
         {
             SwitchToState(m_inventoryState);
+        }
+
+        internal override void ExitStateMachine()
+        {
+            MOtter.MOtterApplication.GetInstance().SOUND.CleanSource(m_ambianceAudioSource);
+            base.ExitStateMachine();
         }
 
     }
