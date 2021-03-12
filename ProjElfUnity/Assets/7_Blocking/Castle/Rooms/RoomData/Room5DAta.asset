@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10dd6863a0a14a4ab54422e595848ac, type: 3}
+  m_Name: Room5DAta
+  m_EditorClassIdentifier: 
+  m_roomPrefab: {fileID: 4347360632363844141, guid: 14899cf4d94a29449923979633e87dc9,
+    type: 3}
+  m_ennemiesToSpawn: []
+  m_numberOfEnnemiesToSpawn: {x: 0, y: 0}
+  m_forwardGate: 0
+  m_leftGate: 1
+  m_rightGate: 0
