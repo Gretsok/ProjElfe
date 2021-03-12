@@ -29,6 +29,7 @@ namespace MOtter.Localization
         public void SetFormatter(Action<string, TextLocalizer> formatter)
         {
             m_formatter += formatter;
+            MOtterApplication.GetInstance().LOCALIZATION.ForceUpdate();
         }
 
 

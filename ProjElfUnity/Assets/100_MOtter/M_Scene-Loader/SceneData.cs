@@ -68,9 +68,9 @@ namespace ProjElf.SceneData
                     }
                     m_loadingScreenActive = true;
                 }
-               
 
-                yield return MOtterApplication.GetInstance().StartCoroutine(currentGameMode.UnloadAsync(LoadScenes));
+
+                yield return currentGameMode.UnloadAsync(LoadScenes);
 
             }
             else
@@ -153,7 +153,14 @@ namespace ProjElf.SceneData
                 sceneToActivate = SceneManager.GetSceneByName(m_additionalScenes[0].SceneName);
             }
 
-            if(m_loadingScreenActive)
+            OnLevelLoaded();
+            while (!MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainStatesMachine>().IsLoaded)
+            {
+                yield return null;
+            }
+            
+            
+            if (m_loadingScreenActive)
             {
                 op = SceneManager.UnloadSceneAsync(m_loadingScreen.SceneName);
                 while(!op.isDone)
@@ -162,7 +169,7 @@ namespace ProjElf.SceneData
                 }
                 m_loadingScreenActive = false;
             }
-            OnLevelLoaded();
+            
         }
 
         private void OnLevelLoaded()

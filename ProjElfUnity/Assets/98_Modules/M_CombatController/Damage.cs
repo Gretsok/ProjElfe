@@ -4,10 +4,12 @@ using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Damage : MonoBehaviour
+    [System.Serializable]
+    public class Damage
     {
-        //Var
+        [SerializeField]
         internal int HitDamage;
+        [SerializeField]
         internal EDamageType DamageType;
     }
 }

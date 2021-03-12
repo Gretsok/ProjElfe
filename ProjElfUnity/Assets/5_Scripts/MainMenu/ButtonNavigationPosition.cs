@@ -1,32 +1,83 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using MOtter.StatesMachine;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
-public class ButtonNavigationPosition : MonoBehaviour, INavigationPosition
-{
-    [SerializeField]
-    private Image m_image = null;
-    [SerializeField]
-    private Color32 m_selectedColor;
-    [SerializeField]
-    private Color32 m_unselectedColor;
-    private void Awake()
+namespace ProjElf.MainMenu
+{ 
+    public class ButtonNavigationPosition : MonoBehaviour, ISelectHandler, IDeselectHandler
     {
-        if(m_image == null)
+        public enum EStateActivationType
         {
-            m_image = GetComponent<Image>();
+            OnSelect,
+            OnClick,
+            None
         }
-        OnUnselected();
-    }
 
-    public void OnSelected()
-    {
-        m_image.color = m_selectedColor;
-    }
+        protected MainMenuStateMachine m_mainStatesMachine = null;
+        [SerializeField]
+        private Image m_image = null;
+        [SerializeField]
+        private Color32 m_selectedColor = Color.white;
+        [SerializeField]
+        private Color32 m_unselectedColor = Color.white;
 
-    public void OnUnselected()
-    {
-        m_image.color = m_unselectedColor;
+        [SerializeField]
+        private EStateActivationType m_stateActivationType = EStateActivationType.OnSelect;
+        [SerializeField]
+        protected State m_state = null;
+
+        private void Awake()
+        {
+            if(m_image == null)
+            {
+                m_image = GetComponent<Image>();
+            }
+
+            OnUnselected();
+        }
+
+        protected virtual void Start()
+        {
+            if(m_mainStatesMachine == null)
+            {
+                m_mainStatesMachine = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainMenuStateMachine>();
+            }
+
+            if (m_stateActivationType == EStateActivationType.OnClick)
+            {
+                GetComponent<Button>().onClick.AddListener(OnClick);
+            }
+        }
+
+        public void OnSelected()
+        {
+            m_image.color = m_selectedColor;
+            if(m_state != null && m_stateActivationType == EStateActivationType.OnSelect)
+                m_mainStatesMachine?.SwitchToState(m_state);
+        }
+
+        public void OnUnselected()
+        {
+            m_image.color = m_unselectedColor;
+        }
+
+        public void OnSelect(BaseEventData eventData)
+        {
+            OnSelected();
+        }
+
+        public void OnDeselect(BaseEventData eventData)
+        {
+            OnUnselected();
+        }
+
+        protected virtual void OnClick()
+        {
+            if(m_state != null)
+            {
+                m_mainStatesMachine?.SwitchToState(m_state);
+            }
+        }
     }
 }

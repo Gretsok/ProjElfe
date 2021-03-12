@@ -8,7 +8,9 @@ namespace ProjElf.CombatController
     {
         CombatController Owner { get; }
         Damage Damage { get; }
-        float Cooldown { get; }//Défini tout les combien de temps on peut prendre des dégâts.
+        float Cooldown { get; } //Défini tout les combien de temps on peut prendre des dégâts lorsque le DamageGiver reste en contact avec le CombatController
         void OnCombatControllerHit(CombatController hitController);
+        bool CanDoDamage { get; }
+        System.Action<IDamageGiver> OnDisappear { get; set; }
     }
 }

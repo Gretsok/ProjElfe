@@ -2,84 +2,130 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using static SaveDataManager;
 
-
-public class SavedProfilesManager : MonoBehaviour
+namespace ProjElf.MainMenu
 {
-    [SerializeField]
-    private SavedProfileModule m_savedProfileModulePrefab = null;
-    [SerializeField]
-    private ButtonNavigationPosition m_createNewCharacterButtonPrefab = null;
-
-    private List<INavigationPosition> m_instantiatedNavigationPositions = new List<INavigationPosition>();
-    public INavigationPosition m_selectedPosition;
-
-    public int NumberOfNavigationPositions => m_instantiatedNavigationPositions.Count;
-
-    private const int MAX_PROFILES = 5;
-    [SerializeField]
-    private SaveData m_testSaveData = null;
-
-    public void Inflate(SaveDataElement[] allSaveData)
+    public class SavedProfilesManager : MonoBehaviour
     {
-        for(int i = 0; i < allSaveData.Length; ++i)
-        {
-            /*SaveData saveData = new SaveData();
-            SaveDataManager.LoadFromFile(allSaveData[i].FileName, out string json);
-            saveData.LoadFromJson(json);*/
+        [SerializeField]
+        private SavedProfileModule m_savedProfileModulePrefab = null;
+        [SerializeField]
+        private ButtonNavigationPosition m_createNewCharacterButtonPrefab = null;
+        [SerializeField]
+        private CharacterModel m_characterModel = null;
+        [SerializeField]
+        private Button m_playButton = null;
+        private List<Button> m_instantiatedNavigationPositions = new List<Button>();
 
-            SaveData saveData = MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.LoadSaveData(allSaveData[i].SaveName);
-            AddSavedProfileModule(saveData);
+        private MainMenuStateMachine m_mainStateMachine = null;
+
+        public int NumberOfNavigationPositions => m_instantiatedNavigationPositions.Count;
+
+
+        private const int MAX_PROFILES = 8;
+
+
+        private void Start()
+        {
+            if (m_mainStateMachine == null)
+            {
+                m_mainStateMachine = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainMenuStateMachine>();
+            }
         }
 
-        if(m_instantiatedNavigationPositions.Count < MAX_PROFILES)
+        public void Inflate(SaveDataElement[] allSaveData)
         {
-            CreateCreateNewCharacterButton();
-        }
-        
-    }
+            if (m_mainStateMachine == null)
+            {
+                m_mainStateMachine = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainMenuStateMachine>();
+            }
+            for (int i = 0; i < allSaveData.Length; ++i)
+            {
+                /*SaveData saveData = new SaveData();
+                SaveDataManager.LoadFromFile(allSaveData[i].FileName, out string json);
+                saveData.LoadFromJson(json);*/
 
-    public void SelectPosition(int index)
-    {
-        if(m_selectedPosition != null)
+                SaveData saveData = MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.LoadSaveData(allSaveData[i].SaveName);
+                AddSavedProfileModule(saveData);
+            }
+
+            
+
+            if (m_instantiatedNavigationPositions.Count < MAX_PROFILES)
+            {
+                CreateCreateNewCharacterButton();
+            }
+
+
+            if (m_instantiatedNavigationPositions.Count > 0)
+            {
+                var firstButton = m_instantiatedNavigationPositions[0];
+                //button.navigation.selectOnRight = m_playButton;
+                Navigation navTemp = firstButton.navigation;
+                navTemp.selectOnUp = m_playButton;
+                firstButton.navigation = navTemp;
+
+                var lastButton = m_instantiatedNavigationPositions[m_instantiatedNavigationPositions.Count - 1];
+                navTemp = lastButton.navigation;
+                navTemp.selectOnDown = m_playButton;
+                lastButton.navigation = navTemp;
+
+                navTemp = m_playButton.navigation;
+                navTemp.selectOnUp = lastButton;
+                navTemp.selectOnDown = firstButton;
+                m_playButton.navigation = navTemp;
+            }
+        }
+
+        public void InflateSaveData(SavedProfileModule profile)
         {
-            m_selectedPosition.OnUnselected();
+            m_characterModel.InflateSaveData(profile.SaveData);
         }
-        m_selectedPosition =  m_instantiatedNavigationPositions[index];
-        m_selectedPosition.OnSelected();
-    }
 
-    public void UnselectCurrentSelection()
-    {
-        m_selectedPosition?.OnUnselected();
-    }
-
-    public bool IsCurrentSelectionCreateCharacterButton()
-    {
-        return m_selectedPosition is CreateCharacterButtonNavigationPosition;
-    }
-
-    private void AddSavedProfileModule(SaveData saveData)
-    {
-        SavedProfileModule newSaveProfileModule = Instantiate(m_savedProfileModulePrefab, transform);
-        newSaveProfileModule.Inflate(saveData);
-        newSaveProfileModule.OnUnselected();
-        m_instantiatedNavigationPositions.Add(newSaveProfileModule);
-    }
-
-    public SaveData GetSaveDataByPositionIndex(int index)
-    {
-        if(m_instantiatedNavigationPositions[index] is SavedProfileModule)
+        private void AddSavedProfileModule(SaveData saveData)
         {
-            return (m_instantiatedNavigationPositions[index] as SavedProfileModule).SaveData;
-        }
-        return null;
-    }
 
-    private void CreateCreateNewCharacterButton()
-    {
-        ButtonNavigationPosition createNewCharacterButton = Instantiate(m_createNewCharacterButtonPrefab, transform);
-        m_instantiatedNavigationPositions.Add(createNewCharacterButton);
+            SavedProfileModule newSaveProfileModule = Instantiate(m_savedProfileModulePrefab, transform);
+            newSaveProfileModule.Inflate(saveData);
+            newSaveProfileModule.OnUnselected();
+            var button = newSaveProfileModule.GetComponent<Button>();
+            button.onClick.AddListener(m_mainStateMachine.CharacterSelectionState.Confirm);
+            if(m_instantiatedNavigationPositions.Count > 0)
+            {
+                var prevButton = m_instantiatedNavigationPositions[m_instantiatedNavigationPositions.Count - 1];
+
+                Navigation navTemp = prevButton.navigation;
+                navTemp.selectOnDown = button;
+                prevButton.navigation = navTemp;
+
+                navTemp = button.navigation;
+                navTemp.selectOnUp = prevButton;
+                button.navigation = navTemp;
+            }
+            m_instantiatedNavigationPositions.Add(button);
+        }
+
+        private void CreateCreateNewCharacterButton()
+        {
+
+            ButtonNavigationPosition createNewCharacterButton = Instantiate(m_createNewCharacterButtonPrefab, transform);
+
+            var createNewCharacButton = createNewCharacterButton.GetComponent<Button>();
+
+            var lastButton = m_instantiatedNavigationPositions[m_instantiatedNavigationPositions.Count - 1];
+            Navigation navTemp = lastButton.navigation;
+            navTemp.selectOnDown = createNewCharacButton;
+            lastButton.navigation = navTemp;
+
+            navTemp = createNewCharacButton.navigation;
+            navTemp.selectOnUp = lastButton;
+            navTemp.selectOnDown = m_playButton;
+            createNewCharacButton.navigation = navTemp;
+
+            m_instantiatedNavigationPositions.Add(createNewCharacButton);
+
+        }
     }
 }

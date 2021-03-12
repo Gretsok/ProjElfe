@@ -1,25 +1,29 @@
 ﻿using ProjElf.Interaction;
-using ProjElf.SceneData;
 using UnityEngine;
 
-public class AdventureCrystal : MonoBehaviour, IInteractable
+namespace ProjElf.HubForest
 {
-    [SerializeField]
-    private SceneData m_dunjeonSceneData = null;
-
-    public void DoInteraction(Interactor interactor = null)
+    public class AdventureCrystal : MonoBehaviour, IInteractable
     {
-        Debug.Log("Interact with crystal");
-        m_dunjeonSceneData.LoadLevel();
-    }
+        private HubForestGameMode m_gamemode = null;
+        private void Start()
+        {
+            m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
+        }
+        public void DoInteraction(Interactor interactor = null)
+        {
+            Debug.Log("Interact with crystal");
+            m_gamemode.ActivateDunjeonSelectionState();
+        }
 
-    public void StartBeingWatched()
-    {
-        Debug.Log("Crystal start being watched");
-    }
+        public void StartBeingWatched()
+        {
+            Debug.Log("Crystal start being watched");
+        }
 
-    public void StopBeingWatched()
-    {
-        Debug.Log("Crystal stop being watched");
+        public void StopBeingWatched()
+        {
+            Debug.Log("Crystal stop being watched");
+        }
     }
 }

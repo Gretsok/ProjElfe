@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using ProjElf.SceneData;
 using UnityEngine;
 using MOtter;
+using UnityEngine.EventSystems;
 
 namespace ProjElf.MainMenu
 { 
@@ -16,13 +17,20 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private CreateCharacterState m_createCharacterState = null;
         [SerializeField]
-        private OptionsState m_optionsState = null;
-        [SerializeField]
         private CreditsState m_creditsState = null;
+        public CharacterSelectionState CharacterSelectionState => m_characterSelectionState;
+        public CreateCharacterState CreateCharacterState => m_createCharacterState;
 
         [SerializeField]
-        private float m_timeToWaitBetweenTwoSwitch = 1f;
-        private float m_timeLastSwitched = -10f;
+        private GameObject m_firstSelectObject = null;
+
+
+        [SerializeField]
+        private SavedProfilesManager m_profileManager = null;
+        public SavedProfilesManager ProfileManager => m_profileManager;
+        [SerializeField]
+        private MainMenuCameraManager m_cameraManager = null;
+        public MainMenuCameraManager CameraManager => m_cameraManager;
 
         [Header("LevelLoader")]
         [SerializeField]
@@ -35,30 +43,12 @@ namespace ProjElf.MainMenu
             return base.LoadAsync();
         }
 
-        public void SwitchToHomeState()
+        internal override void EnterStateMachine()
         {
-            SwitchToState(m_homeState);
+            base.EnterStateMachine();
+            EventSystem.current.SetSelectedGameObject(m_firstSelectObject);
         }
 
-        public void SwitchToCharacterSelectionState()
-        {
-            SwitchToState(m_characterSelectionState);
-        }
-
-        public void SwitchToCreateCharacterState()
-        {
-            SwitchToState(m_createCharacterState);
-        }
-
-        public void SwitchToOptionsState()
-        {
-            SwitchToState(m_optionsState);
-        }
-
-        public void SwitchToCreditsState()
-        {
-            SwitchToState(m_creditsState);
-        }
 
         internal override void ExitStateMachine()
         {

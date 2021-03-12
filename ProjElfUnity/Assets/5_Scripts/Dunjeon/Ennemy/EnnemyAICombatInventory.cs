@@ -18,4 +18,9 @@ public class EnnemyAICombatInventory : CombatInventory
         ChangeMeleeWeapon(m_meleeWeaponData?.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>());
         SelectNextWeapon();
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("prout");
+    }
 }

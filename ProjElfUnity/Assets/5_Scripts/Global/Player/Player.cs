@@ -1,9 +1,9 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using MOtter.StatesMachine;
 using ProjElf.Interaction;
 using MOtter;
+using ProjElf.CombatController;
 
 namespace ProjElf.PlayerController
 {
@@ -20,6 +20,8 @@ namespace ProjElf.PlayerController
         private CharacterAnimatorHandler m_characterAnimatorHandler = null;
         [SerializeField]
         private PlayerCombatController m_combatController = null;
+        [SerializeField]
+        private PlayerCharacterModelSightBrain m_modelSightBrain = null;
 
         public CharacterController CharacterController => m_characterController;
         public PlayerCameraController CameraController => m_cameraController;
@@ -30,6 +32,7 @@ namespace ProjElf.PlayerController
         internal bool IsFalling = false;
 
         internal Ray Sight = new Ray();
+        internal Ray WeaponSight = new Ray();
 
         [Header("Movement Properties")]
         [SerializeField]
@@ -58,10 +61,48 @@ namespace ProjElf.PlayerController
         private Transform m_camFollowTarget = null;
         public Transform CamFollowTarget => m_camFollowTarget;
 
-        internal Vector3 Direction = Vector3.zero;
+        internal Vector3 Velocity = Vector3.zero;
 
         private PlayerInputsActions m_actions = null;
         public PlayerInputsActions Actions => m_actions;
+
+        #region IsBusy
+        private bool m_isBusy = false;
+        public bool IsBusy => m_isBusy;
+        public void MakeBusy(Transform busyWith = null)
+        { 
+            if(!m_isBusy)
+            {
+                if (busyWith != null)
+                {
+                    m_modelSightBrain.LookAt(busyWith);
+                }
+                MakeBusy();
+            }
+        }
+        public void MakeBusy()
+        {
+            if (!m_isBusy)
+            {
+                (m_currentState as PlayerState).CleanUpInputs();
+                m_isBusy = true;
+                CleanUpInput();
+                m_characterAnimatorHandler.SetForwardSpeed(0f);
+                m_characterAnimatorHandler.SetRightSpeed(0f);
+            }
+        }
+
+        public void MakeUnbusy()
+        {
+            if(m_isBusy)
+            {
+                m_isBusy = false;
+                SetUpInput();
+                m_modelSightBrain.StartWatchingAlongPlayerSight();
+                (m_currentState as PlayerState).SetUpInputs();
+            }
+        }
+        #endregion
 
         private void Awake()
         {
@@ -77,6 +118,7 @@ namespace ProjElf.PlayerController
         {
             EnterStateMachine();
             m_cameraController.Zoom(false);
+            m_modelSightBrain.StartWatchingAlongPlayerSight();
         }
 
 
@@ -89,31 +131,57 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
-            m_gamemode.OnPause += CleanUpInput;
-            m_gamemode.OnUnpause += SetUpInput;
-            
+            m_gamemode.OnPause += MakeBusy;
+            m_gamemode.OnUnpause += MakeUnbusy;
+
+            m_combatController.OnLifeReachedZero += Die;
+        }
+
+        private void Die()
+        {
+            if(m_gamemode is ProceduraleGeneration.DunjeonGameMode)
+            {
+                (m_gamemode as ProceduraleGeneration.DunjeonGameMode).LoseDunjeon();
+            }
         }
 
         public override void DoUpdate()
         {
-            base.DoUpdate();
-            m_combatController.DoUpdate(Sight.direction);
+            if (!m_isBusy)
+            {
+                base.DoUpdate();
+                m_combatController.DoUpdate(WeaponSight.direction);
+            }
+
+            m_modelSightBrain.DoUpdate();
         }
+
 
         public override void DoFixedUpdate()
         {
-            base.DoFixedUpdate();
+            if (!m_isBusy)
+            {
+                base.DoFixedUpdate();
+            }
+            else
+            {
+                Velocity = Vector3.zero;
+            }
+            
             Sight = new Ray(CameraController.CameraTransform.position + CameraController.CameraTransform.forward * (CameraController.CameraTransform.position - transform.position).magnitude, CameraController.CameraTransform.forward);
             m_interactor.ManageSight(Sight);
+
+            UpdateWeaponSight();
+
+
             Vector3 verticalMovement = Vector3.up * m_verticalVelocity;
-            m_characterController.Move((Direction + verticalMovement) * Time.fixedDeltaTime);
+            m_characterController.Move((Velocity + verticalMovement) * Time.fixedDeltaTime);
             
             if(m_characterController.isGrounded)
             {
                 m_verticalVelocity = -m_gravity * Time.fixedDeltaTime;
                 if(m_currentState == m_inAirState)
                 {
-
                     SwitchToState(m_movingState);
                 }
             }
@@ -131,10 +199,46 @@ namespace ProjElf.PlayerController
             }
         }
 
+        private void UpdateWeaponSight()
+        {
+            if(m_combatController.UsedWeapon is Bow)
+            {
+                WeaponSight = Sight;
+                if(Physics.Raycast(Sight, out RaycastHit hitInfo, 30))
+                {
+                    Vector3 arrowStartPosition = m_combatController.CombatInventory.Bow.PosArrow.transform.position;
+                    WeaponSight = new Ray(arrowStartPosition, (hitInfo.point - arrowStartPosition));
+
+                    // Simulate Arrow to reorientate it
+                    // Use CalculateArrowPosition() in Arrow (maybe has to be moved) to find when the arrow will go below initPosY (arrowStartPosition.y) and use the x and z values of this point
+
+                    Debug.DrawLine(arrowStartPosition, arrowStartPosition + (hitInfo.point - arrowStartPosition), Color.yellow);
+                    
+                } 
+            }
+            else if(m_combatController.UsedWeapon is Grimoire)
+            {
+                WeaponSight = Sight;
+                if (Physics.Raycast(Sight, out RaycastHit hitInfo, 30))
+                {
+                    Vector3 projectileStartPosition = m_combatController.CombatInventory.Grimoire.PosMagicSpell.transform.position;
+                    WeaponSight = new Ray(projectileStartPosition, (hitInfo.point - projectileStartPosition));
+                }
+            }
+            else if(m_combatController.UsedWeapon is MeleeWeapon)
+            {
+                WeaponSight = Sight;
+            }
+        }
+
         internal override void ExitStateMachine()
         {
-            m_gamemode.OnPause -= CleanUpInput;
-            m_gamemode.OnUnpause -= SetUpInput;
+            m_characterAnimatorHandler.SetForwardSpeed(0f);
+            m_characterAnimatorHandler.SetRightSpeed(0f);
+            m_combatController.OnLifeReachedZero -= Die;
+
+            m_gamemode.OnPause -= MakeBusy;
+            m_gamemode.OnUnpause -= MakeUnbusy;
             CleanUpInput();
             base.ExitStateMachine();
         }
@@ -174,11 +278,12 @@ namespace ProjElf.PlayerController
 
         private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            m_gamemode.Pause();
+            m_gamemode.Pause();            
         }
 
         protected void CleanUpInput()
         {
+
             m_actions.UI.Back.performed -= Pause_performed;
             m_actions.Disable();
         }

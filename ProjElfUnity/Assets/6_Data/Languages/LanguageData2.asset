@@ -15,6 +15,7 @@ MonoBehaviour:
   m_languageDictionary:
     m_keys:
     - LANGUAGE_SHORTNAME
+    - LANGUAGE_NAME
     - PROJECT_NAME
     - LOADING_SCENE
     - GENERIC_PLAY
@@ -37,8 +38,33 @@ MonoBehaviour:
     - OPTIONS_CAMERA_SENSIBILITY
     - OPTIONS_SOUND_VOLUME
     - OPTIONS_LANGUAGE
+    - DIFFICULTY_RESCUER_I
+    - DIFFICULTY_RESCUER_II
+    - DIFFICULTY_RESCUER_III
+    - DIFFICULTY_LIFESAVER_I
+    - DIFFICULTY_LIFESAVER_II
+    - DIFFICULTY_LIFESAVER_III
+    - DIFFICULTY_ABSOLUTE_MASTER_GUARDIAN
+    - DUNJEON_TYPE_CASTLE
+    - DUNJEON_TYPE_CAVE
+    - ACTION_PRESS
+    - INVENTORY_CHANGE_WEAPON
+    - INVENTORY_SELL_WEAPON
+    - INVENTORY_REROLL_WEAPON
+    - INVENTORY_LEAVE
+    - WEAPON_STATS_PROJECTILE_GRAVITY
+    - WEAPON_STATS_PROJECTILE_SPEED
+    - WEAPON_STATS_PROJECTILE_LIFETIME
+    - WEAPON_STATS_ATTACK_SPEED
+    - WEAPON_STATS_OF_DAMAGE_TYPE
+    - WEAPON_STATS_ALLOW_CONTINUE_FIRING
+    - GENERIC_YES
+    - GENERIC_NO
+    - DAMAGE_TYPE_PHYSICAL
+    - DAMAGE_TYPE_MAGICAL
     m_values:
     - ES
+    - "Espa\xF1ol"
     - ProjElf
     - Cargando...
     - Jugar
@@ -47,7 +73,7 @@ MonoBehaviour:
     - y
     - Seguir jugando
     - Salir del juego
-    - 
+    - "volver al men\xFA principal"
     - 'Tiempo jugado :'
     - 'Animales salvados :'
     - horas
@@ -61,3 +87,27 @@ MonoBehaviour:
     - "Sensibilidad de la c\xE1mara"
     - volumen de sonido
     - Idioma
+    - Rescuer I
+    - Rescuer II
+    - Rescuer III
+    - LifeSaver I
+    - LifeSaver II
+    - LifeSaver III
+    - AbsoluteMasterGuardian
+    - Castillo
+    - Cueva
+    - Presionar
+    - para cambiar su arma actual contra el arma seleccionada
+    - vender el arma seleccionada
+    - para forjar de nuevo el arma seleccionada
+    - para dejar el inventario
+    - Gravedad aplicada al proyectil
+    - Velocidad de los proyectiles
+    - "Vida \xFAtil del proyectil"
+    - Velocidad de ataque
+    - "de da\xF1o {0}"
+    - Fuego continuo
+    - "S\xED"
+    - No
+    - "f\xEDsico"
+    - "m\xE1gico"
