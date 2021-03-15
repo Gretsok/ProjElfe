@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f607a8ade6546ce4785e9d346bfa31a3, type: 3}
   m_Name: DemoDunjeonData
   m_EditorClassIdentifier: 
+  m_dunjeonName: Castle
   m_numberOfRoomsOnRightWay: {x: 5, y: 10}
   m_numberOfRoomsOnWrongWay: {x: 1, y: 3}
   m_intersectionSpawningRate: {x: 3, y: 5}
@@ -26,3 +27,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a0c78aeb92f30ee419ca1dae392c1283, type: 2}
   - {fileID: 11400000, guid: 63535b86f254c3447a844cbcc73347bd, type: 2}
   m_dunjeonDifficulty: 0
+  m_dunjeonType: 0
+  m_dunjeonIcon: {fileID: 0}
+  m_dunjeonSceneData: {fileID: 11400000, guid: f9eff9a621ea38d4cb9058278261baa5, type: 2}

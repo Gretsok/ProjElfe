@@ -6,7 +6,9 @@ namespace ProjElf.ProceduraleGeneration
     [CreateAssetMenu(fileName = "DunjeonData", menuName = "DunjeonGeneration/DunjeonData")]
     public class DunjeonData : ScriptableObject
     {
-        
+        [SerializeField]
+        private string m_dunjeonName = string.Empty;
+
         [SerializeField, Tooltip("Minimum and maximum of rooms making the way leading to the end")]
         private Vector2Int m_numberOfRoomsOnRightWay = Vector2Int.zero;
         [SerializeField, Tooltip("Minimum and maximum of rooms making a way not leading to the end")]
@@ -20,8 +22,19 @@ namespace ProjElf.ProceduraleGeneration
 
         [SerializeField, Tooltip("Dunjeon Difficulty")]
         private EDunjeonDifficulty m_dunjeonDifficulty = EDunjeonDifficulty.RescuerI;
+        [SerializeField, Tooltip("Dunjeon Type")]
+        private EDunjeonType m_dunjeonType = EDunjeonType.Castle;
+
+        [SerializeField]
+        private Sprite m_dunjeonIcon = null;
+
+        [SerializeField]
+        private SceneData.SceneData m_dunjeonSceneData = null;
 
         internal DunjeonRoomData FinalRoomData => m_finalRoomData;
+
+
+        public string DunjeonName => m_dunjeonName;
 
         /// <summary>
         /// Get a random number of rooms making the way leading to the end
@@ -70,5 +83,8 @@ namespace ProjElf.ProceduraleGeneration
         }
 
         public EDunjeonDifficulty DunjeonDifficulty => m_dunjeonDifficulty;
+        public EDunjeonType DunjeonType => m_dunjeonType;
+        public Sprite DunjeonIcon => m_dunjeonIcon;
+        public SceneData.SceneData DunjeonSceneData => m_dunjeonSceneData;
     }
 }

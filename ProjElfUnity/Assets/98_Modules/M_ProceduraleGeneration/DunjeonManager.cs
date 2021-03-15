@@ -8,7 +8,6 @@ namespace ProjElf.ProceduraleGeneration
 {
     public class DunjeonManager : MonoBehaviour
     {
-        [SerializeField]
         private DunjeonData m_currentDunjeonData = null;
 
         public DunjeonData CurrentDunjeonData => m_currentDunjeonData;
@@ -27,7 +26,10 @@ namespace ProjElf.ProceduraleGeneration
         private bool m_generationStarted = false;
         public bool DunjeonGenerated { get; private set; } = false;
 
-
+        public void SetDunjeonData(DunjeonData dunjeonData)
+        {
+            m_currentDunjeonData = dunjeonData;
+        }
 
         /// <summary>
         /// Execute one frame in dunjeon generation, you have to call StartDunjeonGeneration() before.

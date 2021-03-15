@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿using ProjElf.ProceduraleGeneration;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -13,7 +13,7 @@ namespace ProjElf.HubForest
         private List<DunjeonSelectionWidget> m_instantiatedDunjeonSelectionWidget = new List<DunjeonSelectionWidget>();
         
         [SerializeField]
-        private List<DunjeonSelectionData> m_dunjeonSelectionData = new List<DunjeonSelectionData>();
+        private List<DunjeonData> m_dunjeonSelectionData = new List<DunjeonData>();
 
 
         public override void Show()

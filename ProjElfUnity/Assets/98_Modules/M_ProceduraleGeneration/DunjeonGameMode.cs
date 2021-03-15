@@ -18,6 +18,11 @@ namespace ProjElf.ProceduraleGeneration
         public override IEnumerator LoadAsync()
         {
             #region Dunjeon Generation
+
+            m_dunjeonManager.SetDunjeonData(DunjeonDataTransmitter.DunjeonData);
+            DunjeonDataTransmitter.DestroyCurrentInstance();
+
+
             m_dunjeonManager.StartDunjeonGeneration();
 
             while(!m_dunjeonManager.DunjeonGenerated)

@@ -1,4 +1,5 @@
 ﻿using MOtter.Localization;
+using ProjElf.ProceduraleGeneration;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,23 +18,24 @@ namespace ProjElf.HubForest
         [SerializeField]
         private Image m_dunjeonIcon = null;
 
-        private DunjeonSelectionData m_dunjeonSelectionData = null;
+        private DunjeonData m_dunjeonData = null;
         private bool m_startedLoading = false;
 
-        public void Inflate(DunjeonSelectionData a_selectionData)
+        public void Inflate(DunjeonData a_dunjeonData)
         {
-            m_dunjeonNameLocalizer.SetKey(a_selectionData.DunjeonNameKey);
-            m_dunjeonTypeLocalizer.SetKey(ProjElfUtils.GetDunjeonTypeKey(a_selectionData.DunjeonType));
-            m_dunjeonDifficultyLocalizer.SetKey(ProjElfUtils.GetDifficultyKey(a_selectionData.DunjeonDifficulty));
-            m_dunjeonIcon.sprite = a_selectionData.DunjeonIcon;
-            m_dunjeonSelectionData = a_selectionData;
+            m_dunjeonNameLocalizer.SetKey(a_dunjeonData.DunjeonName);
+            m_dunjeonTypeLocalizer.SetKey(ProjElfUtils.GetDunjeonTypeKey(a_dunjeonData.DunjeonType));
+            m_dunjeonDifficultyLocalizer.SetKey(ProjElfUtils.GetDifficultyKey(a_dunjeonData.DunjeonDifficulty));
+            m_dunjeonIcon.sprite = a_dunjeonData.DunjeonIcon;
+            m_dunjeonData = a_dunjeonData;
         }
 
         public void OnClick()
         {
             if(!m_startedLoading)
             {
-                m_dunjeonSelectionData.DunjeonSceneData.LoadLevel();
+                DunjeonDataTransmitter.CreateInstance(m_dunjeonData);
+                m_dunjeonData.DunjeonSceneData.LoadLevel();
                 m_startedLoading = true;
             }
         }
