@@ -2028,13 +2028,13 @@ PrefabInstance:
     - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
         type: 3}
       propertyPath: m_dunjeonSelectionData.Array.size
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
         type: 3}
       propertyPath: m_dunjeonSelectionData.Array.data[1]
       value: 
-      objectReference: {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30,
+      objectReference: {fileID: 11400000, guid: d1eb7f48ede777848a6fde9b6582846e,
         type: 2}
     - target: {fileID: 7978892816846429289, guid: ba54339bd4c45c641864cbe646658c0e,
         type: 3}

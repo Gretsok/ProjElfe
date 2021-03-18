@@ -53,6 +53,7 @@ MonoBehaviour:
     type: 3}
   m_dunjeonSelectionData:
   - {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30, type: 2}
+  - {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30, type: 2}
 --- !u!114 &7978892816846429290
 MonoBehaviour:
   m_ObjectHideFlags: 0

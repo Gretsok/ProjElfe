@@ -193,8 +193,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62886caa03458dd4ba406b3e7e48939f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_hubForestSceneData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603,
-    type: 2}
 --- !u!1 &3166798478238669341
 GameObject:
   m_ObjectHideFlags: 0
