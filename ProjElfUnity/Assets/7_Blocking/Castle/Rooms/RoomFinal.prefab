@@ -82,7 +82,7 @@ MonoBehaviour:
   m_width: 10
   m_spawningLayerMask:
     serializedVersion: 2
-    m_Bits: 1111
+    m_Bits: 4294967295
   m_forwardGate: {fileID: 0}
   m_leftGate: {fileID: 0}
   m_rightGate: {fileID: 0}
