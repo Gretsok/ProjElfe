@@ -1,5 +1,5 @@
-﻿using ProjElf.CombatController;
-using System.Collections;
+﻿using ProjElf.AnimalManagement;
+using ProjElf.CombatController;
 using System.Collections.Generic;
 using UnityEngine;
 

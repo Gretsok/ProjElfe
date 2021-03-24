@@ -4,8 +4,6 @@ using MOtter.PlayersManagement;
 using MOtter.SoundManagement;
 using MOtter.StatesMachine;
 using MOtter.Utils;
-using System.Collections.Generic;
-using UnityEditor;
 using UnityEngine;
 
 namespace MOtter
@@ -27,6 +25,7 @@ namespace MOtter
                 s_instance = app_GO.GetComponent<MOtterApplication>();
                 DontDestroyOnLoad(s_instance);
                 Debug.Log("MOtterApplication instance created");
+                s_instance.m_gameManager.Init();
             }
             return s_instance;
         }

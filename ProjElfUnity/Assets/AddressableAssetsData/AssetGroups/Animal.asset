@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Animal
+  m_EditorClassIdentifier: 
+  m_GroupName: Animal
+  m_Data:
+    m_SerializedData: []
+  m_GUID: 2ce2995dd9f26ab41b8e9298777d4a15
+  m_SerializeEntries:
+  - m_GUID: 63a8ee18b91c9e84582b30c19381698d
+    m_Address: Assets/99_Demos/M_AnimalManager/bob3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - rescuer1
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: daeb2f22236aac84398c74eef8ee92be
+    m_Address: Assets/99_Demos/M_AnimalManager/bob2.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - rescuer1
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: e3edb8fa0eea70f418214e597278d6b5
+    m_Address: Assets/99_Demos/M_AnimalManager/Bob1.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - rescuer1
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: b34b859f804dcc0498ab5e8306e74a74, type: 2}
+    - {fileID: 11400000, guid: 4567ab73d52c1eb478db8df31006db3b, type: 2}

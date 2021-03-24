@@ -1,18 +1,24 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-[CreateAssetMenu(fileName ="AnimalData")]
-public class AnimalData : ScriptableObject
+namespace ProjElf.AnimalManagement
 {
-    [SerializeField]
-    private EPlayerStats m_statsToIncrease = EPlayerStats.Force;
-    [SerializeField]
-    private int m_statsToIncreaseAmount = 0;
-    [SerializeField]
-    private Animal m_animalPrefab = null;
+    [CreateAssetMenu(fileName = "AnimalData", menuName = "Animal/AnimalData")]
+    public class AnimalData : ScriptableObject
+    {
+        [SerializeField]
+        private EPlayerStats m_statsToIncrease = EPlayerStats.Force;
+        [SerializeField]
+        private int m_statsToIncreaseAmount = 0;
+        [SerializeField]
+        private Animal m_animalPrefab = null;
 
-    public int StatToIncreaseAmount=> m_statsToIncreaseAmount;
-    public EPlayerStats StatsToIncrease => m_statsToIncrease;
-    public Animal AnimalPrefab => m_animalPrefab;
+        public int StatToIncreaseAmount => m_statsToIncreaseAmount;
+        public EPlayerStats StatsToIncrease => m_statsToIncrease;
+        public Animal InstantiateAnimal(Vector3 position, Quaternion rotation, Transform parent = null)
+        {
+            Animal newAnimal = Instantiate(m_animalPrefab, position, rotation, parent);
+            newAnimal.AnimalData = this;
+            return newAnimal;
+        }
+    }
 }
