@@ -1,12 +1,14 @@
 fileFormatVersion: 2
-guid: 3d9a05d0d61c0ca4f98e35f93bb6736a
+guid: 452f3dc695e80474896d5af206224807
 ModelImporter:
   serializedVersion: 19301
-  internalIDToNameTable:
+  internalIDToNameTable: []
+  externalObjects:
   - first:
-      74: -623603649343465320
-    second: Scene
-  externalObjects: {}
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.007
+    second: {fileID: 2100000, guid: 4c2c8fad0fcf9544da6f9f7ea8eea94e, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
