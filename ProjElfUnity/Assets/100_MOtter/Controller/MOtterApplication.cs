@@ -14,6 +14,7 @@ namespace MOtter
         {
             s_instance = this;
             DontDestroyOnLoad(s_instance);
+            s_instance.m_gameManager.Init();
         }
 
         private static MOtterApplication s_instance;
@@ -25,7 +26,6 @@ namespace MOtter
                 s_instance = app_GO.GetComponent<MOtterApplication>();
                 DontDestroyOnLoad(s_instance);
                 Debug.Log("MOtterApplication instance created");
-                s_instance.m_gameManager.Init();
             }
             return s_instance;
         }

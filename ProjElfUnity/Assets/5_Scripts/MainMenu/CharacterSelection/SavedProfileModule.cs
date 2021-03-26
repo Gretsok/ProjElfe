@@ -109,9 +109,9 @@ namespace ProjElf.MainMenu
 
             // Inflates number of animals saved
             int animalsSaved = 0;
-            for (int i = 0; i < saveData.SavedAnimalDatas.Count; ++i)
+            for (int i = 0; i < saveData.RescuedAnimalDatas.Count; ++i)
             {
-                animalsSaved += saveData.SavedAnimalDatas[i].Amount;
+                animalsSaved += saveData.RescuedAnimalDatas[i].Amount;
             }
 
             m_animalsSavedText.text = animalsSaved.ToString();

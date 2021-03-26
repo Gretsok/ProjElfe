@@ -8,7 +8,7 @@ using UnityEngine.AddressableAssets;
 namespace ProjElf.AnimalManagement
 {
     [System.Serializable]
-    public class SavedAnimalData
+    public class RescuedAnimalData
     {
 
         public AnimalData AnimalData;
@@ -17,46 +17,56 @@ namespace ProjElf.AnimalManagement
     }
     public class AnimalsManager : MonoBehaviour
     {
+        private static AnimalsManager s_instance = null;
+
+        public static AnimalsManager GetInstance()
+        {
+            if(s_instance == null)
+            {
+                GameObject appGO = new GameObject();
+                s_instance = appGO.AddComponent<AnimalsManager>();
+                s_instance.Init();
+            }
+
+            return s_instance;
+        }
+
 
 
         //j'instentie car savedAnimalData ne depend pas ni de monoBehaviour ni de Scriptable objet.
-        private List<SavedAnimalData> m_savedAnimals = new List<SavedAnimalData>();
-        public List<SavedAnimalData> SavedAnimals => m_savedAnimals;
+        private List<RescuedAnimalData> m_rescuedAnimals = new List<RescuedAnimalData>();
+        public List<RescuedAnimalData> SavedAnimals => m_rescuedAnimals;
         // ajouter une methode saveAnamal(AnimalData saveAnimal)
         //check dans la liste SaveAnimal si il y a un saveAnimal 
-        public AnimalData saveAnimal(AnimalData saveAnimal)
+        public AnimalData RescueAnimal(AnimalData saveAnimal)
         {
             //Contains : cherche dans la liste m_saveAnimalData pas ouf 
             //Find(avec predicat)
             //La methode return un bool 
-            SavedAnimalData anmial_exist = m_savedAnimals.Find(x => x.AnimalData == saveAnimal);
+            RescuedAnimalData anmial_exist = m_rescuedAnimals.Find(x => x.AnimalData == saveAnimal);
             Debug.Log(anmial_exist);
             if (anmial_exist == null)
             {
                 // new save (= j'instancie ) + amount = 1 + AnimalData = newAnimal
                 // + j'atoute la class a la list m_savedAnimals 
-                SavedAnimalData newAnimal = new SavedAnimalData();
+                RescuedAnimalData newAnimal = new RescuedAnimalData();
                 newAnimal.Amount = 1;
                 newAnimal.AnimalData = saveAnimal;
-                m_savedAnimals.Add(newAnimal);
-                Debug.Log(m_savedAnimals);
+                m_rescuedAnimals.Add(newAnimal);
+                Debug.Log(m_rescuedAnimals);
             }
 
             else
             {
                 anmial_exist.Amount++;
-                Console.WriteLine(m_savedAnimals);
+                Console.WriteLine(m_rescuedAnimals);
             }
             return saveAnimal;
         }
 
-        private void Start()
-        {
-            Init();
-        }
         public void Init()
         {
-            m_savedAnimals = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedAnimalDatas;
+            m_rescuedAnimals = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RescuedAnimalDatas;
         }
 
         public void GetAsyncRandomAnimalData(Action<AnimalData> onAnimalDataGot)
@@ -79,10 +89,14 @@ namespace ProjElf.AnimalManagement
             return animal;
         }
 
-        public void SaveSavedAnimalsData()
+        public void SaveRescuedAnimalsData()
         {
-            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedAnimalDatas = m_savedAnimals;
+            MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RescuedAnimalDatas = m_rescuedAnimals;
         }
 
+        private void OnDestroy()
+        {
+            SaveRescuedAnimalsData();
+        }
     }
 }

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f607a8ade6546ce4785e9d346bfa31a3, type: 3}
   m_Name: DemoDunjeonData
   m_EditorClassIdentifier: 
-  m_dunjeonName: Castle
+  m_dunjeonName: Demo Dunjeon
   m_numberOfRoomsOnRightWay: {x: 5, y: 10}
   m_numberOfRoomsOnWrongWay: {x: 1, y: 3}
   m_intersectionSpawningRate: {x: 3, y: 5}

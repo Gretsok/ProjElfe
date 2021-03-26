@@ -30,7 +30,7 @@ public class SaveData
 
     public int FrancissousMoney = 0;
 
-    public List<SavedAnimalData> SavedAnimalDatas = new List<SavedAnimalData>();
+    public List<RescuedAnimalData> RescuedAnimalDatas = new List<RescuedAnimalData>();
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
     public PlayerStats SavedPlayerStats;

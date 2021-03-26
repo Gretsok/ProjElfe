@@ -16,7 +16,8 @@ namespace ProjElf.AnimalManagement
         public EPlayerStats StatsToIncrease => m_statsToIncrease;
         public Animal InstantiateAnimal(Vector3 position, Quaternion rotation, Transform parent = null)
         {
-            Animal newAnimal = Instantiate(m_animalPrefab, position, rotation, parent);
+            Animal newAnimal = Instantiate(m_animalPrefab, position, rotation);
+            newAnimal.transform.SetParent(parent);
             newAnimal.AnimalData = this;
             return newAnimal;
         }
