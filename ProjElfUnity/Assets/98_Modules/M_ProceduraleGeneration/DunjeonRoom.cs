@@ -291,7 +291,7 @@ namespace ProjElf.ProceduraleGeneration
                     if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
                     {
                         m_AIInThisRoom.Add(newAI);
-                        newAI.Init(this);
+                        newAI.InitAsADunjeonAI(this);
                     }
                 }
             }
@@ -380,7 +380,6 @@ namespace ProjElf.ProceduraleGeneration
                     System.Random rnd = new System.Random(Random.Range(0, 10000000));
                     Random.InitState(rnd.Next(0, 100000000));
                     x = Random.Range(-m_width / 2f, m_width / 2f);
-                    Random.InitState(rnd.Next(0, 100000000));
                     z = Random.Range(-m_width / 2f, m_width / 2f);
 
                     Vector3 rayOrigin = transform.position

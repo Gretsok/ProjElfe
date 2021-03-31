@@ -108,6 +108,7 @@ namespace ProjElf.ProceduraleGeneration
         {
             if(!m_generationStarted)
             {
+                Random.InitState((new System.Random()).Next(0, 1000000));
                 Debug.Log("Generating Dunjeon");
                 m_generatingRoomsRoomIndex = 0;
                 m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
@@ -198,7 +199,7 @@ namespace ProjElf.ProceduraleGeneration
                 
 
 
-                Random.InitState((new System.Random()).Next(0, 1000000));
+                
                 DunjeonRoomData roomData = possibleRooms[Random.Range(0, possibleRooms.Count)];
 
 
@@ -243,7 +244,6 @@ namespace ProjElf.ProceduraleGeneration
                     roomToSpawn++;
                 }
 
-                Random.InitState((new System.Random()).Next(0, 1000000));
                 int roomOnRightWayIndex = Random.Range(0, roomToSpawn);
                 roomToSpawn = 0;
                 bool roomOnGoodWayChosen = false;
@@ -528,7 +528,6 @@ namespace ProjElf.ProceduraleGeneration
                             else
                             {
                                 // generate random number to favorize forward corridor
-                                Random.InitState((new System.Random().Next(0, 11651615)));
                                 int randValue = Random.Range(0, 5);
                                 if(randValue < 1)
                                 {
@@ -607,7 +606,6 @@ namespace ProjElf.ProceduraleGeneration
                             }
                             else
                             {
-                                Random.InitState((new System.Random()).Next(0, 15164462));
                                 int randValue = Random.Range(0, 10);
                                 if(randValue >= 8)
                                 {
@@ -704,7 +702,6 @@ namespace ProjElf.ProceduraleGeneration
                             }
                             else
                             {
-                                Random.InitState((new System.Random()).Next(0, 15164462));
                                 int randValue = Random.Range(0, 10);
                                 if(randValue >= 8)
                                 {

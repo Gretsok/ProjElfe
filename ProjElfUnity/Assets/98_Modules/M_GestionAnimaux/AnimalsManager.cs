@@ -10,10 +10,25 @@ namespace ProjElf.AnimalManagement
     [System.Serializable]
     public class RescuedAnimalData
     {
-
+        public int AnimalDataIndex;
+        [NonSerialized]
         public AnimalData AnimalData;
         public int Amount;
-        //1 
+
+        public void Unserialize()
+        {
+            Addressables.LoadAssetsAsync<AnimalData>("animal",
+                null).Completed += obj =>
+                {
+                    foreach (AnimalData animalData in obj.Result)
+                    {
+                        if (animalData.AnimalDataID == AnimalDataIndex)
+                        {
+                            AnimalData = animalData;
+                        }
+                    }
+                };
+        }
     }
     public class AnimalsManager : MonoBehaviour
     {
@@ -52,6 +67,7 @@ namespace ProjElf.AnimalManagement
                 RescuedAnimalData newAnimal = new RescuedAnimalData();
                 newAnimal.Amount = 1;
                 newAnimal.AnimalData = saveAnimal;
+                newAnimal.AnimalDataIndex = saveAnimal.AnimalDataID;
                 m_rescuedAnimals.Add(newAnimal);
                 Debug.Log(m_rescuedAnimals);
             }

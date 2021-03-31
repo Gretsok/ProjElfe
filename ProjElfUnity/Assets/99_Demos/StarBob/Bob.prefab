@@ -199,7 +199,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911e4e752dc92a048ba08da1486a864f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animalData: {fileID: 0}
+  m_animationsHandler: {fileID: 0}
 --- !u!1 &2345443454176383322
 GameObject:
   m_ObjectHideFlags: 0
@@ -676,6 +676,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2345443455591843156}
   - component: {fileID: -2267078663077564790}
+  - component: {fileID: 6494725078590182633}
+  - component: {fileID: 5216879826352933036}
   m_Layer: 0
   m_Name: Bob
   m_TagString: Untagged
@@ -717,7 +719,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911e4e752dc92a048ba08da1486a864f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animalData: {fileID: 11400000, guid: 6f3df0e5b093afb4c8d1c4c260bb6d08, type: 2}
+  m_animationsHandler: {fileID: 6494725078590182633}
+--- !u!114 &6494725078590182633
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345443455591843157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da9cc30cc301df418a7620c5dfd0595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 5216879826352933036}
+--- !u!95 &5216879826352933036
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2345443455591843157}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &2345443455876827534
 GameObject:
   m_ObjectHideFlags: 0

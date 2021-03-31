@@ -20,7 +20,6 @@ namespace ProjElf.CombatController
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileSpeed = Random.Range(grimoireData.ProjectileSpeed.x, grimoireData.ProjectileSpeed.y);
                 HitDamage.DamageType = EDamageType.Magical;
-                Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileLifeTime = Random.Range(grimoireData.ProjectileLifeTime.x, grimoireData.ProjectileLifeTime.y);
                 ProjectilePrefab = grimoireData.ProjectilePrefab;
                 s_weaponLabel = "grimoire";

@@ -58,7 +58,7 @@ namespace ProjElf.DunjeonGameplay
             AWeaponData.AWeaponSaveData weaponToReturn = null;
 
             #region Finding a random weapon in possibleWeaponsData
-            UnityEngine.Random.InitState((new System.Random(Time.frameCount * this.GetHashCode()).Next()));
+            UnityEngine.Random.InitState((new System.Random().Next()));
             int index = UnityEngine.Random.Range(0, weaponsData.Length);
             AWeaponData weaponDataToReturn = weaponsData[index];
 

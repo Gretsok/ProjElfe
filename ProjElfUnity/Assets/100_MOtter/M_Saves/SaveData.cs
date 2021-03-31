@@ -132,5 +132,10 @@ public class SaveData
         {
             EarnedMeleeWeapons[i].Unserialize();
         }
+
+        for(int i = 0; i < RescuedAnimalDatas.Count; ++i)
+        {
+            RescuedAnimalDatas[i].Unserialize();
+        }
     }
 }

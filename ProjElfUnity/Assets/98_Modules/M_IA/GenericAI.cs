@@ -22,12 +22,16 @@ namespace ProjElf.AI
         private DunjeonRoom m_attachedDunjeonRoom = null;
         public DunjeonRoom AttachedDunjeonRoom => m_attachedDunjeonRoom;
 
-        public virtual void Init(DunjeonRoom attachedDunjeonRoom)
+        public virtual void InitAsADunjeonAI(DunjeonRoom attachedDunjeonRoom)
         {
             m_attachedDunjeonRoom = attachedDunjeonRoom;
+            Init();
+        }
+
+        public virtual void Init()
+        {
             m_player = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>().Player;
             EnterStateMachine();
-            
         }
 
         public override void DoLateUpdate()

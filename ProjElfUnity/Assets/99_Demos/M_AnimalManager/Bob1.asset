@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57bc27beb6084d4fb4aa859613bf5ef, type: 3}
   m_Name: Bob1
   m_EditorClassIdentifier: 
+  m_animalDataID: -1557302071
   m_statsToIncrease: 1
   m_statsToIncreaseAmount: 12
   m_animalPrefab: {fileID: 2456665862363730355, guid: 50ba288f94139ed49a1c3f6920fce1e9,
