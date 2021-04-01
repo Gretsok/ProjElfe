@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b57bc27beb6084d4fb4aa859613bf5ef, type: 3}
   m_Name: AnimalData
   m_EditorClassIdentifier: 
+  m_animalDataID: 1375248201
   m_statsToIncrease: 0
   m_statsToIncreaseAmount: 0
   m_animalPrefab: {fileID: -2267078663077564790, guid: 08ea30fcc496ea24499203fb1bec76a7,

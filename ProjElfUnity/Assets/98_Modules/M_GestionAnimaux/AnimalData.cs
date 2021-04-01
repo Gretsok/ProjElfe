@@ -17,6 +17,8 @@ namespace ProjElf.AnimalManagement
         private int m_statsToIncreaseAmount = 0;
         [SerializeField]
         private Animal m_animalPrefab = null;
+        [SerializeField]
+        private Sprite m_animalIcon = null;
 
         public int StatToIncreaseAmount => m_statsToIncreaseAmount;
         public EPlayerStats StatsToIncrease => m_statsToIncrease;
@@ -27,6 +29,7 @@ namespace ProjElf.AnimalManagement
             newAnimal.AnimalData = this;
             return newAnimal;
         }
+        public Sprite AnimalIcon => m_animalIcon;
 
 
 #if UNITY_EDITOR

@@ -3,6 +3,7 @@ using MOtter.StatesMachine;
 using System.Collections;
 using UnityEngine.AI;
 using MOtter;
+using ProjElf.DunjeonGameplay;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -14,6 +15,12 @@ namespace ProjElf.ProceduraleGeneration
 
         [SerializeField]
         private SceneData.SceneData m_hubSceneData = null;
+
+        [Header("States")]
+        [SerializeField]
+        private DunjeonDeathState m_dunjeonDeathState = null;
+        [SerializeField]
+        private DunjeonRescuedAnimalState m_dunjeonRescuedAnimalState = null;
 
         public override IEnumerator LoadAsync()
         {
@@ -68,7 +75,7 @@ namespace ProjElf.ProceduraleGeneration
             }
             if(Physics.Raycast(m_player.transform.position, Vector3.down, out RaycastHit hitInfo))
             {
-                if(hitInfo.transform.TryGetComponent<DunjeonRoom>(out DunjeonRoom room))
+                if(hitInfo.transform.TryGetComponent<DunjeonRoomCollisionRelay>(out DunjeonRoomCollisionRelay room))
                 {
                     room.ActivateSurroundingRooms();
                 }
@@ -87,12 +94,17 @@ namespace ProjElf.ProceduraleGeneration
         public void WinDunjeon()
         {
             SavePlayerWeapons();
-            m_hubSceneData.LoadLevel();
+            LoadBackToHub();
         }
         
         public void LoseDunjeon()
         {
             m_player.CombatController.CombatInventory.HoldedWeapons.Clear();
+            SwitchToState(m_dunjeonDeathState);
+        }
+
+        public void LoadBackToHub()
+        {
             m_hubSceneData.LoadLevel();
         }
     }

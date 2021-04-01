@@ -489,6 +489,7 @@ GameObject:
   - component: {fileID: 1262873407430322982}
   - component: {fileID: 8770263049822384698}
   - component: {fileID: 2421134887797491232}
+  - component: {fileID: 2290100163368559193}
   m_Layer: 0
   m_Name: DemoGeneralRoom
   m_TagString: Untagged
@@ -551,6 +552,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 0.5, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2290100163368559193
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1527920762408784785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 8770263049822384698}
 --- !u!1 &1747458518403589336
 GameObject:
   m_ObjectHideFlags: 0
