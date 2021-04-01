@@ -1,11 +1,12 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class Animal : MonoBehaviour
+namespace ProjElf.AnimalManagement
 {
-    [SerializeField]
-    private AnimalData m_animalData = null;
- 
-    public AnimalData AnimalData=>m_animalData;
+    public class Animal : MonoBehaviour
+    {
+        public AnimalData AnimalData { get; internal set; }
+        [SerializeField]
+        private AnimalAnimationsHandler m_animationsHandler = null;
+        public AnimalAnimationsHandler AnimationsHandler => m_animationsHandler;
+    }
 }

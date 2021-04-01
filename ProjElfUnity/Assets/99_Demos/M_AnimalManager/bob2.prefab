@@ -103,8 +103,10 @@ GameObject:
   m_Component:
   - component: {fileID: 3242614166963265618}
   - component: {fileID: 7855707069604383628}
+  - component: {fileID: 2611581016946522089}
+  - component: {fileID: 7561452742287675239}
   m_Layer: 0
-  m_Name: Bob (1) 1
+  m_Name: bob2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -144,7 +146,39 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911e4e752dc92a048ba08da1486a864f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animalData: {fileID: 11400000, guid: daeb2f22236aac84398c74eef8ee92be, type: 2}
+  m_animationsHandler: {fileID: 2611581016946522089}
+--- !u!114 &2611581016946522089
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242614166963265619}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5da9cc30cc301df418a7620c5dfd0595, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_animator: {fileID: 7561452742287675239}
+--- !u!95 &7561452742287675239
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3242614166963265619}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3242614167523813382
 GameObject:
   m_ObjectHideFlags: 0
@@ -717,7 +751,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 911e4e752dc92a048ba08da1486a864f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_animalData: {fileID: 0}
+  m_animationsHandler: {fileID: 0}
 --- !u!1 &3242614168596383396
 GameObject:
   m_ObjectHideFlags: 0

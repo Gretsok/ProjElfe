@@ -28,6 +28,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 973fdf9994f07cf4d9973cb322e25ac4, type: 2}
   - {fileID: 11400000, guid: 43ab6f50b08e31c468bd7780a669c090, type: 2}
   - {fileID: 11400000, guid: ce751ca4f916bb441824349e02f3f506, type: 2}
+  - {fileID: 11400000, guid: 055fb409c44e6a1459052334d7c2ba75, type: 2}
   m_BuildSettings:
     m_CompileScriptsInVirtualMode: 0
     m_CleanupStreamingAssetsAfterBuilds: 1
@@ -73,6 +74,7 @@ MonoBehaviour:
     - bow
     - grimoire
     - weapon
+    - animal
     - rescuer1
     - rescuer2
     - rescuer3

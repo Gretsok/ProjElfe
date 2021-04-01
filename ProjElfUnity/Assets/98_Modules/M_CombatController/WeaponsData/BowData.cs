@@ -20,7 +20,6 @@ namespace ProjElf.CombatController
 
                 Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileDivingRate = Random.Range(bowData.ProjectileDivingRate.x, bowData.ProjectileDivingRate.y);
-                Random.InitState((new System.Random()).Next(0, 10000000));
                 ProjectileSpeed = Random.Range(bowData.ProjectileSpeed.x, bowData.ProjectileSpeed.y);
                 ProjectilePrefab = bowData.ProjectilePrefab;
                 s_weaponLabel = "bow";

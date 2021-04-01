@@ -1,5 +1,5 @@
-﻿using ProjElf.CombatController;
-using System.Collections;
+﻿using ProjElf.AnimalManagement;
+using ProjElf.CombatController;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -30,7 +30,7 @@ public class SaveData
 
     public int FrancissousMoney = 0;
 
-    public List<SavedAnimalData> SavedAnimalDatas = new List<SavedAnimalData>();
+    public List<RescuedAnimalData> RescuedAnimalDatas = new List<RescuedAnimalData>();
 
     public PlayerWeaponInventory SavedPlayerWeaponInventory;
     public PlayerStats SavedPlayerStats;
@@ -131,6 +131,11 @@ public class SaveData
         for (int i = 0; i < EarnedMeleeWeapons.Count; ++i)
         {
             EarnedMeleeWeapons[i].Unserialize();
+        }
+
+        for(int i = 0; i < RescuedAnimalDatas.Count; ++i)
+        {
+            RescuedAnimalDatas[i].Unserialize();
         }
     }
 }

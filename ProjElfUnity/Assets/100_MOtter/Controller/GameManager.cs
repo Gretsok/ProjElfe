@@ -1,8 +1,6 @@
 ﻿using ProjElf.SceneData;
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 namespace MOtter.StatesMachine
 {
@@ -24,7 +22,7 @@ namespace MOtter.StatesMachine
         private SaveData m_currentSaveData = null;
 
 
-        private void Start()
+        internal void Init()
         {
             //MOtterApplication.GetInstance().PLAYERPROFILES.Init();
             m_saveDataManager = new SaveDataManager();

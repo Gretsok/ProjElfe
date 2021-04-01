@@ -25,18 +25,30 @@ namespace ProjElf.HubForest
         {
             base.UpdateState();
             m_player.DoUpdate();
+            for (int i = 0; i < m_gamemode.Animals.Count; ++i)
+            {
+                m_gamemode.Animals[i].DoUpdate();
+            }
         }
 
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             m_player.DoFixedUpdate();
+            for(int i = 0; i < m_gamemode.Animals.Count; ++i)
+            {
+                m_gamemode.Animals[i].DoFixedUpdate();
+            }
         }
 
         public override void LateUpdateState()
         {
             base.LateUpdateState();
             m_player.DoLateUpdate();
+            for (int i = 0; i < m_gamemode.Animals.Count; ++i)
+            {
+                m_gamemode.Animals[i].DoLateUpdate();
+            }
         }
 
         public override void ExitState()

@@ -51,7 +51,6 @@ namespace ProjElf.CombatController
                                 SetWeaponData(weaponData);
                             }
                         }
-
                     };
             }
 

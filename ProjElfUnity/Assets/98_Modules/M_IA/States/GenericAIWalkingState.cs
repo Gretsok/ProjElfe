@@ -25,7 +25,7 @@ namespace ProjElf.AI
             ManageStateToActivate();
         }
 
-        protected Vector3 GetRandomLocationToGo()
+        protected virtual Vector3 GetRandomLocationToGo()
         {
             if(m_owner.AttachedDunjeonRoom != null)
             {
@@ -34,9 +34,7 @@ namespace ProjElf.AI
             else
             {
                 // Getting Random Direction
-                Random.InitState((int)Time.time * gameObject.GetHashCode());
                 Vector2 m_random2DDirection = Random.insideUnitCircle;
-                Random.InitState((int)(Time.time / 2.58 * gameObject.GetHashCode()));
                 float distanceFromActualPosition = Random.Range(m_rangeDistanceBetweenTwoLocations.x, m_rangeDistanceBetweenTwoLocations.y);
                 Vector3 randomDirection = new Vector3(m_random2DDirection.x, 0, m_random2DDirection.y) * distanceFromActualPosition;
 
@@ -52,7 +50,10 @@ namespace ProjElf.AI
         {
             if((m_owner.Player.transform.position - m_owner.transform.position).sqrMagnitude < m_sqrDistanceToPlayerToSwitch)
             {
-                m_owner.SwitchToState(m_stateWhenPlayerClose);
+                if(m_stateWhenPlayerClose != null)
+                {
+                    m_owner.SwitchToState(m_stateWhenPlayerClose);
+                }
             }
         }
     }
