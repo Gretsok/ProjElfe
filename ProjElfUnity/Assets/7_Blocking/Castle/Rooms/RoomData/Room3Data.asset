@@ -18,13 +18,13 @@ MonoBehaviour:
   - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
       type: 3}
     SpawnWeight: 1
-  m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 4, y: 7}
-  m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
+  m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 1, y: 4}
+  m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 2, y: 5}
+  m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 3, y: 6}
+  m_lifeSaverIModeNumberOfEnnemiesToSpawn: {x: 4, y: 7}
+  m_lifeSaverIIModeNumberOfEnnemiesToSpawn: {x: 5, y: 8}
+  m_lifeSaverIIIModeNumberOfEnnemiesToSpawn: {x: 6, y: 9}
+  m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn: {x: 7, y: 10}
   m_forwardGate: 1
   m_leftGate: 1
   m_rightGate: 0
