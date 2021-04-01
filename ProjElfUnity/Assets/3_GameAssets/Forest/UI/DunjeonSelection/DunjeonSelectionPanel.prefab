@@ -52,8 +52,14 @@ MonoBehaviour:
   m_dunjeonSelectionWidgetPrefab: {fileID: 4419934282360992245, guid: d2f89e3bef8c0fd409789d12e63cf531,
     type: 3}
   m_dunjeonSelectionData:
-  - {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30, type: 2}
-  - {fileID: 11400000, guid: 52321c00c9a701b4aa832461801ffa30, type: 2}
+  - {fileID: 11400000, guid: ecc64c809dfd0a34290cab0b4acd4c12, type: 2}
+  - {fileID: 11400000, guid: d1eb7f48ede777848a6fde9b6582846e, type: 2}
+  - {fileID: 11400000, guid: 837b6c71e11e5994e960d8954f8ad099, type: 2}
+  - {fileID: 11400000, guid: 8c87bc65e8bd6464ba9597c07ece1e83, type: 2}
+  - {fileID: 11400000, guid: 373133ac93dcba54286e1ca5ddb31109, type: 2}
+  - {fileID: 11400000, guid: 174fcb6b11bd65345b56cc61b6fcaaeb, type: 2}
+  - {fileID: 11400000, guid: 1329fa5fb9d801d45b3478c8056e0055, type: 2}
+  - {fileID: 11400000, guid: 2c7e319e0a9e2b24cbdcc1a62249277c, type: 2}
 --- !u!114 &7978892816846429290
 MonoBehaviour:
   m_ObjectHideFlags: 0
