@@ -1,6 +1,7 @@
 ﻿using ProjElf.AnimalManagement;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ProjElf.DunjeonGameplay
 {
@@ -28,6 +29,10 @@ namespace ProjElf.DunjeonGameplay
                 }
             }
             m_flexibleGrid.UpdateGrid();
+            if(m_animalWidgetInstantiated.Count >= 1)
+            {
+                EventSystem.current.SetSelectedGameObject(m_animalWidgetInstantiated[0].gameObject);
+            }
         }
     }
 }

@@ -11,6 +11,9 @@ namespace ProjElf.DunjeonGameplay
         private DunjeonGameMode m_gamemode = null;
 
         private DunjeonDeathPanel m_deathPanel = null;
+
+        private bool m_hasSacrifiedAnimal = false;
+
         public override void EnterState()
         {
             base.EnterState();
@@ -23,9 +26,19 @@ namespace ProjElf.DunjeonGameplay
             m_deathPanel.Inflate(AnimalsManager.GetInstance().SavedAnimals);
         }
 
+        public void SacrificeAnimal(AnimalData animalData)
+        {
+            if(!m_hasSacrifiedAnimal)
+            {
+                AnimalsManager.GetInstance().SacrificeRescuedAnimal(animalData);
+                m_gamemode.LoadBackToHub();
+                m_hasSacrifiedAnimal = true;
+            }
+        }
+
         public override void ExitState()
         {
-            m_gamemode.LoadBackToHub();
+            
             base.ExitState();
         }
     }

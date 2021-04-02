@@ -110,6 +110,27 @@ namespace ProjElf.AnimalManagement
             MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RescuedAnimalDatas = m_rescuedAnimals;
         }
 
+        public void SacrificeRescuedAnimal(AnimalData animalData)
+        {
+            RescuedAnimalData rescuedAnimalData = SavedAnimals.Find(x => x.AnimalData == animalData);
+            if(rescuedAnimalData != null)
+            {
+                if(rescuedAnimalData.Amount == 1)
+                {
+                    SavedAnimals.Remove(rescuedAnimalData);
+                }
+                else
+                {
+                    rescuedAnimalData.Amount--;
+                }
+                SaveRescuedAnimalsData();
+            }
+            else
+            {
+                Debug.LogError("AnimalData not rescued !");
+            }
+        }
+
         private void OnDestroy()
         {
             SaveRescuedAnimalsData();

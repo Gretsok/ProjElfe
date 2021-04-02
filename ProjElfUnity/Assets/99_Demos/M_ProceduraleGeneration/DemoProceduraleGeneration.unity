@@ -261,8 +261,8 @@ MonoBehaviour:
   m_playerPositionSpawnPoint: {fileID: 455186698}
   m_dunjeonManager: {fileID: 840883209}
   m_hubSceneData: {fileID: 11400000, guid: 05cc2a2cf96baab4992dff18e2f80603, type: 2}
-  m_dunjeonDeathState: {fileID: 0}
-  m_dunjeonRescuedAnimalState: {fileID: 0}
+  m_dunjeonDeathState: {fileID: 2063005564}
+  m_dunjeonRescuedAnimalState: {fileID: 558244601}
 --- !u!4 &90943534
 Transform:
   m_ObjectHideFlags: 0
@@ -1266,8 +1266,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
-  m_panels: []
-  m_gamemode: {fileID: 0}
+  m_panels:
+  - {fileID: 4763098930492575025}
+  m_gamemode: {fileID: 90943533}
 --- !u!1001 &4763098930492575024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1387,3 +1388,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3c06cda091ba4b44cac12f3896b43108, type: 3}
+--- !u!114 &4763098930492575025 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4763098931101639013, guid: 3c06cda091ba4b44cac12f3896b43108,
+    type: 3}
+  m_PrefabInstance: {fileID: 4763098930492575024}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 241b6d10626336c45bd71c7579ba18b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -89,6 +89,15 @@ namespace MOtter.StatesMachine
             if(onUnloadEnded != null) onUnloadEnded();
         }
 
+        public State GetCurrentState()
+        {
+            return m_currentState;
+        }
+
+        public T GetCurrentState<T>() where T : State
+        {
+            return (T)m_currentState;
+        }
 
     }
 }
