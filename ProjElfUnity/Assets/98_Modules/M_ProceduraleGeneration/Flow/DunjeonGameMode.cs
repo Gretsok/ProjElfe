@@ -4,6 +4,7 @@ using System.Collections;
 using UnityEngine.AI;
 using MOtter;
 using ProjElf.DunjeonGameplay;
+using ProjElf.AnimalManagement;
 
 namespace ProjElf.ProceduraleGeneration
 {
@@ -21,6 +22,9 @@ namespace ProjElf.ProceduraleGeneration
         private DunjeonDeathState m_dunjeonDeathState = null;
         [SerializeField]
         private DunjeonRescuedAnimalState m_dunjeonRescuedAnimalState = null;
+
+        private AnimalData m_animalDataToRescue = null;
+        public AnimalData AnimalDataToRescue => m_animalDataToRescue;
 
         public override IEnumerator LoadAsync()
         {
@@ -47,6 +51,15 @@ namespace ProjElf.ProceduraleGeneration
             #endregion
             yield return 0;
             InstantiatePlayer();
+
+            yield return 0;
+            AnimalPrison animalPrison = FindObjectOfType<AnimalPrison>();
+            while(animalPrison.AnimalDataToRescue == null)
+            {
+                yield return 0;
+            }
+            m_animalDataToRescue = animalPrison.AnimalDataToRescue;
+
 
             yield return base.LoadAsync();
         }
@@ -94,7 +107,7 @@ namespace ProjElf.ProceduraleGeneration
         public void WinDunjeon()
         {
             SavePlayerWeapons();
-            LoadBackToHub();
+            SwitchToState(m_dunjeonRescuedAnimalState);
         }
         
         public void LoseDunjeon()

@@ -1,7 +1,9 @@
 ﻿using MOtter.StatesMachine;
 using ProjElf.AnimalManagement;
 using ProjElf.ProceduraleGeneration;
+using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace ProjElf.DunjeonGameplay
 {
@@ -14,6 +16,9 @@ namespace ProjElf.DunjeonGameplay
 
         private bool m_hasSacrifiedAnimal = false;
 
+        [SerializeField]
+        private float m_timeToWaitToGoToHub = 3f;
+
         public override void EnterState()
         {
             base.EnterState();
@@ -23,6 +28,10 @@ namespace ProjElf.DunjeonGameplay
         private void InflateDeathPanel()
         {
             m_deathPanel = GetPanel<DunjeonDeathPanel>();
+            if(AnimalsManager.GetInstance().SavedAnimals.Count == 0)
+            {
+                StartCoroutine(GoingBackToHubRoutine());
+            }
             m_deathPanel.Inflate(AnimalsManager.GetInstance().SavedAnimals);
         }
 
@@ -31,9 +40,16 @@ namespace ProjElf.DunjeonGameplay
             if(!m_hasSacrifiedAnimal)
             {
                 AnimalsManager.GetInstance().SacrificeRescuedAnimal(animalData);
-                m_gamemode.LoadBackToHub();
+                EventSystem.current.SetSelectedGameObject(null);
+                StartCoroutine(GoingBackToHubRoutine());
                 m_hasSacrifiedAnimal = true;
             }
+        }
+
+        IEnumerator GoingBackToHubRoutine()
+        {
+            yield return new WaitForSeconds(m_timeToWaitToGoToHub);
+            m_gamemode.LoadBackToHub();
         }
 
         public override void ExitState()

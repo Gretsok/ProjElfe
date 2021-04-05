@@ -49,6 +49,26 @@ public class ProjElfUtils
         }
     }
 
+    public static string GetPlayerStatKey(EPlayerStats l_playerStats)
+    {
+        switch(l_playerStats)
+        {
+            case EPlayerStats.Force:
+                return "";
+            case EPlayerStats.LifePoints:
+                return "";
+            case EPlayerStats.MovementSpeed:
+                return "";
+            default:
+                return "";
+        }
+    }
+
+    public static string GetInSentenceSuffixForKeys()
+    {
+        return "_IN_SENTENCE";
+    }
+
     public static string GetDunjeonTypeKey(EDunjeonType dunjeonType)
     {
         switch(dunjeonType)

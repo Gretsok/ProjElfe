@@ -32,6 +32,7 @@ MonoBehaviour:
     - MINUTES
     - MINUTE
     - HAVE_NOT_PLAYED_YET
+    - GENERATE_RANDOM_NAME
     - CREATE_NEW_CHARACTER
     - OPTIONS_GAMEPLAY
     - OPTIONS_CONFIGURATION
@@ -62,6 +63,12 @@ MonoBehaviour:
     - GENERIC_NO
     - DAMAGE_TYPE_PHYSICAL
     - DAMAGE_TYPE_MAGICAL
+    - YOU_ARE_DEAD
+    - DEATH_ANIMAL_RESCUED_SACRIFICE ONE
+    - RESCUED_NEW_ANIMAL
+    - RESCUED_THIS_ANIMAL
+    - ANIMAL_NAME_BOB
+    - ANIMAL_NAME_BOB_IN_SENTENCE
     m_values:
     - FR
     - "Fran\xE7ais"
@@ -81,6 +88,7 @@ MonoBehaviour:
     - minutes
     - minute
     - "Pas encore jou\xE9"
+    - "G\xE9n\xE9rer un nom al\xE9atoire"
     - "Cr\xE9er un nouveau personnage"
     - "Jouabilit\xE9"
     - Configuration
@@ -105,9 +113,15 @@ MonoBehaviour:
     - Vitesse des projectiles
     - "Dur\xE9e de vie des projectiles"
     - Vitesse d'attaque
-    - de dommage de {0}
+    - de dommages {0}
     - Tir en continu
     - Oui
     - Non
-    - physique
-    - magique
+    - physiques
+    - magiques
+    - "Vous \xEAtes mort !"
+    - Vous avez {0] animaux secourus ! Sacrifiez en un pour rester en vie !
+    - VOUS AVEZ SECOURU UN NOUVEL ANIMAL !
+    - Vous avez secouru {0} !
+    - Bob
+    - un Bob

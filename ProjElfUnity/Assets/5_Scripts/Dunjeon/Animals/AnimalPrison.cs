@@ -15,6 +15,8 @@ namespace ProjElf.DunjeonGameplay
         private AnimalData m_animalDataToRescue = null;
         private bool m_hasRescuedAnimal = false;
 
+        public AnimalData AnimalDataToRescue => m_animalDataToRescue;
+
         private void Start()
         {
             AnimalsManager.GetInstance().GetAsyncRandomAnimalData(OnAnimalDataGot);

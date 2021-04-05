@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Bob1
   m_EditorClassIdentifier: 
   m_animalDataID: -1557302071
+  m_nameKey: ANIMAL_NAME_BOB
   m_statsToIncrease: 1
   m_statsToIncreaseAmount: 12
   m_animalPrefab: {fileID: 2456665862363730355, guid: 50ba288f94139ed49a1c3f6920fce1e9,
     type: 3}
+  m_animalIcon: {fileID: 0}

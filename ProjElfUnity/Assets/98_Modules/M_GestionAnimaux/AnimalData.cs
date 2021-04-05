@@ -12,6 +12,8 @@ namespace ProjElf.AnimalManagement
         public int AnimalDataID => m_animalDataID;
 
         [SerializeField]
+        private string m_nameKey = null;
+        [SerializeField]
         private EPlayerStats m_statsToIncrease = EPlayerStats.Force;
         [SerializeField]
         private int m_statsToIncreaseAmount = 0;
@@ -20,6 +22,7 @@ namespace ProjElf.AnimalManagement
         [SerializeField]
         private Sprite m_animalIcon = null;
 
+        public string NameKey => m_nameKey;
         public int StatToIncreaseAmount => m_statsToIncreaseAmount;
         public EPlayerStats StatsToIncrease => m_statsToIncrease;
         public Animal InstantiateAnimal(Vector3 position, Quaternion rotation, Transform parent = null)

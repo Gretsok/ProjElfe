@@ -32,6 +32,7 @@ MonoBehaviour:
     - MINUTES
     - MINUTE
     - HAVE_NOT_PLAYED_YET
+    - GENERATE_RANDOM_NAME
     - CREATE_NEW_CHARACTER
     - OPTIONS_GAMEPLAY
     - OPTIONS_CONFIGURATION
@@ -62,6 +63,12 @@ MonoBehaviour:
     - GENERIC_NO
     - DAMAGE_TYPE_PHYSICAL
     - DAMAGE_TYPE_MAGICAL
+    - YOU_ARE_DEAD
+    - DEATH_ANIMAL_RESCUED_SACRIFICE ONE
+    - RESCUED_NEW_ANIMAL
+    - RESCUED_THIS_ANIMAL
+    - ANIMAL_NAME_BOB
+    - ANIMAL_NAME_BOB_IN_SENTENCE
     m_values:
     - ES
     - "Espa\xF1ol"
@@ -81,6 +88,7 @@ MonoBehaviour:
     - minutos
     - minuto
     - "No han jugado todav\xEDa"
+    - 
     - Crear nuevo personaje
     - Jugabilidad
     - "Configuraci\xF3n"
@@ -111,3 +119,10 @@ MonoBehaviour:
     - No
     - "f\xEDsico"
     - "m\xE1gico"
+    - "Est\xE1s muerto !"
+    - Usted tiene {0} animal(es) rescatado(s) ! Sacrificar uno para mantenerse vivo
+      !
+    - "\xA1RESCATASTE A UN NUEVO ANIMAL!"
+    - "\xA1Rescataste a {0}!"
+    - Bob
+    - un Bob

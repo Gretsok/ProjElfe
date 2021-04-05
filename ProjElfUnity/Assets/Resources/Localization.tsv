@@ -16,6 +16,7 @@ HOUR	hour 	heure	hora
 MINUTES	minutes	minutes	minutos
 MINUTE	minute	minute	minuto
 HAVE_NOT_PLAYED_YET	Have not played it	Pas encore joué	No han jugado todavía
+GENERATE_RANDOM_NAME	Generate random name	Générer un nom aléatoire	
 CREATE_NEW_CHARACTER	Create new character	Créer un nouveau personnage	Crear nuevo personaje
 OPTIONS_GAMEPLAY	Gameplay	Jouabilité	Jugabilidad
 OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
@@ -40,9 +41,15 @@ WEAPON_STATS_PROJECTILE_GRAVITY	Gravity applied to projectile	Gravité appliqué
 WEAPON_STATS_PROJECTILE_SPEED	Projectile speed	Vitesse des projectiles	Velocidad de los proyectiles
 WEAPON_STATS_PROJECTILE_LIFETIME	Projectile life time	Durée de vie des projectiles	Vida útil del proyectil
 WEAPON_STATS_ATTACK_SPEED	Attack Speed	Vitesse d'attaque	Velocidad de ataque
-WEAPON_STATS_OF_DAMAGE_TYPE	of {0} Damage	de dommage de {0}	de daño {0}
+WEAPON_STATS_OF_DAMAGE_TYPE	of {0} Damage	de dommages {0}	de daño {0}
 WEAPON_STATS_ALLOW_CONTINUE_FIRING	Allow continue firing	Tir en continu	Fuego continuo
 GENERIC_YES	Yes	Oui	Sí
 GENERIC_NO	No	Non	No
-DAMAGE_TYPE_PHYSICAL	physical	physique	físico
-DAMAGE_TYPE_MAGICAL	magical	magique	mágico
+DAMAGE_TYPE_PHYSICAL	physical	physiques	físico
+DAMAGE_TYPE_MAGICAL	magical	magiques	mágico
+YOU_ARE_DEAD	You are dead !	Vous êtes mort !	Estás muerto !
+DEATH_ANIMAL_RESCUED_SACRIFICE ONE	You have {0} rescued animal(s) ! Sacrifice one to stay alive !	Vous avez {0] animaux secourus ! Sacrifiez en un pour rester en vie !	Usted tiene {0} animal(es) rescatado(s) ! Sacrificar uno para mantenerse vivo !
+RESCUED_NEW_ANIMAL	YOU RESCUED A NEW ANIMAL !	VOUS AVEZ SECOURU UN NOUVEL ANIMAL !	¡RESCATASTE A UN NUEVO ANIMAL!
+RESCUED_THIS_ANIMAL	You rescued {0} !	Vous avez secouru {0} !	¡Rescataste a {0}!
+ANIMAL_NAME_BOB	Bob	Bob	Bob
+ANIMAL_NAME_BOB_IN_SENTENCE	a Bob	un Bob	un Bob
