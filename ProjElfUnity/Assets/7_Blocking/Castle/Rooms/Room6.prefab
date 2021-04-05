@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &550629549494949576
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2453509119592825927}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2453509119592825927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 550629549494949576}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2348285111850212968}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1436141976509600935
 GameObject:
   m_ObjectHideFlags: 0
@@ -33,6 +63,7 @@ Transform:
   - {fileID: 1117286050833263479}
   - {fileID: 5636497938238685948}
   - {fileID: 2003352601533350169}
+  - {fileID: 2453509119592825927}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -48,7 +79,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_width: 10
+  m_width: 20
   m_spawningLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -56,6 +87,7 @@ MonoBehaviour:
   m_leftGate: {fileID: 0}
   m_rightGate: {fileID: 3410945585716885440}
   m_backwardGate: {fileID: 2633291936026533623}
+  m_roomCenterPoint: {fileID: 2453509119592825927}
 --- !u!1 &1917987365339240042
 GameObject:
   m_ObjectHideFlags: 0
@@ -21311,6 +21343,7 @@ GameObject:
   - component: {fileID: 7892019954195497948}
   - component: {fileID: 912540720893317244}
   - component: {fileID: 4216871640994132485}
+  - component: {fileID: 8584614756953310153}
   m_Layer: 0
   m_Name: Floor (1)
   m_TagString: Untagged
@@ -21609,6 +21642,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &8584614756953310153
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8159393990927801334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 4084022796757371556}
 --- !u!1001 &12534376645070056
 PrefabInstance:
   m_ObjectHideFlags: 0

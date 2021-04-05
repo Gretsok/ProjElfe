@@ -10624,6 +10624,7 @@ Transform:
   - {fileID: 7942583446310515990}
   - {fileID: 2128540694691092989}
   - {fileID: 7994528608446911416}
+  - {fileID: 219284912941707656}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -10639,7 +10640,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_width: 10
+  m_width: 20
   m_spawningLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -10647,6 +10648,37 @@ MonoBehaviour:
   m_leftGate: {fileID: 0}
   m_rightGate: {fileID: 0}
   m_backwardGate: {fileID: 0}
+  m_roomCenterPoint: {fileID: 219284912941707656}
+--- !u!1 &4431280186623824513
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 219284912941707656}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &219284912941707656
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4431280186623824513}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3397030051958545824}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5978863466044764546
 GameObject:
   m_ObjectHideFlags: 0
@@ -10660,6 +10692,7 @@ GameObject:
   - component: {fileID: 4870359664981750388}
   - component: {fileID: 7161956755644011548}
   - component: {fileID: 5246184830540388657}
+  - component: {fileID: 6301957188357044696}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -10958,6 +10991,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6301957188357044696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5978863466044764546}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 5227544032671823387}
 --- !u!1 &7338830652919338732
 GameObject:
   m_ObjectHideFlags: 0
@@ -11009,6 +11055,7 @@ MonoBehaviour:
   m_leftGate: {fileID: 0}
   m_rightGate: {fileID: 0}
   m_backwardGate: {fileID: 0}
+  m_roomCenterPoint: {fileID: 0}
 --- !u!1001 &2318759384733530882
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -30,6 +30,36 @@ Transform:
   m_Father: {fileID: 822847561493182781}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &527473877570975349
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7742490972972296385}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7742490972972296385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527473877570975349}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 3702956941259708340}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2558275137238345620
 GameObject:
   m_ObjectHideFlags: 0
@@ -64,6 +94,7 @@ Transform:
   - {fileID: 705973546036261257}
   - {fileID: 7195779363121012970}
   - {fileID: 1863139216058328017}
+  - {fileID: 7742490972972296385}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -87,6 +118,7 @@ MonoBehaviour:
   m_leftGate: {fileID: 0}
   m_rightGate: {fileID: 0}
   m_backwardGate: {fileID: 5652078753366143139}
+  m_roomCenterPoint: {fileID: 7742490972972296385}
 --- !u!1 &3166798478238669341
 GameObject:
   m_ObjectHideFlags: 0
@@ -100,6 +132,7 @@ GameObject:
   - component: {fileID: 7603781859636138477}
   - component: {fileID: 3420188330685154696}
   - component: {fileID: 3083197982945222711}
+  - component: {fileID: 1928479745985754022}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -398,6 +431,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &1928479745985754022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3166798478238669341}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 6755737103828750194}
 --- !u!1 &8742032831158692525
 GameObject:
   m_ObjectHideFlags: 0

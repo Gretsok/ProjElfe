@@ -10634,6 +10634,7 @@ GameObject:
   - component: {fileID: 1991422319733694977}
   - component: {fileID: 4447549737542851942}
   - component: {fileID: 2274609860830651012}
+  - component: {fileID: 7182039608454976616}
   m_Layer: 0
   m_Name: Floor
   m_TagString: Untagged
@@ -10932,6 +10933,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &7182039608454976616
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3200015447614470563}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 4913854489776678175}
 --- !u!1 &3361293509886398591
 GameObject:
   m_ObjectHideFlags: 0
@@ -32147,6 +32161,7 @@ Transform:
   - {fileID: 2206004527919067342}
   - {fileID: 6813869763206751472}
   - {fileID: 5952722469113170152}
+  - {fileID: 6526601255287636552}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -32162,7 +32177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_width: 10
+  m_width: 20
   m_spawningLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -32170,6 +32185,37 @@ MonoBehaviour:
   m_leftGate: {fileID: 4462889531175982844}
   m_rightGate: {fileID: 0}
   m_backwardGate: {fileID: 429690628051447686}
+  m_roomCenterPoint: {fileID: 6526601255287636552}
+--- !u!1 &8655420190999174710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6526601255287636552}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6526601255287636552
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8655420190999174710}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8317847787527566759}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8745106540504361025
 GameObject:
   m_ObjectHideFlags: 0

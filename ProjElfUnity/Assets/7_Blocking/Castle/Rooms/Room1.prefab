@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 361089107644990856}
   - component: {fileID: 9029918935142565335}
   - component: {fileID: 6695457715942414401}
+  - component: {fileID: 6758143477213593872}
   m_Layer: 0
   m_Name: Floor (1)
   m_TagString: Untagged
@@ -311,6 +312,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 0}
+--- !u!114 &6758143477213593872
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2158930920817610174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 688446530856985797}
 --- !u!1 &2719362152976818771
 GameObject:
   m_ObjectHideFlags: 0
@@ -21586,6 +21600,7 @@ Transform:
   - {fileID: 2806865456867807730}
   - {fileID: 8604152451588900396}
   - {fileID: 8379484577562433671}
+  - {fileID: 4392756267931333968}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -21601,7 +21616,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02dcf267d04d6c343828e4d775643bfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_width: 10
+  m_width: 20
   m_spawningLayerMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -21609,6 +21624,7 @@ MonoBehaviour:
   m_leftGate: {fileID: 8395543449662231380}
   m_rightGate: {fileID: 2728849901083413075}
   m_backwardGate: {fileID: 3246782679998761728}
+  m_roomCenterPoint: {fileID: 4392756267931333968}
 --- !u!1 &5566553153687994246
 GameObject:
   m_ObjectHideFlags: 0
@@ -32230,6 +32246,36 @@ Transform:
   m_Father: {fileID: 644889991610091197}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
+--- !u!1 &8517266418889434759
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4392756267931333968}
+  m_Layer: 0
+  m_Name: CenterPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4392756267931333968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8517266418889434759}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 20, y: 0, z: -20}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6387686975218847292}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &4205713493596329619
 PrefabInstance:
   m_ObjectHideFlags: 0
