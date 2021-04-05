@@ -54,11 +54,11 @@ public class ProjElfUtils
         switch(l_playerStats)
         {
             case EPlayerStats.Force:
-                return "";
+                return "STAT_FORCE";
             case EPlayerStats.LifePoints:
-                return "";
+                return "STAT_LIFEPOINTS";
             case EPlayerStats.MovementSpeed:
-                return "";
+                return "STAT_MOVEMENTSPEED";
             default:
                 return "";
         }

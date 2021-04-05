@@ -12,10 +12,13 @@ namespace ProjElf.DunjeonGameplay
 
         [SerializeField]
         private TextLocalizer m_rescuedAnimalsText = null;
+
+        [SerializeField]
+        private AnimalToSacrificeSelectedInfoWidget m_selectedAnimalInfoWidget = null;
         
         public void Inflate(List<RescuedAnimalData> a_rescuedAnimalsData)
         {
-            m_animalsSacrificeSelectionWidget.Inflate(a_rescuedAnimalsData);
+            m_animalsSacrificeSelectionWidget.Inflate(a_rescuedAnimalsData,this);
             if(a_rescuedAnimalsData.Count == 0)
             {
                 m_rescuedAnimalsText.gameObject.SetActive(false);
@@ -27,6 +30,11 @@ namespace ProjElf.DunjeonGameplay
                     localizer.TextTarget.text = string.Format(text, (a_rescuedAnimalsData.Count + 1));
                 });
             }
+        }
+
+        public void SelectAnimal(AnimalData animalData)
+        {
+            m_selectedAnimalInfoWidget.Inflate(animalData);
         }
     }
 }

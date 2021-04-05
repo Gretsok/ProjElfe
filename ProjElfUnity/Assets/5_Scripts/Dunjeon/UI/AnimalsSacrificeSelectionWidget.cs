@@ -17,14 +17,14 @@ namespace ProjElf.DunjeonGameplay
         [SerializeField]
         private FlexibleGrid m_flexibleGrid = null;
 
-        public void Inflate(List<RescuedAnimalData> a_rescuedAnimalData)
+        public void Inflate(List<RescuedAnimalData> a_rescuedAnimalData, DunjeonDeathPanel a_deathPanel)
         {
             for(int i = 0; i < a_rescuedAnimalData.Count; ++i)
             {
                 for(int j = 0; j < a_rescuedAnimalData[i].Amount; ++j)
                 {
                     AnimalToSacrificeWidget l_newWidget = Instantiate(m_animalToSacrificeWidgetPrefab, m_container);
-                    l_newWidget.Inflate(a_rescuedAnimalData[i].AnimalData);
+                    l_newWidget.Inflate(a_rescuedAnimalData[i].AnimalData, a_deathPanel);
                     m_animalWidgetInstantiated.Add(l_newWidget);
                 }
             }
