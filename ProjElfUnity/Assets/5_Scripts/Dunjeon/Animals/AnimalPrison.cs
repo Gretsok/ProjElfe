@@ -1,8 +1,6 @@
 ﻿using ProjElf.AnimalManagement;
 using ProjElf.Interaction;
-using System;
-using System.Collections;
-using System.Collections.Generic;
+using ProjElf.ProceduraleGeneration;
 using UnityEngine;
 
 namespace ProjElf.DunjeonGameplay
