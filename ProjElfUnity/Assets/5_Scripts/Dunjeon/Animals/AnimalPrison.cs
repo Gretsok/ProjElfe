@@ -35,6 +35,7 @@ namespace ProjElf.DunjeonGameplay
                 AnimalsManager.GetInstance().RescueAnimal(m_animalDataToRescue);
                 Destroy(m_animalSpawnPoint.GetChild(0).gameObject);
                 m_hasRescuedAnimal = true;
+                MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>().WinDunjeon();
             }
         }
 

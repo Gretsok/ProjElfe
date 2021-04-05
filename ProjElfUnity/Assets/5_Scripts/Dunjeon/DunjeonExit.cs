@@ -7,7 +7,7 @@ public class DunjeonExit : MonoBehaviour, IInteractable
 {
     public void DoInteraction(Interactor interactor = null)
     {
-        MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>().WinDunjeon();
+        
     }
 
     public void StartBeingWatched()
