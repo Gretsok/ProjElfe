@@ -9,6 +9,8 @@ namespace ProjElf.ProceduraleGeneration
         [SerializeField]
         private DunjeonRoom m_dunjeonRoom = null;
 
+        public DunjeonRoom DunjeonRoom => m_dunjeonRoom;
+
         public void ActivateSurroundingRooms()
         {
             m_dunjeonRoom.ActivateSurroundingRooms();

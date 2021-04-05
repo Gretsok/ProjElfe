@@ -385,7 +385,7 @@ namespace ProjElf.ProceduraleGeneration
                     x = Random.Range(-m_width / 2f, m_width / 2f);
                     z = Random.Range(-m_width / 2f, m_width / 2f);
 
-                    Vector3 rayOrigin = m_roomCenterPoint == null ? transform.position : m_roomCenterPoint.position
+                    Vector3 rayOrigin = (m_roomCenterPoint == null ? transform.position : m_roomCenterPoint.position)
                         + x * transform.right
                         + z * transform.forward
                         + 20 * transform.up;
