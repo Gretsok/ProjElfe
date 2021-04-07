@@ -237,7 +237,7 @@ namespace ProjElf.CombatController
             m_isShooting = false;
         }
 
-        public void TakeDamage(int damage)
+        public void TakeDamage(int damage, CombatController attacker = null)
         {
             Debug.Log("Dealing Damage");
             m_lifePoints -= damage;
