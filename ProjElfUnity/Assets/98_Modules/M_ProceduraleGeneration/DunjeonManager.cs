@@ -57,12 +57,14 @@ namespace ProjElf.ProceduraleGeneration
 
         internal void ActivateRoomsAroundRoom(DunjeonRoom room)
         {
+            for(int i = 0; i < RoomsToUpdate.Count; ++i)
+            {
+                RoomsToUpdate[i].DisactivateRoom();
+            }
             RoomsToUpdate.Clear();
             RoomsToUpdate.Add(room);
-            if(!room.IsInit)
-            {
-                room.ActivateRoom();
-            }
+
+            room.ActivateRoom();
             try
             {
                 if(room.CanGoNorth || room.RoomOrientation == ERoomOrientation.South)

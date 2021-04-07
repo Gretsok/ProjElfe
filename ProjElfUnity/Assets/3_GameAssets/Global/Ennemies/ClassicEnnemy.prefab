@@ -932,6 +932,7 @@ MonoBehaviour:
   m_defaultState: {fileID: 8955169310436141547}
   m_player: {fileID: 0}
   m_agent: {fileID: 7993932275139847738}
+  m_animator: {fileID: 7993932273374066962}
   m_combatController: {fileID: 1248401102225947668}
   m_characterAnimatorHandler: {fileID: 7993932275165632121}
 --- !u!114 &1248401102225947668

@@ -26,6 +26,8 @@ namespace ProjElf.ProceduraleGeneration
         private AnimalData m_animalDataToRescue = null;
         public AnimalData AnimalDataToRescue => m_animalDataToRescue;
 
+        private DunjeonRoom m_playerCurrentDunjeonRoom = null;
+
         public override IEnumerator LoadAsync()
         {
             #region Dunjeon Generation
@@ -97,7 +99,11 @@ namespace ProjElf.ProceduraleGeneration
             {
                 if(hitInfo.transform.TryGetComponent<DunjeonRoomCollisionRelay>(out DunjeonRoomCollisionRelay room))
                 {
-                    room.ActivateSurroundingRooms();
+                    if(m_playerCurrentDunjeonRoom != room.DunjeonRoom)
+                    {
+                        room.ActivateSurroundingRooms();
+                        m_playerCurrentDunjeonRoom = room.DunjeonRoom;
+                    }
                 }
             }
         }

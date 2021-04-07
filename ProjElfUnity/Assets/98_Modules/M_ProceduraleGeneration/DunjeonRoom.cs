@@ -312,6 +312,18 @@ namespace ProjElf.ProceduraleGeneration
                     }
                 }
             }
+            for(int i = 0; i < m_AIInThisRoom.Count; ++i)
+            {
+                m_AIInThisRoom[i].EnableAI();
+            }
+        }
+
+        public void DisactivateRoom()
+        {
+            for (int i = 0; i < m_AIInThisRoom.Count; ++i)
+            {
+                m_AIInThisRoom[i].DisableAI();
+            }
         }
 
         public void ActivateSurroundingRooms()

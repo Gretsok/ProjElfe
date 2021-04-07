@@ -18,6 +18,9 @@ namespace ProjElf.AI
         [SerializeField]
         private NavMeshAgent m_agent = null;
 
+        [SerializeField]
+        private Animator m_animator = null;
+
         public Player Player => m_player;
         public NavMeshAgent Agent => m_agent;
 
@@ -69,6 +72,16 @@ namespace ProjElf.AI
                     }
                 }
             }
+        }
+
+        public void EnableAI()
+        {
+            m_animator.enabled = true;
+        }
+
+        public void DisableAI()
+        {
+            m_animator.enabled = false;
         }
     }
 
