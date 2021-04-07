@@ -9,6 +9,8 @@ public class OptionsMenuPanel : Panel
     [SerializeField]
     private SoundVolumeModule m_sfxVolumeWidget = null;
 
+    public SoundVolumeModule MusicVolumeWidget => m_musicVolumeWidget;
+
     private void Start()
     {
         m_musicVolumeWidget.value = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.Music);

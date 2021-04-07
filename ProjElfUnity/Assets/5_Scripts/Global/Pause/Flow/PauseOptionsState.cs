@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PauseOptionsState : PauseMainMenuState
 {
@@ -13,6 +14,7 @@ public class PauseOptionsState : PauseMainMenuState
         m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
         m_gamemode.Actions.Enable();
         m_gamemode.Actions.UI.Back.performed += Back_performed;
+        EventSystem.current.SetSelectedGameObject(GetPanel<OptionsMenuPanel>().MusicVolumeWidget.gameObject);
     }
 
     private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

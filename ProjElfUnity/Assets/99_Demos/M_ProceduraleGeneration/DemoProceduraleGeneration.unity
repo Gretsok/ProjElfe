@@ -280,6 +280,31 @@ PrefabInstance:
       propertyPath: m_firstRoom
       value: 
       objectReference: {fileID: 834646760}
+    - target: {fileID: 3339313471475785125, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3339313471475785125, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803486886123436305, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803486886123436305, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6803486886123436305, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7537203082655652926, guid: dbdeab8ce4738f740b45742c08d31782,
         type: 3}
       propertyPath: m_AnchorMin.x

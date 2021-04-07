@@ -33,6 +33,15 @@ namespace ProjElf.ProceduraleGeneration
 
         internal DunjeonRoomData FinalRoomData => m_finalRoomData;
 
+        [Header("Ennemies factors")]
+        [SerializeField]
+        private float m_lifeFactor = 1f;
+        [SerializeField]
+        private float m_damageFactor = 1f;
+
+        public float LifeFactor => m_lifeFactor;
+        public float DamageFactor => m_damageFactor;
+
 
         public string DunjeonName => m_dunjeonName;
 

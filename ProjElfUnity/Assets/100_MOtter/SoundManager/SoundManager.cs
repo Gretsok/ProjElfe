@@ -13,21 +13,36 @@ namespace MOtter.SoundManagement
 
         private List<AudioSource> m_audioSourcesPool = new List<AudioSource>();
 
+        private List<AudioSource> m_musicAudioSourcesPlaying = new List<AudioSource>();
+        private List<AudioSource> m_sfxAudioSourcesPlaying = new List<AudioSource>();
+
         public AudioSource Play2DSound(SoundData soundData, bool loop = false, float volume = 1f)
         {
-            AudioSource audioSource = GetAudioSource();
+            AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
             audioSource.clip = soundData.AudioClip;
             audioSource.volume = Mathf.Clamp01(volume) * GetVolume(soundData.CategoryName);
             audioSource.name = soundData.AudioClip.name;
             audioSource.spatialBlend = 0f;
             audioSource.Play();
+
+            m_audioSourcesPool.Remove(audioSource);
+
+            if(ESoundCategoryName.Music == soundData.CategoryName)
+            {
+                m_musicAudioSourcesPlaying.Add(audioSource);
+            }
+            else if(ESoundCategoryName.SFX == soundData.CategoryName)
+            {
+                m_sfxAudioSourcesPlaying.Add(audioSource);
+            }
+
             return audioSource;
         }
 
         public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 0.7f)
         {
-            AudioSource audioSource = GetAudioSource();
+            AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
             audioSource.clip = soundData.AudioClip;
             audioSource.volume = Mathf.Clamp01(volume) * GetVolume(soundData.CategoryName);
@@ -39,6 +54,9 @@ namespace MOtter.SoundManagement
                 audioSource.transform.SetParent(parent);
             }
             audioSource.Play();
+
+            m_audioSourcesPool.Remove(audioSource);
+
             return audioSource;
         }
 
@@ -54,14 +72,13 @@ namespace MOtter.SoundManagement
             }
         }
 
-        public AudioSource GetAudioSource()
+        public AudioSource GetFreeAudioSource()
         {
             AudioSource audioSource = null;
 
             if(m_audioSourcesPool.Count > 0)
             {
                 audioSource = m_audioSourcesPool[0];
-                m_audioSourcesPool.Remove(audioSource);
             }
             else
             {
@@ -93,9 +110,11 @@ namespace MOtter.SoundManagement
             {
                 case ESoundCategoryName.Music:
                     m_musicVolume = Mathf.Clamp01(volume);
+                    m_musicAudioSourcesPlaying.ForEach((x) => x.volume = m_musicVolume);
                     break;
                 case ESoundCategoryName.SFX:
                     m_sfxVolume = Mathf.Clamp01(volume);
+                    m_sfxAudioSourcesPlaying.ForEach((x) => x.volume = m_sfxVolume);
                     break;
                 default:
                     Debug.LogError("Invalid sound category");
