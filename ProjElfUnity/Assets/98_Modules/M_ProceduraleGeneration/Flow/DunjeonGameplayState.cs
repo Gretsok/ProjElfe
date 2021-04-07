@@ -25,19 +25,32 @@ namespace ProjElf.DunjeonGameplay
         public override void UpdateState()
         {
             base.UpdateState();
-            m_player.DoUpdate();
+            m_player.DoUpdate(); 
+            foreach (DunjeonRoom room in m_gamemode.DunjeonManager.RoomsToUpdate)
+            {
+                room.UpdateAIInRoom();
+            }
         }
 
         public override void FixedUpdateState()
         {
             base.FixedUpdateState();
             m_player.DoFixedUpdate();
+
+            foreach (DunjeonRoom room in m_gamemode.DunjeonManager.RoomsToUpdate)
+            {
+                room.FixedUpdateAIInRoom();
+            }
         }
 
         public override void LateUpdateState()
         {
             base.LateUpdateState();
             m_player.DoLateUpdate();
+            foreach (DunjeonRoom room in m_gamemode.DunjeonManager.RoomsToUpdate)
+            {
+                room.LateUpdateAIInRoom();
+            }
         }
 
         public override void ExitState()

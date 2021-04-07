@@ -82,19 +82,13 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoUpdate()
         {
             base.DoUpdate();
-            foreach(DunjeonRoom room in DunjeonManager.RoomsToUpdate)
-            {
-                room.UpdateAIInRoom();
-            }
+
         }
 
         public override void DoFixedUpdate()
         {
             base.DoFixedUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
-            {
-                room.FixedUpdateAIInRoom();
-            }
+
             if(Physics.Raycast(m_player.transform.position, Vector3.down, out RaycastHit hitInfo))
             {
                 if(hitInfo.transform.TryGetComponent<DunjeonRoomCollisionRelay>(out DunjeonRoomCollisionRelay room))
@@ -111,10 +105,7 @@ namespace ProjElf.ProceduraleGeneration
         public override void DoLateUpdate()
         {
             base.DoLateUpdate();
-            foreach (DunjeonRoom room in DunjeonManager.RoomsToUpdate)
-            {
-                room.LateUpdateAIInRoom();
-            }
+
         }
 
         public void WinDunjeon()
