@@ -48,17 +48,24 @@ namespace ProjElf.ProceduraleGeneration
                 yield return 0;
             }*/
 
+
             #endregion
-            yield return 0;
+
+
+            yield return null;
             InstantiatePlayer();
 
-            yield return 0;
+            yield return null;
+            m_dunjeonManager.InstantiatedRooms[0].ActivateSurroundingRooms();
+
+            yield return null;
             AnimalPrison animalPrison = FindObjectOfType<AnimalPrison>();
             while(animalPrison.AnimalDataToRescue == null)
             {
-                yield return 0;
+                yield return null;
             }
             m_animalDataToRescue = animalPrison.AnimalDataToRescue;
+
 
 
             yield return base.LoadAsync();

@@ -24,9 +24,15 @@ namespace ProjElf.AI
         private DunjeonRoom m_attachedDunjeonRoom = null;
         public DunjeonRoom AttachedDunjeonRoom => m_attachedDunjeonRoom;
 
+        private bool m_isInit = false;
+        public bool IsInit => m_isInit;
+
+        private bool m_isDunjeonAI = false;
+
         public virtual void InitAsADunjeonAI(DunjeonRoom attachedDunjeonRoom)
         {
             m_attachedDunjeonRoom = attachedDunjeonRoom;
+            m_isDunjeonAI = true;
             Init();
         }
 
@@ -34,6 +40,7 @@ namespace ProjElf.AI
         {
             m_player = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>().Player;
             EnterStateMachine();
+            m_isInit = true;
         }
 
         public override void DoLateUpdate()
@@ -44,22 +51,24 @@ namespace ProjElf.AI
         public override void DoFixedUpdate()
         {
             base.DoFixedUpdate();
-            if(Time.time - m_lastTimeCheckedRoom > m_checkRoomDelay)
+            if(m_isDunjeonAI)
             {
-                if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hitInfo, 3f))
+                if (Time.time - m_lastTimeCheckedRoom > m_checkRoomDelay)
                 {
-                    if(hitInfo.transform.TryGetComponent<DunjeonRoomCollisionRelay>(out DunjeonRoomCollisionRelay collisionRelay))
+                    if (Physics.Raycast(transform.position + Vector3.up, Vector3.down, out RaycastHit hitInfo, 3f))
                     {
-                        if(collisionRelay.DunjeonRoom != m_attachedDunjeonRoom)
+                        if (hitInfo.transform.TryGetComponent<DunjeonRoomCollisionRelay>(out DunjeonRoomCollisionRelay collisionRelay))
                         {
-                            m_attachedDunjeonRoom.RemoveAIToRoom(this);
-                            m_attachedDunjeonRoom = collisionRelay.DunjeonRoom;
-                            m_attachedDunjeonRoom.AddAIToRoom(this);
+                            if (collisionRelay.DunjeonRoom != m_attachedDunjeonRoom)
+                            {
+                                m_attachedDunjeonRoom.RemoveAIToRoom(this);
+                                m_attachedDunjeonRoom = collisionRelay.DunjeonRoom;
+                                m_attachedDunjeonRoom.AddAIToRoom(this);
+                            }
                         }
                     }
                 }
             }
-            
         }
     }
 

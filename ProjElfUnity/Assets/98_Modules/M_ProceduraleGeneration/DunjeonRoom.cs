@@ -275,6 +275,15 @@ namespace ProjElf.ProceduraleGeneration
             m_dunjeonDifficulty = dunjeonDifficulty;
         }
 
+        internal void SetUpAsStartingRoom(EDunjeonDifficulty dunjeonDifficulty)
+        {
+            HasForwardGate = true;
+            HasLeftGate = false;
+            HasRightGate = false;
+            m_roomSetUp = true;
+            m_dunjeonDifficulty = dunjeonDifficulty;
+        }
+
         /// <summary>
         /// Activate room
         /// </summary>
@@ -284,7 +293,12 @@ namespace ProjElf.ProceduraleGeneration
             if(!m_isInit && m_roomSetUp)
             {
                 //Debug.Log("truc");
-                int numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn(m_dunjeonDifficulty);
+                int numberOfEnnemisToSpawn = 0;
+                if(m_dunjeonRoomData != null)
+                {
+                    numberOfEnnemisToSpawn = m_dunjeonRoomData.GetRandomNumberOfEnnemisToSpawn(m_dunjeonDifficulty);
+                }
+                
                 m_isInit = true;
 
                 for(int i = 0; i < numberOfEnnemisToSpawn; i++)
@@ -293,8 +307,8 @@ namespace ProjElf.ProceduraleGeneration
                     m_objectSpawnedInThisRoom.Add(Instantiate(ennemyToSpawnGO, GetRandomWalkablePoint(), Quaternion.identity));
                     if(m_objectSpawnedInThisRoom[i].TryGetComponent<GenericAI>(out GenericAI newAI))
                     {
-                        m_AIInThisRoom.Add(newAI);
                         newAI.InitAsADunjeonAI(this);
+                        AddAIToRoom(newAI);
                     }
                 }
             }
@@ -335,6 +349,11 @@ namespace ProjElf.ProceduraleGeneration
 
         public bool AddAIToRoom(GenericAI objectToAdd)
         {
+            if(!objectToAdd.IsInit)
+            {
+                objectToAdd.InitAsADunjeonAI(this);
+            }
+
             if(!m_objectSpawnedInThisRoom.Contains(objectToAdd.gameObject))
             {
                 m_objectSpawnedInThisRoom.Add(objectToAdd.gameObject);

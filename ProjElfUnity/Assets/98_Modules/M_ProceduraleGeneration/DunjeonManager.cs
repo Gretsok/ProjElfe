@@ -112,6 +112,7 @@ namespace ProjElf.ProceduraleGeneration
                 Debug.Log("Generating Dunjeon");
                 m_generatingRoomsRoomIndex = 0;
                 m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
+                m_firstRoom.SetUpAsStartingRoom(m_currentDunjeonData.DunjeonDifficulty);
                 RegisterRoomAtPosition(m_firstRoom, m_initPositions.x, m_initPositions.y);
                 GenerateNewRoom(m_firstRoom.ForwardGate, m_initPositions.x, m_initPositions.y + 1, ERoomOrientation.North, m_currentDunjeonData.GetRandomNumberOfRoomsOnRightWay());
                 m_generationStarted = true;
@@ -208,8 +209,7 @@ namespace ProjElf.ProceduraleGeneration
                 room.transform.position += (doorConnection.position - room.BackwardGate.position);
                 room.RoomOrientation = roomOrientation;
                 
-                room.PosX = posX;
-                room.PosY = posY;
+
                 room.RoomsLeftUntilTheEnd = --roomsLeft;
                 room.IsLeadingToTheEnd = onRightWay;
                 room.SetUpRoom(roomData, m_currentDunjeonData.DunjeonDifficulty);
@@ -951,6 +951,8 @@ namespace ProjElf.ProceduraleGeneration
                 m_instantiatedRooms.Add(room);
                 //Debug.Log("Adding new room, now : " + m_instantiatedRooms.Count);
             }
+            room.PosX = posX;
+            room.PosY = posY;
         }
 
         /// <summary>
