@@ -1,0 +1,116 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &2683772822964535548
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 1566402843742034754, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1566402843742034754, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.r
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.g
+      value: 0.78998566
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.maxColor.b
+      value: 0.9811321
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.r
+      value: 0.504717
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.g
+      value: 0.69241637
+      objectReference: {fileID: 0}
+    - target: {fileID: 7138300555275952814, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: InitialModule.startColor.minColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315329, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_Name
+      value: FX_38_bleu
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7227871668715315334, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8145745827354518592, guid: 63d89631124005942b540a6c216e07ab,
+        type: 3}
+      propertyPath: m_Name
+      value: FX_38_bleu
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 63d89631124005942b540a6c216e07ab, type: 3}
