@@ -155,6 +155,7 @@ Transform:
   - {fileID: 7734494658153683960}
   - {fileID: 2922517947328102513}
   - {fileID: 213383536}
+  - {fileID: 4801892592260356285}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -173,7 +174,7 @@ MonoBehaviour:
   m_gameManager: {fileID: 2273799091005762019}
   m_localizationManager: {fileID: 6538613185272960591}
   m_soundManager: {fileID: 5852927428952797761}
-  m_playerProfileManager: {fileID: 0}
+  m_playerProfileManager: {fileID: 6227290768167070031}
   m_generalDataReferences: {fileID: 0}
   m_contextManager: {fileID: 576251183288254522}
 --- !u!1 &4419958186080410441
@@ -265,6 +266,51 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_allLanguagesData: {fileID: 11400000, guid: 4f850263606a75347aa6f2ddc3d8fe96, type: 2}
+--- !u!1 &5809849692781182465
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4801892592260356285}
+  - component: {fileID: 6227290768167070031}
+  m_Layer: 0
+  m_Name: PlayerProfileManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4801892592260356285
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809849692781182465}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4732865953469675931}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6227290768167070031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5809849692781182465}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c482ff0a7647e2a459dcbf243fa80434, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerProfilePrefab: {fileID: 7956350638794416690, guid: 8ac24065b97c57b45bece5eb09f419a6,
+    type: 3}
 --- !u!1 &6217820084351831135
 GameObject:
   m_ObjectHideFlags: 0

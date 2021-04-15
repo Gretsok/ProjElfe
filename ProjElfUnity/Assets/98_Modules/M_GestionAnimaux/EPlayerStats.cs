@@ -5,6 +5,10 @@ using UnityEngine;
 public enum EPlayerStats 
 {
     LifePoints,
-    Force, 
-    MovementSpeed 
+    PhysicalDamageMultiplierIncrement,
+    MagicalDamageMultiplierIncrement,
+    MovementSpeed,
+    AttackSpeed,
+    PhysicalArmor,
+    MagicalArmor
 };

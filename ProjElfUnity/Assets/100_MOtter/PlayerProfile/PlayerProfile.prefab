@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2857685144784581605
+--- !u!1 &7379000798232962586
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,57 +8,45 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6979558004228547252}
-  - component: {fileID: 2983901894479451954}
-  - component: {fileID: 6175744092882085240}
+  - component: {fileID: 4376545199563673520}
+  - component: {fileID: 1622653274008795506}
+  - component: {fileID: 7956350638794416690}
   m_Layer: 0
-  m_Name: PlayerDevice
+  m_Name: PlayerProfile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &6979558004228547252
+--- !u!4 &4376545199563673520
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857685144784581605}
+  m_GameObject: {fileID: 7379000798232962586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -190.93622, y: -171.56572, z: -131.4503}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2983901894479451954
+--- !u!114 &1622653274008795506
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857685144784581605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fdac146661835a9449c933870c0a26ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_playerInput: {fileID: 6175744092882085240}
---- !u!114 &6175744092882085240
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2857685144784581605}
+  m_GameObject: {fileID: 7379000798232962586}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 02a321b801b80614abd7597d0043d7ac, type: 3}
-  m_NotificationBehavior: 3
+  m_Actions: {fileID: -944628639613478452, guid: d30ee9149a50a0541a33393d71565c40,
+    type: 3}
+  m_NotificationBehavior: 0
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -72,6 +60,19 @@ MonoBehaviour:
   m_ActionEvents: []
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
-  m_DefaultActionMap: GAMEPLAY
+  m_DefaultActionMap: Generic
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7956350638794416690
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7379000798232962586}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd798b647764ee24db95450685add826, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playerInput: {fileID: 1622653274008795506}

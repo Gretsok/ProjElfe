@@ -1,96 +1,58 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.InputSystem;
-
+using UnityEngine.InputSystem.Users;
 
 namespace MOtter.PlayersManagement
 {
-    public class PlayerProfile
+    public class PlayerProfile : MonoBehaviour
     {
-        #region InstantiatedFields
-        private static int numberOfPlayers = 0;
-        private int m_id;
-        private PlayerDevice m_playerDevice = null;
+        [SerializeField]
+        private PlayerInput m_playerInput = null;
 
-        internal PlayerDevice Device => m_playerDevice;
 
-        private PlayerInputsActions m_actions;
-        public PlayerInputsActions Actions => m_actions;
+        private int m_index = 0;
 
-        #endregion
-        #region SavedField
-        private string m_name;
-        private Color m_color;
-        #endregion
+        public int Index => m_index;
 
-        #region Accessors
-        public string Name => m_name;
-        public Color Color => m_color;
+        public Action<EDeviceType> OnDeviceTypeChanged = null;
 
-        public void ChangeName(string name)
+        public IInputActionCollection Actions => m_playerInput.user.actions;
+
+        public void Init(int index)
         {
-            m_name = name;
-        }
-
-        public void ChangeColor(Color color)
-        {
-            m_color = color;
-        }
-        #endregion
-
-        public PlayerProfile(string name, Color color, PlayerDevice device)
-        {
-            m_name = name;
-            m_color = color;
-            m_id = numberOfPlayers;
-            InitActions();
-            if (!device.IsAffectedToAProfile)
-                ChangePlayerDevice(device);
-            numberOfPlayers++;
-        }
-
-        ~PlayerProfile()
-        {
-            numberOfPlayers--;
-        }
-
-
-        #region InputsManagement
-        public void RemovePlayerDevice(PlayerInput input)
-        {
-            PlayerDevice device = input.GetComponent<PlayerDevice>();
-            device.IsAffectedToAProfile = false;
-            m_playerDevice = null;
-            input.onDeviceLost -= RemovePlayerDevice;
+            m_index = index;
 
         }
 
-        public void ChangePlayerDevice(PlayerDevice device)
+        private void Update()
         {
-            m_playerDevice = device;
-            device.Input.onDeviceLost += RemovePlayerDevice;
-            device.IsAffectedToAProfile = true;
-            ChangeActionsDevice();
+           // Debug.Log(GetCurrentDeviceType());
         }
 
-        public void InitActions()
+        public EDeviceType GetCurrentDeviceType()
         {
-            CleanUpActions();
-            m_actions = new PlayerInputsActions();
-            m_actions.Enable();
+            switch(m_playerInput.currentControlScheme)
+            {
+                case "MouseAndKeyboard":
+                    return EDeviceType.MouseAndKeyboard;
+                case "Gamepad":
+                    return EDeviceType.Gamepad;
+                default:
+                    return EDeviceType.None;
+            }
         }
 
-        public void ChangeActionsDevice()
+        public void Clear()
         {
-            m_actions.devices = Device.Input.devices;
         }
 
-        public void CleanUpActions()
-        {
-            m_actions?.Dispose();
-            m_actions?.Disable();
-        }
-        #endregion
+    }
 
-
+    public enum EDeviceType
+    {
+        None,
+        MouseAndKeyboard,
+        Gamepad
     }
 }
