@@ -14,7 +14,7 @@ namespace ProjElf.AnimalManagement
         [SerializeField]
         private string m_nameKey = null;
         [SerializeField]
-        private EPlayerStats m_statsToIncrease = EPlayerStats.Force;
+        private EPlayerStats m_statsToIncrease = EPlayerStats.AttackSpeed;
         [SerializeField]
         private int m_statsToIncreaseAmount = 0;
         [SerializeField]

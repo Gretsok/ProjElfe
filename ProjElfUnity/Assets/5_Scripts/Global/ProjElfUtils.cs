@@ -53,7 +53,7 @@ public class ProjElfUtils
     {
         switch(l_playerStats)
         {
-            case EPlayerStats.Force:
+            case EPlayerStats.AttackSpeed:
                 return "STAT_FORCE";
             case EPlayerStats.LifePoints:
                 return "STAT_LIFEPOINTS";
