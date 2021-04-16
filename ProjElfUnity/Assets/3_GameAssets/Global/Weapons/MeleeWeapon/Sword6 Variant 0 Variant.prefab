@@ -70,7 +70,7 @@ PrefabInstance:
     - target: {fileID: 7582134789340306907, guid: b28b835832c097d48ba6bc0c982ebfad,
         type: 3}
       propertyPath: m_Name
-      value: Sword6 Variant 0
+      value: Sword6 Variant 0 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b28b835832c097d48ba6bc0c982ebfad, type: 3}
@@ -100,7 +100,7 @@ PrefabInstance:
     - target: {fileID: 5753409698381101543, guid: fad1dd22de93f964a884fea40f78402d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 0.958
       objectReference: {fileID: 0}
     - target: {fileID: 5753409698381101543, guid: fad1dd22de93f964a884fea40f78402d,
         type: 3}
