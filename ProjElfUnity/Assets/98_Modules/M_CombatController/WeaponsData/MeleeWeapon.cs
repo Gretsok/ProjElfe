@@ -21,7 +21,7 @@ namespace ProjElf.CombatController
 
 
         [SerializeField]
-        private ParticleSystem m_weaponTrailFX = null;
+        private GameObject m_weaponTrailFX = null;
 
         public void InitMeleeWeapon(MeleeWeaponData.MeleeWeaponSaveData meleeWeaponData, CombatController Owner)
         {
@@ -38,7 +38,7 @@ namespace ProjElf.CombatController
         {
             if(m_weaponTrailFX != null)
             {
-                m_weaponTrailFX.Play();
+                m_weaponTrailFX.SetActive(true);
             }
             m_canDoDamage = true;
         }
@@ -47,7 +47,7 @@ namespace ProjElf.CombatController
         {
             if (m_weaponTrailFX != null)
             {
-                m_weaponTrailFX.Stop();
+                m_weaponTrailFX.SetActive(false);
             }
             m_canDoDamage = false;
         }
