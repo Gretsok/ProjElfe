@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 1245609897}
   - component: {fileID: 1245609896}
   m_Layer: 0
-  m_Name: BearRescuerI
+  m_Name: FoxRescuerI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
