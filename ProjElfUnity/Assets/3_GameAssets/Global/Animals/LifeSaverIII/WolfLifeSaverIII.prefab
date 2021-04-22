@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowPoly_Wolf_8
       objectReference: {fileID: 0}
+    - target: {fileID: 881003440528288282, guid: 709041188436c4a41b971bb07ed6c1f5,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 35d848df80974b04abcfd15433679885,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 709041188436c4a41b971bb07ed6c1f5, type: 3}
 --- !u!4 &531379228052272199 stripped

@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowPoly_Deer_Calf_5
       objectReference: {fileID: 0}
+    - target: {fileID: 3205277574350394278, guid: 17023a302ad5cc84bb29e2906108678f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 951f6f76176bbb74fa0eb0ebc4e7ca31,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 17023a302ad5cc84bb29e2906108678f, type: 3}
 --- !u!4 &4058363582410067025 stripped

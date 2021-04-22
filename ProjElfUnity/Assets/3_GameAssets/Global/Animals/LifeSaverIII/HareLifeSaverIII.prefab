@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowPoly_Hare_4
       objectReference: {fileID: 0}
+    - target: {fileID: 948993765884732691, guid: 1ea0b33040a50244d9219bf4547719ad,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 42772e2f47ed52d4a8cc5449529577c2,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1ea0b33040a50244d9219bf4547719ad, type: 3}
 --- !u!4 &4019713417340455843 stripped

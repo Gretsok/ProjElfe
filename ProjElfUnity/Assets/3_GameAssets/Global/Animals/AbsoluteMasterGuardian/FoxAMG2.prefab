@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: Fox_cub_10
       objectReference: {fileID: 0}
+    - target: {fileID: 9180639434472592689, guid: c7e18cc851ff6934594314b3c693cf9f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 7ae1ea50cdc8b1947b1243180bb6d36b,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c7e18cc851ff6934594314b3c693cf9f, type: 3}
 --- !u!4 &2798676689739508819 stripped

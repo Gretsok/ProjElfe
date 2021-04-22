@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowPoly_Bear_cub_11
       objectReference: {fileID: 0}
+    - target: {fileID: 5672250469836989714, guid: 5800809afd25fcc438d330aa9b59318f,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 4beaaa6226d92d24fb08fed689fac585,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5800809afd25fcc438d330aa9b59318f, type: 3}
 --- !u!4 &6682292925783081149 stripped

@@ -157,6 +157,12 @@ PrefabInstance:
       propertyPath: m_Name
       value: LowPoly_Boar_10
       objectReference: {fileID: 0}
+    - target: {fileID: 4729507923466091711, guid: 0126a59ef3d416a48a9936ee77402573,
+        type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 621ccd5dd64c95f40b7402b5e5cccbca,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0126a59ef3d416a48a9936ee77402573, type: 3}
 --- !u!4 &6495612324830875196 stripped
