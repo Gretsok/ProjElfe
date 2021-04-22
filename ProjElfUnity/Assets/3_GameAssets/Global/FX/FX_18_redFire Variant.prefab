@@ -37,10 +37,25 @@ PrefabInstance:
       propertyPath: m_BoundingSphereOverride.y
       value: 2.737e-41
       objectReference: {fileID: 0}
+    - target: {fileID: 179023601000141742, guid: e7c1a0da42d77074394016244852198c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.r
+      value: 0.23584908
+      objectReference: {fileID: 0}
+    - target: {fileID: 179023601000141742, guid: e7c1a0da42d77074394016244852198c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.g
+      value: 0.23584908
+      objectReference: {fileID: 0}
+    - target: {fileID: 179023601000141742, guid: e7c1a0da42d77074394016244852198c,
+        type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.b
+      value: 0.23584908
+      objectReference: {fileID: 0}
     - target: {fileID: 179023601962580552, guid: e7c1a0da42d77074394016244852198c,
         type: 3}
       propertyPath: m_Name
-      value: FX_18_redFire
+      value: FX_18_redFire Variant
       objectReference: {fileID: 0}
     - target: {fileID: 179023601962580559, guid: e7c1a0da42d77074394016244852198c,
         type: 3}
