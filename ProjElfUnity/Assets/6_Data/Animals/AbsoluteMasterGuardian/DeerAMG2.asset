@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57bc27beb6084d4fb4aa859613bf5ef, type: 3}
+  m_Name: DeerAMG2
+  m_EditorClassIdentifier: 
+  m_animalDataID: -1263866044
+  m_nameKey: DEER_AMG_2
+  m_statsToIncrease: 2
+  m_statsToIncreaseAmount: 0
+  m_animalPrefab: {fileID: 6002751184133660727, guid: 201264d4feccf7a40873affed90bbf3a,
+    type: 3}
+  m_animalIcon: {fileID: 0}

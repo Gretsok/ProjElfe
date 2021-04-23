@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b57bc27beb6084d4fb4aa859613bf5ef, type: 3}
+  m_Name: BearAMG2
+  m_EditorClassIdentifier: 
+  m_animalDataID: -1669381896
+  m_nameKey: BEAR_AMG_2
+  m_statsToIncrease: 0
+  m_statsToIncreaseAmount: 0
+  m_animalPrefab: {fileID: 8959668691485298301, guid: 7df5d9e675b338047a4ddf4bee6fc550,
+    type: 3}
+  m_animalIcon: {fileID: 0}
