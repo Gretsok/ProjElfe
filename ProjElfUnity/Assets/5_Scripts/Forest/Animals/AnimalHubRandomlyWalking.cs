@@ -6,6 +6,11 @@ namespace ProjElf.HubForest
 
     public class AnimalHubRandomlyWalking : GenericAIRandomlyWalkingState
     {
+        public override void UpdateState()
+        {
+            base.UpdateState();
+            (m_owner as AnimalHubController).Animal.AnimationsHandler.SetSpeed(m_owner.Agent.velocity.magnitude);
+        }
 
         protected override Vector3 GetRandomLocationToGo()
         {

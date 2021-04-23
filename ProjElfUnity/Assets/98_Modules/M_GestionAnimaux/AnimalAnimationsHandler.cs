@@ -4,19 +4,17 @@ using UnityEngine;
 
 public class AnimalAnimationsHandler : MonoBehaviour
 {
+    private int SPEED = Animator.StringToHash("Speed");
+    private int PRISON = Animator.StringToHash("Prison");
+    private int FREE = Animator.StringToHash("Free");
+
     [SerializeField]
     private Animator m_animator = null;
+    [SerializeField]
+    private float m_runningSpeed = 10f;
 
     public void SetSpeed(float speed)
     {
-        if(speed == 0)
-        {
-            // IDLE TRUE
-        }
-        else
-        {
-            // IDLE FALSE
-        }
-        // SETS SPEED
+        m_animator.SetFloat(SPEED, speed / m_runningSpeed);
     }
 }

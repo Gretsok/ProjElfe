@@ -17,8 +17,44 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 2ce2995dd9f26ab41b8e9298777d4a15
   m_SerializeEntries:
-  - m_GUID: 63a8ee18b91c9e84582b30c19381698d
-    m_Address: Assets/99_Demos/M_AnimalManager/bob3.asset
+  - m_GUID: 3dc7b4d1dc4ffc8419cb69f4e1a4b434
+    m_Address: Assets/6_Data/Animals/AbsoluteMasterGuardian
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: b6e3c69f1e46d0f49b34fa9753c2757a
+    m_Address: Assets/6_Data/Animals/LifeSaverIII
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - lifesaver3
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dcb1149e44dc09745beb8d74f066aaf3
+    m_Address: Assets/6_Data/Animals/LifeSaverII
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - lifesaver2
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dcea3716efb91cd44aa2500461217fec
+    m_Address: Assets/6_Data/Animals/RescuerII
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - animal
+    - rescuer2
+    m_MainAsset: {fileID: 0}
+    m_TargetAsset: {fileID: 0}
+  - m_GUID: dd4117e3a25f88f4b9431781013187fe
+    m_Address: Assets/6_Data/Animals/RescuerI
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
@@ -26,22 +62,22 @@ MonoBehaviour:
     - rescuer1
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: daeb2f22236aac84398c74eef8ee92be
-    m_Address: Assets/99_Demos/M_AnimalManager/bob2.asset
+  - m_GUID: e1861703203e89143bd4ff1b2d96a513
+    m_Address: Assets/6_Data/Animals/RescuerIII
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
     - animal
-    - rescuer1
+    - rescuer3
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
-  - m_GUID: e3edb8fa0eea70f418214e597278d6b5
-    m_Address: Assets/99_Demos/M_AnimalManager/Bob1.asset
+  - m_GUID: fcafaa91048d9c843bac2645e3ca0d5d
+    m_Address: Assets/6_Data/Animals/LifeSaverI
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
     - animal
-    - rescuer1
+    - lifesaver1
     m_MainAsset: {fileID: 0}
     m_TargetAsset: {fileID: 0}
   m_ReadOnly: 0

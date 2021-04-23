@@ -62,7 +62,7 @@ namespace ProjElf.CombatController
         #region DamageGiver
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
-            Debug.Log("GetAttacked");
+            //Debug.Log("GetAttacked");
             if (damageGiverData.DamageGiver.Owner.TeamIndex != m_teamIndex)
             {
 

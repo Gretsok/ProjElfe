@@ -10,6 +10,7 @@ namespace ProjElf.HubForest
         [SerializeField]
         private Transform m_animalContainer = null;
         private Animal m_animal = null;
+        public Animal Animal => m_animal;
 
         [Header("States")]
         [SerializeField]
