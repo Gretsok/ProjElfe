@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using MOtter;
 using UnityEngine.AddressableAssets;
+using ProjElf.ProceduraleGeneration;
 
 namespace ProjElf.AnimalManagement
 {
@@ -85,11 +86,16 @@ namespace ProjElf.AnimalManagement
             m_rescuedAnimals = MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RescuedAnimalDatas;
         }
 
-        public void GetAsyncRandomAnimalData(Action<AnimalData> onAnimalDataGot)
+        public void GetAsyncRandomAnimalData(Action<AnimalData> onAnimalDataGot, EDunjeonDifficulty dunjeonDifficulty)
         {
-            Addressables.LoadAssetsAsync<AnimalData>("animal", null).Completed += obj =>
+            List<object> keys = new List<object>();
+            keys.Add("animal");
+            keys.Add(ProjElfUtils.GetDifficultyLabel(dunjeonDifficulty));
+
+            Addressables.LoadAssetsAsync<AnimalData>(keys, null, Addressables.MergeMode.Intersection).Completed += obj =>
             {
                 List<AnimalData> m_animalsDataSets = new List<AnimalData>();
+                
                 foreach (AnimalData animalData in obj.Result)
                 {
                     m_animalsDataSets.Add(animalData);
