@@ -1,4 +1,5 @@
 ﻿using ProjElf.AnimalManagement;
+using ProjElf.ProceduraleGeneration;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,7 +26,7 @@ public class Demo_AnimalManager : MonoBehaviour
     {
         for(int i =0; i < 100; i++)
         {
-            newAnimalManager.GetAsyncRandomAnimalData(OnAnimalDataGot);
+            newAnimalManager.GetAsyncRandomAnimalData(OnAnimalDataGot, EDunjeonDifficulty.RescuerI);
         }
         
     }

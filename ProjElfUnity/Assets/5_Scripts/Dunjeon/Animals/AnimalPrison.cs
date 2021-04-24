@@ -15,9 +15,9 @@ namespace ProjElf.DunjeonGameplay
 
         public AnimalData AnimalDataToRescue => m_animalDataToRescue;
 
-        private void Start()
+        public void Init(EDunjeonDifficulty dunjeonDifficulty)
         {
-            AnimalsManager.GetInstance().GetAsyncRandomAnimalData(OnAnimalDataGot);
+            AnimalsManager.GetInstance().GetAsyncRandomAnimalData(OnAnimalDataGot, dunjeonDifficulty);
         }
 
         private void OnAnimalDataGot(AnimalData animalDataReceived)

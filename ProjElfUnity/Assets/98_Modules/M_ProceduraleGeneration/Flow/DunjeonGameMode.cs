@@ -62,6 +62,7 @@ namespace ProjElf.ProceduraleGeneration
 
             yield return null;
             AnimalPrison animalPrison = FindObjectOfType<AnimalPrison>();
+            animalPrison.Init(m_dunjeonManager.CurrentDunjeonData.DunjeonDifficulty);
             while(animalPrison.AnimalDataToRescue == null)
             {
                 yield return null;

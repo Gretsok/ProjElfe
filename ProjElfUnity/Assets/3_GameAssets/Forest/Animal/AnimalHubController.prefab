@@ -75,7 +75,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_owner: {fileID: 6573104608402581653}
-  m_walkingSpeed: 1
+  m_walkingSpeed: 0.5
   m_rangeDistanceBetweenTwoLocations: {x: 5, y: 10}
   m_distanceToCurrentLocationToGoToChangeLocationToGo: 1
   m_sqrDistanceToPlayerToSwitch: 5
@@ -129,6 +129,7 @@ MonoBehaviour:
   m_defaultState: {fileID: 6573104608243956510}
   m_player: {fileID: 0}
   m_agent: {fileID: 6573104608402581652}
+  m_animator: {fileID: 0}
   m_animalContainer: {fileID: 6573104607344991637}
   m_walkingState: {fileID: 6573104608243956510}
   m_waitingState: {fileID: 1846116119200020464}
@@ -232,4 +233,4 @@ MonoBehaviour:
   m_nextState: {fileID: 0}
   m_owner: {fileID: 6573104608402581653}
   m_walkingSpeed: 0
-  m_durationToWaitRange: {x: 2, y: 5}
+  m_durationToWaitRange: {x: 4, y: 10}

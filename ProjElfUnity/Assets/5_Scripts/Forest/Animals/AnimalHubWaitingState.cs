@@ -18,6 +18,7 @@ namespace ProjElf.HubForest
             m_timeEnteredState = Time.time;
             m_durationToWait = Random.Range(m_durationToWaitRange.x, m_durationToWaitRange.y);
             m_finishWaiting = false;
+            (m_owner as AnimalHubController).Animal.AnimationsHandler.SetSpeed(0);
         }
 
         public override void LateUpdateState()
