@@ -203,7 +203,7 @@ PrefabInstance:
     - target: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
@@ -253,7 +253,7 @@ PrefabInstance:
     - target: {fileID: 5908446431685371139, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
       propertyPath: m_Name
-      value: Bow 11
+      value: Bow 11 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103baef6e460dad4ca2deee912a752bf, type: 3}
