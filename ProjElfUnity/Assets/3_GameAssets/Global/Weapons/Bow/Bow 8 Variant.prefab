@@ -134,7 +134,7 @@ PrefabInstance:
     - target: {fileID: 704068781508783412, guid: dd9a95ce778b7d0478cef7192f7ecbbf,
         type: 3}
       propertyPath: m_Name
-      value: Bow 8
+      value: Bow 8 Variant
       objectReference: {fileID: 0}
     - target: {fileID: 7017284386043086375, guid: dd9a95ce778b7d0478cef7192f7ecbbf,
         type: 3}
@@ -144,7 +144,7 @@ PrefabInstance:
     - target: {fileID: 7017284386043086375, guid: dd9a95ce778b7d0478cef7192f7ecbbf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7017284386043086375, guid: dd9a95ce778b7d0478cef7192f7ecbbf,
         type: 3}
