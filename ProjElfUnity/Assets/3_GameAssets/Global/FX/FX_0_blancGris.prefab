@@ -17,6 +17,11 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4479465664109593123, guid: fad1dd22de93f964a884fea40f78402d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5226128126347213775, guid: fad1dd22de93f964a884fea40f78402d,
         type: 3}
       propertyPath: InitialModule.startColor.maxColor.r
