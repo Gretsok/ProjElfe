@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &4428718170085332824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5602089329744650304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04958ab2f958bd843af8a54290e29b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_projectilePrefab: {fileID: 0}
+  posArrow: {fileID: 0}
 --- !u!1001 &2036078011130332483
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -15,7 +29,7 @@ PrefabInstance:
     - target: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
@@ -65,10 +79,16 @@ PrefabInstance:
     - target: {fileID: 5908446431685371139, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
       propertyPath: m_Name
-      value: Bow 11
+      value: Bow 11 Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103baef6e460dad4ca2deee912a752bf, type: 3}
+--- !u!1 &5602089329744650304 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5908446431685371139, guid: 103baef6e460dad4ca2deee912a752bf,
+    type: 3}
+  m_PrefabInstance: {fileID: 2036078011130332483}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &560411947816159182 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1983661480723071629, guid: 103baef6e460dad4ca2deee912a752bf,

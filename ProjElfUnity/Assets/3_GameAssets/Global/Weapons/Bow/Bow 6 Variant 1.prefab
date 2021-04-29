@@ -1,5 +1,19 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-5075507955763670378
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4476004442122806363}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04958ab2f958bd843af8a54290e29b0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_projectilePrefab: {fileID: 0}
+  posArrow: {fileID: 0}
 --- !u!1001 &5055385667462948591
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -199,10 +213,16 @@ PrefabInstance:
     - target: {fileID: 6424336994549718380, guid: 322e7972cca1cea459d8cbaea301c97a,
         type: 3}
       propertyPath: m_Name
-      value: Bow 6
+      value: Bow 6 Variant 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 322e7972cca1cea459d8cbaea301c97a, type: 3}
+--- !u!1 &4476004442122806363 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6424336994549718380, guid: 322e7972cca1cea459d8cbaea301c97a,
+    type: 3}
+  m_PrefabInstance: {fileID: 7438295282171099447}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &5980203981799030549 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3875296835241526818, guid: 322e7972cca1cea459d8cbaea301c97a,
