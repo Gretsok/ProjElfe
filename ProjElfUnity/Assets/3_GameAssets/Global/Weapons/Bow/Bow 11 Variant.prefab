@@ -1,19 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &-2066418182324203796
-MonoBehaviour:
+--- !u!1 &7230250449792749732
+GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6997129083448184510}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 04958ab2f958bd843af8a54290e29b0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_projectilePrefab: {fileID: 0}
-  posArrow: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3440236945207750976}
+  m_Layer: 0
+  m_Name: PosArrow
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3440236945207750976
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7230250449792749732}
+  m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
+  m_LocalPosition: {x: -0.021, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1028111462292697505}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: -90, z: 0}
 --- !u!1001 &331523486499140022
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -209,6 +225,17 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4418703409025429489, guid: 103baef6e460dad4ca2deee912a752bf,
+        type: 3}
+      propertyPath: posArrow
+      value: 
+      objectReference: {fileID: 3440236945207750976}
+    - target: {fileID: 4418703409025429489, guid: 103baef6e460dad4ca2deee912a752bf,
+        type: 3}
+      propertyPath: m_projectilePrefab
+      value: 
+      objectReference: {fileID: 927363576408946707, guid: 4d4fadb3571008149b5430bae7df0a1d,
+        type: 3}
     - target: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -271,9 +298,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 103baef6e460dad4ca2deee912a752bf, type: 3}
---- !u!1 &6997129083448184510 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5908446431685371139, guid: 103baef6e460dad4ca2deee912a752bf,
+--- !u!4 &1028111462292697505 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4512987807774054940, guid: 103baef6e460dad4ca2deee912a752bf,
     type: 3}
   m_PrefabInstance: {fileID: 3523450353053608893}
   m_PrefabAsset: {fileID: 0}
