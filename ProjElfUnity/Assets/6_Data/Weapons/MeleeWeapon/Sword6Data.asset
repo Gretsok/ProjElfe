@@ -13,11 +13,11 @@ MonoBehaviour:
   m_Name: Sword6Data
   m_EditorClassIdentifier: 
   m_weaponID: 2045512183
-  m_weaponName: Sword 6
+  m_weaponName: WEAPON_NAME_SWORD6
   m_weaponSprite: {fileID: 21300000, guid: cd52fe3ebbf07244592ca5c265b4b8d1, type: 3}
   m_hitDamage: {x: 10, y: 20}
   m_attackSpeed: {x: 1, y: 2}
-  m_weaponPrefab: {fileID: -7149953576853837157, guid: b28b835832c097d48ba6bc0c982ebfad,
+  m_weaponPrefab: {fileID: 117066043069168381, guid: 1274ce2ba156c384aac47ca5aacd8cbe,
     type: 3}
   m_allowContinueFiring: 0
   m_sellPrice: 5
