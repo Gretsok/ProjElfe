@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f90458fcf1f1c1439c6bee7a5d8d3fe, type: 3}
+  m_Name: Bow4Data
+  m_EditorClassIdentifier: 
+  m_weaponID: -1839154198
+  m_weaponName: WEAPON_NAME_BOW4
+  m_weaponSprite: {fileID: 21300000, guid: 873d03b35ef82d54eaeab2b764728a4c, type: 3}
+  m_hitDamage: {x: 10, y: 0}
+  m_attackSpeed: {x: 0.5, y: 1}
+  m_weaponPrefab: {fileID: 943448514686132614, guid: 5351991c873bd7e4382081c7fea9873e,
+    type: 3}
+  m_allowContinueFiring: 0
+  m_sellPrice: 5
+  m_rerollPrice: 5
+  m_projectileDivingRate: {x: 10, y: 12}
+  m_projectileSpeed: {x: 20, y: 25}
+  m_projectilePrefab: {fileID: 9139648744823037756, guid: 5251b3b07ba25b442b9a7f02343c97f7,
+    type: 3}

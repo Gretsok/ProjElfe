@@ -16,16 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7aad4ad4eaee0f24b8b44603c04ee677
-  m_SerializeEntries:
-  - m_GUID: 090670dbe5025134397aa21a2a6e7c97
-    m_Address: Assets/6_Data/Weapons/GrimoireData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - grimoire
-    - weapon
-    - rescuer1
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
   m_SchemaSet:

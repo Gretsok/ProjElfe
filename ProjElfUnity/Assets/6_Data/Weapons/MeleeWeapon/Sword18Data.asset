@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponID: 1147928049
   m_weaponName: WEAPON_NAME_SWORD18
-  m_weaponSprite: {fileID: 21300000, guid: cd52fe3ebbf07244592ca5c265b4b8d1, type: 3}
+  m_weaponSprite: {fileID: 21300000, guid: 44bafb91368eb6d4885e89ad7c8067ac, type: 3}
   m_hitDamage: {x: 10, y: 20}
   m_attackSpeed: {x: 1, y: 2}
   m_weaponPrefab: {fileID: 5227369800498453174, guid: d05af22255975e14a8cfab94a0e86d44,

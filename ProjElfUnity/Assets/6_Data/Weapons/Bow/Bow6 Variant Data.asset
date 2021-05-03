@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f90458fcf1f1c1439c6bee7a5d8d3fe, type: 3}
+  m_Name: Bow6 Variant Data
+  m_EditorClassIdentifier: 
+  m_weaponID: 2126183632
+  m_weaponName: WEAPON_NAME_BOW6_VARIANT
+  m_weaponSprite: {fileID: 21300000, guid: d2c09ba686696ee4f8cea0f4ba2a0bd1, type: 3}
+  m_hitDamage: {x: 10, y: 20}
+  m_attackSpeed: {x: 0.5, y: 1}
+  m_weaponPrefab: {fileID: 6630726150223040376, guid: 1c276d2958f1bff45a89e0171425ada8,
+    type: 3}
+  m_allowContinueFiring: 0
+  m_sellPrice: 5
+  m_rerollPrice: 5
+  m_projectileDivingRate: {x: 10, y: 12}
+  m_projectileSpeed: {x: 20, y: 25}
+  m_projectilePrefab: {fileID: 4184080647978427945, guid: ed2d7bc2b90d6964f820fa7f4708af2c,
+    type: 3}

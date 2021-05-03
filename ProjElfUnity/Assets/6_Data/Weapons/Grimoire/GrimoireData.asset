@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_weaponID: -1072353932
   m_weaponName: WEAPON_NAME_GRIMOIRE
-  m_weaponSprite: {fileID: 0}
+  m_weaponSprite: {fileID: 21300000, guid: 98c8f9aa8518a2a4a8f18561b8a5041e, type: 3}
   m_hitDamage: {x: 10, y: 20}
   m_attackSpeed: {x: 0.5, y: 1}
   m_weaponPrefab: {fileID: -1522721386010502966, guid: 03267d04ff94a51409178abfb65b0956,

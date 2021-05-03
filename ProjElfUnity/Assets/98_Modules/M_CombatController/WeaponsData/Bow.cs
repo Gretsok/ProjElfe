@@ -9,7 +9,7 @@ namespace ProjElf.CombatController
         //Var
         private float m_projectileDivingRate = 0;
         private float m_projectileSpeed = 0;
-        [SerializeField] private Arrow m_projectilePrefab = null;
+        private Arrow m_projectilePrefab = null;
         [SerializeField] private Transform posArrow = null;
         private CombatController m_owner = null;
 
@@ -27,6 +27,7 @@ namespace ProjElf.CombatController
             m_weaponSaveData = bowToInit;
             m_owner = Owner;
             m_arrowPool = gameObject.AddComponent<ObjectPool.ObjectPool>();
+            m_projectilePrefab = bowToInit.ProjectilePrefab;
         }
         /// <summary>
         /// Instantie une arrow qui ira vers la direction ciblée

@@ -16,16 +16,7 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 3748a6986df7ff046bf70c7eb9b74fe5
-  m_SerializeEntries:
-  - m_GUID: 79f4d7361713e334f9d1a5ab6e4c1e82
-    m_Address: Assets/6_Data/Weapons/BowData.asset
-    m_ReadOnly: 0
-    m_SerializedLabels:
-    - bow
-    - weapon
-    - rescuer1
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+  m_SerializeEntries: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
   m_SchemaSet:
