@@ -17,16 +17,226 @@ MonoBehaviour:
     m_SerializedData: []
   m_GUID: 11c825f80b33f504b996861d6ca1694f
   m_SerializeEntries:
-  - m_GUID: 1fdd83096e313e447b1870e1d75b8428
-    m_Address: Assets/6_Data/Weapons/MeleeWeapon
+  - m_GUID: 017e732deb152d54f89568abf76e6366
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword17Data.asset
     m_ReadOnly: 0
     m_SerializedLabels:
     - default
     - meleeweapon
-    - rescuer1
     - weapon
-    m_MainAsset: {fileID: 0}
-    m_TargetAsset: {fileID: 0}
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: 017e732deb152d54f89568abf76e6366, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 017e732deb152d54f89568abf76e6366, type: 2}
+  - m_GUID: 0893302c24ab6524e9ddbab18d5ef982
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword5Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: 0893302c24ab6524e9ddbab18d5ef982, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 0893302c24ab6524e9ddbab18d5ef982, type: 2}
+  - m_GUID: 1a1b8651776fb0e4394718a78d00de1f
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword8Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 1a1b8651776fb0e4394718a78d00de1f, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 1a1b8651776fb0e4394718a78d00de1f, type: 2}
+  - m_GUID: 21fb7b7dba26af2469160c69d3152a35
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword12Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 21fb7b7dba26af2469160c69d3152a35, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 21fb7b7dba26af2469160c69d3152a35, type: 2}
+  - m_GUID: 23c8bec32d9af284f9801e51c8b28fde
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword7Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 23c8bec32d9af284f9801e51c8b28fde, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 23c8bec32d9af284f9801e51c8b28fde, type: 2}
+  - m_GUID: 245e5ba037c97634aa3858c999c98951
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword11Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: 245e5ba037c97634aa3858c999c98951, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 245e5ba037c97634aa3858c999c98951, type: 2}
+  - m_GUID: 3569a8c08cf21a640b30646afd8edd03
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword3 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 3569a8c08cf21a640b30646afd8edd03, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 3569a8c08cf21a640b30646afd8edd03, type: 2}
+  - m_GUID: 4c8bcc2fcaad9604788ea1d1a8562d88
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword10Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: 4c8bcc2fcaad9604788ea1d1a8562d88, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4c8bcc2fcaad9604788ea1d1a8562d88, type: 2}
+  - m_GUID: 4e3ec366627263d4abad73c483b4a6ed
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword6 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: 4e3ec366627263d4abad73c483b4a6ed, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4e3ec366627263d4abad73c483b4a6ed, type: 2}
+  - m_GUID: 507ccf05392a4b842a80fd0a2ff0076b
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword13Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: 507ccf05392a4b842a80fd0a2ff0076b, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 507ccf05392a4b842a80fd0a2ff0076b, type: 2}
+  - m_GUID: 6b6467ff7b4d74c46912e6c8360a0394
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword3Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 6b6467ff7b4d74c46912e6c8360a0394, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 6b6467ff7b4d74c46912e6c8360a0394, type: 2}
+  - m_GUID: 6ed13b799b175a04a8f2979337128654
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword9Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: 6ed13b799b175a04a8f2979337128654, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 6ed13b799b175a04a8f2979337128654, type: 2}
+  - m_GUID: 7810f7cc0610c1a4bace4e7a3c543188
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword18Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: 7810f7cc0610c1a4bace4e7a3c543188, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7810f7cc0610c1a4bace4e7a3c543188, type: 2}
+  - m_GUID: 7edacdeec91d3954fa71cef6e94ad668
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword14Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: 7edacdeec91d3954fa71cef6e94ad668, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7edacdeec91d3954fa71cef6e94ad668, type: 2}
+  - m_GUID: 7f2d0200375638545b5d3f8ca929228e
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword1Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 7f2d0200375638545b5d3f8ca929228e, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 7f2d0200375638545b5d3f8ca929228e, type: 2}
+  - m_GUID: 8490d80098ceab840a15debce1d5b925
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword4Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: 8490d80098ceab840a15debce1d5b925, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 8490d80098ceab840a15debce1d5b925, type: 2}
+  - m_GUID: 953bf030ed295f44cbfc2d8e79b330e8
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword2Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 953bf030ed295f44cbfc2d8e79b330e8, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 953bf030ed295f44cbfc2d8e79b330e8, type: 2}
+  - m_GUID: b039ee91de4b165439ca8ee355bee47a
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword15Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: b039ee91de4b165439ca8ee355bee47a, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: b039ee91de4b165439ca8ee355bee47a, type: 2}
+  - m_GUID: cbc0d86e5f2895e4ab65d3f624666a74
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword16Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: cbc0d86e5f2895e4ab65d3f624666a74, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: cbc0d86e5f2895e4ab65d3f624666a74, type: 2}
+  - m_GUID: d07ef92fc4bb8bb4ca236522e0930a52
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword4 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: d07ef92fc4bb8bb4ca236522e0930a52, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: d07ef92fc4bb8bb4ca236522e0930a52, type: 2}
+  - m_GUID: e58bb70c65dd41d4cad6e1a86724a8c2
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword13 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: e58bb70c65dd41d4cad6e1a86724a8c2, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: e58bb70c65dd41d4cad6e1a86724a8c2, type: 2}
+  - m_GUID: e9568a79a518ddf4f8090d9606e1ce6b
+    m_Address: Assets/6_Data/Weapons/MeleeWeapon/Sword6Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - meleeweapon
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: e9568a79a518ddf4f8090d9606e1ce6b, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: e9568a79a518ddf4f8090d9606e1ce6b, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
   m_SchemaSet:

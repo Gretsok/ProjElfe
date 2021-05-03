@@ -24,6 +24,10 @@ namespace ProjElf.CombatController
             m_weaponSaveData = grimoireToInit;
             m_damage = grimoireToInit.HitDamage;
             m_owner = Owner;
+            if(posMagicSpell == null)
+            {
+                posMagicSpell = transform;
+            }
         }
         /// <summary>
         /// Instantie un MagicSpellProjectile qui ira vers la direction ciblée

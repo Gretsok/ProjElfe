@@ -16,7 +16,127 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 7aad4ad4eaee0f24b8b44603c04ee677
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 00b654e055a158842bc1bb5d582e0db2
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire9Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: 00b654e055a158842bc1bb5d582e0db2, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 00b654e055a158842bc1bb5d582e0db2, type: 2}
+  - m_GUID: 057f73cf16f6df840a90ffa3b9a7c86b
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire6 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 057f73cf16f6df840a90ffa3b9a7c86b, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 057f73cf16f6df840a90ffa3b9a7c86b, type: 2}
+  - m_GUID: 0c2c35fd9b046b34eb88333d11452e5d
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire8Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: 0c2c35fd9b046b34eb88333d11452e5d, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 0c2c35fd9b046b34eb88333d11452e5d, type: 2}
+  - m_GUID: 0d50fe1f4d3ba064ab4c658e6292c2e4
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire3Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 0d50fe1f4d3ba064ab4c658e6292c2e4, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 0d50fe1f4d3ba064ab4c658e6292c2e4, type: 2}
+  - m_GUID: 1a6fea4e83ca88b4180a8f600b58f503
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire5Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: 1a6fea4e83ca88b4180a8f600b58f503, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 1a6fea4e83ca88b4180a8f600b58f503, type: 2}
+  - m_GUID: 4b2b14bcfda0dfc41930afe4e7b91eab
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire7Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: 4b2b14bcfda0dfc41930afe4e7b91eab, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4b2b14bcfda0dfc41930afe4e7b91eab, type: 2}
+  - m_GUID: 4bb1d8455e792674cbff9551e05846d7
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire1Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 4bb1d8455e792674cbff9551e05846d7, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4bb1d8455e792674cbff9551e05846d7, type: 2}
+  - m_GUID: 4d673eb3f502f49479a54090a065bfba
+    m_Address: Assets/6_Data/Weapons/Grimoire/GrimoireData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 4d673eb3f502f49479a54090a065bfba, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4d673eb3f502f49479a54090a065bfba, type: 2}
+  - m_GUID: 95ed20c4bf8b02a449075f0464d49147
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire2Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: 95ed20c4bf8b02a449075f0464d49147, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 95ed20c4bf8b02a449075f0464d49147, type: 2}
+  - m_GUID: c0cf041953318324eba88e78c0997a74
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire6Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: c0cf041953318324eba88e78c0997a74, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: c0cf041953318324eba88e78c0997a74, type: 2}
+  - m_GUID: c33ab8b060b323848928b3725d09004e
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire4Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: c33ab8b060b323848928b3725d09004e, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: c33ab8b060b323848928b3725d09004e, type: 2}
+  - m_GUID: efafede36cc389847b76281164a88777
+    m_Address: Assets/6_Data/Weapons/Grimoire/Grimoire10Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - grimoire
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: efafede36cc389847b76281164a88777, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: efafede36cc389847b76281164a88777, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
   m_SchemaSet:

@@ -16,7 +16,157 @@ MonoBehaviour:
   m_Data:
     m_SerializedData: []
   m_GUID: 3748a6986df7ff046bf70c7eb9b74fe5
-  m_SerializeEntries: []
+  m_SerializeEntries:
+  - m_GUID: 1387cff19e0927949b45845a9e414849
+    m_Address: Assets/6_Data/Weapons/Bow/Bow4Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: 1387cff19e0927949b45845a9e414849, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 1387cff19e0927949b45845a9e414849, type: 2}
+  - m_GUID: 2249130553bbaae449d6b2ee79f2bddb
+    m_Address: Assets/6_Data/Weapons/Bow/Bow11Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 2249130553bbaae449d6b2ee79f2bddb, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 2249130553bbaae449d6b2ee79f2bddb, type: 2}
+  - m_GUID: 23592ce0e4cd4ea45a841302a2c4f58c
+    m_Address: Assets/6_Data/Weapons/Bow/Bow5Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: 23592ce0e4cd4ea45a841302a2c4f58c, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 23592ce0e4cd4ea45a841302a2c4f58c, type: 2}
+  - m_GUID: 2a04956fa7513c8459689ae0bf0c1714
+    m_Address: Assets/6_Data/Weapons/Bow/Bow11 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: 2a04956fa7513c8459689ae0bf0c1714, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 2a04956fa7513c8459689ae0bf0c1714, type: 2}
+  - m_GUID: 4064a3ca1713dfb43bd301a86421e71e
+    m_Address: Assets/6_Data/Weapons/Bow/Bow3Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: 4064a3ca1713dfb43bd301a86421e71e, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4064a3ca1713dfb43bd301a86421e71e, type: 2}
+  - m_GUID: 4e3d548613e8a694bb0c40b486cf0119
+    m_Address: Assets/6_Data/Weapons/Bow/Bow12Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: 4e3d548613e8a694bb0c40b486cf0119, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 4e3d548613e8a694bb0c40b486cf0119, type: 2}
+  - m_GUID: 58ab5d9408077a440a99cb0f4944e7c1
+    m_Address: Assets/6_Data/Weapons/Bow/Bow8 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: 58ab5d9408077a440a99cb0f4944e7c1, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 58ab5d9408077a440a99cb0f4944e7c1, type: 2}
+  - m_GUID: 89e1ed14a01051747bcfb21029c98282
+    m_Address: Assets/6_Data/Weapons/Bow/Bow6Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: 89e1ed14a01051747bcfb21029c98282, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: 89e1ed14a01051747bcfb21029c98282, type: 2}
+  - m_GUID: abbd533aca2bbf74f85075d1589c99a4
+    m_Address: Assets/6_Data/Weapons/Bow/Bow7Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver3
+    m_MainAsset: {fileID: 11400000, guid: abbd533aca2bbf74f85075d1589c99a4, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: abbd533aca2bbf74f85075d1589c99a4, type: 2}
+  - m_GUID: b7e9e3089cb5e5a4e95459be57fe63e1
+    m_Address: Assets/6_Data/Weapons/Bow/BowData.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer1
+    m_MainAsset: {fileID: 11400000, guid: b7e9e3089cb5e5a4e95459be57fe63e1, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: b7e9e3089cb5e5a4e95459be57fe63e1, type: 2}
+  - m_GUID: c874bd938409f79428d73a330364ae2d
+    m_Address: Assets/6_Data/Weapons/Bow/Bow9Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver2
+    m_MainAsset: {fileID: 11400000, guid: c874bd938409f79428d73a330364ae2d, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: c874bd938409f79428d73a330364ae2d, type: 2}
+  - m_GUID: d3f517e45da76da40abb1ea1ff699443
+    m_Address: Assets/6_Data/Weapons/Bow/Bow2Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer2
+    m_MainAsset: {fileID: 11400000, guid: d3f517e45da76da40abb1ea1ff699443, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: d3f517e45da76da40abb1ea1ff699443, type: 2}
+  - m_GUID: e48483e07ca477b429097dc7f7e68cb2
+    m_Address: Assets/6_Data/Weapons/Bow/Bow8Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - lifesaver1
+    m_MainAsset: {fileID: 11400000, guid: e48483e07ca477b429097dc7f7e68cb2, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: e48483e07ca477b429097dc7f7e68cb2, type: 2}
+  - m_GUID: e6a4463701a2b4249810c3294c1eb0d3
+    m_Address: Assets/6_Data/Weapons/Bow/Bow6 Variant Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - absolutemasterguardian
+    m_MainAsset: {fileID: 11400000, guid: e6a4463701a2b4249810c3294c1eb0d3, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: e6a4463701a2b4249810c3294c1eb0d3, type: 2}
+  - m_GUID: ef66885936f18f042acad0186f2e6af0
+    m_Address: Assets/6_Data/Weapons/Bow/Bow10Data.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - default
+    - bow
+    - weapon
+    - rescuer3
+    m_MainAsset: {fileID: 11400000, guid: ef66885936f18f042acad0186f2e6af0, type: 2}
+    m_TargetAsset: {fileID: 11400000, guid: ef66885936f18f042acad0186f2e6af0, type: 2}
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: b81eabb026d99c845955bd1b10b84b14, type: 2}
   m_SchemaSet:
