@@ -32,6 +32,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/4_Scenes/Dunjeon/Castle/CastelDungeonScene.unity
     guid: e3d03e0b0e982ad4db0e23ab2cc8cf58
+  - enabled: 1
+    path: Assets/4_Scenes/Dunjeon/Cave/CaveDunjeonScene.unity
+    guid: 25db46317a496fa4083f95b0b00fde4d
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: 94b82dfb63fa6fb45af6d9956151f0f6,
       type: 2}
