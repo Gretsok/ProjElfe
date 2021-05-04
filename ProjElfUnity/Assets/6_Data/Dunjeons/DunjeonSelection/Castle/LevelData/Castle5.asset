@@ -1,0 +1,34 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f607a8ade6546ce4785e9d346bfa31a3, type: 3}
+  m_Name: Castle5
+  m_EditorClassIdentifier: 
+  m_dunjeonName: Castle Life Saver II
+  m_numberOfRoomsOnRightWay: {x: 7, y: 9}
+  m_numberOfRoomsOnWrongWay: {x: 5, y: 7}
+  m_intersectionSpawningRate: {x: 5, y: 7}
+  m_finalRoomData: {fileID: 11400000, guid: 5608dc684bc106c44bdf53dd26ed0e8b, type: 2}
+  m_rooms:
+  - {fileID: 11400000, guid: bfcceaf7112836b4e87f2d547af6bfad, type: 2}
+  - {fileID: 11400000, guid: 72dfd3615c2a5fc48a200fe511164e91, type: 2}
+  - {fileID: 11400000, guid: ff757edc09fd3264591a39d7d16b3bc1, type: 2}
+  - {fileID: 11400000, guid: 7dd0b9c7477b7484d9fd8b28bbf9a412, type: 2}
+  - {fileID: 11400000, guid: 7c2b69de903b44b42b07e95693d0ac17, type: 2}
+  - {fileID: 11400000, guid: b47c74e55016b34478aed9fd31468e64, type: 2}
+  - {fileID: 11400000, guid: f24f4a086d713de4980651f97d3c9be8, type: 2}
+  - {fileID: 11400000, guid: 195069c28fb78dd40a4a6db1498d3242, type: 2}
+  m_dunjeonDifficulty: 4
+  m_dunjeonType: 0
+  m_dunjeonIcon: {fileID: 0}
+  m_dunjeonSceneData: {fileID: 11400000, guid: ece0653fa0f223649b2c5c176d17fecc, type: 2}
+  m_lifeFactor: 1
+  m_damageFactor: 1
