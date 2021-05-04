@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: CaveDunjeonData - AMG
   m_EditorClassIdentifier: 
   m_dunjeonName: DUNJEON_TYPE_CAVE
-  m_numberOfRoomsOnRightWay: {x: 4, y: 6}
-  m_numberOfRoomsOnWrongWay: {x: 1, y: 2}
-  m_intersectionSpawningRate: {x: 2, y: 3}
+  m_numberOfRoomsOnRightWay: {x: 20, y: 30}
+  m_numberOfRoomsOnWrongWay: {x: 5, y: 10}
+  m_intersectionSpawningRate: {x: 1, y: 2}
   m_finalRoomData: {fileID: 11400000, guid: fa3ddc55ee86ab342b063c99839801c5, type: 2}
   m_rooms:
   - {fileID: 11400000, guid: 1bc263f8a1910984e943c05918c2e100, type: 2}

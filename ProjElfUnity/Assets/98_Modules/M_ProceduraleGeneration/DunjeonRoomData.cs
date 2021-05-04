@@ -44,39 +44,58 @@ namespace ProjElf.ProceduraleGeneration
 
         public GameObject GetRandomEnnemy()
         {
+            int totalWeight = 0;
+
+            for(int i = 0; i < m_ennemiesToSpawn.Length; i++)
+            {
+                totalWeight += m_ennemiesToSpawn[i].SpawnWeight;
+            }
+
+            int randomWeight = Random.Range(1, totalWeight + 1);
+            totalWeight = 0;
+
+            for(int i = 0; i < m_ennemiesToSpawn.Length; i++)
+            {
+                totalWeight += m_ennemiesToSpawn[i].SpawnWeight;
+                if(totalWeight >= randomWeight)
+                {
+                    return m_ennemiesToSpawn[i].EnnemyPrefab;
+                }
+            }
+
+            Debug.LogError("Error while trying to randomly choose an ennemy to spawn");
             return m_ennemiesToSpawn[0].EnnemyPrefab;
         }
 
         public int GetRandomNumberOfEnnemisToSpawn(EDunjeonDifficulty difficulty)
         {
-            Random.InitState((new System.Random()).Next(0, 1000000));
             if(difficulty == EDunjeonDifficulty.RescuerI)
             {
-                return Random.Range(m_rescuerIModeNumberOfEnnemiesToSpawn.x, m_rescuerIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_rescuerIModeNumberOfEnnemiesToSpawn.x, m_rescuerIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if(difficulty == EDunjeonDifficulty.RescuerII)
             {
-                return Random.Range(m_rescuerIIModeNumberOfEnnemiesToSpawn.x, m_rescuerIIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_rescuerIIModeNumberOfEnnemiesToSpawn.x, m_rescuerIIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if (difficulty == EDunjeonDifficulty.RescuerIII)
             {
-                return Random.Range(m_rescuerIIIModeNumberOfEnnemiesToSpawn.x, m_rescuerIIIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_rescuerIIIModeNumberOfEnnemiesToSpawn.x, m_rescuerIIIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if (difficulty == EDunjeonDifficulty.LifeSaverI)
             {
-                return Random.Range(m_lifeSaverIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_lifeSaverIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if (difficulty == EDunjeonDifficulty.LifeSaverII)
             {
-                return Random.Range(m_lifeSaverIIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_lifeSaverIIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if (difficulty == EDunjeonDifficulty.LifeSaverIII)
             {
-                return Random.Range(m_lifeSaverIIIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIIIModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_lifeSaverIIIModeNumberOfEnnemiesToSpawn.x, m_lifeSaverIIIModeNumberOfEnnemiesToSpawn.y + 1);
             }
             else if(difficulty == EDunjeonDifficulty.AbsoluteMasterGuardian)
             {
-                return Random.Range(m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn.x, m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn.y);
+                return Random.Range(m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn.x, m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn.y + 1);
             }
             Debug.LogError("No valid difficulty");
             return 0;
