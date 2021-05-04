@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a385779f1a1bb141ac1b2c75db52054, type: 3}
+  m_Name: CaveLevelData
+  m_EditorClassIdentifier: 
+  m_mainScene:
+    m_SceneAsset: {fileID: 102900000, guid: 25db46317a496fa4083f95b0b00fde4d, type: 3}
+    m_SceneName: CaveDunjeonScene
+  m_additionalScenes: []
+  m_loadingScreen:
+    m_SceneAsset: {fileID: 102900000, guid: dc393080a268e2b48a2c649ed2ff0ba4, type: 3}
+    m_SceneName: DunjeonLoadingScene
+  m_levelName: Cave
+  m_defaultLoadMode: 0
