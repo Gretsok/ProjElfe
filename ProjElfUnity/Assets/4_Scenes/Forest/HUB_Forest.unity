@@ -165,6 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ambiance: {fileID: 11400000, guid: 931cf2996e53aa547aa82a63ea0cfbf3, type: 2}
+--- !u!4 &194808631 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+    type: 3}
+  m_PrefabInstance: {fileID: 2199089781167034976}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &205213997
 GameObject:
   m_ObjectHideFlags: 0
@@ -554,6 +560,7 @@ Transform:
   - {fileID: 3826145081811354972}
   - {fileID: 704006467}
   - {fileID: 1341330360}
+  - {fileID: 194808631}
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1442,6 +1449,75 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 430181428268763432}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2199089781167034976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1227654154}
+    m_Modifications:
+    - target: {fileID: 2199089781243877718, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_Name
+      value: PortalDunjeonActivator
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 51.676914
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.09
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 62.882633
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.8898535
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.45624655
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: -125.71001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 0c8852882e559e348b31faab3fe12f0f, type: 3}
 --- !u!1001 &3826145081811354971
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1730,6 +1806,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CrystalDunjeonActivator
+      objectReference: {fileID: 0}
+    - target: {fileID: 5282649231194201549, guid: fd0236bc774724f408776c568876870a,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fd0236bc774724f408776c568876870a, type: 3}
