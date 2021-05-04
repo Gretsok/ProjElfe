@@ -973,7 +973,7 @@ MonoBehaviour:
   m_posBowEquip: {fileID: 4076027991333973624}
   m_grimoireData: {fileID: 0}
   m_bowData: {fileID: 0}
-  m_meleeWeaponData: {fileID: 11400000, guid: cefb04cbfd4af5944a25d7cc7b94e754, type: 2}
+  m_meleeWeaponData: {fileID: 11400000, guid: 8490d80098ceab840a15debce1d5b925, type: 2}
 --- !u!136 &2967467924235516821
 CapsuleCollider:
   m_ObjectHideFlags: 0

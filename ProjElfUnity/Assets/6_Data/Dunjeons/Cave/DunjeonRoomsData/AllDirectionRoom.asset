@@ -14,14 +14,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomPrefab: {fileID: 4072985006552259114, guid: 07035d93e2a1e5b419ecb1f7161bd453,
     type: 3}
-  m_ennemiesToSpawn: []
-  m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_lifeSaverIIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
-  m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn: {x: 0, y: 0}
+  m_ennemiesToSpawn:
+  - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
+      type: 3}
+    SpawnWeight: 1
+  m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 0, y: 1}
+  m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 1}
+  m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 0, y: 1}
+  m_lifeSaverIModeNumberOfEnnemiesToSpawn: {x: 1, y: 1}
+  m_lifeSaverIIModeNumberOfEnnemiesToSpawn: {x: 1, y: 2}
+  m_lifeSaverIIIModeNumberOfEnnemiesToSpawn: {x: 2, y: 3}
+  m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn: {x: 3, y: 4}
   m_forwardGate: 1
   m_leftGate: 1
   m_rightGate: 1

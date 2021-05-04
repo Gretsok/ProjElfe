@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CaveDunjeonData - LifeSaver II
   m_EditorClassIdentifier: 
   m_dunjeonName: DUNJEON_TYPE_CAVE
-  m_numberOfRoomsOnRightWay: {x: 4, y: 6}
-  m_numberOfRoomsOnWrongWay: {x: 1, y: 2}
+  m_numberOfRoomsOnRightWay: {x: 13, y: 17}
+  m_numberOfRoomsOnWrongWay: {x: 4, y: 7}
   m_intersectionSpawningRate: {x: 2, y: 3}
   m_finalRoomData: {fileID: 11400000, guid: fa3ddc55ee86ab342b063c99839801c5, type: 2}
   m_rooms:
