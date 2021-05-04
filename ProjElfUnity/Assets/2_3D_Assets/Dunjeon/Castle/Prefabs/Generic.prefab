@@ -252,6 +252,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5822921443215835065}
   - component: {fileID: 6946419979027515448}
+  - component: {fileID: 4615556820286518914}
   m_Layer: 0
   m_Name: GroundCollider
   m_TagString: Untagged
@@ -286,6 +287,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 40, y: 0.84239537, z: 40}
   m_Center: {x: 0, y: 0.42119768, z: 0}
+--- !u!114 &4615556820286518914
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6365033312774726762}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 04a604ec330da7348b1473e577141940, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_dunjeonRoom: {fileID: 5963242044541721599}
 --- !u!1 &6696070981735009813
 GameObject:
   m_ObjectHideFlags: 0
