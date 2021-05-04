@@ -49,8 +49,8 @@ namespace ProjElf.MainMenu
                 GetComponent<Button>().onClick.AddListener(OnClick);
             }
         }
-
-        public void OnSelected()
+        
+        public virtual void OnSelected()
         {
             m_image.color = m_selectedColor;
             if(m_state != null && m_stateActivationType == EStateActivationType.OnSelect)

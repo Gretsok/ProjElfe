@@ -690,8 +690,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 271019033}
-  m_LocalRotation: {x: 0.0849876, y: 0.67269284, z: -0.078289196, w: 0.7308436}
-  m_LocalPosition: {x: 36.378128, y: 2.1879745, z: 5.173424}
+  m_LocalRotation: {x: 0.12699431, y: 0.4803943, z: -0.070588686, w: 0.86493415}
+  m_LocalPosition: {x: 7.6645517, y: 1.690722, z: 26.229033}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -2660,6 +2660,24 @@ PrefabInstance:
       propertyPath: m_playButton
       value: 
       objectReference: {fileID: 6536173365726235591}
+    - target: {fileID: 3911543152840945021, guid: 3d46e6eeeea98de4e9e43420a21048e4,
+        type: 3}
+      propertyPath: m_startingMeleeWeaponData
+      value: 
+      objectReference: {fileID: 11400000, guid: 953bf030ed295f44cbfc2d8e79b330e8,
+        type: 2}
+    - target: {fileID: 3911543152840945021, guid: 3d46e6eeeea98de4e9e43420a21048e4,
+        type: 3}
+      propertyPath: m_startingGrimoireData
+      value: 
+      objectReference: {fileID: 11400000, guid: 4bb1d8455e792674cbff9551e05846d7,
+        type: 2}
+    - target: {fileID: 3911543152840945021, guid: 3d46e6eeeea98de4e9e43420a21048e4,
+        type: 3}
+      propertyPath: m_startingBowData
+      value: 
+      objectReference: {fileID: 11400000, guid: b7e9e3089cb5e5a4e95459be57fe63e1,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3d46e6eeeea98de4e9e43420a21048e4, type: 3}
 --- !u!1001 &6536173365726235590

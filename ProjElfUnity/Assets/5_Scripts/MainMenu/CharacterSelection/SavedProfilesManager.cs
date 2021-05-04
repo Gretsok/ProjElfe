@@ -1,4 +1,5 @@
 ﻿using MOtter;
+using ProjElf.CombatController;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private SavedProfileModule m_savedProfileModulePrefab = null;
         [SerializeField]
-        private ButtonNavigationPosition m_createNewCharacterButtonPrefab = null;
+        private CreateCharacterButtonNavigationPosition m_createNewCharacterButtonPrefab = null;
         [SerializeField]
         private CharacterModel m_characterModel = null;
         [SerializeField]
@@ -25,6 +26,18 @@ namespace ProjElf.MainMenu
 
 
         private const int MAX_PROFILES = 8;
+
+        [Header("Starting Weapons")]
+        [SerializeField]
+        private BowData m_startingBowData = null;
+        [SerializeField]
+        private GrimoireData m_startingGrimoireData = null;
+        [SerializeField]
+        private MeleeWeaponData m_startingMeleeWeaponData = null;
+
+        public BowData StartingBowData => m_startingBowData;
+        public GrimoireData StartingGrimoireData => m_startingGrimoireData;
+        public MeleeWeaponData StartingMeleeWeaponData => m_startingMeleeWeaponData;
 
 
         private void Start()
@@ -84,6 +97,11 @@ namespace ProjElf.MainMenu
             m_characterModel.InflateSaveData(profile.SaveData);
         }
 
+        public void InflateNewData()
+        {
+            m_characterModel.InflateWeapons(m_startingBowData.GetWeaponSaveData<BowData.BowSaveData>(), m_startingMeleeWeaponData.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>(), m_startingGrimoireData.GetWeaponSaveData<GrimoireData.GrimoireSaveData>());
+        }
+
         private void AddSavedProfileModule(SaveData saveData)
         {
 
@@ -110,7 +128,7 @@ namespace ProjElf.MainMenu
         private void CreateCreateNewCharacterButton()
         {
 
-            ButtonNavigationPosition createNewCharacterButton = Instantiate(m_createNewCharacterButtonPrefab, transform);
+            CreateCharacterButtonNavigationPosition createNewCharacterButton = Instantiate(m_createNewCharacterButtonPrefab, transform);
 
             var createNewCharacButton = createNewCharacterButton.GetComponent<Button>();
 

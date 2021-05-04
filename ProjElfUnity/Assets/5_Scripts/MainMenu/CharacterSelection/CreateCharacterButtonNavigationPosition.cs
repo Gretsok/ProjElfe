@@ -1,6 +1,5 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿
+using UnityEngine.EventSystems;
 
 namespace ProjElf.MainMenu
 { 
@@ -11,6 +10,12 @@ namespace ProjElf.MainMenu
             base.Start();
 
             m_state = m_mainStatesMachine.CreateCharacterState;
+        }
+
+        public override void OnSelected()
+        {
+            base.OnSelected();
+            m_mainStatesMachine.ProfileManager.InflateNewData();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MOtter;
+using ProjElf.CombatController;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -23,6 +24,13 @@ namespace ProjElf.MainMenu
             newSaveData.SavedPlayerStats.DunjeonFinished = 0;
             newSaveData.SavedPlayerStats.MonsterKilled = 0;
             newSaveData.SavedPlayerStats.NumberOfDeath = 0;
+
+            SaveData.PlayerWeaponInventory startingInventory = default;
+            startingInventory.EquippedMeleeWeapon = m_mainStateMachine.ProfileManager.StartingMeleeWeaponData.GetWeaponSaveData<MeleeWeaponData.MeleeWeaponSaveData>();
+            startingInventory.EquippedGrimoire = m_mainStateMachine.ProfileManager.StartingGrimoireData.GetWeaponSaveData<GrimoireData.GrimoireSaveData>();
+            startingInventory.EquippedBow = m_mainStateMachine.ProfileManager.StartingBowData.GetWeaponSaveData<BowData.BowSaveData>();
+
+            newSaveData.SavedPlayerWeaponInventory = startingInventory;
 
             MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveData(newSaveData);
             MOtterApplication.GetInstance().GAMEMANAGER.SaveDataManager.SaveSaveDataManager();
