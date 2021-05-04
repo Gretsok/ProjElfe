@@ -459,6 +459,11 @@ PrefabInstance:
       propertyPath: m_firstRoom
       value: 
       objectReference: {fileID: 1385010724}
+    - target: {fileID: 2249993102413726106, guid: dbdeab8ce4738f740b45742c08d31782,
+        type: 3}
+      propertyPath: m_UseGeometry
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2249993103099053211, guid: dbdeab8ce4738f740b45742c08d31782,
         type: 3}
       propertyPath: m_LocalPosition.x
