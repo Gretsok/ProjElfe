@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1171693674
   m_nameKey: BEAR_LIFESAVER_II
   m_statsToIncrease: 0
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 10
   m_animalPrefab: {fileID: 6755042990995760787, guid: 652069b7883101a4bb3eb7a65886cc8c,
     type: 3}
   m_animalIcon: {fileID: 0}

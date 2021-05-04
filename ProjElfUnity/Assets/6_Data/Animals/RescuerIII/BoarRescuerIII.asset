@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 2044907942
   m_nameKey: BOAR_RESCUER_III
   m_statsToIncrease: 5
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 3
   m_animalPrefab: {fileID: 6987027810875003429, guid: f9c89e916df40fc43b786cb2904e6c1a,
     type: 3}
   m_animalIcon: {fileID: 0}

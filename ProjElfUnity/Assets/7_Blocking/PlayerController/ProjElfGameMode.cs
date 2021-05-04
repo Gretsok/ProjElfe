@@ -1,7 +1,9 @@
 ﻿using MOtter;
 using MOtter.StatesMachine;
+using ProjElf.AnimalManagement;
 using ProjElf.CombatController;
 using ProjElf.PlayerController;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem.Users;
 
@@ -21,6 +23,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
     private float m_timeOfStart = 0;
     #endregion
 
+
     internal override void EnterStateMachine()
     {
         base.EnterStateMachine();
@@ -28,6 +31,8 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
         Cursor.lockState = CursorLockMode.Confined;
         m_timeOfStart = Time.time;
     }
+
+
 
     public override void DoUpdate()
     {
@@ -60,7 +65,9 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
         m_player.CombatController.CombatInventory.ChangeBow(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedBow);
         m_player.CombatController.CombatInventory.ChangeGrimoire(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedGrimoire);
         m_player.CombatController.CombatInventory.ChangeMeleeWeapon(MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().SavedPlayerWeaponInventory.EquippedMeleeWeapon);
+        m_player.GetComponent<PlayerStatsImprovementsManager>().ImprovePlayer(AnimalsManager.GetInstance().SavedAnimals);
     }
+
 
     internal override void ExitStateMachine()
     {

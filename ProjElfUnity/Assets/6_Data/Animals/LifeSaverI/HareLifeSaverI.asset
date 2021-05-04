@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1607425222
   m_nameKey: HARE_LIFESAVER_I
   m_statsToIncrease: 3
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.04
   m_animalPrefab: {fileID: 4348544499192393764, guid: d222a228de4841144a2626b6e0377499,
     type: 3}
   m_animalIcon: {fileID: 0}

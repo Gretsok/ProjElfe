@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1133234752
   m_nameKey: HARE_RESCUER_II
   m_statsToIncrease: 3
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.02
   m_animalPrefab: {fileID: 1279788264165048119, guid: c047a2932cdeb554cad5e8ee48917751,
     type: 3}
   m_animalIcon: {fileID: 0}

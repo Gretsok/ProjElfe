@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 1428827529
   m_nameKey: BEAR_AMG_1
   m_statsToIncrease: 0
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 20
   m_animalPrefab: {fileID: 2770954421319273736, guid: bfa22d9c6fcebf84f9a0f6e3f0da10d4,
     type: 3}
   m_animalIcon: {fileID: 0}

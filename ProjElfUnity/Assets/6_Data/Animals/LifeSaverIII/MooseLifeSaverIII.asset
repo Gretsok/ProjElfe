@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -118627309
   m_nameKey: MOOSE_LIFESAVER_III
   m_statsToIncrease: 6
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 6
   m_animalPrefab: {fileID: 6288901705381550446, guid: 3165c61afb368f3428eac80dbe3eb1c2,
     type: 3}
   m_animalIcon: {fileID: 0}

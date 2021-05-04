@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1353793177
   m_nameKey: FOX_RESCUER_III
   m_statsToIncrease: 4
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.03
   m_animalPrefab: {fileID: 7740028022130899677, guid: dbb29c3f6be099248a82193414c03e93,
     type: 3}
   m_animalIcon: {fileID: 0}

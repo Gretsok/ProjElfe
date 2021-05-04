@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 94748822
   m_nameKey: HARE_AMG_1
   m_statsToIncrease: 3
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.06
   m_animalPrefab: {fileID: 8968823516156877652, guid: 8b95dc907242c344481c370134adcf65,
     type: 3}
   m_animalIcon: {fileID: 0}

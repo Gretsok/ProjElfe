@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 946431440
   m_nameKey: DEER_LIFESAVER_II
   m_statsToIncrease: 2
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.05
   m_animalPrefab: {fileID: 1802389216333176468, guid: 23350ba28182ee440bc770c436196882,
     type: 3}
   m_animalIcon: {fileID: 0}

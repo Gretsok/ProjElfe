@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -461336120
   m_nameKey: DEER_RESCUER_II
   m_statsToIncrease: 2
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.02
   m_animalPrefab: {fileID: 3975886584305719685, guid: 2e9cba474b3218f4fbcc837c9d1311d8,
     type: 3}
   m_animalIcon: {fileID: 0}
