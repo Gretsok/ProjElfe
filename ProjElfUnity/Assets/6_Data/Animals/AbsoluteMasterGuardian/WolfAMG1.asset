@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1211835289
   m_nameKey: WOLF_AMG_1
   m_statsToIncrease: 1
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.07
   m_animalPrefab: {fileID: 7803021523966718278, guid: e522c006650aa064e987fe4e61ef1461,
     type: 3}
   m_animalIcon: {fileID: 0}

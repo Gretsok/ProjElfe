@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1365565329
   m_nameKey: WOLF_RESCUER_III
   m_statsToIncrease: 1
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.03
   m_animalPrefab: {fileID: 2717689040607247803, guid: 47f2f9ebe19d9ec4c8109ab6b7c07aca,
     type: 3}
   m_animalIcon: {fileID: 0}

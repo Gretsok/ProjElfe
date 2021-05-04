@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 1842643965
   m_nameKey: BEAR_RESCUER_III
   m_statsToIncrease: 0
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 6
   m_animalPrefab: {fileID: 7906308589984131944, guid: 7ddbeaf003becb745873e36fc5cb28df,
     type: 3}
   m_animalIcon: {fileID: 0}

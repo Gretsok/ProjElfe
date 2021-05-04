@@ -72,6 +72,20 @@ public class ProjElfUtils
         }
     }
 
+    public static bool IsStatAnInt(EPlayerStats l_playerStats)
+    {
+        switch(l_playerStats)
+        {
+            case EPlayerStats.AttackSpeed:
+            case EPlayerStats.MovementSpeed:
+            case EPlayerStats.MagicalDamageMultiplierIncrement:
+            case EPlayerStats.PhysicalDamageMultiplierIncrement:
+                return false;
+            default:
+                return true;
+        }
+    }
+
     public static string GetInSentenceSuffixForKeys()
     {
         return "_IN_SENTENCE";

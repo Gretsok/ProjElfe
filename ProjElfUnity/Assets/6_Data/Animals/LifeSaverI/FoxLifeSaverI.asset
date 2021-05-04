@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -348821001
   m_nameKey: FOX_LIFESAVER_I
   m_statsToIncrease: 4
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.04
   m_animalPrefab: {fileID: 9095740254996420962, guid: 970759f151db9704eb21359b15f0f5d7,
     type: 3}
   m_animalIcon: {fileID: 0}

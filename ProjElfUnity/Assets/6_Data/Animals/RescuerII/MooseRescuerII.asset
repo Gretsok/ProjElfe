@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 1598740048
   m_nameKey: MOOSE_RESCUER_II
   m_statsToIncrease: 6
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 2
   m_animalPrefab: {fileID: 7516572721985439114, guid: c3228df0bef21f145b1bb2d95395ce0f,
     type: 3}
   m_animalIcon: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 807742102
   m_nameKey: BOAR_LIFESAVER_III
   m_statsToIncrease: 5
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 6
   m_animalPrefab: {fileID: 1784550665444018605, guid: 1b181f186250d844eaec0d9a162c3748,
     type: 3}
   m_animalIcon: {fileID: 0}

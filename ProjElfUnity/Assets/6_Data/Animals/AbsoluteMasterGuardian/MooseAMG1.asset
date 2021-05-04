@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1458230874
   m_nameKey: MOOSE_AMG_1
   m_statsToIncrease: 6
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 7
   m_animalPrefab: {fileID: 1198429819084685314, guid: 34f4d9cdb9055c246a889af894f06a78,
     type: 3}
   m_animalIcon: {fileID: 0}

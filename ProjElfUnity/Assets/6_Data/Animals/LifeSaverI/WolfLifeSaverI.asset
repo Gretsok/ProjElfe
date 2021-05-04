@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 2056514530
   m_nameKey: WOLF_LIFESAVER_I
   m_statsToIncrease: 1
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.04
   m_animalPrefab: {fileID: 8503151327632145364, guid: e483a0c3f4b9b6a4fb1ba7f2cfa77806,
     type: 3}
   m_animalIcon: {fileID: 0}

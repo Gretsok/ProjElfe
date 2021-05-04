@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: -1866731781
   m_nameKey: FOX_AMG_1
   m_statsToIncrease: 4
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.07
   m_animalPrefab: {fileID: 7419132561822578106, guid: eedba9d558f7a3943bec9f727cba6a35,
     type: 3}
   m_animalIcon: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   m_animalDataID: 1379143034
   m_nameKey: DEER_AMG_1
   m_statsToIncrease: 2
-  m_statsToIncreaseAmount: 0
+  m_statsToIncreaseAmount: 0.07
   m_animalPrefab: {fileID: 8534458202411342143, guid: 000d4a1d3558f1843b3472ea6c3fd988,
     type: 3}
   m_animalIcon: {fileID: 0}

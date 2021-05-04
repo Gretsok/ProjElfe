@@ -16,14 +16,14 @@ namespace ProjElf.AnimalManagement
         [SerializeField]
         private EPlayerStats m_statsToIncrease = EPlayerStats.AttackSpeed;
         [SerializeField]
-        private int m_statsToIncreaseAmount = 0;
+        private float m_statsToIncreaseAmount = 0f;
         [SerializeField]
         private Animal m_animalPrefab = null;
         [SerializeField]
         private Sprite m_animalIcon = null;
 
         public string NameKey => m_nameKey;
-        public int StatToIncreaseAmount => m_statsToIncreaseAmount;
+        public float StatToIncreaseAmount => m_statsToIncreaseAmount;
         public EPlayerStats StatsToIncrease => m_statsToIncrease;
         public Animal InstantiateAnimal(Vector3 position, Quaternion rotation, Transform parent = null)
         {

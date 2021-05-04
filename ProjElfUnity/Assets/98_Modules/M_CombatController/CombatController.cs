@@ -10,11 +10,20 @@ namespace ProjElf.CombatController
         //Var
         [SerializeField] private CombatInventory m_combatInventory = null;
         private int m_lifePoints = 0;
-        private int m_maxLifePoints = 100;
-        private int m_armor = 0;
-        private int m_magicResist = 0;
-        private int m_attackSpeed = 0;
-        private int m_moveSpeed = 0;
+
+        [SerializeField]
+        protected int m_baseMaxLifePoints = 100;
+        protected int m_maxLifePoints = 100;
+        protected int m_physicalArmor = 0;
+        protected int m_magicalArmor = 0;
+        protected float m_attackSpeedBonus = 0;
+
+        protected float m_magicalDamageMultiplierIncrement = 0f;
+        protected float m_physicalDamageMultiplierIncrement = 0f;
+
+        internal float MagicalDamageMultiplierIncrement => m_magicalDamageMultiplierIncrement;
+        internal float PhysicalDamageMultiplierIncrement => m_physicalDamageMultiplierIncrement;
+
 
         public Action OnLifeReachedZero = null;
 
@@ -56,6 +65,7 @@ namespace ProjElf.CombatController
         // Start is called before the first frame update
         private void Start()
         {
+            m_maxLifePoints = m_baseMaxLifePoints;
             m_lifePoints = m_maxLifePoints;
         }
 
@@ -81,7 +91,7 @@ namespace ProjElf.CombatController
                     
                     if(damageGiverData.DamageGiver.CanDoDamage)
                     {
-                        TakeDamage(damageGiverData.DamageGiver.Damage.HitDamage);
+                        TakeDamage(damageGiverData.DamageGiver.Damage);
                     }
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
 
@@ -237,15 +247,24 @@ namespace ProjElf.CombatController
             m_isShooting = false;
         }
 
-        public void TakeDamage(int damage, CombatController attacker = null)
+        public void TakeDamage(Damage damage, CombatController attacker = null)
         {
             Debug.Log("Dealing Damage");
-            m_lifePoints -= damage;
+            m_lifePoints -= (int) (damage.HitDamage * (attacker != null ? 
+                1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
+                : 1));
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             if(m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null
             }
+        }
+
+        public void Heal(int health)
+        {
+            m_lifePoints += health;
+            m_lifePoints = Mathf.Clamp(m_lifePoints, 0, m_maxLifePoints);
+            m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
         }
     }
 }
