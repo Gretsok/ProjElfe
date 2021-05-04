@@ -28,7 +28,8 @@ namespace ProjElf.HubForest
 
         private void OnTriggerEnter(Collider other)
         {
-            m_gamemode.ActivateDunjeonSelectionState();
+            if(other.gameObject == m_gamemode.Player.gameObject)
+                m_gamemode.ActivateDunjeonSelectionState();
         }
     }
 }
