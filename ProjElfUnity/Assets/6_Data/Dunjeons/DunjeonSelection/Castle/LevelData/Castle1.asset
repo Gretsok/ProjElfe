@@ -15,7 +15,7 @@ MonoBehaviour:
   m_dunjeonName: Castle Rescuer I
   m_numberOfRoomsOnRightWay: {x: 10, y: 12}
   m_numberOfRoomsOnWrongWay: {x: 4, y: 8}
-  m_intersectionSpawningRate: {x: 2, y: 6}
+  m_intersectionSpawningRate: {x: 10, y: 12}
   m_finalRoomData: {fileID: 11400000, guid: 5608dc684bc106c44bdf53dd26ed0e8b, type: 2}
   m_rooms:
   - {fileID: 11400000, guid: bfcceaf7112836b4e87f2d547af6bfad, type: 2}
