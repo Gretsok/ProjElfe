@@ -1402,7 +1402,7 @@ MonoBehaviour:
   m_meleeWeaponSlot: {fileID: 5031545448779753617}
   m_grimoireSlot: {fileID: 7284934785617205436}
   m_bowSlot: {fileID: 7584071383888831979}
-  m_renderTextureStudioPrefab: {fileID: 8453595839482390262, guid: 5283ef9aae196014893845d3db20e525,
+  m_renderTextureStudioPrefab: {fileID: 3103294311076702445, guid: 8d58e67f0a13faa4fb122349e2654e97,
     type: 3}
   m_stockedWeaponSlotPrefab: {fileID: 1599304562597757167, guid: 83bbc26910e7e624889a68ce6c05faf4,
     type: 3}

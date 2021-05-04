@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 152788488966103619}
   - component: {fileID: 5986622212299963155}
+  - component: {fileID: 2303474562616109155}
   m_Layer: 0
   m_Name: Arrow 6
   m_TagString: Untagged
@@ -44,6 +45,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffd2c9b9d94c3a1459462aedbb10b199, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!65 &2303474562616109155
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3102910162347729183}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.1, y: 0.1, z: 0.5}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8020902534834625524
 GameObject:
   m_ObjectHideFlags: 0
@@ -53,7 +67,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3076482177969530578}
-  - component: {fileID: 1265180530727277266}
   m_Layer: 0
   m_Name: Model
   m_TagString: Untagged
@@ -76,19 +89,6 @@ Transform:
   m_Father: {fileID: 152788488966103619}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!65 &1265180530727277266
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8020902534834625524}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.5, y: 0.05, z: 0.05}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &7279364419802303441
 PrefabInstance:
   m_ObjectHideFlags: 0

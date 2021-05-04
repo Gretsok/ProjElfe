@@ -19,6 +19,16 @@ namespace ProjElf.DunjeonGameplay
         private bool m_canDropBow = false;
         [SerializeField]
         private bool m_canDropGrimoire = false;
+        [SerializeField]
+        private Animator m_animator = null;
+        [SerializeField]
+        private Light m_light = null;
+        [SerializeField]
+        private Color m_closedColor = default;
+        [SerializeField]
+        private Color m_openedColor = default;
+
+        private bool m_hasBeenOpened = false;
 
         AWeaponData.AWeaponSaveData weaponSaveData = null;
         Interactor currentInteractor = null;
@@ -26,6 +36,7 @@ namespace ProjElf.DunjeonGameplay
         private void Start()
         {
             m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
+            m_light.color = m_closedColor;
         }
 
         private void LoadWeaponsDataToGet()
@@ -83,6 +94,7 @@ namespace ProjElf.DunjeonGameplay
 
         private IEnumerator OpeningChestRoutine()
         {
+            m_hasBeenOpened = true;
             weaponSaveData = null;
             LoadWeaponsDataToGet();
             float timeOfStart = Time.time;
@@ -93,6 +105,7 @@ namespace ProjElf.DunjeonGameplay
                 {
                     Debug.LogError("COULDN'T FIND A WEAPON");
                     success = false;
+                    m_hasBeenOpened = false;
                     break;
                 }
                 yield return 0;
@@ -100,7 +113,8 @@ namespace ProjElf.DunjeonGameplay
             if(success)
             {
                 // Do stuff
-
+                m_animator.SetTrigger("Open");
+                m_light.color = m_openedColor;
                 Debug.Log(weaponSaveData);
                 if (currentInteractor != null)
                 {
@@ -111,8 +125,11 @@ namespace ProjElf.DunjeonGameplay
 
         public void DoInteraction(Interactor interactor)
         {
-            currentInteractor = interactor;
-            StartCoroutine(OpeningChestRoutine());
+            if(!m_hasBeenOpened)
+            {
+                currentInteractor = interactor;
+                StartCoroutine(OpeningChestRoutine());
+            }
         }
 
         public void StartBeingWatched()
