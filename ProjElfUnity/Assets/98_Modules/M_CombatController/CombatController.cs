@@ -67,6 +67,7 @@ namespace ProjElf.CombatController
         {
             m_maxLifePoints = m_baseMaxLifePoints;
             m_lifePoints = m_maxLifePoints;
+            m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
         }
 
         #region DamageGiver

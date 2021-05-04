@@ -9,6 +9,8 @@ namespace ProjElf.PlayerController
     {
         [SerializeField]
         private PlayerCombatController m_combatController = null;
+        [SerializeField]
+        private Player m_player = null;
 
         public void ImprovePlayer(List<RescuedAnimalData> a_rescuedAnimal)
         {
@@ -68,7 +70,7 @@ namespace ProjElf.PlayerController
 
         private void ImproveMovementSpeed(float movementSpeedIncrement)
         {
-
+            m_player.ImproveMovingSpeed(movementSpeedIncrement);
         }
 
         private void ImproveAttackSpeed(float attackSpeedIncrement)

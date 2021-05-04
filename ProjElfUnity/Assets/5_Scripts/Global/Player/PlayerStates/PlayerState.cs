@@ -13,13 +13,9 @@ namespace ProjElf.PlayerController
         protected Vector2 m_lookAroundInputs = Vector2.zero;
         #endregion
 
-        [SerializeField]
-        protected float m_movingSpeed = 5f;
 
         [SerializeField]
         protected float m_cameraSensibility = 15f;
-        [SerializeField]
-        private float m_fallSpeed = 10f;
 
         [SerializeField]
         private Vector2 m_clampedYCAmAngle = Vector2.zero;

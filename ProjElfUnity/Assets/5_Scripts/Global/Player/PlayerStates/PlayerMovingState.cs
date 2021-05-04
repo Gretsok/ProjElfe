@@ -12,8 +12,6 @@ namespace ProjElf.PlayerController
         {
             base.UpdateState();
             ManageInput();
-
-
         }
 
 
@@ -28,7 +26,7 @@ namespace ProjElf.PlayerController
         {
             base.UpdatePositionInputs();
             m_player.Velocity = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y));
-            m_player.Velocity *= m_movingSpeed;
+            m_player.Velocity *= m_player.MovingSpeed;
             m_player.CharacterAnimatorHandler.SetForwardSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).z);
             m_player.CharacterAnimatorHandler.SetRightSpeed(m_player.transform.InverseTransformDirection(m_player.Velocity).x);
         }

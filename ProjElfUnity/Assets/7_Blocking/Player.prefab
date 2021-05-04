@@ -672,9 +672,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_player: {fileID: 3496502620993785581}
-  m_movingSpeed: 5
   m_cameraSensibility: 15
-  m_fallSpeed: 10
   m_clampedYCAmAngle: {x: -45, y: 45}
   m_inAirMovementFactor: 15
 --- !u!1 &3496502620723002299
@@ -722,11 +720,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_player: {fileID: 3496502620993785581}
-  m_movingSpeed: 20
   m_cameraSensibility: 15
-  m_fallSpeed: 10
   m_clampedYCAmAngle: {x: 0, y: 0}
   m_dashDistance: 12
+  m_dashSpeedMultiplier: 4
 --- !u!1 &3496502620900274232
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +823,7 @@ MonoBehaviour:
   m_modelSightBrain: {fileID: 5889870248160287875}
   m_gravity: 14
   m_inAirDistanceFromGround: 0.5
+  m_baseMovingSpeed: 5
   m_movingState: {fileID: 3496502621213438118}
   m_inAirState: {fileID: 3496502620457651941}
   m_slidingState: {fileID: 3496502620723002296}
@@ -935,6 +933,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_combatController: {fileID: 6076565977442820730}
+  m_player: {fileID: 3496502620993785581}
 --- !u!1 &3496502621151300653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1029,9 +1028,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_nextState: {fileID: 0}
   m_player: {fileID: 3496502620993785581}
-  m_movingSpeed: 5
   m_cameraSensibility: 15
-  m_fallSpeed: 10
   m_clampedYCAmAngle: {x: -45, y: 45}
   m_jumpDelay: 1
 --- !u!1 &3496502621341617693

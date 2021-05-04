@@ -42,6 +42,11 @@ namespace ProjElf.PlayerController
         [SerializeField]
         private float m_inAirDistanceFromGround = 0.5f;
         internal float InAirDistanceFromGround => m_inAirDistanceFromGround;
+        [SerializeField]
+        private float m_baseMovingSpeed = 5f;
+        private float m_movingSpeedBonus = 0f;
+
+        public float MovingSpeed => (m_baseMovingSpeed * (1 + m_movingSpeedBonus));
 
         #region States
         [Header("Player States")]
@@ -122,6 +127,10 @@ namespace ProjElf.PlayerController
             m_modelSightBrain.StartWatchingAlongPlayerSight();
         }
 
+        internal void ImproveMovingSpeed(float movingSpeedToAdd)
+        {
+            m_movingSpeedBonus += movingSpeedToAdd;
+        }
 
         public void CleanUp()
         {
