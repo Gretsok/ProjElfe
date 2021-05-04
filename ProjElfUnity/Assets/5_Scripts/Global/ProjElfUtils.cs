@@ -59,6 +59,14 @@ public class ProjElfUtils
                 return "STAT_LIFEPOINTS";
             case EPlayerStats.MovementSpeed:
                 return "STAT_MOVEMENTSPEED";
+            case EPlayerStats.MagicalArmor:
+                return "STAT_MAGICAL_ARMOR";
+            case EPlayerStats.PhysicalArmor:
+                return "STAT_PHYSICAL_ARMOR";
+            case EPlayerStats.MagicalDamageMultiplierIncrement:
+                return "STAT_MAGICAL_DAMAGE_MULTIPLIER_INCREMENT";
+            case EPlayerStats.PhysicalDamageMultiplierIncrement:
+                return "STAT_PHYSICAL_DAMAGE_MULTIPLIER_INCREMENT";
             default:
                 return "";
         }

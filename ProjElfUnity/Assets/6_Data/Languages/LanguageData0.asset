@@ -74,6 +74,10 @@ MonoBehaviour:
     - STAT_FORCE
     - STAT_LIFEPOINTS
     - STAT_MOVEMENTSPEED
+    - STAT_MAGICAL_ARMOR
+    - STAT_PHYSICAL_ARMOR
+    - STAT_MAGICAL_DAMAGE_MULTIPLIER_INCREMENT
+    - STAT_PHYSICAL_DAMAGE_MULTIPLIER_INCREMENT
     - ANIMAL_NAME_BEAR_RESCUER_I
     - ANIMAL_NAME_BEAR_RESCUER_II
     - ANIMAL_NAME_BEAR_RESCUER_III
@@ -296,6 +300,10 @@ MonoBehaviour:
     - Force
     - Life Points
     - Movement speed
+    - Magical Armor
+    - Physical Armor
+    - Magical Damage Multiplier Increment
+    - Physical Damage Multiplier Increment
     - ANIMAL_NAME_BEAR_RESCUER_I
     - ANIMAL_NAME_BEAR_RESCUER_II
     - ANIMAL_NAME_BEAR_RESCUER_III

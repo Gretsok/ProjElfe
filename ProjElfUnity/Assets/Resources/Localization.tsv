@@ -16,7 +16,7 @@ HOUR	hour 	heure	hora
 MINUTES	minutes	minutes	minutos
 MINUTE	minute	minute	minuto
 HAVE_NOT_PLAYED_YET	Have not played it	Pas encore joué	No han jugado todavía
-GENERATE_RANDOM_NAME	Generate random name	Générer un nom aléatoire	
+GENERATE_RANDOM_NAME	Generate random name	Générer un nom aléatoire	GENERATE_RANDOM_NAME
 CREATE_NEW_CHARACTER	Create new character	Créer un nouveau personnage	Crear nuevo personaje
 OPTIONS_GAMEPLAY	Gameplay	Jouabilité	Jugabilidad
 OPTIONS_CONFIGURATION	Configuration	Configuration	Configuración
@@ -58,6 +58,10 @@ ANIMAL_NAME_BOB_IN_SENTENCE	a Bob	un Bob	un Bob
 STAT_FORCE	Force	Force	Fuerza
 STAT_LIFEPOINTS	Life Points	Points de vie	Puntos de vida
 STAT_MOVEMENTSPEED	Movement speed	Vitesse de déplacement	Velocidad de movimiento
+STAT_MAGICAL_ARMOR	Magical Armor	Armure magique	STAT_MAGICAL_ARMOR
+STAT_PHYSICAL_ARMOR	Physical Armor	Armure physique	STAT_PHYSICAL_ARMOR
+STAT_MAGICAL_DAMAGE_MULTIPLIER_INCREMENT	Magical Damage Multiplier Increment	Incrément de multiplicateur de dommage magique	STAT_MAGICAL_DAMAGE_MULTIPLIER_INCREMENT
+STAT_PHYSICAL_DAMAGE_MULTIPLIER_INCREMENT	Physical Damage Multiplier Increment	Incrément de multiplicateur de dommage physique	STAT_PHYSICAL_DAMAGE_MULTIPLIER_INCREMENT
 ANIMAL_NAME_BEAR_RESCUER_I	ANIMAL_NAME_BEAR_RESCUER_I	ANIMAL_NAME_BEAR_RESCUER_I	ANIMAL_NAME_BEAR_RESCUER_I
 ANIMAL_NAME_BEAR_RESCUER_II	ANIMAL_NAME_BEAR_RESCUER_II	ANIMAL_NAME_BEAR_RESCUER_II	ANIMAL_NAME_BEAR_RESCUER_II
 ANIMAL_NAME_BEAR_RESCUER_III	ANIMAL_NAME_BEAR_RESCUER_III	ANIMAL_NAME_BEAR_RESCUER_III	ANIMAL_NAME_BEAR_RESCUER_III
