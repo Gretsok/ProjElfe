@@ -32,7 +32,7 @@ public class FlowTest : MainStatesMachine
             Debug.Log("On se fout de ma gueule");
         }
         PlayerInputsActions playerActions = (PlayerInputsActions) actions;
-        (MOtter.MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0) as PlayerInputsActions).Generic.Jump.performed += Jump_performed;
+        MOtter.MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0).FindActionMap("Generic").FindAction("Jump").performed += Jump_performed;
     }
 
     private void Jump_performed(InputAction.CallbackContext obj)
@@ -43,7 +43,7 @@ public class FlowTest : MainStatesMachine
 
     internal override void ExitStateMachine()
     {
-        (MOtter.MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0) as PlayerInputsActions).Generic.Jump.performed -= Jump_performed;
+        MOtter.MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0).FindActionMap("Generic").FindAction("Jump").performed -= Jump_performed;
         base.ExitStateMachine();
     }
 }

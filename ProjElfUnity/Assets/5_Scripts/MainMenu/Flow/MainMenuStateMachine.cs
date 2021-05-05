@@ -38,7 +38,7 @@ namespace ProjElf.MainMenu
 
         public override IEnumerator LoadAsync()
         {
-            m_actions = new PlayerInputsActions();
+            m_actions = MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0);
             m_actions.Enable();
             return base.LoadAsync();
         }
@@ -54,7 +54,6 @@ namespace ProjElf.MainMenu
         {
             base.ExitStateMachine();
             m_actions.Disable();
-            m_actions.Dispose();
         }
 
         public void LoadHub(SaveData saveDataToUse)

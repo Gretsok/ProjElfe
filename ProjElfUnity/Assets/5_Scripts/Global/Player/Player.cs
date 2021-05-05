@@ -5,6 +5,7 @@ using MOtter.StatesMachine;
 using ProjElf.Interaction;
 using MOtter;
 using ProjElf.CombatController;
+using UnityEngine.InputSystem;
 
 namespace ProjElf.PlayerController
 {
@@ -69,8 +70,8 @@ namespace ProjElf.PlayerController
 
         internal Vector3 Velocity = Vector3.zero;
 
-        private PlayerInputsActions m_actions = null;
-        public PlayerInputsActions Actions => m_actions;
+        private InputActionAsset m_actions = null;
+        public InputActionAsset Actions => m_actions;
 
         #region IsBusy
         private bool m_isBusy = false;
@@ -112,7 +113,7 @@ namespace ProjElf.PlayerController
 
         private void Awake()
         {
-            m_actions = new PlayerInputsActions();
+            m_actions = MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0);
         }
 
         private void Start()
@@ -283,18 +284,17 @@ namespace ProjElf.PlayerController
         protected void SetUpInput()
         {
             m_actions.Enable();
-            m_actions.UI.Back.performed += Pause_performed;
+            m_actions.FindActionMap("UI").FindAction("Back").performed += Pause_performed;
         }
 
-        private void Pause_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+        private void Pause_performed(InputAction.CallbackContext obj)
         {
             m_gamemode.Pause();            
         }
 
         protected void CleanUpInput()
         {
-
-            m_actions.UI.Back.performed -= Pause_performed;
+            m_actions.FindActionMap("UI").FindAction("Back").performed -= Pause_performed;
             m_actions.Disable();
         }
         #endregion

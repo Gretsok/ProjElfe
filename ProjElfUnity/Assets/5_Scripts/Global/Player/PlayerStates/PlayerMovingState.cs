@@ -77,18 +77,18 @@ namespace ProjElf.PlayerController
         internal override void SetUpInputs()
         {
             base.SetUpInputs();
-            m_player.Actions.Generic.Slide.performed += Slide_performed;
-            m_player.Actions.Generic.Jump.performed += Jump_performed;
-            m_player.Actions.Generic.PrimaryAttack.performed += PrimaryAttack_performed;
-            m_player.Actions.Generic.PrimaryAttack.canceled += PrimaryAttack_canceled;
+            m_player.Actions.FindActionMap("Generic").FindAction("Slide").performed += Slide_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("Jump").performed += Jump_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").performed += PrimaryAttack_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").canceled += PrimaryAttack_canceled;
            /* m_player.Actions.Generic.SecondaryAttack.performed += SecondaryAttack_performed;
             m_player.Actions.Generic.SecondaryAttack.canceled += SecondaryAttack_canceled;*/
-            m_player.Actions.Generic.Interact.performed += Interact_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("Interact").performed += Interact_performed;
             /*m_player.Actions.Generic.SelectMeleeWeapon.performed += SelectMeleeWeapon_performed;
             m_player.Actions.Generic.SelectBow.performed += SelectBow_performed;
             m_player.Actions.Generic.SelectGrimoire.performed += SelectGrimoire_performed;*/
-            m_player.Actions.Generic.SelectNextWeapon.performed += SelectNextWeapon_performed;
-            m_player.Actions.Generic.SelectPreviousWeapon.performed += SelectPreviousWeapon_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("SelectNextWeapon").performed += SelectNextWeapon_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("SelectPreviousWeapon").performed += SelectPreviousWeapon_performed;
         }
 
         private void SelectPreviousWeapon_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -118,19 +118,18 @@ namespace ProjElf.PlayerController
 
         internal override void CleanUpInputs()
         {
-            m_player.Actions.Generic.Slide.performed -= Slide_performed;
-            m_player.Actions.Generic.Jump.performed -= Jump_performed;
-            m_player.Actions.Generic.PrimaryAttack.performed -= PrimaryAttack_performed;
-            m_player.Actions.Generic.PrimaryAttack.canceled -= PrimaryAttack_canceled;
-            /*m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
-            m_player.Actions.Generic.SecondaryAttack.canceled -= SecondaryAttack_canceled;*/
-            m_player.Actions.Generic.Interact.performed -= Interact_performed;
-
+            m_player.Actions.FindActionMap("Generic").FindAction("Slide").performed -= Slide_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("Jump").performed -= Jump_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").performed -= PrimaryAttack_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").canceled -= PrimaryAttack_canceled;
+            /* m_player.Actions.Generic.SecondaryAttack.performed -= SecondaryAttack_performed;
+             m_player.Actions.Generic.SecondaryAttack.canceled -= SecondaryAttack_canceled;*/
+            m_player.Actions.FindActionMap("Generic").FindAction("Interact").performed -= Interact_performed;
             /*m_player.Actions.Generic.SelectMeleeWeapon.performed -= SelectMeleeWeapon_performed;
             m_player.Actions.Generic.SelectBow.performed -= SelectBow_performed;
             m_player.Actions.Generic.SelectGrimoire.performed -= SelectGrimoire_performed;*/
-            m_player.Actions.Generic.SelectNextWeapon.performed -= SelectNextWeapon_performed;
-            m_player.Actions.Generic.SelectPreviousWeapon.performed -= SelectPreviousWeapon_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("SelectNextWeapon").performed -= SelectNextWeapon_performed;
+            m_player.Actions.FindActionMap("Generic").FindAction("SelectPreviousWeapon").performed -= SelectPreviousWeapon_performed;
             base.CleanUpInputs();
         }
         #endregion

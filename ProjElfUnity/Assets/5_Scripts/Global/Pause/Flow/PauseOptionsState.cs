@@ -13,7 +13,7 @@ public class PauseOptionsState : PauseMainMenuState
         base.EnterState();
         m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
         m_gamemode.Actions.Enable();
-        m_gamemode.Actions.UI.Back.performed += Back_performed;
+        m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed += Back_performed;
         EventSystem.current.SetSelectedGameObject(GetPanel<OptionsMenuPanel>().MusicVolumeWidget.gameObject);
     }
 
@@ -24,7 +24,7 @@ public class PauseOptionsState : PauseMainMenuState
 
     public override void ExitState()
     {
-        m_gamemode.Actions.UI.Back.performed -= Back_performed;
+        m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed -= Back_performed;
         base.ExitState();
     }
 }

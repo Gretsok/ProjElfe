@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine.InputSystem;
 
 public interface IProjElfMainStateMachine
 {
-    PlayerInputsActions Actions { get; }
+    InputActionAsset Actions { get; }
 }

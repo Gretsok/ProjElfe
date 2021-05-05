@@ -13,6 +13,11 @@ namespace MOtter.PlayersManagement
 
         public List<PlayerProfile> PlayerProfiles => m_instantiatedPlayerProfiles;
 
+        private void Awake()
+        {
+            AddNewPlayer();
+        }
+
         public PlayerProfile AddNewPlayer()
         {
             PlayerProfile newPlayer = Instantiate(m_playerProfilePrefab, transform);
@@ -41,7 +46,7 @@ namespace MOtter.PlayersManagement
             return newPlayer;
         }
 
-        public IInputActionCollection GetActions(int playerIndex)
+        public InputActionAsset GetActions(int playerIndex)
         {
             return PlayerProfiles[playerIndex].Actions;
         }

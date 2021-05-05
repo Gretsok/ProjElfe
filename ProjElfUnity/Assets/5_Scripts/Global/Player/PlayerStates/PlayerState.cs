@@ -1,5 +1,6 @@
 ﻿using MOtter.StatesMachine;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace ProjElf.PlayerController
 {
@@ -11,6 +12,8 @@ namespace ProjElf.PlayerController
         #region Inputs Attributes
         protected Vector2 m_movementInputs = Vector2.zero;
         protected Vector2 m_lookAroundInputs = Vector2.zero;
+        protected InputAction m_moveInputAction = null;
+        protected InputAction m_lookAroundAction = null;
         #endregion
 
 
@@ -22,7 +25,8 @@ namespace ProjElf.PlayerController
 
         internal virtual void SetUpInputs()
         {
-            
+            m_moveInputAction = m_player.Actions.FindActionMap("Generic").FindAction("Move");
+            m_lookAroundAction = m_player.Actions.FindActionMap("Generic").FindAction("LookAround");
         }
 
         internal virtual void CleanUpInputs()
@@ -32,8 +36,8 @@ namespace ProjElf.PlayerController
 
         protected void ManageInput()
         {
-            m_movementInputs = m_player.Actions.Generic.Move.ReadValue<Vector2>();
-            m_lookAroundInputs = m_player.Actions.Generic.LookAround.ReadValue<Vector2>();
+            m_movementInputs = m_moveInputAction.ReadValue<Vector2>();
+            m_lookAroundInputs = m_lookAroundAction.ReadValue<Vector2>();
         }
 
         protected virtual void UpdatePositionInputs()

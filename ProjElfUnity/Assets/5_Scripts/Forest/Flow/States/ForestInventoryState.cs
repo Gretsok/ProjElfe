@@ -221,19 +221,19 @@ namespace ProjElf.HubForest
         private void SetUpInputs()
         {
             m_gamemode.Actions.Enable();
-            m_gamemode.Actions.UI.Back.started += Back_performed;
-            m_gamemode.Actions.Generic.PrimaryAttack.started += Sell_CurrentItem;
-            m_gamemode.Actions.Generic.SecondaryAttack.started += Reroll_CurrentItem;
-            m_gamemode.Actions.UI.Confirm.started += Confirm_performed;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started += Back_performed;
+            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started += Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started += Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started += Confirm_performed;
         }
 
 
         private void CleanUpInputs()
         {
-            m_gamemode.Actions.UI.Back.started -= Back_performed;
-            m_gamemode.Actions.Generic.PrimaryAttack.started -= Sell_CurrentItem;
-            m_gamemode.Actions.Generic.SecondaryAttack.started -= Reroll_CurrentItem;
-            m_gamemode.Actions.UI.Confirm.started -= Confirm_performed;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started -= Back_performed;
+            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started -= Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started -= Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started -= Confirm_performed;
             m_gamemode.Actions.Disable();
         }
         #endregion

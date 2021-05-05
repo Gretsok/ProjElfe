@@ -17,7 +17,7 @@ namespace MOtter.PlayersManagement
 
         public Action<EDeviceType> OnDeviceTypeChanged = null;
 
-        public IInputActionCollection Actions => m_playerInput.user.actions;
+        public InputActionAsset Actions => m_playerInput.actions;
 
         public void Init(int index)
         {

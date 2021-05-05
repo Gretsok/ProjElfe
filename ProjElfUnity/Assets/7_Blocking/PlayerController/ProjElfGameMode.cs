@@ -5,6 +5,7 @@ using ProjElf.CombatController;
 using ProjElf.PlayerController;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Users;
 
 public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
@@ -17,7 +18,7 @@ public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
     [SerializeField]
     private Transform m_playerPositionSpawnPoint = null;
 
-    public PlayerInputsActions Actions => m_player.Actions;
+    public InputActionAsset Actions => m_player.Actions;
 
     #region Passing Time
     private float m_timeOfStart = 0;

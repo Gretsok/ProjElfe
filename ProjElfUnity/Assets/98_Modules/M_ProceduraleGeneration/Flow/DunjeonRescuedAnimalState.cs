@@ -12,7 +12,7 @@ namespace ProjElf.DunjeonGameplay
             base.EnterState();
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
             m_gamemode.Actions.Enable();
-            m_gamemode.Actions.UI.Confirm.performed += Confirm_performed;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").performed += Confirm_performed;
             GetPanel<RescuedAnimalPanel>().Inflate(m_gamemode.AnimalDataToRescue);
         }
 
@@ -23,7 +23,7 @@ namespace ProjElf.DunjeonGameplay
 
         public override void ExitState()
         {
-            m_gamemode.Actions.UI.Confirm.performed -= Confirm_performed;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").performed -= Confirm_performed;
             m_gamemode.Actions.Disable();
             base.ExitState();
         }
