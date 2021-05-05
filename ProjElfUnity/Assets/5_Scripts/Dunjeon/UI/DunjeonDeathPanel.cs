@@ -27,7 +27,7 @@ namespace ProjElf.DunjeonGameplay
             {
                 m_rescuedAnimalsText.SetFormatter((text, localizer) =>
                 {
-                    localizer.TextTarget.text = string.Format(text, (a_rescuedAnimalsData.Count + 1));
+                    localizer.TextTarget.text = string.Format(text, (a_rescuedAnimalsData.Count));
                 });
             }
         }

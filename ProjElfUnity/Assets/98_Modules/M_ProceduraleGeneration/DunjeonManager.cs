@@ -55,7 +55,7 @@ namespace ProjElf.ProceduraleGeneration
 
         }
 
-        internal void ActivateRoomsAroundRoom(DunjeonRoom room)
+        internal void ActivateRoomsAroundRoom(DunjeonRoom room, int straightDistanceToActivate = 3)
         {
             for(int i = 0; i < RoomsToUpdate.Count; ++i)
             {
@@ -65,52 +65,56 @@ namespace ProjElf.ProceduraleGeneration
             RoomsToUpdate.Add(room);
 
             room.ActivateRoom();
-            try
+            for(int i = 1; i <= straightDistanceToActivate; ++i)
             {
-                if(room.CanGoNorth || room.RoomOrientation == ERoomOrientation.South)
+                try
                 {
-                    m_instantiatedRoomsGrid[room.PosX][room.PosY + 1].ActivateRoom();
-                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY + 1]);
+                    if (room.CanGoNorth || room.RoomOrientation == ERoomOrientation.South)
+                    {
+                        m_instantiatedRoomsGrid[room.PosX][room.PosY + i].ActivateRoom();
+                        RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY + i]);
+                    }
+
                 }
-                    
-            }catch(System.Exception){}
-            try
-            {
-                if(room.CanGoEast || room.RoomOrientation == ERoomOrientation.West)
+                catch (System.Exception) { }
+                try
                 {
-                    m_instantiatedRoomsGrid[room.PosX + 1][room.PosY].ActivateRoom();
-                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX + 1][room.PosY]);
+                    if (room.CanGoEast || room.RoomOrientation == ERoomOrientation.West)
+                    {
+                        m_instantiatedRoomsGrid[room.PosX + i][room.PosY].ActivateRoom();
+                        RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX + i][room.PosY]);
+                    }
+
                 }
-                    
+                catch (System.Exception) { }
+                try
+                {
+                    if (room.CanGoSouth || room.RoomOrientation == ERoomOrientation.North)
+                    {
+                        m_instantiatedRoomsGrid[room.PosX][room.PosY - i].ActivateRoom();
+                        RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY - i]);
+                    }
+
+                }
+                catch (System.Exception) { }
+                try
+                {
+                    if (room.CanGoWest || room.RoomOrientation == ERoomOrientation.East)
+                    {
+                        m_instantiatedRoomsGrid[room.PosX - i][room.PosY].ActivateRoom();
+                        RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX - i][room.PosY]);
+                    }
+
+                }
+                catch (System.Exception) { }
             }
-            catch (System.Exception) { }
-            try
-            {
-                if(room.CanGoSouth || room.RoomOrientation == ERoomOrientation.North)
-                {
-                    m_instantiatedRoomsGrid[room.PosX][room.PosY - 1].ActivateRoom();
-                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX][room.PosY - 1]);
-                }
-                    
-            }
-            catch (System.Exception) { }
-            try
-            {
-                if(room.CanGoWest || room.RoomOrientation == ERoomOrientation.East)
-                {
-                    m_instantiatedRoomsGrid[room.PosX - 1][room.PosY].ActivateRoom();
-                    RoomsToUpdate.Add(m_instantiatedRoomsGrid[room.PosX - 1][room.PosY]);
-                }
-                    
-            }
-            catch (System.Exception) { }
+            
         }
 
         internal void StartDunjeonGeneration()
         {
             if(!m_generationStarted)
             {
-                Random.InitState((new System.Random()).Next(0, 1000000));
                 Debug.Log("Generating Dunjeon");
                 m_generatingRoomsRoomIndex = 0;
                 m_intersectionSpawningRate = m_currentDunjeonData.GetIntersectionSpawningRate();
