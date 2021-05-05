@@ -26,6 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 253f73a204cc6b3458b1847371a3d69d, type: 2}
   - {fileID: 11400000, guid: cdf86db4dcfe62d4a97c23621e2137f6, type: 2}
   - {fileID: 11400000, guid: bc9c223fff56ab7499d6f6c48240b597, type: 2}
+  - {fileID: 11400000, guid: e74f78f5ebf28c44fbfc037af7f2de2d, type: 2}
+  - {fileID: 11400000, guid: 5acafbbd38d2eb54bb4b1bcc0bbb7bc0, type: 2}
   m_dunjeonDifficulty: 0
   m_dunjeonType: 1
   m_dunjeonIcon: {fileID: 0}

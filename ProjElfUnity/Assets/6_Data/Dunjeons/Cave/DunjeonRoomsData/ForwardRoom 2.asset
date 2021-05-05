@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e10dd6863a0a14a4ab54422e595848ac, type: 3}
-  m_Name: ForwardRoom
+  m_Name: ForwardRoom 2
   m_EditorClassIdentifier: 
-  m_roomPrefab: {fileID: 9030514723310695273, guid: 9ac4100922ce4994abc2aaaa05e63b2b,
+  m_roomPrefab: {fileID: 692901625090501154, guid: 37d95d01d3f17204bb65d39465a5e41c,
     type: 3}
   m_ennemiesToSpawn:
   - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,

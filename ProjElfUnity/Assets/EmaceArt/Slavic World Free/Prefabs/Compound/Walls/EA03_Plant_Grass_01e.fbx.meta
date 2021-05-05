@@ -1,9 +1,14 @@
 fileFormatVersion: 2
 guid: c3f5ebd294edb9e468222b22e0edd694
 ModelImporter:
-  serializedVersion: 19300
+  serializedVersion: 19301
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: EA02_LPNP-Slavika_Colorsheet_v1
+    second: {fileID: 2100000, guid: 953d3192356053f479f39aeb9eb960b8, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
@@ -46,6 +51,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    fileIdsGeneration: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1

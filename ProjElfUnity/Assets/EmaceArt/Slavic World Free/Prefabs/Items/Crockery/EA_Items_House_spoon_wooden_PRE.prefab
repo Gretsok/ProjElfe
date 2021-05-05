@@ -169,7 +169,6 @@ GameObject:
   - component: {fileID: 7592081127316883373}
   - component: {fileID: 7592081127316113295}
   - component: {fileID: 7592081127314982223}
-  - component: {fileID: 469706258}
   m_Layer: 0
   m_Name: EA_Items_House_soon_wooden_LOD0
   m_TagString: Untagged
@@ -238,19 +237,6 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!65 &469706258
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7592081127316921229}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 0.06812911, y: 0.028962836, z: 0.31366655}
-  m_Center: {x: -0.000000007450581, y: 0.014481414, z: -0.045070037}
 --- !u!1 &7592081127316921231
 GameObject:
   m_ObjectHideFlags: 0
