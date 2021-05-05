@@ -284,7 +284,7 @@ namespace ProjElf.PlayerController
         protected void SetUpInput()
         {
             m_actions.Enable();
-            m_actions.FindActionMap("UI").FindAction("Back").performed += Pause_performed;
+            m_actions.FindActionMap("UI").FindAction("Pause").performed += Pause_performed;
         }
 
         private void Pause_performed(InputAction.CallbackContext obj)
@@ -294,8 +294,7 @@ namespace ProjElf.PlayerController
 
         protected void CleanUpInput()
         {
-            m_actions.FindActionMap("UI").FindAction("Back").performed -= Pause_performed;
-            m_actions.Disable();
+            m_actions.FindActionMap("UI").FindAction("Pause").performed -= Pause_performed;
         }
         #endregion
     }

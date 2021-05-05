@@ -3,10 +3,8 @@ using MOtter.StatesMachine;
 using ProjElf.AnimalManagement;
 using ProjElf.CombatController;
 using ProjElf.PlayerController;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 public class ProjElfGameMode : PauseableStateMachine, IProjElfMainStateMachine
 {
