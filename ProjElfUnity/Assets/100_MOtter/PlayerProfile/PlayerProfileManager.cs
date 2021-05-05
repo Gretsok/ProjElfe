@@ -58,7 +58,8 @@ namespace MOtter.PlayersManagement
 
         public void RemovePlayer(PlayerProfile playerProfile)
         {
-
+            playerProfile.Clear();
+            Destroy(playerProfile.gameObject);
         }
 
         public PlayerProfile GetPlayerByIndex(int index)

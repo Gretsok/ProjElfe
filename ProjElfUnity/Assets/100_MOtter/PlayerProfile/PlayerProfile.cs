@@ -1,7 +1,6 @@
 ﻿using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.InputSystem.Users;
 
 namespace MOtter.PlayersManagement
 {
@@ -22,13 +21,15 @@ namespace MOtter.PlayersManagement
         public void Init(int index)
         {
             m_index = index;
-
+            m_playerInput.onControlsChanged += M_playerInput_onControlsChanged;
         }
 
-        private void Update()
+        private void M_playerInput_onControlsChanged(PlayerInput a_playerInput)
         {
-           // Debug.Log(GetCurrentDeviceType());
+            Debug.Log($"Control Scheme changed : {a_playerInput.currentControlScheme}");
+            OnDeviceTypeChanged?.Invoke(GetCurrentDeviceType());
         }
+
 
         public EDeviceType GetCurrentDeviceType()
         {
@@ -45,6 +46,7 @@ namespace MOtter.PlayersManagement
 
         public void Clear()
         {
+            m_playerInput.onControlsChanged -= M_playerInput_onControlsChanged;
         }
 
     }
