@@ -1,10 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using ProjElf.IndependantObject;
+using Tween;
 using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Grimoire : AWeapon
+    public class Grimoire : AWeapon, IndependantObject.IndependantObject
     {
         //Var 
         private float m_projectileSpeed = 0f;
@@ -16,6 +16,9 @@ namespace ProjElf.CombatController
         [SerializeField]
         private Animator m_animator = null;
         private int ISOPEN = Animator.StringToHash("IsOpen");
+
+        [SerializeField]
+        private ATween m_tweener = null;
 
         public Transform PosMagicSpell => posMagicSpell;
         public void InitGrimoire(GrimoireData.GrimoireSaveData grimoireToInit, CombatController Owner)
@@ -57,13 +60,37 @@ namespace ProjElf.CombatController
         {
             base.OnEquipped();
             m_animator?.SetBool(ISOPEN, true);
+            m_tweener.StartTween();
+            m_lastPosition = transform.position;
+            IndependantObjectManager.Instance.RegisterNewIndependantObject(this);
         }
 
         internal override void OnUnequipped()
         {
             base.OnUnequipped();
             m_animator?.SetBool(ISOPEN, false);
+            m_tweener.StopAllAttachedTweens(ATween.EStopType.ResetToBeginning);
+            IndependantObjectManager.Instance.UnregisterIndependantObject(this);
         }
 
+        private Vector3 m_lastPosition = default;
+        public void DoUpdate()
+        {
+            transform.localPosition = Vector3.Lerp(Vector3.back, Vector3.zero, 2 * Time.deltaTime);
+
+
+            m_lastPosition = transform.position;
+        }
+
+        public void DoFixedUpdate()
+        {
+
+        }
+
+        
+        public void DoLateUpdate()
+        {
+
+        }
     }
 }

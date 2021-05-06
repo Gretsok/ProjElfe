@@ -31,6 +31,25 @@ Transform:
   m_Father: {fileID: 2490547363032297819}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7582327608657988802
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1072391152618101386}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e28856fa9454e824097e2695fbb7523a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3829200998776777694
 GameObject:
   m_ObjectHideFlags: 0
@@ -41,6 +60,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2490547363032297819}
   - component: {fileID: -8817669573266368139}
+  - component: {fileID: 8724073579716862521}
   m_Layer: 0
   m_Name: Grimoire2
   m_TagString: Untagged
@@ -56,7 +76,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3829200998776777694}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.5369192, y: -1.4974918, z: 5.102129}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 5997393160759472088}
@@ -78,25 +98,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   posMagicSpell: {fileID: 0}
   m_animator: {fileID: 7582327608657988802}
---- !u!95 &7582327608657988802
-Animator:
-  serializedVersion: 3
+  m_tweener: {fileID: 8724073579716862521}
+--- !u!114 &8724073579716862521
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1072391152618101386}
+  m_GameObject: {fileID: 3829200998776777694}
   m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: e28856fa9454e824097e2695fbb7523a, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 733615b0d21457b4cab4c5a6d92be603, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 0
+  m_tweenDuration: 3
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalPosition: {x: 0, y: 0, z: 0}
+  m_finalLocalPosition: {x: 0, y: 0.3, z: 0}
 --- !u!1001 &7234529963233467415
 PrefabInstance:
   m_ObjectHideFlags: 0

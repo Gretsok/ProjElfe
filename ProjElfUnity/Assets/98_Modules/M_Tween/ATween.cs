@@ -90,7 +90,7 @@ namespace Tween
 
         public void StartTween(bool forward = true)
         {
-            if(!m_isPlaying)
+            if(!m_isPlaying && Application.isPlaying)
             {
                 Play(forward);
             }
