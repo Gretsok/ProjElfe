@@ -13,6 +13,10 @@ namespace ProjElf.CombatController
         private CombatController m_owner = null;
         [SerializeField] private Transform posMagicSpell = null;
 
+        [SerializeField]
+        private Animator m_animator = null;
+        private int ISOPEN = Animator.StringToHash("IsOpen");
+
         public Transform PosMagicSpell => posMagicSpell;
         public void InitGrimoire(GrimoireData.GrimoireSaveData grimoireToInit, CombatController Owner)
         {
@@ -46,6 +50,20 @@ namespace ProjElf.CombatController
         internal void GrimoireAttack(Vector3 direction)//aspd du joueur à rajouter
         {
             MagicSpellProjectile newProjectile = InstantiateInitializedProjectile(direction);
+            
         }
+
+        internal override void OnEquipped()
+        {
+            base.OnEquipped();
+            m_animator?.SetBool(ISOPEN, true);
+        }
+
+        internal override void OnUnequipped()
+        {
+            base.OnUnequipped();
+            m_animator?.SetBool(ISOPEN, false);
+        }
+
     }
 }

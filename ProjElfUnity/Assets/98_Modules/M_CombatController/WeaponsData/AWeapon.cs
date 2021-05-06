@@ -20,6 +20,16 @@ namespace ProjElf.CombatController
 
         public Damage Damage => m_damage;
 
+        internal virtual void OnEquipped()
+        {
+
+        }
+
+        internal virtual void OnUnequipped()
+        {
+
+        }
+
     }
 }
 
