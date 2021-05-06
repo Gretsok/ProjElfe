@@ -32,6 +32,8 @@ namespace ProjElf.AnimalManagement
             newAnimal.AnimalData = this;
             return newAnimal;
         }
+        public Animal AnimalPrefab => m_animalPrefab;
+
         public Sprite AnimalIcon => m_animalIcon;
 
 

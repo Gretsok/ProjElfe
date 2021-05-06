@@ -25,7 +25,7 @@ namespace ProjElf.HubForest
         private CurrentWeaponSlot m_selectedCurrentWeaponSlot = null;
 
         [SerializeField]
-        private WeaponRenderTextureStudio m_renderTextureStudioPrefab = null;
+        private RenderTextureStudio m_renderTextureStudioPrefab = null;
 
         [SerializeField]
         private StockedWeaponSlot m_stockedWeaponSlotPrefab = null;
@@ -56,19 +56,19 @@ namespace ProjElf.HubForest
 
         public void InflateCurrentMeleeWeapon(MeleeWeaponData weaponData)
         {
-            WeaponRenderTextureStudio renderStudio = Instantiate<WeaponRenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(200, -1000, 200), Quaternion.identity);
+            RenderTextureStudio renderStudio = Instantiate<RenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(200, -1000, 200), Quaternion.identity);
             m_meleeWeaponSlot.Inflate(weaponData, renderStudio);
         }
 
         public void InflateCurrentGrimoire(GrimoireData grimoireData)
         {
-            WeaponRenderTextureStudio renderStudio = Instantiate<WeaponRenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(0, -1000, 200), Quaternion.identity);
+            RenderTextureStudio renderStudio = Instantiate<RenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(0, -1000, 200), Quaternion.identity);
             m_grimoireSlot.Inflate(grimoireData, renderStudio);
         }
 
         public void InflateCurrentBow(BowData bowData)
         {
-            WeaponRenderTextureStudio renderStudio = Instantiate<WeaponRenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(-200, -1000, 200), Quaternion.identity);
+            RenderTextureStudio renderStudio = Instantiate<RenderTextureStudio>(m_renderTextureStudioPrefab, new Vector3(-200, -1000, 200), Quaternion.identity);
             m_bowSlot.Inflate(bowData, renderStudio);
         }
 

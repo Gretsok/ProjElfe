@@ -1,9 +1,6 @@
-﻿using ProjElf.CombatController;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
-public class WeaponRenderTextureStudio : MonoBehaviour
+public class RenderTextureStudio : MonoBehaviour
 {
     [SerializeField]
     private Transform m_spawnPoint = null;
@@ -13,10 +10,10 @@ public class WeaponRenderTextureStudio : MonoBehaviour
     [SerializeField]
     private float m_rotationSpeed = 90f;
 
-    public void Inflate(AWeaponData weaponData, RenderTexture renderTexture)
+    public void Inflate(GameObject objectToShoot, RenderTexture renderTexture)
     {
         m_camerea.targetTexture = renderTexture;
-        Instantiate(weaponData.WeaponPrefab, m_spawnPoint.position, Quaternion.identity, m_spawnPoint);
+        Instantiate(objectToShoot, m_spawnPoint.position, Quaternion.identity, m_spawnPoint);
     }
 
     private void Update()

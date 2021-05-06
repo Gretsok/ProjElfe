@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 6794391499075458608}
   - component: {fileID: 3103294311076702445}
   m_Layer: 0
-  m_Name: Weapon Render studio
+  m_Name: Render studio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

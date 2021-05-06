@@ -13,6 +13,9 @@ namespace ProjElf.DunjeonGameplay
         [SerializeField]
         private Image m_animalIconeImage = null;
 
+        [SerializeField]
+        private RescuedAnimalPreview m_rescuedAnimalPreview = null;
+
         public void Inflate(AnimalData animalData)
         {
             m_animalSavedLocalizer.SetFormatter((text, localizer) =>
@@ -20,6 +23,7 @@ namespace ProjElf.DunjeonGameplay
                 localizer.TextTarget.text = string.Format(text, MOtter.MOtterApplication.GetInstance().LOCALIZATION.Localize(animalData.NameKey + ProjElfUtils.GetInSentenceSuffixForKeys()));
             });
             m_animalIconeImage.sprite = animalData.AnimalIcon;
+            m_rescuedAnimalPreview.Inflate(animalData);
         }
     }
 }

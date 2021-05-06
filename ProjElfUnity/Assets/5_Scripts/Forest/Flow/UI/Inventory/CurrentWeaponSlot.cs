@@ -10,7 +10,7 @@ namespace ProjElf.HubForest
         private RawImage m_rawImgSlot = null;
         [SerializeField]
         private RenderTexture m_renderTexture = null;
-        private WeaponRenderTextureStudio m_renderTextureStudio = null;
+        private RenderTextureStudio m_renderTextureStudio = null;
 
         [SerializeField]
         private Image m_selectedCover = null;
@@ -21,10 +21,10 @@ namespace ProjElf.HubForest
             Unselect();
         }
 
-        public void Inflate(AWeaponData weaponData, WeaponRenderTextureStudio renderTextureStudio)
+        public void Inflate(AWeaponData weaponData, RenderTextureStudio renderTextureStudio)
         {
             m_renderTextureStudio = renderTextureStudio;
-            m_renderTextureStudio.Inflate(weaponData, m_renderTexture);
+            m_renderTextureStudio.Inflate(weaponData.WeaponPrefab.gameObject, m_renderTexture);
         }
 
         public void Select()
