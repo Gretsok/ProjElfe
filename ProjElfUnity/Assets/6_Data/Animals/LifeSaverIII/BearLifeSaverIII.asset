@@ -18,4 +18,4 @@ MonoBehaviour:
   m_statsToIncreaseAmount: 12
   m_animalPrefab: {fileID: 1697224423484878932, guid: 0961fe95db8111f41b7a77aca9cf01b4,
     type: 3}
-  m_animalIcon: {fileID: 0}
+  m_animalIcon: {fileID: 21300000, guid: 931555092a3f6484fb74451c77b694a5, type: 3}
