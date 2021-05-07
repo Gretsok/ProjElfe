@@ -15,7 +15,10 @@ MonoBehaviour:
   m_roomPrefab: {fileID: 5114211396550958189, guid: 57ac5ed0d9d5e1b42a0d992ab0eb9c13,
     type: 3}
   m_ennemiesToSpawn:
-  - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
+  - EnnemyPrefab: {fileID: 8309751427421685800, guid: 09d4159051955b24ab5a619a73bec7ed,
+      type: 3}
+    SpawnWeight: 1
+  - EnnemyPrefab: {fileID: 1686193721633210903, guid: 538db2b0b4b2bcb4994ce015e3c1d8bc,
       type: 3}
     SpawnWeight: 1
   m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 0, y: 1}
