@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -243,6 +245,7 @@ namespace Tween
         PingPong
     }
 
+#if UNITY_EDITOR
     [CustomEditor(typeof(ATween), true)]
     public class ATweenEditor : Editor
     {
@@ -270,4 +273,5 @@ namespace Tween
             }
         }
     }
+#endif
 }

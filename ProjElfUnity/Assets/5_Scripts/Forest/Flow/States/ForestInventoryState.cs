@@ -115,7 +115,7 @@ namespace ProjElf.HubForest
         IEnumerator LoadInventoryPanelRoutine()
         {
             m_currentSaveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
-
+            m_gamemode.Player.CombatController.CombatInventory.UnEquipWeapon();
             m_panel.InflateCurrentWeaponsData(m_currentSaveData.SavedPlayerWeaponInventory.EquippedMeleeWeapon,
                 m_currentSaveData.SavedPlayerWeaponInventory.EquippedBow,
                 m_currentSaveData.SavedPlayerWeaponInventory.EquippedGrimoire);

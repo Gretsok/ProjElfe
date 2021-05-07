@@ -30,7 +30,7 @@ namespace MOtter.StatesMachine
 
 #if UNITY_EDITOR
             // Get Debug Data and register the default SceneData
-            m_debugData = Resources.Load<DebugData>("DebugData");
+           /* m_debugData = Resources.Load<DebugData>("DebugData");
 
             RegisterNewLevel(m_debugData.DefaultSceneData);
             if(m_debugData.DefaultSceneData != null)
@@ -38,7 +38,7 @@ namespace MOtter.StatesMachine
             if (m_debugData.UseDefaultSaveData)
             {
                 UseSaveData(m_debugData.DefaultSaveData);
-            }
+            }*/
 #endif
 
         }

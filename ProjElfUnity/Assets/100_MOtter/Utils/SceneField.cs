@@ -13,10 +13,6 @@ public class SceneField
     {
         get 
         {
-            if (m_SceneAsset == null)
-            {
-                m_SceneName = string.Empty;
-            }
             return m_SceneName;
         }
     }

@@ -1,10 +1,9 @@
-﻿using ProjElf.IndependantObject;
-using Tween;
+﻿using Tween;
 using UnityEngine;
 
 namespace ProjElf.CombatController
 {
-    public class Grimoire : AWeapon, IndependantObject.IndependantObject
+    public class Grimoire : AWeapon
     {
         //Var 
         private float m_projectileSpeed = 0f;
@@ -62,7 +61,6 @@ namespace ProjElf.CombatController
             m_animator?.SetBool(ISOPEN, true);
             m_tweener.StartTween();
             m_lastPosition = transform.position;
-            IndependantObjectManager.Instance.RegisterNewIndependantObject(this);
         }
 
         internal override void OnUnequipped()
@@ -70,27 +68,9 @@ namespace ProjElf.CombatController
             base.OnUnequipped();
             m_animator?.SetBool(ISOPEN, false);
             m_tweener.StopAllAttachedTweens(ATween.EStopType.ResetToBeginning);
-            IndependantObjectManager.Instance.UnregisterIndependantObject(this);
         }
 
         private Vector3 m_lastPosition = default;
-        public void DoUpdate()
-        {
-            transform.localPosition = Vector3.Lerp(Vector3.back, Vector3.zero, 2 * Time.deltaTime);
 
-
-            m_lastPosition = transform.position;
-        }
-
-        public void DoFixedUpdate()
-        {
-
-        }
-
-        
-        public void DoLateUpdate()
-        {
-
-        }
     }
 }

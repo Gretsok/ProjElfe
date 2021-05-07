@@ -86,6 +86,7 @@ namespace ProjElf.MainMenu
                 lastButton.navigation = navTemp;
 
                 navTemp = m_playButton.navigation;
+                navTemp.mode = Navigation.Mode.Explicit;
                 navTemp.selectOnUp = lastButton;
                 navTemp.selectOnDown = firstButton;
                 m_playButton.navigation = navTemp;
@@ -131,16 +132,23 @@ namespace ProjElf.MainMenu
             CreateCharacterButtonNavigationPosition createNewCharacterButton = Instantiate(m_createNewCharacterButtonPrefab, transform);
 
             var createNewCharacButton = createNewCharacterButton.GetComponent<Button>();
+            Button lastButton = null;
+            Navigation navTemp = default;
 
-            var lastButton = m_instantiatedNavigationPositions[m_instantiatedNavigationPositions.Count - 1];
-            Navigation navTemp = lastButton.navigation;
-            navTemp.selectOnDown = createNewCharacButton;
-            lastButton.navigation = navTemp;
+            if(m_instantiatedNavigationPositions.Count > 0)
+            {
+                var prevButton = m_instantiatedNavigationPositions[m_instantiatedNavigationPositions.Count - 1];
 
-            navTemp = createNewCharacButton.navigation;
-            navTemp.selectOnUp = lastButton;
-            navTemp.selectOnDown = m_playButton;
-            createNewCharacButton.navigation = navTemp;
+                navTemp = prevButton.navigation;
+                navTemp.selectOnDown = createNewCharacButton;
+                prevButton.navigation = navTemp;
+
+                navTemp = createNewCharacButton.navigation;
+                navTemp.selectOnUp = prevButton;
+                createNewCharacButton.navigation = navTemp;
+            }
+
+            
 
             m_instantiatedNavigationPositions.Add(createNewCharacButton);
 

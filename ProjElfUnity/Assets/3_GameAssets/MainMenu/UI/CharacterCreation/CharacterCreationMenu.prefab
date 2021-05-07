@@ -1336,5 +1336,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6adbd5447821c2b4ca8154a29bb4ea1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_syllablesData: {fileID: 11400000, guid: c23ebe9bc04190c4281914a1616b267e, type: 2}
   m_nameLabel: {fileID: 8889370222854098086}
   m_numberOfSyllables: {x: 2, y: 3}
