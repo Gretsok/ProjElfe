@@ -8,6 +8,7 @@ using UnityEngine.Events;
 
 namespace Tween
 {
+    [System.Serializable]
     public abstract class ATween : MonoBehaviour
     {
         public enum EStopType

@@ -59,7 +59,7 @@ namespace ProjElf.CombatController
         {
             base.OnEquipped();
             m_animator?.SetBool(ISOPEN, true);
-            m_tweener.StartTween();
+            m_tweener?.StartTween();
             m_lastPosition = transform.position;
         }
 
@@ -67,7 +67,7 @@ namespace ProjElf.CombatController
         {
             base.OnUnequipped();
             m_animator?.SetBool(ISOPEN, false);
-            m_tweener.StopAllAttachedTweens(ATween.EStopType.ResetToBeginning);
+            m_tweener?.Stop();
         }
 
         private Vector3 m_lastPosition = default;

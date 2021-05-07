@@ -2,6 +2,7 @@
 
 namespace Tween
 {
+    [System.Serializable]
     public class ScaleTween : ATween
     {
         [SerializeField]
