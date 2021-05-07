@@ -18,9 +18,6 @@ namespace ProjElf.PlayerController
 
 
         [SerializeField]
-        protected float m_cameraSensibility = 15f;
-
-        [SerializeField]
         private Vector2 m_clampedYCAmAngle = Vector2.zero;
 
         internal virtual void SetUpInputs()
@@ -57,10 +54,10 @@ namespace ProjElf.PlayerController
 
         protected virtual void UpdateLookAround()
         {
-            m_player.transform.Rotate(m_player.transform.up * m_lookAroundInputs.x * m_cameraSensibility * Time.fixedDeltaTime);
+            m_player.transform.Rotate(m_player.transform.up * m_lookAroundInputs.x * m_player.CameraSensibility * Time.fixedDeltaTime);
 
             Vector3 camFollowTargetEulerRotation = m_player.CamFollowTarget.rotation.eulerAngles;
-            camFollowTargetEulerRotation.x -= m_lookAroundInputs.y * m_cameraSensibility * Time.fixedDeltaTime;
+            camFollowTargetEulerRotation.x -= m_lookAroundInputs.y * m_player.CameraSensibility * Time.fixedDeltaTime;
 
             // Clamping x angle
             if (camFollowTargetEulerRotation.x > 180 && camFollowTargetEulerRotation.x < 360 + m_clampedYCAmAngle.x) // m_clampedYCAmAngle.x is negative

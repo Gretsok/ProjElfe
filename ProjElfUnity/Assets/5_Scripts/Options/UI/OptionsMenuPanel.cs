@@ -15,6 +15,7 @@ public class OptionsMenuPanel : Panel
     {
         m_musicVolumeWidget.value = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.Music);
         m_sfxVolumeWidget.value = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.SFX);
+        // GET
     }
 
 
@@ -30,7 +31,9 @@ public class OptionsMenuPanel : Panel
 
     public void OnCameraSensibilityChanged()
     {
-
+        // SET
+            // Set sensibility in save data
+            // directly apply sensibility to player
     }
 
 }

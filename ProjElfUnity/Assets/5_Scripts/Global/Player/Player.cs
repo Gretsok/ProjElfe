@@ -73,6 +73,11 @@ namespace ProjElf.PlayerController
         private InputActionAsset m_actions = null;
         public InputActionAsset Actions => m_actions;
 
+        [SerializeField]
+        protected float m_cameraSensibility = 15f;
+
+        public float CameraSensibility => m_cameraSensibility;
+
         #region IsBusy
         private bool m_isBusy = false;
         public bool IsBusy => m_isBusy;
