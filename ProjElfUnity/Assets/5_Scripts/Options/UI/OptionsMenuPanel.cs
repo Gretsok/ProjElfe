@@ -8,14 +8,23 @@ public class OptionsMenuPanel : Panel
     private SoundVolumeModule m_musicVolumeWidget = null;
     [SerializeField]
     private SoundVolumeModule m_sfxVolumeWidget = null;
-
+    [SerializeField]
+    private CameraSensibilityModule m_cameraSensibilityWidget = null;
     public SoundVolumeModule MusicVolumeWidget => m_musicVolumeWidget;
+
+    private ProjElfGameMode m_GameMode = null ;
+
 
     private void Start()
     {
         m_musicVolumeWidget.value = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.Music);
         m_sfxVolumeWidget.value = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.SFX);
-        // GET
+        // GET PlayerState -> m_cameraSensibility
+        m_cameraSensibilityWidget.value = MOtter.MOtterApplication.GetInstance().SAVE.CameraSensitivity;
+
+        m_GameMode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
+
+        Debug.Log("cam sensi = " + m_cameraSensibilityWidget.value);
     }
 
 
@@ -31,9 +40,13 @@ public class OptionsMenuPanel : Panel
 
     public void OnCameraSensibilityChanged()
     {
+
         // SET
-            // Set sensibility in save data
-            // directly apply sensibility to player
+        MOtter.MOtterApplication.GetInstance().SAVE.CameraSensitivity = m_cameraSensibilityWidget.value;
+        MOtter.MOtterApplication.GetInstance().SAVE.SaveSaveDataManager();
+        m_GameMode.Player.SetCameraSensitivity(m_cameraSensibilityWidget.value);
+        Debug.Log("cam sensi = " + m_cameraSensibilityWidget.value);
+        
     }
 
 }

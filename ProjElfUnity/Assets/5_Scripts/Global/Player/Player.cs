@@ -78,6 +78,10 @@ namespace ProjElf.PlayerController
 
         public float CameraSensibility => m_cameraSensibility;
 
+        public void SetCameraSensitivity(float CameraSensi)
+        {
+            this.m_cameraSensibility = CameraSensi;
+        }
         #region IsBusy
         private bool m_isBusy = false;
         public bool IsBusy => m_isBusy;
@@ -124,6 +128,7 @@ namespace ProjElf.PlayerController
         private void Start()
         {
             m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
+            SetCameraSensitivity(MOtterApplication.GetInstance().SAVE.CameraSensitivity);
         }
 
         public void Init()

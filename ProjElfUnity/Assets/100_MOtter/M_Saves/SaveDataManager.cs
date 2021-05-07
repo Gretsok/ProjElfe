@@ -16,6 +16,7 @@ public class SaveDataManager
     public string FileName = "SaveData.dat";
 
     public List<SaveDataElement> SaveDataList = new List<SaveDataElement>();
+    public float CameraSensitivity = 15f;
 
     public SaveDataManager()
     {
