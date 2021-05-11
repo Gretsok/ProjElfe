@@ -213,7 +213,10 @@ namespace MOtter.Localization
                 var textLocalizer = m_registeredTextLocalizers[i];
                 textLocalizer.TextTarget.text = Localize(textLocalizer.Key);
                 if (textLocalizer.Formatter != null)
+                {
                     textLocalizer.Formatter.Invoke(textLocalizer.TextTarget.text, textLocalizer);
+                    textLocalizer.UpdateComponent();
+                }
             }
         }
 

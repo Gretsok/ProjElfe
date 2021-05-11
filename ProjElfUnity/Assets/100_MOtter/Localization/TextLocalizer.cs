@@ -32,6 +32,11 @@ namespace MOtter.Localization
             MOtterApplication.GetInstance().LOCALIZATION.ForceUpdate();
         }
 
+        internal void UpdateComponent()
+        {
+            m_textTarget.ForceMeshUpdate();
+        }
+
 
         private void OnDestroy()
         {
