@@ -86,15 +86,11 @@ namespace MOtter.StatesMachine
 
         public T GetCurrentMainStateMachine<T>() where T : MainStatesMachine
         {
-            if (m_mainStatesMachine != null)
+            if (m_mainStatesMachine != null && m_mainStatesMachine is T)
             {
-                return (T)m_mainStatesMachine;
+                return (T) m_mainStatesMachine;
             }
-            else
-            {
-                return null;
-            }
-
+            return null;
         }
 
         #region SceneDataManagement

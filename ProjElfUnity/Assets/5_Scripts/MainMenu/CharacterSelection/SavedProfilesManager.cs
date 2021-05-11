@@ -18,6 +18,10 @@ namespace ProjElf.MainMenu
         private CharacterModel m_characterModel = null;
         [SerializeField]
         private Button m_playButton = null;
+        [SerializeField]
+        private Button m_lastButton = null;
+        [SerializeField]
+        private Button m_nextButton = null;
         private List<Button> m_instantiatedNavigationPositions = new List<Button>();
 
         private MainMenuStateMachine m_mainStateMachine = null;
@@ -85,10 +89,13 @@ namespace ProjElf.MainMenu
                 navTemp.selectOnDown = m_playButton;
                 lastButton.navigation = navTemp;
 
+                // Navigation du play button
                 navTemp = m_playButton.navigation;
                 navTemp.mode = Navigation.Mode.Explicit;
                 navTemp.selectOnUp = lastButton;
                 navTemp.selectOnDown = firstButton;
+                navTemp.selectOnLeft = m_lastButton;
+                navTemp.selectOnRight = m_nextButton;
                 m_playButton.navigation = navTemp;
             }
         }
