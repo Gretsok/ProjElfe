@@ -1280,7 +1280,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mouseAndKeyboardSprite: {fileID: 21300000, guid: c049fb0c10430004392c87bcdd9777a4,
     type: 3}
-  m_gamepadSprite: {fileID: 21300000, guid: c049fb0c10430004392c87bcdd9777a4, type: 3}
+  m_gamepadSprite: {fileID: 21300000, guid: 88a727adfc4f67c43aca4431186b3c11, type: 3}
   m_image: {fileID: 280498223084078728}
 --- !u!1 &2790593873507659327
 GameObject:
@@ -3892,7 +3892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_mouseAndKeyboardSprite: {fileID: 21300000, guid: 359163b3da82a8b44bc37f634f16f37c,
     type: 3}
-  m_gamepadSprite: {fileID: 21300000, guid: 359163b3da82a8b44bc37f634f16f37c, type: 3}
+  m_gamepadSprite: {fileID: 21300000, guid: 40de5908b2ab1054b843d18b1f31a033, type: 3}
   m_image: {fileID: 3334185168075971675}
 --- !u!1 &8141032969699102500
 GameObject:
