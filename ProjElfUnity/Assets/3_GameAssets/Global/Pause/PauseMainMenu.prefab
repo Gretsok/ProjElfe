@@ -1240,6 +1240,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141486088383160197}
     m_Modifications:
+    - target: {fileID: 2488819380218995882, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+        type: 3}
+      propertyPath: m_key
+      value: PAUSE_KEYINDICATION_MOVING
+      objectReference: {fileID: 0}
     - target: {fileID: 3883273660281224781, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1371,6 +1376,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141486088383160197}
     m_Modifications:
+    - target: {fileID: 2488819380218995882, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+        type: 3}
+      propertyPath: m_key
+      value: PAUSE_KEYINDICATION_JUMP
+      objectReference: {fileID: 0}
     - target: {fileID: 3883273660281224781, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1508,6 +1518,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141486088383160197}
     m_Modifications:
+    - target: {fileID: 2488819380218995882, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+        type: 3}
+      propertyPath: m_key
+      value: PAUSE_KEYINDICATION_CHANGEWEAPON
+      objectReference: {fileID: 0}
     - target: {fileID: 3883273660281224781, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1645,6 +1660,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141486088383160197}
     m_Modifications:
+    - target: {fileID: 2488819380218995882, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+        type: 3}
+      propertyPath: m_key
+      value: PAUSE_KEYINDICATION_ATTACK
+      objectReference: {fileID: 0}
     - target: {fileID: 3883273660281224781, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1782,6 +1802,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 8141486088383160197}
     m_Modifications:
+    - target: {fileID: 2488819380218995882, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+        type: 3}
+      propertyPath: m_key
+      value: PAUSE_KEYINDICATION_WATCHAROUND
+      objectReference: {fileID: 0}
     - target: {fileID: 3883273660281224781, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}
       propertyPath: m_LocalPosition.x
