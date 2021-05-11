@@ -239,6 +239,8 @@ MonoBehaviour:
     - WEAPON_NAME_BOW11
     - WEAPON_NAME_BOW11_VARIANT
     - WEAPON_NAME_BOW12
+    - MAINMENU_KEYINDICATION_MOVING
+    - MAINMENU_KEYINDICATION_VALIDATE
     m_values:
     - EN
     - English
@@ -465,3 +467,5 @@ MonoBehaviour:
     - Blue bow
     - Wet bow
     - Fire bow
+    - To move
+    - Validate

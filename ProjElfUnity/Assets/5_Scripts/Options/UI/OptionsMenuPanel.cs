@@ -40,13 +40,11 @@ public class OptionsMenuPanel : Panel
 
     public void OnCameraSensibilityChanged()
     {
-
         // SET
         MOtter.MOtterApplication.GetInstance().SAVE.CameraSensitivity = m_cameraSensibilityWidget.value;
         MOtter.MOtterApplication.GetInstance().SAVE.SaveSaveDataManager();
         m_GameMode.Player.SetCameraSensitivity(m_cameraSensibilityWidget.value);
         Debug.Log("cam sensi = " + m_cameraSensibilityWidget.value);
-        
     }
 
 }
