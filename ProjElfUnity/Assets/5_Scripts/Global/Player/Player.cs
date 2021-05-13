@@ -270,8 +270,8 @@ namespace ProjElf.PlayerController
         {
             Debug.Log("JUMP");
             m_characterAnimatorHandler.StartJump();
-            yield return new WaitForSeconds(0.4f);
-            m_verticalVelocity = 10f;
+            m_verticalVelocity = 7f;
+            yield return null;
         }
 
 
