@@ -19,7 +19,7 @@ public class AggressiveAIStandingFightingState : GenericAIState
     {
         base.EnterState();
         m_owner.Agent.SetDestination(m_owner.transform.position);
-        (m_owner as AggressiveAI).CombatController.StartUseWeapon(m_owner.Player.transform.forward);
+        (m_owner as AggressiveAI).CombatController.StartUseWeapon(m_owner.transform.forward);
     }
 
     public override void LateUpdateState()
