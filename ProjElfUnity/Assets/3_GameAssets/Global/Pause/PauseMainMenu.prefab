@@ -1354,7 +1354,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_mouseAndKeyboardSprite
       value: 
-      objectReference: {fileID: 21300000, guid: 6c1b01a982a0ee843814b8ba74ccd1e5,
+      objectReference: {fileID: 21300000, guid: c99ec8f2f0e33ff42bf3dde1878513d4,
         type: 3}
     - target: {fileID: 8227128032920754856, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
         type: 3}

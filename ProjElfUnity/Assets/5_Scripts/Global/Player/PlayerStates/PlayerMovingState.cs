@@ -7,6 +7,9 @@ namespace ProjElf.PlayerController
         [SerializeField]
         private float m_jumpDelay = 1f;
         private float m_timeOfLastJump = float.MinValue;
+        private float m_lastDashTime = float.MinValue;
+        [SerializeField]
+        private float m_dashCooldown = 5f;
 
         public override void UpdateState()
         {
@@ -64,7 +67,12 @@ namespace ProjElf.PlayerController
 
         private void Slide_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            m_player.SwitchToState(m_player.SlidingState);
+            if(Time.time - m_lastDashTime > m_dashCooldown)
+            {
+                m_player.SwitchToState(m_player.SlidingState);
+                m_lastDashTime = Time.time;
+            }
+            
         }
 
         private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)

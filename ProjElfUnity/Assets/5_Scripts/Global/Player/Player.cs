@@ -225,11 +225,12 @@ namespace ProjElf.PlayerController
             if(m_combatController.UsedWeapon is Bow)
             {
                 WeaponSight = Sight;
-                if(Physics.Raycast(Sight, out RaycastHit hitInfo, 30))
+                Ray ray = new Ray(Sight.origin, new Vector3(Sight.direction.x, 0, Sight.direction.z));
+                if(Physics.Raycast(ray, out RaycastHit hitInfo, 30))
                 {
                     Vector3 arrowStartPosition = m_combatController.CombatInventory.Bow.PosArrow.transform.position;
                     WeaponSight = new Ray(arrowStartPosition, (hitInfo.point - arrowStartPosition));
-
+                    WeaponSight.direction = new Vector3(WeaponSight.direction.x, Sight.direction.y, WeaponSight.direction.z);
                     // Simulate Arrow to reorientate it
                     // Use CalculateArrowPosition() in Arrow (maybe has to be moved) to find when the arrow will go below initPosY (arrowStartPosition.y) and use the x and z values of this point
 
@@ -269,8 +270,8 @@ namespace ProjElf.PlayerController
         {
             Debug.Log("JUMP");
             m_characterAnimatorHandler.StartJump();
-            yield return new WaitForSeconds(0.4f);
-            m_verticalVelocity = 10f;
+            m_verticalVelocity = 7f;
+            yield return null;
         }
 
 
