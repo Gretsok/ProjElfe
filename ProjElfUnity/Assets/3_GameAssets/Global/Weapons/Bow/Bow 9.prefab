@@ -5136,8 +5136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04958ab2f958bd843af8a54290e29b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectilePrefab: {fileID: 6939627066301641208, guid: 1be24b669262e27498af27cd00ab48f8,
-    type: 3}
+  m_fxContainer: {fileID: 2557931871877726752}
+  m_hideFXWhenNotHolded: 1
   posArrow: {fileID: 3327090777469745805}
 --- !u!1 &4778429112258220234
 GameObject:

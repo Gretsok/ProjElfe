@@ -65,6 +65,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4b6aa6cbc3f369c42a4743be58d99b4f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fxContainer: {fileID: 1495395386609956648}
+  m_hideFXWhenNotHolded: 1
   posMagicSpell: {fileID: 0}
   m_animator: {fileID: 8858617663005908372}
   m_tweener: {fileID: -7161298674915842845}
@@ -321,6 +323,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141435ae4f3bc2e499ad81e2ab387af9, type: 3}
+--- !u!1 &1495395386609956648 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 927599221244402977, guid: 141435ae4f3bc2e499ad81e2ab387af9,
+    type: 3}
+  m_PrefabInstance: {fileID: 1738328698980362761}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1495395386609956651 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 927599221244402978, guid: 141435ae4f3bc2e499ad81e2ab387af9,

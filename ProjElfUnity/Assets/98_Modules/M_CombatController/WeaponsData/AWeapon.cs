@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace ProjElf.CombatController
 {
@@ -20,14 +18,26 @@ namespace ProjElf.CombatController
 
         public Damage Damage => m_damage;
 
+        [SerializeField]
+        private GameObject m_fxContainer = null;
+        [SerializeField]
+        private bool m_hideFXWhenNotHolded = true;
+
+
         internal virtual void OnEquipped()
         {
-
+            if(m_hideFXWhenNotHolded)
+            {
+                m_fxContainer?.SetActive(true);
+            }
         }
 
         internal virtual void OnUnequipped()
         {
-
+            if (m_hideFXWhenNotHolded)
+            {
+                m_fxContainer?.SetActive(false);
+            }
         }
 
     }
