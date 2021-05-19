@@ -4844,7 +4844,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3479221981695011654}
-  - {fileID: 2726268247985438236}
   - {fileID: 5132891561146707929}
   m_Father: {fileID: 5656689500245571945}
   m_RootOrder: 0
@@ -4938,7 +4937,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 5559564470247389266}
+  m_Father: {fileID: 5132891561146707929}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!108 &2625012419561306618
@@ -5030,8 +5029,9 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4715258814439163963}
+  - {fileID: 2726268247985438236}
   m_Father: {fileID: 5559564470247389266}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4339634540719291271
 GameObject:
@@ -5227,8 +5227,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 04958ab2f958bd843af8a54290e29b0c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectilePrefab: {fileID: 1395302840581383018, guid: 9e4113ea501a7a04c84375ce59680837,
-    type: 3}
+  m_fxContainer: {fileID: 3934396977022396453}
+  m_hideFXWhenNotHolded: 1
   posArrow: {fileID: 2622324997029004041}
 --- !u!1 &7188573249559192476
 GameObject:

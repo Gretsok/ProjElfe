@@ -78,6 +78,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba07266e477b24c95cfa6293f90c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fxContainer: {fileID: 7546365874482270167}
+  m_hideFXWhenNotHolded: 1
   m_weaponTrailFX: {fileID: 1403821542717053286}
 --- !u!65 &-8695327124205806979
 BoxCollider:
@@ -206,6 +208,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ec24b254b5fff014597db2800742e835, type: 3}
+--- !u!1 &7546365874482270167 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8573268733417885142, guid: ec24b254b5fff014597db2800742e835,
+    type: 3}
+  m_PrefabInstance: {fileID: 2179827683707535873}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7546365874482270164 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8573268733417885141, guid: ec24b254b5fff014597db2800742e835,
