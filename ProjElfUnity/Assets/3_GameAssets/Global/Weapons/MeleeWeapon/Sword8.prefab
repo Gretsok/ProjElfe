@@ -4973,6 +4973,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: daba07266e477b24c95cfa6293f90c7f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_fxContainer: {fileID: 6352211621319631189}
+  m_hideFXWhenNotHolded: 1
   m_weaponTrailFX: {fileID: 2665101542685612191}
 --- !u!65 &3555422295489507399
 BoxCollider:

@@ -72,6 +72,11 @@ PrefabInstance:
       propertyPath: m_weaponTrailFX
       value: 
       objectReference: {fileID: 5820537676170478548}
+    - target: {fileID: 3308744519792590421, guid: 283ee4d3f2cc9f142bd50b332fd5e661,
+        type: 3}
+      propertyPath: m_fxContainer
+      value: 
+      objectReference: {fileID: 7742120920411032958}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 283ee4d3f2cc9f142bd50b332fd5e661, type: 3}
 --- !u!4 &305387041573067100 stripped
@@ -294,3 +299,9 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 141435ae4f3bc2e499ad81e2ab387af9, type: 3}
+--- !u!1 &7742120920411032958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 927599221244402977, guid: 141435ae4f3bc2e499ad81e2ab387af9,
+    type: 3}
+  m_PrefabInstance: {fileID: 7471180851880644703}
+  m_PrefabAsset: {fileID: 0}
