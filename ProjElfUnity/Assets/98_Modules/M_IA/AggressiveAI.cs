@@ -33,7 +33,7 @@ namespace ProjElf.AI
         {
             base.DoLateUpdate();
             m_characterAnimatorHandler.SetForwardSpeed(Agent.velocity.magnitude / Agent.speed);
-            m_combatController.DoUpdate(Player.transform.forward);
+            m_combatController.DoUpdate(transform.forward);
         }
     }
 }
