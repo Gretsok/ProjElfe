@@ -6,6 +6,8 @@ namespace ProjElf.PlayerController
 {
     public class PlayerCombatController : CombatController.CombatController
     {
+        /*
+
         internal void ResetStatsBonus()
         {
             m_maxLifePoints = m_baseMaxLifePoints;
@@ -46,5 +48,7 @@ namespace ProjElf.PlayerController
         {
             m_magicalDamageMultiplierIncrement += increment;
         }
+
+        */
     }
 }
