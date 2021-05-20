@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e10dd6863a0a14a4ab54422e595848ac, type: 3}
+  m_Name: Room1PlatformData
+  m_EditorClassIdentifier: 
+  m_roomPrefab: {fileID: 688446530856985797, guid: 244be250e5a5ae0498510b08158fc419,
+    type: 3}
+  m_ennemiesToSpawn:
+  - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
+      type: 3}
+    SpawnWeight: 1
+  m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 2, y: 5}
+  m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 3, y: 6}
+  m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 4, y: 7}
+  m_lifeSaverIModeNumberOfEnnemiesToSpawn: {x: 5, y: 8}
+  m_lifeSaverIIModeNumberOfEnnemiesToSpawn: {x: 6, y: 9}
+  m_lifeSaverIIIModeNumberOfEnnemiesToSpawn: {x: 7, y: 10}
+  m_absoluteMasterGuardianModeNumberOfEnnemiesToSpawn: {x: 8, y: 11}
+  m_forwardGate: 1
+  m_leftGate: 0
+  m_rightGate: 0
