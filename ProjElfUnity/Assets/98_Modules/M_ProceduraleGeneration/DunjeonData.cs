@@ -35,12 +35,12 @@ namespace ProjElf.ProceduraleGeneration
 
         [Header("Ennemies factors")]
         [SerializeField]
-        private float m_lifeFactor = 1f;
+        private float m_lifeFactorIncrement = 1f;
         [SerializeField]
-        private float m_damageFactor = 1f;
+        private float m_damageFactorIncrement = 1f;
 
-        public float LifeFactor => m_lifeFactor;
-        public float DamageFactor => m_damageFactor;
+        public float LifeFactor => m_lifeFactorIncrement;
+        public float DamageFactor => m_damageFactorIncrement;
 
 
         public string DunjeonName => m_dunjeonName;
