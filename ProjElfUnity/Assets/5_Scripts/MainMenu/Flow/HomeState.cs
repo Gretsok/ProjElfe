@@ -5,6 +5,8 @@ namespace ProjElf.MainMenu
 {
     public class HomeState : MainMenuNavigationState
     {
+        [SerializeField]
+        private GameObject m_goToSelectOnNextState = null;
         public override void EnterState()
         {
             base.EnterState();
@@ -15,6 +17,7 @@ namespace ProjElf.MainMenu
         private void ButtonPressed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
             m_mainStateMachine.SwitchToNextState();
+            EventSystem.current.SetSelectedGameObject(m_goToSelectOnNextState);
         }
 
         public override void ExitState()
