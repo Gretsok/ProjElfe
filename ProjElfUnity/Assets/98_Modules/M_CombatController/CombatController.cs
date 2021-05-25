@@ -17,10 +17,11 @@ namespace ProjElf.CombatController
         protected int m_physicalArmor = 0;
         protected int m_magicalArmor = 0;
         protected float m_attackSpeedBonus = 0;
-
+        protected float m_lifeFactorIncrement = 0f;
         protected float m_magicalDamageMultiplierIncrement = 0f;
         protected float m_physicalDamageMultiplierIncrement = 0f;
 
+        internal float LifeFactorIncrement => m_lifeFactorIncrement;
         internal float MagicalDamageMultiplierIncrement => m_magicalDamageMultiplierIncrement;
         internal float PhysicalDamageMultiplierIncrement => m_physicalDamageMultiplierIncrement;
 
@@ -76,6 +77,7 @@ namespace ProjElf.CombatController
             m_physicalArmor = 0;
             m_magicalArmor = 0;
             m_attackSpeedBonus = 0f;
+            m_lifeFactorIncrement = 0f;
             m_magicalDamageMultiplierIncrement = 0f;
             m_physicalDamageMultiplierIncrement = 0f;
         }
@@ -84,6 +86,14 @@ namespace ProjElf.CombatController
         {
             m_maxLifePoints += a_lifePointsToAdd;
             Heal(a_lifePointsToAdd);
+        }
+
+        internal void MultiplyLifePointBy(float a_lifePointsToMultiply)
+        {
+            int OldMaxLifePoints = m_maxLifePoints;
+            float LifeTmp = m_maxLifePoints * a_lifePointsToMultiply;
+            m_maxLifePoints = (int)LifeTmp;
+            Heal(m_maxLifePoints - OldMaxLifePoints);
         }
 
         internal void ImprovePhysicalArmor(int armorToAdd)
@@ -109,6 +119,16 @@ namespace ProjElf.CombatController
         internal void ImproveMagicalDamageMultiplierIncrement(float increment)
         {
             m_magicalDamageMultiplierIncrement += increment;
+        }
+
+        internal void MultiplyPhysicalDamageMultiplierIncrement(float increment)
+        {
+            m_physicalDamageMultiplierIncrement *= increment;
+        }
+
+        internal void MultiplyMagicalDamageMultiplierIncrement(float increment)
+        {
+            m_magicalDamageMultiplierIncrement *= increment;
         }
 
         #region DamageGiver
