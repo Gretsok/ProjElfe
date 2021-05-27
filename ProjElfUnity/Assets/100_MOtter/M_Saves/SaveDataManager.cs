@@ -18,6 +18,9 @@ public class SaveDataManager
     public List<SaveDataElement> SaveDataList = new List<SaveDataElement>();
     public float CameraSensitivity = 15f;
 
+    public float SFXSoundSensitivity = 0.5f;
+    public float MusicSoundSensitivity = 0.5f;
+
     public SaveDataManager()
     {
         
@@ -27,6 +30,8 @@ public class SaveDataManager
     {
         LoadFromFile(FileName, out string jsonContent);
         LoadFromJson(jsonContent);
+        MOtter.MOtterApplication.GetInstance().SOUND.SetVolume(SFXSoundSensitivity, MOtter.SoundManagement.ESoundCategoryName.SFX);
+        MOtter.MOtterApplication.GetInstance().SOUND.SetVolume(MusicSoundSensitivity, MOtter.SoundManagement.ESoundCategoryName.Music);
     }
 
     public string ToJson()
@@ -41,6 +46,9 @@ public class SaveDataManager
 
     public void SaveSaveDataManager()
     {
+        SFXSoundSensitivity = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.SFX);
+        MusicSoundSensitivity = MOtter.MOtterApplication.GetInstance().SOUND.GetVolume(MOtter.SoundManagement.ESoundCategoryName.Music);
+
         WriteToFile(FileName, ToJson());
     }
 
