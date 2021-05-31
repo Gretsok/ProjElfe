@@ -135,12 +135,11 @@ namespace ProjElf.CombatController
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
             //Debug.Log("GetAttacked");
-            if (damageGiverData.DamageGiver.Owner.TeamIndex != m_teamIndex)
+            if (damageGiverData.DamageGiver.Owner == null || damageGiverData.DamageGiver.Owner.TeamIndex != m_teamIndex)
             {
 
                 if (damageGiverData.Colliding)
                 {
-                    Debug.Log(gameObject.name + " is attacked by " + damageGiverData.DamageGiver.Owner.gameObject.name);
                     #region Update other DamageGiversData
                     for (int i = m_damageGivers.Count - 1; i >= 0; i--)
                     {
@@ -176,7 +175,7 @@ namespace ProjElf.CombatController
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
+            if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver) && damageGiver.CanDoDamage)
             {
                 DamageGiverData damageGiverData = m_damageGivers.Find(x => x.DamageGiver == damageGiver);
                 #region Manage DamageGiversData
@@ -198,9 +197,7 @@ namespace ProjElf.CombatController
                     }
                     damageGiver.OnDisappear += UnregisterDamageGiver;
                 }
-                
             }
-                    
         }
 
 

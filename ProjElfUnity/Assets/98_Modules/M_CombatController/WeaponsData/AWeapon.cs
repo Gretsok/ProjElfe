@@ -26,7 +26,7 @@ namespace ProjElf.CombatController
 
         internal virtual void OnEquipped()
         {
-            if(m_hideFXWhenNotHolded)
+            if(m_hideFXWhenNotHolded && m_fxContainer != null)
             {
                 m_fxContainer?.SetActive(true);
             }
@@ -34,7 +34,7 @@ namespace ProjElf.CombatController
 
         internal virtual void OnUnequipped()
         {
-            if (m_hideFXWhenNotHolded)
+            if (m_hideFXWhenNotHolded && m_fxContainer != null)
             {
                 m_fxContainer?.SetActive(false);
             }

@@ -246,6 +246,8 @@ MonoBehaviour:
     - PAUSE_KEYINDICATION_WATCHAROUND
     - PAUSE_KEYINDICATION_CHANGEWEAPON
     - PAUSE_KEYINDICATION_JUMP
+    - MAINMENU_HOME_PRESS
+    - MAINMENU_HOME_TO_CONTINUE
     m_values:
     - EN
     - English
@@ -479,3 +481,5 @@ MonoBehaviour:
     - Watch around
     - Change weapon
     - Jump
+    - Press
+    - to continue
