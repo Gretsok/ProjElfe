@@ -162,12 +162,21 @@ namespace ProjElf.SceneData
             
             if (m_loadingScreenActive)
             {
-                op = SceneManager.UnloadSceneAsync(m_loadingScreen.SceneName);
-                while(!op.isDone)
+                try
+                {
+                    op = SceneManager.UnloadSceneAsync(m_loadingScreen.SceneName);
+                    
+                }
+                catch(Exception)
+                {
+                    
+                }
+                while (!op.isDone)
                 {
                     yield return null;
                 }
                 m_loadingScreenActive = false;
+
             }
             
         }

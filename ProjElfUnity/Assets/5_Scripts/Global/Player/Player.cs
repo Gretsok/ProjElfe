@@ -42,7 +42,6 @@ namespace ProjElf.PlayerController
         private float m_verticalVelocity = 0f;
         [SerializeField]
         private float m_inAirDistanceFromGround = 0.5f;
-        internal float InAirDistanceFromGround => m_inAirDistanceFromGround;
         [SerializeField]
         private float m_baseMovingSpeed = 5f;
         private float m_movingSpeedBonus = 0f;
