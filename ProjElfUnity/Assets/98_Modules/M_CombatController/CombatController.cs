@@ -17,12 +17,15 @@ namespace ProjElf.CombatController
         protected int m_physicalArmor = 0;
         protected int m_magicalArmor = 0;
         protected float m_attackSpeedBonus = 0;
-
         protected float m_magicalDamageMultiplierIncrement = 0f;
         protected float m_physicalDamageMultiplierIncrement = 0f;
 
-        internal float MagicalDamageMultiplierIncrement => m_magicalDamageMultiplierIncrement;
-        internal float PhysicalDamageMultiplierIncrement => m_physicalDamageMultiplierIncrement;
+        public int MaxLifePoints => m_maxLifePoints;
+        public int PhysicalArmor => m_physicalArmor;
+        public int MagicalArmor => m_magicalArmor;
+        public float AttackSpeedBonus => m_attackSpeedBonus;
+        public float MagicalDamageMultiplierIncrement => m_magicalDamageMultiplierIncrement;
+        public float PhysicalDamageMultiplierIncrement => m_physicalDamageMultiplierIncrement;
 
 
         public Action OnLifeReachedZero = null;
