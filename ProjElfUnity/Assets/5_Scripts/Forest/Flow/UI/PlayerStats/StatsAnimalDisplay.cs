@@ -11,7 +11,6 @@ namespace ProjElf.HubForest
         private RenderTextureStudio m_renderTextureStudio = null;
         [SerializeField]
         private RenderTexture m_animalRenderTexture = null;
-        private GameObject m_spawnedAnimal = null;
 
         [SerializeField]
         private TextLocalizer m_statsTextLocalizer = null;
@@ -30,6 +29,7 @@ namespace ProjElf.HubForest
 
 
             InitStudio();
+            m_renderTextureStudio.Inflate(animalData.AnimalPrefab.gameObject, m_animalRenderTexture);
         }
 
 
@@ -39,16 +39,14 @@ namespace ProjElf.HubForest
             {
                 m_renderTextureStudio = Instantiate(m_renderTextureStudioPrefab, new Vector3(10000, 10000, 8450), Quaternion.identity);
             }
-            if (m_spawnedAnimal != null)
-            {
-                Destroy(m_spawnedAnimal);
-            }
+            m_renderTextureStudio.DeleteObjectSpawned();
         }
 
         public void CleanUp()
         {
             if(m_statsTextLocalizer.TextTarget != null)
                 m_statsTextLocalizer.TextTarget.text = string.Empty;
+            m_renderTextureStudio.DeleteObjectSpawned();
         }
     }
 }

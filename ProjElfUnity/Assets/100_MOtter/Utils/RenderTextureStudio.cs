@@ -9,11 +9,19 @@ public class RenderTextureStudio : MonoBehaviour
 
     [SerializeField]
     private float m_rotationSpeed = 90f;
+    private GameObject m_objectSpawned = null;
 
     public void Inflate(GameObject objectToShoot, RenderTexture renderTexture)
     {
         m_camerea.targetTexture = renderTexture;
-        Instantiate(objectToShoot, m_spawnPoint.position, Quaternion.identity, m_spawnPoint);
+        m_objectSpawned = Instantiate(objectToShoot, m_spawnPoint.position, Quaternion.identity, m_spawnPoint);
+    }
+
+    public void DeleteObjectSpawned()
+    {
+        if(m_objectSpawned != null)
+            Destroy(m_objectSpawned);
+        m_objectSpawned = null;
     }
 
     private void Update()

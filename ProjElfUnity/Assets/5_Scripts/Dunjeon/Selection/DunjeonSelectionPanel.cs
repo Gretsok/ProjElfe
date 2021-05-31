@@ -15,6 +15,10 @@ namespace ProjElf.HubForest
         [SerializeField]
         private List<DunjeonData> m_dunjeonSelectionData = new List<DunjeonData>();
 
+        [SerializeField]
+        private bool debug_displayAllDunjeons = false;
+
+
 
         public override void Show()
         {
@@ -32,7 +36,7 @@ namespace ProjElf.HubForest
 
             for(int i = 0; i < m_dunjeonSelectionData.Count; ++i)
             {
-                if(m_dunjeonSelectionData[i].DunjeonDifficulty <= MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().DifficultyToBeat)
+                if(m_dunjeonSelectionData[i].DunjeonDifficulty <= MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().DifficultyToBeat || debug_displayAllDunjeons)
                 {
                     var dunjeonSelectionWidget = Instantiate(m_dunjeonSelectionWidgetPrefab, transform);
                     dunjeonSelectionWidget.Inflate(m_dunjeonSelectionData[i]);
