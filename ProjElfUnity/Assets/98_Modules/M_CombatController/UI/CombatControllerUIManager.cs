@@ -10,5 +10,10 @@ namespace ProjElf.CombatController
         {
 
         }
+
+        internal virtual void SetHealthRemaining(float healthRemaining)
+        {
+
+        }
     }
 }
