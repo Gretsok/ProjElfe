@@ -5,4 +5,9 @@ public class ProjElfMenuStateMachine : MainStatesMachine, IProjElfMainStateMachi
 {
     protected InputActionAsset m_actions = null;
     public InputActionAsset Actions => m_actions;
+
+    private void OnDestroy()
+    {
+        MOtter.MOtterApplication.GetInstance().SAVE.SaveSaveDataManager();
+    }
 }

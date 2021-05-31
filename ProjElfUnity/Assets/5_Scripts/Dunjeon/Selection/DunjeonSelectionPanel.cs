@@ -32,9 +32,12 @@ namespace ProjElf.HubForest
 
             for(int i = 0; i < m_dunjeonSelectionData.Count; ++i)
             {
-                var dunjeonSelectionWidget = Instantiate(m_dunjeonSelectionWidgetPrefab, transform);
-                dunjeonSelectionWidget.Inflate(m_dunjeonSelectionData[i]);
-                m_instantiatedDunjeonSelectionWidget.Add(dunjeonSelectionWidget);
+                if(m_dunjeonSelectionData[i].DunjeonDifficulty <= MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().DifficultyToBeat)
+                {
+                    var dunjeonSelectionWidget = Instantiate(m_dunjeonSelectionWidgetPrefab, transform);
+                    dunjeonSelectionWidget.Inflate(m_dunjeonSelectionData[i]);
+                    m_instantiatedDunjeonSelectionWidget.Add(dunjeonSelectionWidget);
+                }
             }
 
             if(m_instantiatedDunjeonSelectionWidget.Count > 0)

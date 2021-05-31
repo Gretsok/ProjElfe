@@ -111,6 +111,11 @@ namespace ProjElf.ProceduraleGeneration
 
         public void WinDunjeon()
         {
+            SaveData saveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+            if (m_dunjeonManager.CurrentDunjeonData.DunjeonDifficulty == saveData.DifficultyToBeat)
+            {
+                saveData.DifficultyToBeat++;
+            }
             SavePlayerWeapons();
             SwitchToState(m_dunjeonRescuedAnimalState);
         }

@@ -38,6 +38,8 @@ public class SaveData
     public List<GrimoireData.GrimoireSaveData> EarnedGrimoires = new List<GrimoireData.GrimoireSaveData>();
     public List<MeleeWeaponData.MeleeWeaponSaveData> EarnedMeleeWeapons = new List<MeleeWeaponData.MeleeWeaponSaveData>();
 
+    public ProjElf.ProceduraleGeneration.EDunjeonDifficulty DifficultyToBeat = ProjElf.ProceduraleGeneration.EDunjeonDifficulty.RescuerI;
+
     #region HoldedWeaponsManagement
     public void EarnNewWeapon(AWeaponData.AWeaponSaveData weaponSaveData)
     {

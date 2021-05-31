@@ -95,6 +95,7 @@ namespace MOtter.SoundManagement
             switch(soundCategory)
             {
                 case ESoundCategoryName.Music:
+
                     return m_musicVolume;
                 case ESoundCategoryName.SFX:
                     return m_sfxVolume;
