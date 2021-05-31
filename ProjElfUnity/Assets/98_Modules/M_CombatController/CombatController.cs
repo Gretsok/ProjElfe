@@ -70,7 +70,7 @@ namespace ProjElf.CombatController
         // Start is called before the first frame update
         private void Start()
         {
-            m_maxLifePoints = m_baseMaxLifePoints;
+            //m_maxLifePoints = m_baseMaxLifePoints;
             m_lifePoints = m_maxLifePoints;
             m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
@@ -98,7 +98,7 @@ namespace ProjElf.CombatController
             int OldMaxLifePoints = m_maxLifePoints;
             float LifeTmp = m_maxLifePoints * a_lifePointsToMultiply;
             m_maxLifePoints = (int)LifeTmp;
-            Heal(m_maxLifePoints - OldMaxLifePoints);
+            Heal(m_maxLifePoints);
         }
 
         internal void ImprovePhysicalArmor(int armorToAdd)
