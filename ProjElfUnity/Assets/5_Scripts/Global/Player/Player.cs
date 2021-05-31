@@ -152,8 +152,6 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
-            m_gamemode.OnPause += MakeBusy;
-            m_gamemode.OnUnpause += MakeUnbusy;
 
             m_combatController.OnLifeReachedZero += Die;
         }
@@ -258,9 +256,6 @@ namespace ProjElf.PlayerController
             m_characterAnimatorHandler.SetForwardSpeed(0f);
             m_characterAnimatorHandler.SetRightSpeed(0f);
             m_combatController.OnLifeReachedZero -= Die;
-
-            m_gamemode.OnPause -= MakeBusy;
-            m_gamemode.OnUnpause -= MakeUnbusy;
             CleanUpInput();
             base.ExitStateMachine();
         }

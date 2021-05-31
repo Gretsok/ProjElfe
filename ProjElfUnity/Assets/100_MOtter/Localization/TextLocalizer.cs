@@ -24,6 +24,7 @@ namespace MOtter.Localization
         public void SetKey(string key)
         {
             m_key = key;
+            MOtterApplication.GetInstance().LOCALIZATION.ForceUpdate();
         }
 
         public void SetFormatter(Action<string, TextLocalizer> formatter)

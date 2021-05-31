@@ -63,34 +63,34 @@ namespace ProjElf.HubForest
         }
         private void DisplayMovementSpeed(Player player)
         {
-            m_physicalDamageMultiplierIncrementLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.PhysicalDamageMultiplierIncrement));
-            m_physicalDamageMultiplierIncrementLocalizer.SetFormatter((text, localizer) =>
+            m_movementSpeedLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.MovementSpeed));
+            m_movementSpeedLocalizer.SetFormatter((text, localizer) =>
             {
-                localizer.TextTarget.text = $"{text} : +{player.CombatController.PhysicalDamageMultiplierIncrement}";
+                localizer.TextTarget.text = $"{text} : {player.MovingSpeed}";
             });
         }
         private void DisplayAttackSpeed(Player player)
         {
-            m_physicalDamageMultiplierIncrementLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.AttackSpeed));
-            m_physicalDamageMultiplierIncrementLocalizer.SetFormatter((text, localizer) =>
+            m_attackSpeedLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.AttackSpeed));
+            m_attackSpeedLocalizer.SetFormatter((text, localizer) =>
             {
                 localizer.TextTarget.text = $"{text} : +{player.CombatController.AttackSpeedBonus}";
             });
         }
         private void DisplayPhysicalArmor(Player player)
         {
-            m_physicalDamageMultiplierIncrementLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.PhysicalDamageMultiplierIncrement));
-            m_physicalDamageMultiplierIncrementLocalizer.SetFormatter((text, localizer) =>
+            m_physicalArmorLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.PhysicalArmor));
+            m_physicalArmorLocalizer.SetFormatter((text, localizer) =>
             {
-                localizer.TextTarget.text = $"{text} : +{player.CombatController.PhysicalDamageMultiplierIncrement}";
+                localizer.TextTarget.text = $"{text} : +{player.CombatController.PhysicalArmor}";
             });
         }
         private void DisplayMagicalArmor(Player player)
         {
-            m_physicalDamageMultiplierIncrementLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.PhysicalDamageMultiplierIncrement));
-            m_physicalDamageMultiplierIncrementLocalizer.SetFormatter((text, localizer) =>
+            m_magicalArmorLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(EPlayerStats.MagicalArmor));
+            m_magicalArmorLocalizer.SetFormatter((text, localizer) =>
             {
-                localizer.TextTarget.text = $"{text} : +{player.CombatController.PhysicalDamageMultiplierIncrement}";
+                localizer.TextTarget.text = $"{text} : +{player.CombatController.MagicalArmor}";
             });
         }
     }

@@ -18,7 +18,7 @@ namespace ProjElf.HubForest
         {
             m_statsTextLocalizer.SetKey(ProjElfUtils.GetPlayerStatKey(animalData.StatsToIncrease));
             m_statsTextLocalizer.SetFormatter((text, localizer) => {
-                localizer.TextTarget.text = $"{text} : +{animalData.StatToIncreaseAmount}";
+                localizer.TextTarget.text = $"{text} : +{animalData.StatToIncreaseAmount}  <color=\"green\">x{AnimalsManager.GetInstance().GetNumberOfRescuedAnimals(animalData)}</color>";
             });
         }
 

@@ -111,6 +111,16 @@ namespace ProjElf.AnimalManagement
             return animal;
         }
 
+        public int GetNumberOfRescuedAnimals(AnimalData animalData)
+        {
+            RescuedAnimalData animal = m_rescuedAnimals.Find(x => x.AnimalData == animalData);
+            if(animal != null)
+            {
+                return animal.Amount;
+            }
+            return 0;
+        }
+
         public void SaveRescuedAnimalsData()
         {
             MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RescuedAnimalDatas = m_rescuedAnimals;
