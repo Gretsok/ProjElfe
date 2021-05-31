@@ -69,6 +69,7 @@ namespace ProjElf.CombatController
             m_maxLifePoints = m_baseMaxLifePoints;
             m_lifePoints = m_maxLifePoints;
             m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
+            m_UIManager?.SetHealthRemaining((float)m_lifePoints);
         }
 
         internal void ResetStatsBonus()
@@ -313,7 +314,8 @@ namespace ProjElf.CombatController
                 1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
                 : 1));
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
-            if(m_lifePoints<=0)
+            m_UIManager?.SetHealthRemaining((float)m_lifePoints);
+            if (m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null
             }
@@ -324,6 +326,7 @@ namespace ProjElf.CombatController
             m_lifePoints += health;
             m_lifePoints = Mathf.Clamp(m_lifePoints, 0, m_maxLifePoints);
             m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
+            m_UIManager?.SetHealthRemaining((float)m_lifePoints);
         }
     }
 }
