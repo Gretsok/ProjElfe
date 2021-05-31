@@ -14,6 +14,8 @@ namespace ProjElf.HubForest
         private ForestDunjeonSelectionState m_dunjeonSelectionState = null;
         [SerializeField]
         private ForestInventoryState m_inventoryState = null;
+        [SerializeField]
+        private PlayerStatsState m_playerStatsState = null;
 
         private AudioSource m_ambianceAudioSource = null;
 
@@ -30,7 +32,6 @@ namespace ProjElf.HubForest
             yield return null;
             InstantiatePlayer();
 
-
             if(AnimalsManager.GetInstance().SavedAnimals != null)
             {
                 foreach (RescuedAnimalData rescuedAnimalData in AnimalsManager.GetInstance().SavedAnimals)
@@ -44,11 +45,7 @@ namespace ProjElf.HubForest
                 }
             }
 
-
-
-
             yield return base.LoadAsync();
-
         }
 
         internal override void EnterStateMachine()
@@ -72,11 +69,15 @@ namespace ProjElf.HubForest
             SwitchToState(m_inventoryState);
         }
 
+        public void ActivatePlayerDisplay()
+        {
+            SwitchToState(m_playerStatsState);
+        }
+
         internal override void ExitStateMachine()
         {
             MOtter.MOtterApplication.GetInstance().SOUND.CleanSource(m_ambianceAudioSource);
             base.ExitStateMachine();
         }
-
     }
 }
