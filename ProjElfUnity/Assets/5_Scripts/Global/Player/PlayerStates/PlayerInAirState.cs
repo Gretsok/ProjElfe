@@ -29,10 +29,7 @@ namespace ProjElf.PlayerController
             base.FixedUpdateState();
             UpdateLookAround();
             m_distanceFromGround = m_player.GetDistanceFromGround();
-            if (m_distanceFromGround < m_player.InAirDistanceFromGround)
-            {
-                m_player.CharacterAnimatorHandler.SetInAir(false);
-            }
+
             m_inAirSpeed = m_player.Velocity.magnitude;
 
             m_directionToAim = m_player.transform.TransformDirection(new Vector3(m_movementInputs.x, 0, m_movementInputs.y));
@@ -46,6 +43,7 @@ namespace ProjElf.PlayerController
 
         public override void ExitState()
         {
+            m_player.CharacterAnimatorHandler.SetInAir(false);
             base.ExitState();
         }
     }
