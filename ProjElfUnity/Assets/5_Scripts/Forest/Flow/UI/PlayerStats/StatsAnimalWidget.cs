@@ -28,6 +28,7 @@ namespace ProjElf.HubForest
             m_iconImage.sprite = a_animalData.AnimalIcon;
         }
 
+
         public void OnSelect(BaseEventData eventData)
         {
             m_statsAnimalDisplay.SetUp(m_currentAnimalData);
