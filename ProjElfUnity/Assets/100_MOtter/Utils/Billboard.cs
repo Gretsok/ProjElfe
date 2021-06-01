@@ -25,8 +25,16 @@ namespace MOtter.Utils
 
         public void SetCamera(Camera camera)
         {
-            if (camera != null)
-                m_cameraTransform = camera.transform;
+            if(camera != null)
+            {
+                SetCamera(camera.transform);
+            }
+        }
+
+        public void SetCamera(Transform cameraTransform)
+        {
+            if (cameraTransform != null)
+                m_cameraTransform = cameraTransform;
             else
                 StartCoroutine(WaitForMainCamera());
         }

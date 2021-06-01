@@ -151,7 +151,7 @@ namespace ProjElf.PlayerController
         {
             base.EnterStateMachine();
             SetUpInput();
-
+            m_combatController.Init(m_gamemode);
             m_combatController.OnLifeReachedZero += Die;
         }
 

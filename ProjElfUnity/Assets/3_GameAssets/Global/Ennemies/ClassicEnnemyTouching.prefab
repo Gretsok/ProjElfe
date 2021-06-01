@@ -935,6 +935,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_healthSlider: {fileID: 1859098202073726928}
   m_healthRemaining: {fileID: 2940004424062236989}
+  m_billboard: {fileID: 4162974060218636887}
 --- !u!1 &6273399463449592290
 GameObject:
   m_ObjectHideFlags: 0

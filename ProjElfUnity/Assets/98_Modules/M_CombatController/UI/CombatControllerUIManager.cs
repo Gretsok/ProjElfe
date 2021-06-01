@@ -6,6 +6,11 @@ namespace ProjElf.CombatController
 {
     public class CombatControllerUIManager : MonoBehaviour
     {
+        internal virtual void InitWithGamemode(ProjElfGameMode a_gamemode)
+        {
+
+        }
+
         internal virtual void SetHealthRatio(float healthRatio)
         {
 
