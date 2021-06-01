@@ -14,7 +14,7 @@ namespace ProjElf.CombatController
         [SerializeField]
         protected int m_baseMaxLifePoints = 100;
         protected int m_maxLifePoints = 100;
-        protected int m_physicalArmor = 100;
+        protected int m_physicalArmor = 0;
         protected int m_magicalArmor = 0;
         protected float m_attackSpeedBonus = 0;
         protected float m_lifeFactorIncrement = 0f;
@@ -84,7 +84,7 @@ namespace ProjElf.CombatController
         internal void ResetStatsBonus()
         {
             m_maxLifePoints = m_baseMaxLifePoints;
-            m_physicalArmor = 100;
+            m_physicalArmor = 0;
             m_magicalArmor = 0;
             m_attackSpeedBonus = 0f;
             m_lifeFactorIncrement = 0f;
@@ -131,16 +131,6 @@ namespace ProjElf.CombatController
             m_magicalDamageMultiplierIncrement += increment;
         }
 
-        internal void MultiplyPhysicalDamageMultiplierIncrement(float increment)
-        {
-            m_physicalDamageMultiplierIncrement *= increment;
-        }
-
-        internal void MultiplyMagicalDamageMultiplierIncrement(float increment)
-        {
-            m_magicalDamageMultiplierIncrement *= increment;
-        }
-
         #region DamageGiver
         protected void GetAttacked(DamageGiverData damageGiverData)
         {
@@ -162,7 +152,7 @@ namespace ProjElf.CombatController
                     
                     if(damageGiverData.DamageGiver.CanDoDamage)
                     {
-                        TakeDamage(damageGiverData.DamageGiver.Damage);
+                        TakeDamage(damageGiverData.DamageGiver.Damage, damageGiverData.DamageGiver.Owner);
                     }
                     damageGiverData.DamageGiver.OnCombatControllerHit(this);
 
@@ -316,7 +306,7 @@ namespace ProjElf.CombatController
             m_isShooting = false;
         }
 
-        public void TakeDamage(Damage damage, CombatController attacker = null)
+        public void TakeDamage(Damage damage, CombatController attacker)// = null)
         {
             Debug.Log("Dealing Damage");
             double m_damageToTake = (int)(damage.HitDamage * (attacker != null ?

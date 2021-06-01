@@ -34,8 +34,8 @@ namespace ProjElf.AI
             //GetComponent<EnnemyStatsImprovementsManager>().ImproveEnnemy(m_gamemode.DunjeonManager.CurrentDunjeonData.LifeFactor, m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor, m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
 
             m_combatController.MultiplyLifePointBy(m_gamemode.DunjeonManager.CurrentDunjeonData.LifeFactor);
-            m_combatController.MultiplyPhysicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
-            m_combatController.MultiplyMagicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
+            m_combatController.ImprovePhysicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
+            m_combatController.ImproveMagicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
 
         }
 
