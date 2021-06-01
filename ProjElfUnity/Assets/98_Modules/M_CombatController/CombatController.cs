@@ -14,7 +14,7 @@ namespace ProjElf.CombatController
         [SerializeField]
         protected int m_baseMaxLifePoints = 100;
         protected int m_maxLifePoints = 100;
-        protected int m_physicalArmor = 0;
+        protected int m_physicalArmor = 100;
         protected int m_magicalArmor = 0;
         protected float m_attackSpeedBonus = 0;
         protected float m_lifeFactorIncrement = 0f;
@@ -79,7 +79,7 @@ namespace ProjElf.CombatController
         internal void ResetStatsBonus()
         {
             m_maxLifePoints = m_baseMaxLifePoints;
-            m_physicalArmor = 0;
+            m_physicalArmor = 100;
             m_magicalArmor = 0;
             m_attackSpeedBonus = 0f;
             m_lifeFactorIncrement = 0f;
@@ -314,10 +314,11 @@ namespace ProjElf.CombatController
         public void TakeDamage(Damage damage, CombatController attacker = null)
         {
             Debug.Log("Dealing Damage");
-            int m_damageToTake = (int)(damage.HitDamage * (attacker != null ?
+            double m_damageToTake = (int)(damage.HitDamage * (attacker != null ?
                 1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
                 : 1));
-            m_lifePoints -= (int) (m_damageToTake * (100 / (100 + m_physicalArmor)));
+            m_damageToTake *= (double)100 / (double)(100 + m_physicalArmor);
+            m_lifePoints -= (int) m_damageToTake;
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
             if (m_lifePoints<=0)
