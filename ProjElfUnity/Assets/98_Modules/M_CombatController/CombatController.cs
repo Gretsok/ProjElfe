@@ -314,9 +314,10 @@ namespace ProjElf.CombatController
         public void TakeDamage(Damage damage, CombatController attacker = null)
         {
             Debug.Log("Dealing Damage");
-            m_lifePoints -= (int) (damage.HitDamage * (attacker != null ? 
+            int m_damageToTake = (int)(damage.HitDamage * (attacker != null ?
                 1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
                 : 1));
+            m_lifePoints -= (int) (m_damageToTake * (100 / (100 + m_physicalArmor)));
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
             if (m_lifePoints<=0)
