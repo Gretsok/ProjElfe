@@ -201,7 +201,6 @@ namespace ProjElf.CombatController
             }
         }
 
-
         private void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
@@ -310,6 +309,7 @@ namespace ProjElf.CombatController
         public void TakeDamage(Damage damage, CombatController attacker)// = null)
         {
             Debug.Log("Dealing Damage");
+
             double m_damageToTake = (int)(damage.HitDamage * (attacker != null ?
                 1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
                 : 1));
