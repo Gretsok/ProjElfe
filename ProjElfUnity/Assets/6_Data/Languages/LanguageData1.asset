@@ -71,7 +71,7 @@ MonoBehaviour:
     - RESCUED_THIS_ANIMAL
     - ANIMAL_NAME_BOB
     - ANIMAL_NAME_BOB_IN_SENTENCE
-    - STAT_FORCE
+    - STAT_ATTACKSPEED
     - STAT_LIFEPOINTS
     - STAT_MOVEMENTSPEED
     - STAT_MAGICAL_ARMOR
@@ -306,7 +306,7 @@ MonoBehaviour:
     - Vous avez secouru {0} !
     - Bob
     - un Bob
-    - Force
+    - Vitesse d'attaque
     - Points de vie
     - "Vitesse de d\xE9placement"
     - Armure magique

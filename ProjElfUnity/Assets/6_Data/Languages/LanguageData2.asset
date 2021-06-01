@@ -71,7 +71,7 @@ MonoBehaviour:
     - RESCUED_THIS_ANIMAL
     - ANIMAL_NAME_BOB
     - ANIMAL_NAME_BOB_IN_SENTENCE
-    - STAT_FORCE
+    - STAT_ATTACKSPEED
     - STAT_LIFEPOINTS
     - STAT_MOVEMENTSPEED
     - STAT_MAGICAL_ARMOR
@@ -307,7 +307,7 @@ MonoBehaviour:
     - "\xA1Rescataste a {0}!"
     - Bob
     - un Bob
-    - Fuerza
+    - STAT_ATTACKSPEED
     - Puntos de vida
     - Velocidad de movimiento
     - STAT_MAGICAL_ARMOR

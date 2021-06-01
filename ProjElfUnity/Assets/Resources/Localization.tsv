@@ -55,7 +55,7 @@ RESCUED_NEW_ANIMAL	YOU RESCUED A NEW ANIMAL !	VOUS AVEZ SECOURU UN NOUVEL ANIMAL
 RESCUED_THIS_ANIMAL	You rescued {0} !	Vous avez secouru {0} !	¡Rescataste a {0}!
 ANIMAL_NAME_BOB	Bob	Bob	Bob
 ANIMAL_NAME_BOB_IN_SENTENCE	a Bob	un Bob	un Bob
-STAT_FORCE	Force	Force	Fuerza
+STAT_ATTACKSPEED	Attack speed	Vitesse d'attaque	STAT_ATTACKSPEED
 STAT_LIFEPOINTS	Life Points	Points de vie	Puntos de vida
 STAT_MOVEMENTSPEED	Movement speed	Vitesse de déplacement	Velocidad de movimiento
 STAT_MAGICAL_ARMOR	Magical Armor	Armure magique	STAT_MAGICAL_ARMOR

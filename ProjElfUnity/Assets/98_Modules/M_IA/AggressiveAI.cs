@@ -3,6 +3,7 @@ using ProjElf.ProceduraleGeneration;
 using System;
 using UnityEngine;
 using MOtter;
+using System.Collections;
 
 namespace ProjElf.AI
 {
@@ -17,6 +18,9 @@ namespace ProjElf.AI
         [SerializeField]
         private CharacterAnimatorHandler m_characterAnimatorHandler = null;
         public CharacterAnimatorHandler CharacterAnimatorHandler => m_characterAnimatorHandler;
+
+        [SerializeField]
+        private RagdollActivator m_ragdollActivator = null;
 
         internal override void EnterStateMachine()
         {
@@ -42,7 +46,16 @@ namespace ProjElf.AI
         private void Die()
         {
             Debug.Log("AI Died");
+            StartCoroutine(DieRoutine(5f));
+        }
+        private IEnumerator DieRoutine(float timeToDisappear)
+        {
             AttachedDunjeonRoom.RemoveAIToRoom(this);
+            m_ragdollActivator.ActivateRagdoll();
+            Agent.SetDestination(transform.position);
+
+            yield return new WaitForSeconds(timeToDisappear);
+
             Destroy(gameObject);
         }
 

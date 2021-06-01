@@ -20,5 +20,10 @@ namespace ProjElf.CombatController
         {
 
         }
+
+        internal void Hide()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

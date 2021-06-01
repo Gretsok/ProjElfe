@@ -31,6 +31,7 @@ namespace ProjElf.CombatController
 
 
         public Action OnLifeReachedZero = null;
+        
 
         /// <summary>
         /// Meant for AI
@@ -337,6 +338,11 @@ namespace ProjElf.CombatController
             m_lifePoints = Mathf.Clamp(m_lifePoints, 0, m_maxLifePoints);
             m_UIManager?.SetHealthRatio((float)m_lifePoints / (float)m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
+        }
+
+        public void CleanUp()
+        {
+            m_UIManager.Hide();
         }
     }
 }
