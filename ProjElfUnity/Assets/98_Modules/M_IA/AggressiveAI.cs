@@ -22,11 +22,27 @@ namespace ProjElf.AI
         [SerializeField]
         private RagdollActivator m_ragdollActivator = null;
 
+        [SerializeField]
+        private GenericAIGettingCloserToPlayerState m_beingAttackedState = null;
+
         internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
             m_combatController.ForceContinueFiring = true;
             m_combatController.OnLifeReachedZero += Die;
+            m_combatController.OnBeingAttacked += OnBeingAttacked;
+        }
+
+        private void OnBeingAttacked(Damage damage, CombatController.CombatController attacker)
+        {
+            SwitchToState(m_beingAttackedState);
+        }
+
+        internal override void ExitStateMachine()
+        {
+            m_combatController.OnLifeReachedZero -= Die;
+            m_combatController.OnBeingAttacked -= OnBeingAttacked;
+            base.ExitStateMachine();
         }
 
         public override void Init()
@@ -53,6 +69,7 @@ namespace ProjElf.AI
             AttachedDunjeonRoom.RemoveAIToRoom(this);
             m_ragdollActivator.ActivateRagdoll();
             Agent.SetDestination(transform.position);
+            m_combatController.CleanUp();
 
             yield return new WaitForSeconds(timeToDisappear);
 

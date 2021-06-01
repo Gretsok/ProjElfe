@@ -83,6 +83,14 @@ namespace ProjElf.AI
         {
             m_animator.enabled = false;
         }
+
+        protected virtual void OnDestroy()
+        {
+            if(m_isInit)
+            {
+                ExitStateMachine();
+            }
+        }
     }
 
     

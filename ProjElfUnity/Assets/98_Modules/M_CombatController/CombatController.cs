@@ -31,6 +31,7 @@ namespace ProjElf.CombatController
 
 
         public Action OnLifeReachedZero = null;
+        public Action<Damage, CombatController> OnBeingAttacked = null;
         
 
         /// <summary>
@@ -326,6 +327,7 @@ namespace ProjElf.CombatController
             
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
+            OnBeingAttacked?.Invoke(damage, attacker);
             if (m_lifePoints<=0)
             {
                 OnLifeReachedZero?.Invoke();//Lance l'action si pas null
