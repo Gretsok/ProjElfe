@@ -20,7 +20,6 @@ namespace ProjElf.CombatController
         protected float m_lifeFactorIncrement = 0f;
         protected float m_magicalDamageMultiplierIncrement = 0f;
         protected float m_physicalDamageMultiplierIncrement = 0f;
-        protected ProjElfGameMode m_gameMode = null;
 
         public float LifeFactorIncrement => m_lifeFactorIncrement;
         public int MaxLifePoints => m_maxLifePoints;
@@ -79,7 +78,6 @@ namespace ProjElf.CombatController
 
         public void Init(ProjElfGameMode a_gamemode)
         {
-            m_gameMode = a_gamemode;
             m_UIManager.InitWithGamemode(a_gamemode);
         }
 
@@ -202,7 +200,6 @@ namespace ProjElf.CombatController
             }
         }
 
-
         private void OnTriggerExit(Collider other)
         {
             if (other.TryGetComponent<IDamageGiver>(out IDamageGiver damageGiver))
@@ -311,11 +308,6 @@ namespace ProjElf.CombatController
         public void TakeDamage(Damage damage, CombatController attacker)// = null)
         {
             Debug.Log("Dealing Damage");
-
-            if (attacker.TeamIndex == 1)//Si l'ia n'est pas en combat mais se fait attaquer par le joueur
-            {
-
-            }
 
             double m_damageToTake = (int)(damage.HitDamage * (attacker != null ?
                 1 + (damage.DamageType == EDamageType.Magical ? attacker.MagicalDamageMultiplierIncrement : attacker.PhysicalDamageMultiplierIncrement)
