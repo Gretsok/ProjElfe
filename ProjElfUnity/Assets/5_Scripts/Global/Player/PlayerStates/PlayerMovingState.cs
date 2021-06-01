@@ -10,7 +10,8 @@ namespace ProjElf.PlayerController
         private float m_lastDashTime = float.MinValue;
         [SerializeField]
         private float m_dashCooldown = 5f;
-
+        [SerializeField]
+        private float m_velocitySmooth = 10f;
         public override void UpdateState()
         {
             base.UpdateState();
@@ -23,6 +24,12 @@ namespace ProjElf.PlayerController
             base.FixedUpdateState();
             UpdatePositionInputs();
             UpdateLookAround();
+        }
+
+        protected override void ManageInput()
+        {
+            m_movementInputs = Vector3.Lerp(m_movementInputs, m_moveInputAction.ReadValue<Vector2>(), m_velocitySmooth * Time.deltaTime);
+            m_lookAroundInputs = m_lookAroundAction.ReadValue<Vector2>();
         }
 
         protected override void UpdatePositionInputs()

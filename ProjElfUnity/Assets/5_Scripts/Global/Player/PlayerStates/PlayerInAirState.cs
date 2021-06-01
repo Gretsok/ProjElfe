@@ -4,7 +4,6 @@ namespace ProjElf.PlayerController
 {
     public class PlayerInAirState : PlayerState
     {
-        private float m_distanceFromGround = 0;
         private Vector3 m_startingVelocity = Vector3.zero;
         private Vector3 m_directionToAim = Vector3.zero;
         private float m_inAirSpeed = 0f;
@@ -28,7 +27,6 @@ namespace ProjElf.PlayerController
         {
             base.FixedUpdateState();
             UpdateLookAround();
-            m_distanceFromGround = m_player.GetDistanceFromGround();
 
             m_inAirSpeed = m_player.Velocity.magnitude;
 

@@ -46,7 +46,7 @@ namespace ProjElf.HubForest
         {
             if(m_statsTextLocalizer.TextTarget != null)
                 m_statsTextLocalizer.TextTarget.text = string.Empty;
-            m_renderTextureStudio.DeleteObjectSpawned();
+            m_renderTextureStudio?.DeleteObjectSpawned();
         }
     }
 }

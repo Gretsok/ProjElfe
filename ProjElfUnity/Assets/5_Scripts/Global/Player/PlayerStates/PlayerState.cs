@@ -31,7 +31,7 @@ namespace ProjElf.PlayerController
 
         }
 
-        protected void ManageInput()
+        protected virtual void ManageInput()
         {
             m_movementInputs = m_moveInputAction.ReadValue<Vector2>();
             m_lookAroundInputs = m_lookAroundAction.ReadValue<Vector2>();
