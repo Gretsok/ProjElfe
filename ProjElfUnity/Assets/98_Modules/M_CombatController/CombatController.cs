@@ -76,6 +76,11 @@ namespace ProjElf.CombatController
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
         }
 
+        public void Init(ProjElfGameMode a_gamemode)
+        {
+            m_UIManager.InitWithGamemode(a_gamemode);
+        }
+
         internal void ResetStatsBonus()
         {
             m_maxLifePoints = m_baseMaxLifePoints;

@@ -28,12 +28,15 @@ namespace ProjElf.AI
         public override void Init()
         {
             base.Init();
+            m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
+            m_combatController.Init(m_gamemode);
             m_combatController.ResetStatsBonus();
             //GetComponent<EnnemyStatsImprovementsManager>().ImproveEnnemy(m_gamemode.DunjeonManager.CurrentDunjeonData.LifeFactor, m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor, m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
-            m_gamemode = MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<DunjeonGameMode>();
+
             m_combatController.MultiplyLifePointBy(m_gamemode.DunjeonManager.CurrentDunjeonData.LifeFactor);
             m_combatController.MultiplyPhysicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
             m_combatController.MultiplyMagicalDamageMultiplierIncrement(m_gamemode.DunjeonManager.CurrentDunjeonData.DamageFactor);
+
         }
 
         private void Die()
