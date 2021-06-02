@@ -92,5 +92,6 @@ namespace ProjElf.PlayerController
             base.UnEquipWeapon();
             (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.SetNoWeaponActive();
         }
+
     }
 }

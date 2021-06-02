@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System;
+using MOtter.Localization;
+using Tween;
 
 namespace ProjElf.PlayerController
 {
@@ -21,6 +23,13 @@ namespace ProjElf.PlayerController
 
         [SerializeField]
         private TMP_Text m_healthRemaining;
+
+
+        private void Awake()
+        {
+            HidePossibleInteraction();
+            m_gotNewWeaponTween.gameObject.SetActive(false);
+        }
 
         internal override void SetHealthRatio(float healthRatio)
         {
@@ -47,7 +56,34 @@ namespace ProjElf.PlayerController
                 m_backHealthSlider.fillAmount = Mathf.Lerp(m_backHealthSlider.fillAmount, healthRatio, ((Time.time - beginAt) / slideDuration));
                 yield return null;
             }
-            
+        }
+
+
+
+        [SerializeField]
+        private TextLocalizer m_interactText = null;
+        [SerializeField]
+        private GameObject m_interactionUI = null;
+
+        public void ShowPossibleInteraction(string interactionKey, Action<string, TextLocalizer> format)
+        {
+            m_interactText.SetKey(interactionKey);
+            m_interactText.SetFormatter(format);
+            m_interactionUI.SetActive(true);
+        }
+
+        public void HidePossibleInteraction()
+        {
+            m_interactionUI.SetActive(false);
+        }
+
+
+        [SerializeField]
+        private ATween m_gotNewWeaponTween = null;
+        public void ShowGotNewWeapon()
+        {
+            m_gotNewWeaponTween.gameObject.SetActive(true);
+            m_gotNewWeaponTween.StartTween();
         }
     }
 }
