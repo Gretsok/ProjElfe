@@ -103,7 +103,7 @@ namespace ProjElf.CombatController
         internal void MultiplyLifePointBy(float a_lifePointsToMultiply)
         {
             int OldMaxLifePoints = m_maxLifePoints;
-            float LifeTmp = m_maxLifePoints * a_lifePointsToMultiply;
+            float LifeTmp = m_maxLifePoints * (1 + a_lifePointsToMultiply);
             m_maxLifePoints = (int)LifeTmp;
             Heal(m_maxLifePoints);
         }
