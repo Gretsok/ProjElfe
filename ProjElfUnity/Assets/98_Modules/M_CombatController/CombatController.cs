@@ -327,6 +327,7 @@ namespace ProjElf.CombatController
             
             m_UIManager?.SetHealthRatio((float) m_lifePoints / (float) m_maxLifePoints);
             m_UIManager?.SetHealthRemaining((float)m_lifePoints);
+            m_UIManager?.DisplayFloatingDamage((int)m_damageToTake);
             OnBeingAttacked?.Invoke(damage, attacker);
             if (m_lifePoints<=0)
             {

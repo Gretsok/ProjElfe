@@ -21,6 +21,11 @@ namespace ProjElf.CombatController
 
         }
 
+        internal virtual void DisplayFloatingDamage(int damage)
+        {
+
+        }
+
         internal void Hide()
         {
             gameObject.SetActive(false);

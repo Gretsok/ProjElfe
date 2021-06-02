@@ -19,6 +19,9 @@ namespace ProjElf.AI
         private TMP_Text m_healthRemaining = null;
 
         [SerializeField]
+        private TMP_Text m_floatingDamage = null;
+
+        [SerializeField]
         private Billboard m_billboard = null;
 
         private float slideDuration = 20f;
@@ -56,6 +59,13 @@ namespace ProjElf.AI
                 yield return null;
             }
 
+        }
+
+        internal override void DisplayFloatingDamage(int damage)
+        {
+            base.DisplayFloatingDamage(damage);
+            m_floatingDamage.text = damage.ToString();
+            m_floatingDamage.text = damage.ToString();
         }
     }
 }
