@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 6536173364834932804}
   - component: {fileID: 6536173364834932802}
   - component: {fileID: 4433980179661843631}
+  - component: {fileID: 7376427358143753599}
   m_Layer: 5
   m_Name: OptionsButton
   m_TagString: Untagged
@@ -96,6 +97,7 @@ MonoBehaviour:
   m_unselectedColor:
     serializedVersion: 2
     rgba: 4281754778
+  m_selectedTween: {fileID: 7376427358143753599}
   m_stateActivationType: 0
   m_state: {fileID: 0}
 --- !u!114 &4433980179661843631
@@ -141,6 +143,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7376427358143753599
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536173364834932806}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 0
+  m_tweenDuration: 1
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &6536173365069347148
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,6 +424,7 @@ GameObject:
   - component: {fileID: 6536173365485357326}
   - component: {fileID: 6536173365485357324}
   - component: {fileID: 2933851064472927279}
+  - component: {fileID: 8258206670092724406}
   m_Layer: 5
   m_Name: PlayButton
   m_TagString: Untagged
@@ -458,6 +508,7 @@ MonoBehaviour:
   m_unselectedColor:
     serializedVersion: 2
     rgba: 4287063088
+  m_selectedTween: {fileID: 8258206670092724406}
   m_stateActivationType: 0
   m_state: {fileID: 0}
 --- !u!114 &2933851064472927279
@@ -503,6 +554,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &8258206670092724406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536173365485357312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 0
+  m_tweenDuration: 1
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &6536173365521079293
 GameObject:
   m_ObjectHideFlags: 0
@@ -516,6 +614,7 @@ GameObject:
   - component: {fileID: 6536173365521079291}
   - component: {fileID: 6536173365521079289}
   - component: {fileID: 5587414114972702699}
+  - component: {fileID: 2372106162878240073}
   m_Layer: 5
   m_Name: QuitButton
   m_TagString: Untagged
@@ -598,6 +697,7 @@ MonoBehaviour:
   m_unselectedColor:
     serializedVersion: 2
     rgba: 4286743170
+  m_selectedTween: {fileID: 2372106162878240073}
   m_stateActivationType: 0
   m_state: {fileID: 0}
 --- !u!114 &5587414114972702699
@@ -643,6 +743,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &2372106162878240073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536173365521079293}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 0
+  m_tweenDuration: 1
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &6536173365764171151
 GameObject:
   m_ObjectHideFlags: 0
@@ -892,6 +1039,7 @@ GameObject:
   - component: {fileID: 6536173365872261976}
   - component: {fileID: 6536173365872261990}
   - component: {fileID: 5172491292294125410}
+  - component: {fileID: 7088392731048396697}
   m_Layer: 5
   m_Name: CreditsButton
   m_TagString: Untagged
@@ -950,7 +1098,7 @@ MonoBehaviour:
   m_Type: 0
   m_PreserveAspect: 1
   m_FillCenter: 1
-  m_FillMethod: 4
+  m_FillMethod: 0
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
@@ -975,6 +1123,7 @@ MonoBehaviour:
   m_unselectedColor:
     serializedVersion: 2
     rgba: 4281754778
+  m_selectedTween: {fileID: 7088392731048396697}
   m_stateActivationType: 0
   m_state: {fileID: 0}
 --- !u!114 &5172491292294125410
@@ -1020,6 +1169,53 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &7088392731048396697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6536173365872261978}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 0
+  m_tweenDuration: 1
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &6536173366077926467
 GameObject:
   m_ObjectHideFlags: 0

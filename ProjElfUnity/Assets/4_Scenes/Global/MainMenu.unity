@@ -1738,6 +1738,8 @@ GameObject:
   - component: {fileID: 918040996}
   - component: {fileID: 918040998}
   - component: {fileID: 918040997}
+  - component: {fileID: 918040999}
+  - component: {fileID: 918041000}
   m_Layer: 5
   m_Name: BANNER
   m_TagString: Untagged
@@ -1801,6 +1803,100 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 918040995}
   m_CullTransparentMesh: 0
+--- !u!114 &918040999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918040995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4561a9b866b944842a13be691e42b270, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 1
+  m_tweenDuration: 3
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalRotation: {x: 0, y: 0, z: -2}
+  m_finalLocalRotation: {x: 0, y: 0, z: 2}
+--- !u!114 &918041000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 918040995}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 1
+  m_tweenDuration: 1.5
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.05, y: 1.05, z: 1.05}
 --- !u!4 &1037769186 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 9083528035685068619, guid: 4ff2b72689b989b4eb91c7bc1587fb0a,
@@ -2461,6 +2557,59 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 1407057018}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1407057020 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8227128032920754856, guid: 5bf69b8c6e68f8e479211f84e3214bf7,
+    type: 3}
+  m_PrefabInstance: {fileID: 1407057018}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1407057021
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1407057020}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 89f7386e2fecf924cae0ab53afd0ec3e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_onStarted:
+    m_PersistentCalls:
+      m_Calls: []
+  m_onFinish:
+    m_PersistentCalls:
+      m_Calls: []
+  m_playOnAwake: 1
+  m_tweenDuration: 0.7
+  m_loopType: 3
+  m_tweenCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  m_initialLocalScale: {x: 1, y: 1, z: 1}
+  m_finalLocalScale: {x: 1.1, y: 1.1, z: 1.1}
 --- !u!1 &1483963476
 GameObject:
   m_ObjectHideFlags: 3

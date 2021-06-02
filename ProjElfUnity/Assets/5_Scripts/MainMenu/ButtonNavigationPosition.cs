@@ -1,4 +1,5 @@
 ﻿using MOtter.StatesMachine;
+using Tween;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -21,6 +22,8 @@ namespace ProjElf.MainMenu
         private Color32 m_selectedColor = Color.white;
         [SerializeField]
         private Color32 m_unselectedColor = Color.white;
+        [SerializeField]
+        private ScaleTween m_selectedTween = null;
 
         [SerializeField]
         private EStateActivationType m_stateActivationType = EStateActivationType.OnSelect;
@@ -53,6 +56,7 @@ namespace ProjElf.MainMenu
         public virtual void OnSelected()
         {
             m_image.color = m_selectedColor;
+            m_selectedTween?.StartTween();
             if(m_state != null && m_stateActivationType == EStateActivationType.OnSelect)
                 m_mainStatesMachine?.SwitchToState(m_state);
         }
@@ -60,6 +64,7 @@ namespace ProjElf.MainMenu
         public void OnUnselected()
         {
             m_image.color = m_unselectedColor;
+            m_selectedTween?.StopAllAttachedTweens();
         }
 
         public void OnSelect(BaseEventData eventData)
