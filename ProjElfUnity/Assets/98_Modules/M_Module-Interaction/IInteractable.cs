@@ -7,8 +7,8 @@ namespace ProjElf.Interaction
     {
         GameObject gameObject { get; } // on ne peut pas mettre d'attribut dans une interface. du coup on doit la get 
         void DoInteraction(Interactor interactor);
-        void StartBeingWatched();
-        void StopBeingWatched();
+        void StartBeingWatched(Interactor interactor);
+        void StopBeingWatched(Interactor interactor);
     }
     
 }

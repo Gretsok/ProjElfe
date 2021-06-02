@@ -37,12 +37,14 @@ namespace ProjElf.DunjeonGameplay
             }
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowPossibleInteraction("INTERACT_SAVE_ANIMAL", null);
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).HidePossibleInteraction();
         }
     }
 }

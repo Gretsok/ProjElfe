@@ -16,12 +16,12 @@ namespace ProjElf.HubForest
             
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor iteractor)
         {
             Debug.Log("Portal start being watched");
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor iteractor)
         {
             Debug.Log("Portal stop being watched");
         }

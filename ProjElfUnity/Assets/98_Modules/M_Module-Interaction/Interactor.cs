@@ -32,14 +32,14 @@ namespace ProjElf.Interaction
                 IInteractable currentInteractableCollider = hit.collider.GetComponent<IInteractable>(); // on recupere l'interectable -> soit null / soit Interactable
                 if (m_currentInteractableInSight != currentInteractableCollider)
                 {
-                    currentInteractableCollider?.StartBeingWatched();
-                    m_currentInteractableInSight?.StopBeingWatched(); //on passe au suivant 
+                    currentInteractableCollider?.StartBeingWatched(this);
+                    m_currentInteractableInSight?.StopBeingWatched(this); //on passe au suivant 
                     m_currentInteractableInSight = currentInteractableCollider;
                 }
             }
             else
             {
-                m_currentInteractableInSight?.StopBeingWatched();
+                m_currentInteractableInSight?.StopBeingWatched(this);
                 m_currentInteractableInSight = null;
             }
         }

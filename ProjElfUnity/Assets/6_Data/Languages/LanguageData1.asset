@@ -248,6 +248,10 @@ MonoBehaviour:
     - PAUSE_KEYINDICATION_JUMP
     - MAINMENU_HOME_PRESS
     - MAINMENU_HOME_TO_CONTINUE
+    - INTERACT_OPEN_INVENTORY
+    - INTERACT_OPEN_CHEST
+    - INTERACT_DISPLAY_PLAYER_STATS
+    - INTERACT_SAVE_ANIMAL
     m_values:
     - FR
     - "Fran\xE7ais"
@@ -483,3 +487,7 @@ MonoBehaviour:
     - Sauter
     - Appuier sur
     - pour continuer
+    - Ouvrir l'inventaire
+    - Ouvrir le coffre
+    - Afficher les statistiques du joueurs
+    - Sauver l'animal

@@ -10,11 +10,11 @@ public class DunjeonExit : MonoBehaviour, IInteractable
         
     }
 
-    public void StartBeingWatched()
+    public void StartBeingWatched(Interactor interactor)
     {
     }
 
-    public void StopBeingWatched()
+    public void StopBeingWatched(Interactor interactor)
     {
     }
 }

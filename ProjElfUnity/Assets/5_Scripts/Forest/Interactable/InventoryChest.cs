@@ -18,12 +18,14 @@ namespace ProjElf.HubForest
             m_gamemode.ActivateInventoryState();
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowPossibleInteraction("INTERACT_OPEN_INVENTORY", null);
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).HidePossibleInteraction();
         }
     }
 }

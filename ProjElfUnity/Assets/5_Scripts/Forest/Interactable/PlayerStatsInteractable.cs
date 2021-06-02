@@ -17,12 +17,14 @@ namespace ProjElf.HubForest
             m_gamemode.ActivatePlayerDisplay();
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowPossibleInteraction("INTERACT_DISPLAY_PLAYER_STATS", null);
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor interactor)
         {
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).HidePossibleInteraction();
         }
     }
 }

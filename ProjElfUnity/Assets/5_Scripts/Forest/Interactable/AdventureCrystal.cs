@@ -16,12 +16,12 @@ namespace ProjElf.HubForest
             m_gamemode.ActivateDunjeonSelectionState();
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor iteractor)
         {
             Debug.Log("Crystal start being watched");
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor iteractor)
         {
             Debug.Log("Crystal stop being watched");
         }
