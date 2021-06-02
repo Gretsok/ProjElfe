@@ -1,4 +1,6 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 namespace ProjElf.PlayerController
 {
@@ -12,10 +14,16 @@ namespace ProjElf.PlayerController
         private float m_dashCooldown = 5f;
         [SerializeField]
         private float m_velocitySmooth = 10f;
+        [SerializeField]
+        private Image m_dashClock = null;
+        [SerializeField]
+        private TMP_Text m_dashCooldownRemaining = null;
         public override void UpdateState()
         {
             base.UpdateState();
             ManageInput();
+            m_dashCooldownRemaining.text = (m_dashCooldown - (Time.time - m_lastDashTime)).ToString();
+            m_dashClock.fillAmount = Mathf.Lerp(0,1, (Time.time - m_lastDashTime) / m_dashCooldown);
         }
 
 
