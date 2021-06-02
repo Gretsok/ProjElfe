@@ -119,6 +119,7 @@ namespace ProjElf.DunjeonGameplay
                 if (currentInteractor != null)
                 {
                     m_gamemode.Player.CombatController.CombatInventory.HoldedWeapons.Add(weaponSaveData);
+                    (m_gamemode.Player.CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowGotNewWeapon();
                 }
             }
         }

@@ -56,10 +56,11 @@ namespace Tween
 
         private ATween[] m_attachedTweens = null;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             m_attachedTweens = gameObject.GetComponents<ATween>();
-            if(m_playOnAwake)
+            m_target = transform;
+            if (m_playOnAwake)
             {
                 Play();
             }
@@ -87,8 +88,7 @@ namespace Tween
             
             m_isPlaying = true;
             m_tweenRoutine = StartCoroutine(TweenRoutine());
-            m_onStarted?.Invoke();
-            m_onTweenStarted?.Invoke(this);
+
         }
 
         public void StartTween(bool forward = true)
@@ -96,6 +96,8 @@ namespace Tween
             if(!m_isPlaying && Application.isPlaying)
             {
                 Play(forward);
+                m_onStarted?.Invoke();
+                m_onTweenStarted?.Invoke(this);
             }
         }
 

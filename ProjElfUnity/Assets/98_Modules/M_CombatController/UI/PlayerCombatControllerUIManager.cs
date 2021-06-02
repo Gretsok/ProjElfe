@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using MOtter.Localization;
+using Tween;
 
 namespace ProjElf.PlayerController
 {
@@ -27,6 +28,7 @@ namespace ProjElf.PlayerController
         private void Awake()
         {
             HidePossibleInteraction();
+            m_gotNewWeaponTween.gameObject.SetActive(false);
         }
 
         internal override void SetHealthRatio(float healthRatio)
@@ -75,5 +77,13 @@ namespace ProjElf.PlayerController
             m_interactionUI.SetActive(false);
         }
 
+
+        [SerializeField]
+        private ATween m_gotNewWeaponTween = null;
+        public void ShowGotNewWeapon()
+        {
+            m_gotNewWeaponTween.gameObject.SetActive(true);
+            m_gotNewWeaponTween.StartTween();
+        }
     }
 }
