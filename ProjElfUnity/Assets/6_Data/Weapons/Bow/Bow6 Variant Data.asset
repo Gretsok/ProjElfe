@@ -22,7 +22,7 @@ MonoBehaviour:
   m_allowContinueFiring: 0
   m_sellPrice: 5
   m_rerollPrice: 5
-  m_projectileDivingRate: {x: 10, y: 12}
+  m_projectileDivingRate: {x: 12, y: 12}
   m_projectileSpeed: {x: 20, y: 25}
   m_projectilePrefab: {fileID: 4184080647978427945, guid: ed2d7bc2b90d6964f820fa7f4708af2c,
     type: 3}
