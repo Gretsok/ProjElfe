@@ -1,6 +1,7 @@
 ﻿using MOtter;
 using MOtter.Localization;
 using TMPro;
+using Tween;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -27,6 +28,16 @@ namespace ProjElf.MainMenu
         [SerializeField]
         private TextMeshProUGUI m_animalsSavedText = null;
 
+        [Header("Tweens")]
+        /*[SerializeField]
+        private ScaleTween m_hideSelectedElementTween = null;*/
+        [SerializeField]
+        private ScaleTween m_showSelectedElementTween = null;
+        /*[SerializeField]
+        private ScaleTween m_hideUnselectedElementTween = null;
+        [SerializeField]
+        private ScaleTween m_showUnselectedElementTween = null;*/
+
         private SaveData m_saveData = null;
         public SaveData SaveData => m_saveData;
 
@@ -37,15 +48,27 @@ namespace ProjElf.MainMenu
 
         public void OnSelected()
         {
+            DisplaySelectedElement();
+            m_mainStateMachine.ProfileManager.InflateSaveData(this);
+        }
+
+        public void DisplaySelectedElement(ATween tween = null)
+        {
             m_layoutElement.preferredHeight = 200;
             //m_layoutElement.preferredHeight = (transform as RectTransform).rect.height; //  TO TRY FOR CONSISTENCY
             m_unselectedElementDisplay.SetActive(false);
             m_selectedElementDisplay.SetActive(true);
             LayoutRebuilder.MarkLayoutForRebuild((transform as RectTransform));
-            m_mainStateMachine.ProfileManager.InflateSaveData(this);
+            m_showSelectedElementTween.StartTween();
         }
 
         public void OnUnselected()
+        {
+            DisplayUnselectedElement();
+
+        }
+
+        public void DisplayUnselectedElement(ATween tween = null)
         {
             m_layoutElement.preferredHeight = 100;
             m_unselectedElementDisplay.SetActive(true);

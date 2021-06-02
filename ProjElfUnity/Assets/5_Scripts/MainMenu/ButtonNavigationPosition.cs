@@ -56,9 +56,10 @@ namespace ProjElf.MainMenu
         public virtual void OnSelected()
         {
             m_image.color = m_selectedColor;
-            m_selectedTween?.StartTween();
-            if(m_state != null && m_stateActivationType == EStateActivationType.OnSelect)
+            
+            if (m_state != null && m_stateActivationType == EStateActivationType.OnSelect)
                 m_mainStatesMachine?.SwitchToState(m_state);
+            m_selectedTween?.StartTween();
         }
 
         public void OnUnselected()

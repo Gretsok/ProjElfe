@@ -115,7 +115,7 @@ namespace ProjElf.MainMenu
 
             SavedProfileModule newSaveProfileModule = Instantiate(m_savedProfileModulePrefab, transform);
             newSaveProfileModule.Inflate(saveData);
-            newSaveProfileModule.OnUnselected();
+            newSaveProfileModule.DisplayUnselectedElement();
             var button = newSaveProfileModule.GetComponent<Button>();
             button.onClick.AddListener(m_mainStateMachine.CharacterSelectionState.Confirm);
             if(m_instantiatedNavigationPositions.Count > 0)
