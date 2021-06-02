@@ -17,7 +17,6 @@ namespace ProjElf.PlayerController
         private PlayerWeaponsDisplay m_weaponsDisplay = null;
         public PlayerWeaponsDisplay WeaponsDisplay => m_weaponsDisplay;
         private float slideDuration = 20f;
-        private float lerpTimer;
         private Coroutine m_healthCoRoutine;
 
         [SerializeField]
