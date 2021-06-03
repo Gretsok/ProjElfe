@@ -65,7 +65,6 @@ namespace ProjElf.AI
         {
             base.DisplayFloatingDamage(damage);
             m_floatingDamage.text = damage.ToString();
-            m_floatingDamage.text = damage.ToString();
         }
     }
 }
