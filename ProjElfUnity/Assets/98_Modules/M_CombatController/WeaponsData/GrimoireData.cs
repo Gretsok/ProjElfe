@@ -30,6 +30,12 @@ namespace ProjElf.CombatController
                 base.SetWeaponData(weaponData);
                 ProjectilePrefab = (weaponData as GrimoireData).ProjectilePrefab;
             }
+
+            public override void Unserialize()
+            {
+                s_weaponLabel = "grimoire";
+                base.Unserialize();
+            }
         }
 
         //Var

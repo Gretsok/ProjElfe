@@ -38,7 +38,7 @@ namespace ProjElf.CombatController
                 WeaponDataID = weaponData.WeaponID;
             }
 
-            public void Unserialize()
+            public virtual void Unserialize()
             {
                 Addressables.LoadAssetsAsync<AWeaponData>(s_weaponLabel,
                     null).Completed += obj =>

@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using TMPro;
 using System;
 using MOtter.Utils;
+using Tween;
 
 namespace ProjElf.AI
 {
@@ -23,6 +24,11 @@ namespace ProjElf.AI
 
         private float slideDuration = 20f;
         private Coroutine m_healthCoRoutine;
+
+        private void Awake()
+        {
+            m_floatingDamageTween.gameObject.SetActive(false);
+        }
 
         internal override void InitWithGamemode(ProjElfGameMode a_gamemode)
         {
@@ -56,6 +62,23 @@ namespace ProjElf.AI
                 yield return null;
             }
 
+        }
+
+        [SerializeField]
+        private TMP_Text m_floatingDamage = null;
+        [SerializeField]
+        private ScaleTween m_floatingDamageTween = null;
+
+        internal override void DisplayFloatingDamage(int damage)
+        {
+            base.DisplayFloatingDamage(damage);
+            if(m_floatingDamageTween.IsPlaying)
+            {
+                m_floatingDamageTween.StopAllAttachedTweens();
+            }
+            m_floatingDamage.text = damage.ToString();
+            m_floatingDamageTween.gameObject.SetActive(true);
+            m_floatingDamageTween?.StartTween();
         }
     }
 }

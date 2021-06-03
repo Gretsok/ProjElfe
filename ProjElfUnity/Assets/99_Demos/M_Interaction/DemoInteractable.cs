@@ -11,7 +11,7 @@ public class DemoInteractable : MonoBehaviour, IInteractable
         Debug.Log("DoIneraction");
     }
 
-    public void StartBeingWatched()
+    public void StartBeingWatched(Interactor iteractor)
     {
         isWatched = true;
         Debug.Log("isWatched = "+isWatched);
@@ -20,7 +20,7 @@ public class DemoInteractable : MonoBehaviour, IInteractable
         
     }
 
-    public void StopBeingWatched()
+    public void StopBeingWatched(Interactor iteractor)
     {
         isWatched = false;
         Debug.Log("isWatched = " + isWatched);

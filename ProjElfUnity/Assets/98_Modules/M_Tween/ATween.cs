@@ -56,10 +56,11 @@ namespace Tween
 
         private ATween[] m_attachedTweens = null;
 
-        private void Awake()
+        protected virtual void Awake()
         {
             m_attachedTweens = gameObject.GetComponents<ATween>();
-            if(m_playOnAwake)
+            m_target = transform;
+            if (m_playOnAwake)
             {
                 Play();
             }
@@ -87,8 +88,7 @@ namespace Tween
             
             m_isPlaying = true;
             m_tweenRoutine = StartCoroutine(TweenRoutine());
-            m_onStarted?.Invoke();
-            m_onTweenStarted?.Invoke(this);
+
         }
 
         public void StartTween(bool forward = true)
@@ -96,6 +96,8 @@ namespace Tween
             if(!m_isPlaying && Application.isPlaying)
             {
                 Play(forward);
+                m_onStarted?.Invoke();
+                m_onTweenStarted?.Invoke(this);
             }
         }
 
@@ -144,6 +146,10 @@ namespace Tween
 
         public virtual void StopAllAttachedTweens(EStopType a_stop = EStopType.ResetToBeginning)
         {
+            if(m_attachedTweens == null)
+            {
+                return;
+            }
             for(int i = 0; i < m_attachedTweens.Length; ++i)
             {
                 m_attachedTweens[i].Stop(a_stop);
@@ -154,10 +160,10 @@ namespace Tween
         private IEnumerator TweenRoutine()
         {
             float startingTime = Time.time;
-            
-            while(Time.time - startingTime < m_tweenDuration)
+            while (Time.time - startingTime < m_tweenDuration)
             {
-                if(m_isGoingForward)
+
+                if (m_isGoingForward)
                 {
                     ManageTween(Mathf.Clamp01(m_tweenCurve.Evaluate(Mathf.Clamp01((Time.time - startingTime) / m_tweenDuration))));
                 }
@@ -165,7 +171,6 @@ namespace Tween
                 {
                     ManageTween(1 - Mathf.Clamp01(m_tweenCurve.Evaluate(Mathf.Clamp01((Time.time - startingTime) / m_tweenDuration))));
                 }
-                
                 yield return null;
             }
             Stop(EStopType.Finish);
@@ -198,7 +203,6 @@ namespace Tween
             {
                 m_onFinish?.Invoke();
                 m_onTweenFinish?.Invoke(this);
-                ResetValues();
             }
             else
             {

@@ -113,12 +113,13 @@ namespace ProjElf.DunjeonGameplay
             if(success)
             {
                 // Do stuff
-                m_animator.SetTrigger("Open");
+                m_animator.SetBool("Open", true);
                 m_light.color = m_openedColor;
                 Debug.Log(weaponSaveData);
                 if (currentInteractor != null)
                 {
                     m_gamemode.Player.CombatController.CombatInventory.HoldedWeapons.Add(weaponSaveData);
+                    (m_gamemode.Player.CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowGotNewWeapon();
                 }
             }
         }
@@ -132,14 +133,17 @@ namespace ProjElf.DunjeonGameplay
             }
         }
 
-        public void StartBeingWatched()
+        public void StartBeingWatched(Interactor interactor)
         {
-            // Starts shining ?
+            if(!m_hasBeenOpened)
+            {
+                (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).ShowPossibleInteraction("INTERACT_OPEN_CHEST", null);
+            }
         }
 
-        public void StopBeingWatched()
+        public void StopBeingWatched(Interactor interactor)
         {
-            // Stop shining ?
+            (interactor.GetComponent<PlayerController.Player>().CombatController.UIManager as PlayerController.PlayerCombatControllerUIManager).HidePossibleInteraction();
         }
     }
 }

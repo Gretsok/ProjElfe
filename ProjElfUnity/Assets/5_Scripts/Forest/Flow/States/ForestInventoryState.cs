@@ -22,13 +22,16 @@ namespace ProjElf.HubForest
 
         private InventoryPanel m_panel = null;
 
+        [SerializeField]
+        private InventoryChest m_inventoryChest = null;
+
         public override void EnterState()
         {
             base.EnterState();
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_panel = GetPanel<InventoryPanel>();
             StartCoroutine(LoadInventoryPanelRoutine());
-
+            m_inventoryChest.OpenChest();
         }
 
         #region Player Interactions
@@ -46,7 +49,7 @@ namespace ProjElf.HubForest
             StockedWeaponSlot stockedWeaponSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
 
             Debug.Log("Trying to reroll : " + stockedWeaponSlot);
-            if (stockedWeaponSlot != null)
+            if (stockedWeaponSlot != null && m_currentSaveData.FrancissousMoney >= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice)
             {
                 m_currentSaveData.FrancissousMoney -= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice;
                 m_currentSaveData.RerollWeapon(stockedWeaponSlot.WeaponSaveData);
@@ -213,6 +216,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            m_inventoryChest.CloseChest();
             base.ExitState();
         }
 
@@ -222,8 +226,8 @@ namespace ProjElf.HubForest
         {
             m_gamemode.Actions.Enable();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started += Back_performed;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started += Sell_CurrentItem;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started += Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("SellWeapon").started += Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("RerollWeapon").started += Reroll_CurrentItem;
             m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started += Confirm_performed;
         }
 
@@ -231,8 +235,8 @@ namespace ProjElf.HubForest
         private void CleanUpInputs()
         {
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started -= Back_performed;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started -= Sell_CurrentItem;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started -= Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("SellWeapon").started -= Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("RerollWeapon").started -= Reroll_CurrentItem;
             m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started -= Confirm_performed;
             m_gamemode.Actions.Disable();
         }

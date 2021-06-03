@@ -15,6 +15,12 @@ namespace ProjElf.CombatController
                 s_weaponLabel = "meleeweapon";
             }
 
+            public override void Unserialize()
+            {
+                s_weaponLabel = "meleeweapon";
+                base.Unserialize();
+            }
+
         }
 
         internal override T GetWeaponSaveData<T>()
