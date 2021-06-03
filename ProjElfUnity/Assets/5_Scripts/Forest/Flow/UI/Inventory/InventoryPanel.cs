@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using ProjElf.CombatController;
+using MOtter.Localization;
 
 namespace ProjElf.HubForest
 {
@@ -36,6 +37,9 @@ namespace ProjElf.HubForest
 
         [SerializeField]
         private TextMeshProUGUI m_moneyDisplayText = null;
+
+        [SerializeField]
+        private TextLocalizer m_rerollCostLocalizer = null;
 
         private MeleeWeaponData.MeleeWeaponSaveData m_equippedMeleeWeaponDisplayed = null;
         private BowData.BowSaveData m_equippedBowDisplayed = null;
@@ -156,6 +160,11 @@ namespace ProjElf.HubForest
             {
                 Debug.LogError("Incorrect weapon !");
             }
+            m_rerollCostLocalizer.SetKey("INVENTORY_REROLL_COST");
+            m_rerollCostLocalizer.SetFormatter((text, localizer) =>
+            {
+                localizer.TextTarget.text = $"{text} : {weaponSaveData.WeaponData.RerollPrice}";
+            });
             m_selectedCurrentWeaponSlot?.Select();
         }
 
