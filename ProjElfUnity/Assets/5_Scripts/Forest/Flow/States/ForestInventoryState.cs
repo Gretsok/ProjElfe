@@ -226,8 +226,8 @@ namespace ProjElf.HubForest
         {
             m_gamemode.Actions.Enable();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started += Back_performed;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started += Sell_CurrentItem;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started += Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("SellWeapon").started += Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("RerollWeapon").started += Reroll_CurrentItem;
             m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started += Confirm_performed;
         }
 
@@ -235,8 +235,8 @@ namespace ProjElf.HubForest
         private void CleanUpInputs()
         {
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").started -= Back_performed;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("PrimaryAttack").started -= Sell_CurrentItem;
-            m_gamemode.Actions.FindActionMap("Generic").FindAction("SecondaryAttack").started -= Reroll_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("SellWeapon").started -= Sell_CurrentItem;
+            m_gamemode.Actions.FindActionMap("UI").FindAction("RerollWeapon").started -= Reroll_CurrentItem;
             m_gamemode.Actions.FindActionMap("UI").FindAction("Confirm").started -= Confirm_performed;
             m_gamemode.Actions.Disable();
         }

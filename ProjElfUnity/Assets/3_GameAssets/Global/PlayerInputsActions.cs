@@ -498,6 +498,22 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""SellWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""437029ef-a028-4fdf-9ddf-8c929c477539"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""RerollWeapon"",
+                    ""type"": ""Button"",
+                    ""id"": ""ecec4449-2329-4478-80db-e896f0b9da42"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -519,6 +535,17 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
+                    ""action"": ""Confirm"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""86aab51d-dad4-413e-8e4e-72ca7b87ba84"",
+                    ""path"": ""<Keyboard>/numpadEnter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""Confirm"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
@@ -744,6 +771,61 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
+                    ""name"": ""2D Vector"",
+                    ""id"": ""7b1919b1-977a-4eef-9b7c-fb6b3afec5de"",
+                    ""path"": ""2DVector"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""up"",
+                    ""id"": ""120967fb-d194-403b-ba49-5f349ba6abde"",
+                    ""path"": ""<Keyboard>/upArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""ce027404-99fe-41a2-ad5d-9553d1c795c7"",
+                    ""path"": ""<Keyboard>/downArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""ec416b93-aca2-4946-9abc-eedb561569ea"",
+                    ""path"": ""<Keyboard>/leftArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""38bc376a-9396-422a-b77b-b5f00c6f36c1"",
+                    ""path"": ""<Keyboard>/rightArrow"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
                     ""name"": """",
                     ""id"": ""e0d20e62-f4e5-467f-9469-fba9881b3733"",
                     ""path"": ""<Gamepad>/start"",
@@ -762,6 +844,50 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""MouseAndKeyboard"",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38d6f429-b189-4a61-99c4-c498399441b6"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""SellWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8dbb5df9-e867-45f2-a6b5-e3360d52cc64"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""SellWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9e16ce8c-e593-4849-80a5-8fdd58436d12"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""MouseAndKeyboard"",
+                    ""action"": ""RerollWeapon"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""094424eb-4174-4cb1-a9c4-03fcb4c434af"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""RerollWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -824,6 +950,8 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_UI_PreviousSection = m_UI.FindAction("PreviousSection", throwIfNotFound: true);
         m_UI_Move = m_UI.FindAction("Move", throwIfNotFound: true);
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
+        m_UI_SellWeapon = m_UI.FindAction("SellWeapon", throwIfNotFound: true);
+        m_UI_RerollWeapon = m_UI.FindAction("RerollWeapon", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1004,6 +1132,8 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_PreviousSection;
     private readonly InputAction m_UI_Move;
     private readonly InputAction m_UI_Pause;
+    private readonly InputAction m_UI_SellWeapon;
+    private readonly InputAction m_UI_RerollWeapon;
     public struct UIActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -1018,6 +1148,8 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         public InputAction @PreviousSection => m_Wrapper.m_UI_PreviousSection;
         public InputAction @Move => m_Wrapper.m_UI_Move;
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
+        public InputAction @SellWeapon => m_Wrapper.m_UI_SellWeapon;
+        public InputAction @RerollWeapon => m_Wrapper.m_UI_RerollWeapon;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1057,6 +1189,12 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @Pause.started -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
                 @Pause.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnPause;
+                @SellWeapon.started -= m_Wrapper.m_UIActionsCallbackInterface.OnSellWeapon;
+                @SellWeapon.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnSellWeapon;
+                @SellWeapon.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnSellWeapon;
+                @RerollWeapon.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
+                @RerollWeapon.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
+                @RerollWeapon.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1091,6 +1229,12 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @Pause.started += instance.OnPause;
                 @Pause.performed += instance.OnPause;
                 @Pause.canceled += instance.OnPause;
+                @SellWeapon.started += instance.OnSellWeapon;
+                @SellWeapon.performed += instance.OnSellWeapon;
+                @SellWeapon.canceled += instance.OnSellWeapon;
+                @RerollWeapon.started += instance.OnRerollWeapon;
+                @RerollWeapon.performed += instance.OnRerollWeapon;
+                @RerollWeapon.canceled += instance.OnRerollWeapon;
             }
         }
     }
@@ -1140,5 +1284,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnPreviousSection(InputAction.CallbackContext context);
         void OnMove(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnSellWeapon(InputAction.CallbackContext context);
+        void OnRerollWeapon(InputAction.CallbackContext context);
     }
 }
