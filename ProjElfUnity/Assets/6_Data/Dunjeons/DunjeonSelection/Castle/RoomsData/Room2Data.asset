@@ -18,6 +18,12 @@ MonoBehaviour:
   - EnnemyPrefab: {fileID: 7993932275139847739, guid: 0edf5f2c79a059a4095b0a2bfc5239c6,
       type: 3}
     SpawnWeight: 1
+  - EnnemyPrefab: {fileID: 8309751427421685800, guid: 09d4159051955b24ab5a619a73bec7ed,
+      type: 3}
+    SpawnWeight: 1
+  - EnnemyPrefab: {fileID: 1686193721633210903, guid: 538db2b0b4b2bcb4994ce015e3c1d8bc,
+      type: 3}
+    SpawnWeight: 1
   m_rescuerIModeNumberOfEnnemiesToSpawn: {x: 1, y: 4}
   m_rescuerIIModeNumberOfEnnemiesToSpawn: {x: 2, y: 5}
   m_rescuerIIIModeNumberOfEnnemiesToSpawn: {x: 3, y: 6}

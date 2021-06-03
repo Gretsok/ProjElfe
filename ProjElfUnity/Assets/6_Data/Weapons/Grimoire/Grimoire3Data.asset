@@ -15,8 +15,8 @@ MonoBehaviour:
   m_weaponID: 1699089236
   m_weaponName: WEAPON_NAME_GRIMOIRE3
   m_weaponSprite: {fileID: 21300000, guid: 8da66ffe715855e49aca9f3829e39dac, type: 3}
-  m_hitDamage: {x: 10, y: 20}
-  m_attackSpeed: {x: 0.5, y: 1}
+  m_hitDamage: {x: 100, y: 120}
+  m_attackSpeed: {x: 2, y: 3}
   m_weaponPrefab: {fileID: -8525833946943656803, guid: 669f0836718c1d94e9c41b8afe13ab15,
     type: 3}
   m_allowContinueFiring: 1

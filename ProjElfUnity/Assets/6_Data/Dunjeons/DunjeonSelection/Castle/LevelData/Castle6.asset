@@ -31,5 +31,5 @@ MonoBehaviour:
   m_dunjeonType: 0
   m_dunjeonIcon: {fileID: 0}
   m_dunjeonSceneData: {fileID: 11400000, guid: ece0653fa0f223649b2c5c176d17fecc, type: 2}
-  m_lifeFactor: 1
-  m_damageFactor: 1
+  m_lifeFactorIncrement: 5.5
+  m_damageFactorIncrement: 5.5

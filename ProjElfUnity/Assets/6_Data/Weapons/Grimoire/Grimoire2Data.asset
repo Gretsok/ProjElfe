@@ -15,14 +15,14 @@ MonoBehaviour:
   m_weaponID: -528394590
   m_weaponName: WEAPON_NAME_GRIMOIRE2
   m_weaponSprite: {fileID: 21300000, guid: b6f13be1e79ac9145a05691b3aff9159, type: 3}
-  m_hitDamage: {x: 10, y: 20}
-  m_attackSpeed: {x: 0.5, y: 1}
+  m_hitDamage: {x: 200, y: 250}
+  m_attackSpeed: {x: 2, y: 3}
   m_weaponPrefab: {fileID: -8817669573266368139, guid: d56b769e0e20eaf4d83424f11189597c,
     type: 3}
   m_allowContinueFiring: 1
   m_sellPrice: 5
   m_rerollPrice: 5
-  m_projectileSpeed: {x: 11, y: 16}
+  m_projectileSpeed: {x: 20, y: 25}
   m_projectileLifeTime: {x: 5, y: 6}
   m_projectilePrefab: {fileID: 8360460771900696892, guid: f017ddc76cba6374a963077377be106e,
     type: 3}

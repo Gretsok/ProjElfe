@@ -15,10 +15,10 @@ MonoBehaviour:
   m_weaponID: -1557217903
   m_weaponName: WEAPON_NAME_SWORD7
   m_weaponSprite: {fileID: 21300000, guid: d47dd1a5039764044b63a51b9543b5b4, type: 3}
-  m_hitDamage: {x: 10, y: 20}
-  m_attackSpeed: {x: 1, y: 2}
+  m_hitDamage: {x: 45, y: 50}
+  m_attackSpeed: {x: 4, y: 5}
   m_weaponPrefab: {fileID: 3493863852721615277, guid: f2fe3d243dbf40748a6b2943cbb3f12f,
     type: 3}
   m_allowContinueFiring: 0
-  m_sellPrice: 5
-  m_rerollPrice: 5
+  m_sellPrice: 50
+  m_rerollPrice: 50

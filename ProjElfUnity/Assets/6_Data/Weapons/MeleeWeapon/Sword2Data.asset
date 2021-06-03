@@ -20,5 +20,5 @@ MonoBehaviour:
   m_weaponPrefab: {fileID: -5061823889333207687, guid: aa134ba18d353854894a67e910386236,
     type: 3}
   m_allowContinueFiring: 0
-  m_sellPrice: 5
-  m_rerollPrice: 5
+  m_sellPrice: 10
+  m_rerollPrice: 10
