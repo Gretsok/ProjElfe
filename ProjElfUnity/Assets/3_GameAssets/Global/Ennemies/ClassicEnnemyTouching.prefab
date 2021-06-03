@@ -569,7 +569,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 1
   m_VerticalAlignment: 256
   m_textAlignment: 65535
@@ -1283,7 +1283,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -70, y: 80}
+  m_AnchoredPosition: {x: 20, y: 20}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &3681006757538546732
@@ -1374,7 +1374,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_playOnAwake: 0
-  m_tweenDuration: 2
+  m_tweenDuration: 1.5
   m_loopType: 0
   m_tweenCurve:
     serializedVersion: 2
@@ -1400,8 +1400,8 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  m_initialLocalPosition: {x: -20, y: 20, z: 0}
-  m_finalLocalPosition: {x: -70, y: 80, z: 0}
+  m_initialLocalPosition: {x: 20, y: 20, z: 0}
+  m_finalLocalPosition: {x: 70, y: 80, z: 0}
 --- !u!1 &5022997075388621104
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1436,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 6.999729, y: -13.000076}
+  m_AnchoredPosition: {x: 0, y: -13.000076}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4907782210796805305
@@ -1774,7 +1774,7 @@ MonoBehaviour:
   m_healthRemaining: {fileID: 2940004424062236989}
   m_billboard: {fileID: 4162974060218636887}
   m_floatingDamage: {fileID: 2657184258791900929}
-  m_floatingDamageTween: {fileID: 0}
+  m_floatingDamageTween: {fileID: 3681006757538546732}
 --- !u!1 &6273399463449592290
 GameObject:
   m_ObjectHideFlags: 0
