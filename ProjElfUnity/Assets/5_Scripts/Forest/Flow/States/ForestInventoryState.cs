@@ -49,10 +49,19 @@ namespace ProjElf.HubForest
             StockedWeaponSlot stockedWeaponSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
 
             Debug.Log("Trying to reroll : " + stockedWeaponSlot);
-            if (stockedWeaponSlot != null && m_currentSaveData.FrancissousMoney >= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice)
+            if (stockedWeaponSlot != null)
             {
-                m_currentSaveData.FrancissousMoney -= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice;
-                m_currentSaveData.RerollWeapon(stockedWeaponSlot.WeaponSaveData);
+                if(m_currentSaveData.FrancissousMoney >= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice)
+                {
+                    m_currentSaveData.FrancissousMoney -= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice;
+                    m_currentSaveData.RerollWeapon(stockedWeaponSlot.WeaponSaveData);
+                    m_panel.DisplayReforgedWeapon(stockedWeaponSlot.WeaponSaveData.WeaponData);
+                }
+                else
+                {
+                    m_panel.DisplayNotEnoughMoney();
+                }
+                
             }
 
             StartCoroutine(UnloadInventoryPanelRoutine(true));
@@ -76,6 +85,8 @@ namespace ProjElf.HubForest
             {
                 m_currentSaveData.FrancissousMoney += stockedWeaponSlot.WeaponSaveData.WeaponData.SellPrice;
                 m_currentSaveData.RemoveWeaponFromHoldedWeapons(stockedWeaponSlot.WeaponSaveData);
+
+                m_panel.DisplayWeaponSold(stockedWeaponSlot.WeaponSaveData.WeaponData);
             }
 
             StartCoroutine(UnloadInventoryPanelRoutine(true));
@@ -96,6 +107,7 @@ namespace ProjElf.HubForest
 
             if (selectedSlot != null)
             {
+                m_panel.DisplayChangeWeapon(m_gamemode.Player.CombatController.GetWeaponToCompare(selectedSlot.WeaponSaveData.WeaponData), selectedSlot.WeaponSaveData.WeaponData);
                 m_gamemode.Player.CombatController.CombatInventory.ChangeWeapon(selectedSlot.WeaponSaveData);
                 MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>().RemoveWeaponFromHoldedWeapons(selectedSlot.WeaponSaveData);
                 Debug.Log("Weapon changed !");

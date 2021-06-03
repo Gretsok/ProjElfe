@@ -264,6 +264,23 @@ namespace ProjElf.CombatController
             }
         }
 
+        public AWeaponData GetWeaponToCompare(AWeaponData weaponData)
+        {
+            if (weaponData is MeleeWeaponData)
+            {
+                return m_combatInventory.MeleeWeapon.WeaponSaveData.WeaponData;
+            }
+            else if(weaponData is BowData)
+            {
+                return m_combatInventory.Bow.WeaponSaveData.WeaponData;
+            }
+            else if(weaponData is GrimoireData)
+            {
+                return m_combatInventory.Grimoire.WeaponSaveData.WeaponData;
+            }
+            return null;
+        }
+
         public void SelectNextWeapon()
         {
             m_combatInventory.SelectNextWeapon();

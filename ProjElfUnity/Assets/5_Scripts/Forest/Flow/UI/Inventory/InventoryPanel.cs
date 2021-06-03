@@ -45,6 +45,8 @@ namespace ProjElf.HubForest
         private BowData.BowSaveData m_equippedBowDisplayed = null;
         private GrimoireData.GrimoireSaveData m_equippedGrimoireDisplayed = null;
 
+        [SerializeField]
+        private InventoryNotification m_notificationDisplayer = null;
 
 
         #region Inflates
@@ -168,6 +170,42 @@ namespace ProjElf.HubForest
             m_selectedCurrentWeaponSlot?.Select();
         }
 
+        public void DisplayNotEnoughMoney()
+        {
+            m_notificationDisplayer.DisplayNotification("INVENTORY_NOT_ENOUGH_MONEY", null, 2f);
+        }
+
+        public void DisplayWeaponSold(AWeaponData weaponData)
+        {
+            m_notificationDisplayer.DisplayNotification("INVENTORY_SELL_WEAPON_NOTIFICATION", (text, localizer) =>
+            {
+                localizer.TextTarget.text = String.Format(text, MOtter.MOtterApplication.GetInstance().LOCALIZATION.Localize(weaponData.WeaponName));
+            }, 2f);
+        }
+
+        public void DisplayReforgedWeapon(AWeaponData weaponData)
+        {
+            m_notificationDisplayer.DisplayNotification("INVENTORY_REFORGED_WEAPON", (text, localizer) =>
+            {
+                localizer.TextTarget.text = String.Format(text, MOtter.MOtterApplication.GetInstance().LOCALIZATION.Localize(weaponData.WeaponName));
+            }, 2f);
+        }
+
+        public void DisplayChangeWeapon(AWeaponData oldWeapon, AWeaponData newWeapon)
+        {
+            m_notificationDisplayer.DisplayNotification("INVENTORY_CHANGE_WEAPON_NOTIFICATION", (text, localizer) =>
+            {
+                List<string> lw = new List<string>();
+                lw.Add(MOtter.MOtterApplication.GetInstance().LOCALIZATION.Localize(oldWeapon.WeaponName));
+                lw.Add(MOtter.MOtterApplication.GetInstance().LOCALIZATION.Localize(newWeapon.WeaponName));
+                localizer.TextTarget.text = String.Format(text, lw.ToArray());
+            }, 2f);
+        }
+
+        public void DisplayTooManyWeapons()
+        {
+            m_notificationDisplayer.DisplayNotification("INVENTORY_TOO_MANY_WEAPONS", null, 4f);
+        }
 
     }
 }
