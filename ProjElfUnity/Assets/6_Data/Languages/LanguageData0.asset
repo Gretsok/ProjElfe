@@ -55,6 +55,12 @@ MonoBehaviour:
     - INVENTORY_SELL_WEAPON
     - INVENTORY_REROLL_WEAPON
     - INVENTORY_LEAVE
+    - INVENTORY_NOT_ENOUGH_MONEY
+    - INVENTORY_SELL_WEAPON_NOTIFICATION
+    - INVENTORY_CHANGE_WEAPON_NOTIFICATION
+    - INVENTORY_REFORGED_WEAPON
+    - INVENTORY_TOO_MANY_WEAPONS
+    - INVENTORY_REROLL_COST
     - WEAPON_STATS_PROJECTILE_GRAVITY
     - WEAPON_STATS_PROJECTILE_SPEED
     - WEAPON_STATS_PROJECTILE_LIFETIME
@@ -252,6 +258,7 @@ MonoBehaviour:
     - INTERACT_OPEN_CHEST
     - INTERACT_DISPLAY_PLAYER_STATS
     - INTERACT_SAVE_ANIMAL
+    - GOT_A_NEW_WEAPON
     m_values:
     - EN
     - English
@@ -294,6 +301,13 @@ MonoBehaviour:
     - to sell the selected weapon
     - to forge again the selected weapon
     - to leave inventory
+    - You do not have enough money !
+    - You just sold {0} !
+    - You change {0} for {1} !
+    - You reforged {0} !
+    - You have too many weapons, they cannot be all displayed! Sell the ones you
+      do not use to see hidden weapons!
+    - Forging cost
     - Gravity applied to projectile
     - Projectile speed
     - Projectile life time
@@ -491,3 +505,4 @@ MonoBehaviour:
     - Open chest
     - Display player stats
     - Save animal
+    - Got a new weapon !
