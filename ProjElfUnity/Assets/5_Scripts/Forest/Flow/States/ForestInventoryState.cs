@@ -49,7 +49,7 @@ namespace ProjElf.HubForest
             StockedWeaponSlot stockedWeaponSlot = EventSystem.current.currentSelectedGameObject.GetComponent<StockedWeaponSlot>();
 
             Debug.Log("Trying to reroll : " + stockedWeaponSlot);
-            if (stockedWeaponSlot != null)
+            if (stockedWeaponSlot != null && m_currentSaveData.FrancissousMoney >= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice)
             {
                 m_currentSaveData.FrancissousMoney -= stockedWeaponSlot.WeaponSaveData.WeaponData.RerollPrice;
                 m_currentSaveData.RerollWeapon(stockedWeaponSlot.WeaponSaveData);
