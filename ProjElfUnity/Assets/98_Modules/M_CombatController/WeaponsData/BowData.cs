@@ -30,6 +30,12 @@ namespace ProjElf.CombatController
                 base.SetWeaponData(weaponData);
                 ProjectilePrefab = (weaponData as BowData).ProjectilePrefab;
             }
+
+            public override void Unserialize()
+            {
+                s_weaponLabel = "bow";
+                base.Unserialize();
+            }
         }
         //Var
         [SerializeField] private Vector2 m_projectileDivingRate = Vector2.zero;
