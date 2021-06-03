@@ -64,7 +64,6 @@ namespace ProjElf.AI
 
         }
 
-
         [SerializeField]
         private TMP_Text m_floatingDamage = null;
         [SerializeField]

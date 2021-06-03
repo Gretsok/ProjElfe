@@ -29,6 +29,7 @@ namespace ProjElf.PlayerController
         {
             HidePossibleInteraction();
             m_gotNewWeaponTween.gameObject.SetActive(false);
+            m_floatingDamageTween.gameObject.SetActive(false);
         }
 
         internal override void SetHealthRatio(float healthRatio)
@@ -84,6 +85,23 @@ namespace ProjElf.PlayerController
         {
             m_gotNewWeaponTween.gameObject.SetActive(true);
             m_gotNewWeaponTween.StartTween();
+        }
+
+        [SerializeField]
+        private TMP_Text m_floatingDamage = null;
+        [SerializeField]
+        private ScaleTween m_floatingDamageTween = null;
+
+        internal override void DisplayFloatingDamage(int damage)
+        {
+            base.DisplayFloatingDamage(damage);
+            if (m_floatingDamageTween.IsPlaying)
+            {
+                m_floatingDamageTween.StopAllAttachedTweens();
+            }
+            m_floatingDamage.text = damage.ToString();
+            m_floatingDamageTween.gameObject.SetActive(true);
+            m_floatingDamageTween?.StartTween();
         }
     }
 }
