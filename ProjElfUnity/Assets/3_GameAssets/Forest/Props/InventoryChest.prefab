@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e13166979df37484c9e2bfd7aecfb5eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_animator: {fileID: 3896211274525549875}
 --- !u!65 &811530904550172445
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -167,7 +168,7 @@ PrefabInstance:
     - target: {fileID: 3049585352295219088, guid: 511198219d384134c8311337315ae660,
         type: 3}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3374856007896480029, guid: 511198219d384134c8311337315ae660,
         type: 3}
@@ -209,6 +210,12 @@ PrefabInstance:
 --- !u!4 &4244552933561475782 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2785472371509426277, guid: 511198219d384134c8311337315ae660,
+    type: 3}
+  m_PrefabInstance: {fileID: 2035717443455670947}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &3896211274525549875 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3049585352295219088, guid: 511198219d384134c8311337315ae660,
     type: 3}
   m_PrefabInstance: {fileID: 2035717443455670947}
   m_PrefabAsset: {fileID: 0}

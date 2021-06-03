@@ -22,13 +22,16 @@ namespace ProjElf.HubForest
 
         private InventoryPanel m_panel = null;
 
+        [SerializeField]
+        private InventoryChest m_inventoryChest = null;
+
         public override void EnterState()
         {
             base.EnterState();
             m_gamemode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<HubForestGameMode>();
             m_panel = GetPanel<InventoryPanel>();
             StartCoroutine(LoadInventoryPanelRoutine());
-
+            m_inventoryChest.OpenChest();
         }
 
         #region Player Interactions
@@ -213,6 +216,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            m_inventoryChest.CloseChest();
             base.ExitState();
         }
 

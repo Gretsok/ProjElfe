@@ -113,7 +113,7 @@ namespace ProjElf.DunjeonGameplay
             if(success)
             {
                 // Do stuff
-                m_animator.SetTrigger("Open");
+                m_animator.SetBool("Open", true);
                 m_light.color = m_openedColor;
                 Debug.Log(weaponSaveData);
                 if (currentInteractor != null)
