@@ -54,6 +54,7 @@ public class RagdollActivator : MonoBehaviour
     }
 }
 
+#if UNITY_EDITOR
 [CustomEditor(typeof(RagdollActivator), true)]
 public class RagdollActivatorEditor : Editor
 {
@@ -70,3 +71,4 @@ public class RagdollActivatorEditor : Editor
         }*/
     }
 }
+#endif
