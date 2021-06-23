@@ -24,6 +24,7 @@ namespace ProjElf.HubForest
             EventSystem.current.SetSelectedGameObject(m_defaultSelectedGO);
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed += PlayerStatsState_performed;
             m_shrine.OpenGrimoire();
+            m_gamemode.Player.CombatController.UIManager.Hide();
         }
 
         private void PlayerStatsState_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -33,6 +34,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            m_gamemode.Player.CombatController.UIManager.Show();
             m_shrine.CloseGrimoire();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed -= PlayerStatsState_performed;
             base.ExitState();

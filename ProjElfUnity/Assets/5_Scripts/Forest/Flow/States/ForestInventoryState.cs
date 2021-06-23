@@ -33,6 +33,7 @@ namespace ProjElf.HubForest
             m_panel = GetPanel<InventoryPanel>();
             StartCoroutine(LoadInventoryPanelRoutine());
             m_inventoryChest.OpenChest();
+            m_gamemode.Player.CombatController.UIManager.Hide();
         }
 
         #region Player Interactions
@@ -235,6 +236,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            m_gamemode.Player.CombatController.UIManager.Show();
             m_inventoryChest.CloseChest();
             base.ExitState();
         }
