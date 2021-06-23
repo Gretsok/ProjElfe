@@ -9,7 +9,8 @@ namespace ProjElf.HubForest
 {
     public class ForestInventoryState : UIState
     {
-        private const float m_inputDelay = 0.2f;
+        private const int NUMBER_WEAPONS_WARNING = 10;
+        private const float INPUT_DELAY = 0.2f;
         private float m_timeOfLastInput = float.MinValue;
 
 
@@ -37,7 +38,7 @@ namespace ProjElf.HubForest
         #region Player Interactions
         private void Reroll_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if (Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
+            if (Time.time - m_timeOfLastInput < INPUT_DELAY || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -69,7 +70,7 @@ namespace ProjElf.HubForest
 
         private void Sell_CurrentItem(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if (Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
+            if (Time.time - m_timeOfLastInput < INPUT_DELAY || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -94,7 +95,7 @@ namespace ProjElf.HubForest
 
         private void Confirm_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
         {
-            if (Time.time - m_timeOfLastInput < m_inputDelay || EventSystem.current.currentSelectedGameObject == null)
+            if (Time.time - m_timeOfLastInput < INPUT_DELAY || EventSystem.current.currentSelectedGameObject == null)
             {
                 return;
             }
@@ -162,6 +163,12 @@ namespace ProjElf.HubForest
 
             yield return null;
 
+            if(m_currentSaveData.EarnedBows.Count 
+                + m_currentSaveData.EarnedGrimoires.Count 
+                + m_currentSaveData.EarnedMeleeWeapons.Count > NUMBER_WEAPONS_WARNING)
+            {
+                m_panel.DisplayTooManyWeapons();
+            }
 
 
             m_isLoaded = true;

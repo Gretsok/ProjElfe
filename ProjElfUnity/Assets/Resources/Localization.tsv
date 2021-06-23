@@ -43,8 +43,10 @@ INVENTORY_NOT_ENOUGH_MONEY	You do not have enough money !	Vous n'avez pas assez 
 INVENTORY_SELL_WEAPON_NOTIFICATION	You just sold {0} !	Vous venez de vendre {0} !	INVENTORY_SELL_WEAPON_NOTIFICATION_{0}
 INVENTORY_CHANGE_WEAPON_NOTIFICATION	You change {0} for {1} !	Vous avez changé {0] pour {1} !	INVENTORY_CHANGE_WEAPON_NOTIFICATION_{0}_{1}
 INVENTORY_REFORGED_WEAPON	You reforged {0} !	Vous avez reforgé {0} !	INVENTORY_REFORGED_WEAPON_{0}
-INVENTORY_TOO_MANY_WEAPONS	You have too many weapons, they cannot be all displayed! Sell the ones you do not use to see hidden weapons!	Vous avez trop d'armes, elles ne peuvent pas toutes être affichées ! Vendez celles que vous n'utilisez plus pour faire apparaître celle qui manque !	INVENTORY_TOO_MANY_WEAPONS
+INVENTORY_TOO_MANY_WEAPONS	You have too many weapons! Sell the ones you do not use!	Vous avez trop d'armes ! Vendez celles que vous n'utilisez plus !	INVENTORY_TOO_MANY_WEAPONS
 INVENTORY_REROLL_COST	Forging cost	Coût de forge	INVENTORY_REROLL_COST
+INVENTORY_SELECTED_WEAPON	Selected weapon	Arme sélectionnée	INVENTORY_SELECTED_WEAPON
+INVENTORY_EQUIPPED_WEAPON	Equipped weapon	Arme équipée	INVENTORY_EQUIPPED_WEAPON
 WEAPON_STATS_PROJECTILE_GRAVITY	Gravity applied to projectile	Gravité appliquée aux projectiles	Gravedad aplicada al proyectil
 WEAPON_STATS_PROJECTILE_SPEED	Projectile speed	Vitesse des projectiles	Velocidad de los proyectiles
 WEAPON_STATS_PROJECTILE_LIFETIME	Projectile life time	Durée de vie des projectiles	Vida útil del proyectil
