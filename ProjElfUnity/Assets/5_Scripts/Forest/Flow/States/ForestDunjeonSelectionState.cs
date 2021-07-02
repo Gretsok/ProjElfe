@@ -15,6 +15,7 @@ namespace ProjElf.HubForest
             base.EnterState();
             m_gamemode.Actions.Enable();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed += Back_performed;
+            m_gamemode.Player.CombatController.UIManager.Hide();
         }
 
         private void Back_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -24,6 +25,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            m_gamemode.Player.CombatController.UIManager.Show();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed -= Back_performed;
             base.ExitState();
         }

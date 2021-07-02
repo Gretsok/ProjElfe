@@ -30,5 +30,10 @@ namespace ProjElf.CombatController
         {
             gameObject.SetActive(false);
         }
+
+        internal void Show()
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

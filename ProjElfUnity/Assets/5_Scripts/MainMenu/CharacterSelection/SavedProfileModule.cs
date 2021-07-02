@@ -27,12 +27,14 @@ namespace ProjElf.MainMenu
         private TextLocalizer m_timePlayedText = null;
         [SerializeField]
         private TextMeshProUGUI m_animalsSavedText = null;
+        [SerializeField]
+        private Image m_fillImageWhenGettingDeleted = null;
 
         [Header("Tweens")]
         /*[SerializeField]
         private ScaleTween m_hideSelectedElementTween = null;*/
-        [SerializeField]
-        private ScaleTween m_showSelectedElementTween = null;
+        /*[SerializeField]
+        private ScaleTween m_showSelectedElementTween = null;*/
         /*[SerializeField]
         private ScaleTween m_hideUnselectedElementTween = null;
         [SerializeField]
@@ -59,7 +61,6 @@ namespace ProjElf.MainMenu
             m_unselectedElementDisplay.SetActive(false);
             m_selectedElementDisplay.SetActive(true);
             LayoutRebuilder.MarkLayoutForRebuild((transform as RectTransform));
-            m_showSelectedElementTween.StartTween();
         }
 
         public void OnUnselected()
@@ -139,6 +140,11 @@ namespace ProjElf.MainMenu
 
             m_animalsSavedText.text = animalsSaved.ToString();
 
+        }
+
+        public void SetDeletionAdvancement(float normalizedAdvancementValue)
+        {
+            m_fillImageWhenGettingDeleted.fillAmount = normalizedAdvancementValue;
         }
 
         public void OnSelect(BaseEventData eventData)

@@ -61,6 +61,8 @@ MonoBehaviour:
     - INVENTORY_REFORGED_WEAPON
     - INVENTORY_TOO_MANY_WEAPONS
     - INVENTORY_REROLL_COST
+    - INVENTORY_SELECTED_WEAPON
+    - INVENTORY_EQUIPPED_WEAPON
     - WEAPON_STATS_PROJECTILE_GRAVITY
     - WEAPON_STATS_PROJECTILE_SPEED
     - WEAPON_STATS_PROJECTILE_LIFETIME
@@ -247,6 +249,7 @@ MonoBehaviour:
     - WEAPON_NAME_BOW12
     - MAINMENU_KEYINDICATION_MOVING
     - MAINMENU_KEYINDICATION_VALIDATE
+    - MAINMENU_KEYINDICATION_DELETECHARACTER
     - PAUSE_KEYINDICATION_MOVING
     - PAUSE_KEYINDICATION_ATTACK
     - PAUSE_KEYINDICATION_WATCHAROUND
@@ -305,10 +308,10 @@ MonoBehaviour:
     - Vous venez de vendre {0} !
     - "Vous avez chang\xE9 {0] pour {1} !"
     - "Vous avez reforg\xE9 {0} !"
-    - "Vous avez trop d'armes, elles ne peuvent pas toutes \xEAtre affich\xE9es !
-      Vendez celles que vous n'utilisez plus pour faire appara\xEEtre celle qui manque
-      !"
+    - Vous avez trop d'armes ! Vendez celles que vous n'utilisez plus !
     - "Co\xFBt de forge"
+    - "Arme s\xE9lectionn\xE9e"
+    - "Arme \xE9quip\xE9e"
     - "Gravit\xE9 appliqu\xE9e aux projectiles"
     - Vitesse des projectiles
     - "Dur\xE9e de vie des projectiles"
@@ -495,6 +498,7 @@ MonoBehaviour:
     - Arc de feu
     - Pour bouger
     - Valider
+    - Maintenir pour supprimer le personnage
     - "Se d\xE9placer"
     - Attaquer
     - Tourner la vue

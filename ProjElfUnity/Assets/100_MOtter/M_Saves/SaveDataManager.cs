@@ -111,6 +111,25 @@ public class SaveDataManager
             return null;
         }
     }
+
+    public void RemoveSaveData(SaveData saveData)
+    {
+        if (SaveDataList.FindAll(x => x.SaveName == saveData.SaveName).Count > 0)
+        {
+            try
+            {
+                SaveDataElement dataElement = SaveDataList.Find(x => x.SaveName == saveData.SaveName);
+                File.Delete(Path.Combine(Application.persistentDataPath, dataElement.FileName));
+                Debug.Log("Delete save data");
+                SaveDataList.Remove(dataElement);
+                SaveSaveDataManager();
+            }
+            catch(Exception)
+            {
+                Debug.LogError("Error while deleting save data");
+            }
+        }
+    }
     #endregion
 
     #region Reading And Writing Files

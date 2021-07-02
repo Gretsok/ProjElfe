@@ -21,10 +21,12 @@ public class ProjElfPauseStateMachine : StatesMachine
     internal override void EnterStateMachine()
     {
         base.EnterStateMachine();
+        m_gamemode.Player.CombatController.UIManager.Hide();
     }
 
     internal override void ExitStateMachine()
     {
+        m_gamemode.Player.CombatController.UIManager.Show();
         base.ExitStateMachine();
     }
 

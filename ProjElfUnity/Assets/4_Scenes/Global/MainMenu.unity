@@ -921,6 +921,7 @@ MonoBehaviour:
   - {fileID: 247819853}
   - {fileID: 822295421}
   - {fileID: 1397448346}
+  m_deleteCharacterDuration: 2
 --- !u!1 &441694800
 GameObject:
   m_ObjectHideFlags: 0
