@@ -2,6 +2,7 @@
 using ProjElf.AI;
 using ProjElf.AnimalManagement;
 using UnityEngine.AI;
+using MOtter.SoundManagement;
 
 namespace ProjElf.HubForest
 {
@@ -21,6 +22,10 @@ namespace ProjElf.HubForest
         public AnimalHubRandomlyWalking WalkingState => m_walkingState;
         public AnimalHubWaitingState WaitingState => m_waitingState;
 
+        [SerializeField]
+        private SoundData m_animalSoundData = null;
+        private AudioSource m_animalSound = null;
+
         public void Init(AnimalData animalData)
         {
             base.Init();
@@ -30,6 +35,13 @@ namespace ProjElf.HubForest
             NavMeshHit hit;
             NavMesh.SamplePosition(randomDirection, out hit, 5f, 1);
             transform.position = hit.position;
+            m_animalSound = MOtter.MOtterApplication.GetInstance().SOUND.Play3DSound(m_animalSoundData, transform.position, true, 1, transform);
+        }
+
+        protected override void OnDestroy()
+        {
+            base.OnDestroy();
+            m_animalSound.Stop();
         }
 
     }
