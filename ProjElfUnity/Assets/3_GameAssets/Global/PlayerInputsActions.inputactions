@@ -501,6 +501,14 @@
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "DeleteCharacter",
+                    "type": "Button",
+                    "id": "9023de27-c39f-4d6a-b328-ca3cdc002d5a",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -875,6 +883,28 @@
                     "processors": "",
                     "groups": "Gamepad",
                     "action": "RerollWeapon",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "ca84778a-ea3e-4313-b82e-3fe3faa269c4",
+                    "path": "<Keyboard>/f",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteCharacter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "79c6f8d0-07db-4e85-a301-0932b7c4bcfe",
+                    "path": "<Gamepad>/buttonWest",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "DeleteCharacter",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

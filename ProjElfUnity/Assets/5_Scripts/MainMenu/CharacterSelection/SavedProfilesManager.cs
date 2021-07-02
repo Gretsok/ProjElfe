@@ -18,6 +18,7 @@ namespace ProjElf.MainMenu
         private CharacterModel m_characterModel = null;
         [SerializeField]
         private Button m_playButton = null;
+        public Button PlayButton => m_playButton;
         [SerializeField]
         private Button m_lastButton = null;
         [SerializeField]
@@ -58,6 +59,14 @@ namespace ProjElf.MainMenu
             {
                 m_mainStateMachine = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainMenuStateMachine>();
             }
+
+            // Deleting current buttons
+            for(int i = m_instantiatedNavigationPositions.Count - 1; i >= 0; --i)
+            {
+                Destroy(m_instantiatedNavigationPositions[i].gameObject);
+            }
+            m_instantiatedNavigationPositions.Clear();
+
             for (int i = 0; i < allSaveData.Length; ++i)
             {
                 /*SaveData saveData = new SaveData();
@@ -131,6 +140,11 @@ namespace ProjElf.MainMenu
                 button.navigation = navTemp;
             }
             m_instantiatedNavigationPositions.Add(button);
+        }
+
+        private void RemoveSaveProfile(SaveData saveData)
+        {
+
         }
 
         private void CreateCreateNewCharacterButton()

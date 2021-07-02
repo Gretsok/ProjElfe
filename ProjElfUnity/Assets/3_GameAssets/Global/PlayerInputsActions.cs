@@ -514,6 +514,14 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""DeleteCharacter"",
+                    ""type"": ""Button"",
+                    ""id"": ""9023de27-c39f-4d6a-b328-ca3cdc002d5a"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -890,6 +898,28 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                     ""action"": ""RerollWeapon"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ca84778a-ea3e-4313-b82e-3fe3faa269c4"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DeleteCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""79c6f8d0-07db-4e85-a301-0932b7c4bcfe"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DeleteCharacter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -952,6 +982,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         m_UI_Pause = m_UI.FindAction("Pause", throwIfNotFound: true);
         m_UI_SellWeapon = m_UI.FindAction("SellWeapon", throwIfNotFound: true);
         m_UI_RerollWeapon = m_UI.FindAction("RerollWeapon", throwIfNotFound: true);
+        m_UI_DeleteCharacter = m_UI.FindAction("DeleteCharacter", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -1134,6 +1165,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_Pause;
     private readonly InputAction m_UI_SellWeapon;
     private readonly InputAction m_UI_RerollWeapon;
+    private readonly InputAction m_UI_DeleteCharacter;
     public struct UIActions
     {
         private @PlayerInputsActions m_Wrapper;
@@ -1150,6 +1182,7 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         public InputAction @Pause => m_Wrapper.m_UI_Pause;
         public InputAction @SellWeapon => m_Wrapper.m_UI_SellWeapon;
         public InputAction @RerollWeapon => m_Wrapper.m_UI_RerollWeapon;
+        public InputAction @DeleteCharacter => m_Wrapper.m_UI_DeleteCharacter;
         public InputActionMap Get() { return m_Wrapper.m_UI; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1195,6 +1228,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @RerollWeapon.started -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
                 @RerollWeapon.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
                 @RerollWeapon.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnRerollWeapon;
+                @DeleteCharacter.started -= m_Wrapper.m_UIActionsCallbackInterface.OnDeleteCharacter;
+                @DeleteCharacter.performed -= m_Wrapper.m_UIActionsCallbackInterface.OnDeleteCharacter;
+                @DeleteCharacter.canceled -= m_Wrapper.m_UIActionsCallbackInterface.OnDeleteCharacter;
             }
             m_Wrapper.m_UIActionsCallbackInterface = instance;
             if (instance != null)
@@ -1235,6 +1271,9 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
                 @RerollWeapon.started += instance.OnRerollWeapon;
                 @RerollWeapon.performed += instance.OnRerollWeapon;
                 @RerollWeapon.canceled += instance.OnRerollWeapon;
+                @DeleteCharacter.started += instance.OnDeleteCharacter;
+                @DeleteCharacter.performed += instance.OnDeleteCharacter;
+                @DeleteCharacter.canceled += instance.OnDeleteCharacter;
             }
         }
     }
@@ -1286,5 +1325,6 @@ public class @PlayerInputsActions : IInputActionCollection, IDisposable
         void OnPause(InputAction.CallbackContext context);
         void OnSellWeapon(InputAction.CallbackContext context);
         void OnRerollWeapon(InputAction.CallbackContext context);
+        void OnDeleteCharacter(InputAction.CallbackContext context);
     }
 }
