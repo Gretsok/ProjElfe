@@ -40,7 +40,7 @@ namespace MOtter.SoundManagement
             return audioSource;
         }
 
-        public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 0.7f)
+        public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 1f)
         {
             AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
@@ -48,7 +48,7 @@ namespace MOtter.SoundManagement
             audioSource.volume = Mathf.Clamp01(volume) * GetVolume(soundData.CategoryName);
             audioSource.name = soundData.AudioClip.name;
             audioSource.transform.position = position;
-            audioSource.spatialBlend = 0.7f;
+            audioSource.spatialBlend = spatialBlend;
             if (parent != null)
             {
                 audioSource.transform.SetParent(parent);

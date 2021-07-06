@@ -306,7 +306,7 @@ MonoBehaviour:
     - pour quitter l'inventaire
     - Vous n'avez pas assez d'argent !
     - Vous venez de vendre {0} !
-    - "Vous avez chang\xE9 {0] pour {1} !"
+    - "Vous avez chang\xE9 {0} pour {1} !"
     - "Vous avez reforg\xE9 {0} !"
     - Vous avez trop d'armes ! Vendez celles que vous n'utilisez plus !
     - "Co\xFBt de forge"
@@ -323,7 +323,7 @@ MonoBehaviour:
     - physiques
     - magiques
     - "Vous \xEAtes mort !"
-    - Vous avez {0] animaux secourus ! Sacrifiez en un pour rester en vie !
+    - Vous avez {0} animaux secourus ! Sacrifiez en un pour rester en vie !
     - VOUS AVEZ SECOURU UN NOUVEL ANIMAL !
     - Vous avez secouru {0} !
     - Bob

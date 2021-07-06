@@ -133,6 +133,7 @@ MonoBehaviour:
   m_animalContainer: {fileID: 6573104607344991637}
   m_walkingState: {fileID: 6573104608243956510}
   m_waitingState: {fileID: 1846116119200020464}
+  m_animalSoundData: {fileID: 11400000, guid: 701aa5959e1c9584c95b3f9b13e2dc1e, type: 2}
 --- !u!195 &6573104608402581652
 NavMeshAgent:
   m_ObjectHideFlags: 0
