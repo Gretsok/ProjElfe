@@ -121,7 +121,7 @@ namespace ProjElf.AnimalManagement
             };
         }
 
-        private AnimalData GetRandomAnimalData(AnimalData[] animalDataSets)
+        public AnimalData GetRandomAnimalData(AnimalData[] animalDataSets)
         {
             int rand = UnityEngine.Random.Range(0, animalDataSets.Length);//2nd generation aleatoire
             AnimalData animal = animalDataSets[rand];
