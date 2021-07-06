@@ -104,6 +104,23 @@ namespace ProjElf.AnimalManagement
             };
         }
 
+        public void GetAsyncRandomAnimalData(Action<AnimalData> onAnimalDataGot)
+        {
+            List<object> keys = new List<object>();
+            keys.Add("animal");
+
+            Addressables.LoadAssetsAsync<AnimalData>(keys, null, Addressables.MergeMode.Intersection).Completed += obj =>
+            {
+                List<AnimalData> m_animalsDataSets = new List<AnimalData>();
+
+                foreach (AnimalData animalData in obj.Result)
+                {
+                    m_animalsDataSets.Add(animalData);
+                }
+                onAnimalDataGot.Invoke(GetRandomAnimalData(m_animalsDataSets.ToArray()));
+            };
+        }
+
         private AnimalData GetRandomAnimalData(AnimalData[] animalDataSets)
         {
             int rand = UnityEngine.Random.Range(0, animalDataSets.Length);//2nd generation aleatoire

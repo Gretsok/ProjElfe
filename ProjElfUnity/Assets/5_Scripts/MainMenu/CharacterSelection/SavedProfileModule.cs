@@ -52,6 +52,7 @@ namespace ProjElf.MainMenu
         {
             DisplaySelectedElement();
             m_mainStateMachine.ProfileManager.InflateSaveData(this);
+            m_mainStateMachine?.SoundHandler.PlaySubMoveSound();
         }
 
         public void DisplaySelectedElement(ATween tween = null)

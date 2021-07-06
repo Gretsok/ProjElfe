@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using MOtter.StatesMachine;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ public class OptionsMenuPanel : Panel
     private CameraSensibilityModule m_cameraSensibilityWidget = null;
     public SoundVolumeModule MusicVolumeWidget => m_musicVolumeWidget;
 
-    private ProjElfGameMode m_GameMode = null ;
+    private MainStatesMachine m_GameMode = null ;
 
 
     private void Start()
@@ -22,7 +23,7 @@ public class OptionsMenuPanel : Panel
         // GET PlayerState -> m_cameraSensibility
         m_cameraSensibilityWidget.value = MOtter.MOtterApplication.GetInstance().SAVE.CameraSensitivity;
 
-        m_GameMode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<ProjElfGameMode>();
+        m_GameMode = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetCurrentMainStateMachine<MainStatesMachine>();
 
         Debug.Log("cam sensi = " + m_cameraSensibilityWidget.value);
     }
@@ -31,11 +32,19 @@ public class OptionsMenuPanel : Panel
     public void OnMusicVolumeChanged()
     {
         MOtter.MOtterApplication.GetInstance().SOUND.SetVolume(m_musicVolumeWidget.value, MOtter.SoundManagement.ESoundCategoryName.Music);
+        if(m_GameMode is ProjElf.MainMenu.MainMenuStateMachine)
+        {
+            (m_GameMode as ProjElf.MainMenu.MainMenuStateMachine).SoundHandler.PlaySubMoveSound();
+        }
     }
 
     public void OnSFXVolumeChanged()
     {
         MOtter.MOtterApplication.GetInstance().SOUND.SetVolume(m_sfxVolumeWidget.value, MOtter.SoundManagement.ESoundCategoryName.SFX);
+        if (m_GameMode is ProjElf.MainMenu.MainMenuStateMachine)
+        {
+            (m_GameMode as ProjElf.MainMenu.MainMenuStateMachine).SoundHandler.PlaySubMoveSound();
+        }
     }
 
     public void OnCameraSensibilityChanged()
@@ -43,11 +52,15 @@ public class OptionsMenuPanel : Panel
         // SET
         MOtter.MOtterApplication.GetInstance().SAVE.CameraSensitivity = m_cameraSensibilityWidget.value;
         MOtter.MOtterApplication.GetInstance().SAVE.SaveSaveDataManager();
-        if(m_GameMode != null)
+        if(m_GameMode != null && m_GameMode is ProjElfGameMode)
         {
-            m_GameMode.Player.SetCameraSensitivity(m_cameraSensibilityWidget.value);
+            (m_GameMode as ProjElfGameMode).Player.SetCameraSensitivity(m_cameraSensibilityWidget.value);
         }
-        
+        if (m_GameMode is ProjElf.MainMenu.MainMenuStateMachine)
+        {
+            (m_GameMode as ProjElf.MainMenu.MainMenuStateMachine).SoundHandler.PlaySubMoveSound();
+        }
+
         Debug.Log("cam sensi = " + m_cameraSensibilityWidget.value);
     }
 

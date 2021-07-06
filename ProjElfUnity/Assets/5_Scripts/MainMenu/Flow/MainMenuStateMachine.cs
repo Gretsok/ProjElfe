@@ -32,15 +32,24 @@ namespace ProjElf.MainMenu
         private MainMenuCameraManager m_cameraManager = null;
         public MainMenuCameraManager CameraManager => m_cameraManager;
 
+        [SerializeField]
+        private MenuSoundHandler m_soundHandler = null;
+        public MenuSoundHandler SoundHandler => m_soundHandler;
+
+
         [Header("LevelLoader")]
         [SerializeField]
         private SceneData.SceneData m_hubData = null;
 
+
+
         public override IEnumerator LoadAsync()
         {
+            yield return null;
             m_actions = MOtterApplication.GetInstance().PLAYERPROFILES.GetActions(0);
             m_actions.Enable();
-            return base.LoadAsync();
+            SoundHandler.StartMenuMusic();
+            yield return base.LoadAsync();
         }
 
         internal override void EnterStateMachine()
@@ -52,8 +61,11 @@ namespace ProjElf.MainMenu
 
         internal override void ExitStateMachine()
         {
+
             base.ExitStateMachine();
             m_actions.Disable();
+
+            SoundHandler.StopMenuMusic();
         }
 
         public void LoadHub(SaveData saveDataToUse)

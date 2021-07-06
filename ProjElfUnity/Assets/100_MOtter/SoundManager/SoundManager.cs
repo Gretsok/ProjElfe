@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace MOtter.SoundManagement
@@ -18,6 +19,7 @@ namespace MOtter.SoundManagement
 
         public AudioSource Play2DSound(SoundData soundData, bool loop = false, float volume = 1f)
         {
+            CheckFreeingRoutine();
             AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
             audioSource.clip = soundData.AudioClip;
@@ -42,6 +44,7 @@ namespace MOtter.SoundManagement
 
         public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 1f)
         {
+            CheckFreeingRoutine();
             AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
             audioSource.clip = soundData.AudioClip;
@@ -56,6 +59,15 @@ namespace MOtter.SoundManagement
             audioSource.Play();
 
             m_audioSourcesPool.Remove(audioSource);
+
+            if (ESoundCategoryName.Music == soundData.CategoryName)
+            {
+                m_musicAudioSourcesPlaying.Add(audioSource);
+            }
+            else if (ESoundCategoryName.SFX == soundData.CategoryName)
+            {
+                m_sfxAudioSourcesPlaying.Add(audioSource);
+            }
 
             return audioSource;
         }
@@ -87,6 +99,62 @@ namespace MOtter.SoundManagement
 
             return audioSource;
         }
+
+        #region Private Methods
+        private Coroutine m_freeingRoutine = null;
+        /// <summary>
+        /// Start a coroutine that checks when audio source are freed, if not already started
+        /// </summary>
+        private void CheckFreeingRoutine()
+        {
+            if(m_freeingRoutine == null)
+            {
+                m_freeingRoutine = StartCoroutine(PoolFreeAudioSourcesRoutine());
+            }
+        }
+
+        private IEnumerator PoolFreeAudioSourcesRoutine()
+        {
+            yield return null;
+            int musicIndex = 0;
+            int soundIndex = 0;
+            while(true)
+            {
+                if(m_musicAudioSourcesPlaying.Count > 0)
+                {
+                    if(m_musicAudioSourcesPlaying.Count - 1 < musicIndex)
+                    {
+                        musicIndex = 0;
+                    }
+
+                    if(!m_musicAudioSourcesPlaying[musicIndex].isPlaying)
+                    {
+                        m_musicAudioSourcesPlaying[musicIndex].transform.parent = transform;
+                        m_audioSourcesPool.Add(m_musicAudioSourcesPlaying[musicIndex]);
+                        m_musicAudioSourcesPlaying.RemoveAt(musicIndex);
+                    }
+                    musicIndex++;
+                }
+
+                if (m_sfxAudioSourcesPlaying.Count > 0)
+                {
+                    if (m_sfxAudioSourcesPlaying.Count - 1 < soundIndex)
+                    {
+                        soundIndex = 0;
+                    }
+
+                    if (!m_sfxAudioSourcesPlaying[soundIndex].isPlaying)
+                    {
+                        m_sfxAudioSourcesPlaying[soundIndex].transform.parent = transform;
+                        m_audioSourcesPool.Add(m_sfxAudioSourcesPlaying[soundIndex]);
+                        m_sfxAudioSourcesPlaying.RemoveAt(soundIndex);
+                    }
+                    soundIndex++;
+                }
+                yield return null;
+            }
+        }
+        #endregion
 
 
         #region Volume Management

@@ -56,7 +56,7 @@ namespace ProjElf.MainMenu
         public virtual void OnSelected()
         {
             m_image.color = m_selectedColor;
-            
+            m_mainStatesMachine?.SoundHandler.PlayMoveSound();
             if (m_state != null && m_stateActivationType == EStateActivationType.OnSelect)
                 m_mainStatesMachine?.SwitchToState(m_state);
             m_selectedTween?.StartTween();
