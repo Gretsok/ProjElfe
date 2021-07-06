@@ -111,6 +111,28 @@ public class SaveData
     }
     #endregion
 
+    public AnimalData GetRandomAnimalData()
+    {
+        int weight = 0;
+        for(int i = 0; i < RescuedAnimalDatas.Count; i++)
+        {
+            weight += RescuedAnimalDatas[i].Amount;
+        }
+
+        int randomWeight = Random.Range(1, weight + 1);
+
+        weight = 0;
+        for (int i = 0; i < RescuedAnimalDatas.Count; i++)
+        {
+            weight += RescuedAnimalDatas[i].Amount;
+            if(weight >= randomWeight)
+            {
+                return RescuedAnimalDatas[i].AnimalData;
+            }
+        }
+        return null;
+    }
+
     public string ToJson()
     {
         return JsonUtility.ToJson(this);
