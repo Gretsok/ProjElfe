@@ -9,6 +9,8 @@ namespace ProjElf.HubForest
     public class HubForestGameMode : ProjElfGameMode
     {
         private SaveData m_saveData = null;
+        private AnimalData m_RandomAnimal = null;
+
         [SerializeField]
         private ForestGameplayState m_gameplayState = null;
         [SerializeField]
@@ -57,7 +59,10 @@ namespace ProjElf.HubForest
 
             if(m_saveData.IsChoosingAnAnimalToSacrify)
             {
-                //RandomSacrifyAnimal();
+                m_RandomAnimal = m_saveData.GetRandomAnimalData();
+                AnimalsManager.GetInstance().SacrificeRescuedAnimal(m_RandomAnimal);
+                m_saveData.IsChoosingAnAnimalToSacrify = false;
+                //On t'as bien niqué
             }
         }
 
