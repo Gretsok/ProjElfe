@@ -8,6 +8,7 @@ namespace ProjElf.HubForest
 {
     public class HubForestGameMode : ProjElfGameMode
     {
+        private SaveData m_saveData = null;
         [SerializeField]
         private ForestGameplayState m_gameplayState = null;
         [SerializeField]
@@ -52,6 +53,12 @@ namespace ProjElf.HubForest
         {
             base.EnterStateMachine();
             m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(ForestHubAudioReferences.Ambiance, true);
+            m_saveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+
+            if(m_saveData.IsChoosingAnAnimalToSacrify)
+            {
+                //RandomSacrifyAnimal();
+            }
         }
 
         public void ActivateGameplayState()

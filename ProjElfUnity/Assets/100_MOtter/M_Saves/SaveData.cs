@@ -8,6 +8,8 @@ public class SaveData
 {
     public string SaveName = string.Empty;
 
+    public bool IsChoosingAnAnimalToSacrify = false;
+
     [System.Serializable]
     public struct PlayerWeaponInventory
     {

@@ -9,6 +9,8 @@ namespace ProjElf.DunjeonGameplay
 {
     public class DunjeonDeathState : UIState
     {
+        private SaveData m_saveData = null;
+
         [SerializeField]
         private DunjeonGameMode m_gamemode = null;
 
@@ -23,6 +25,8 @@ namespace ProjElf.DunjeonGameplay
         {
             base.EnterState();
             InflateDeathPanel();
+            m_saveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
+            m_saveData.IsChoosingAnAnimalToSacrify = true;
         }
 
         private void InflateDeathPanel()
@@ -43,6 +47,7 @@ namespace ProjElf.DunjeonGameplay
                 EventSystem.current.SetSelectedGameObject(null);
                 StartCoroutine(GoingBackToHubRoutine());
                 m_hasSacrifiedAnimal = true;
+                m_saveData.IsChoosingAnAnimalToSacrify = false;
             }
         }
 
@@ -54,7 +59,6 @@ namespace ProjElf.DunjeonGameplay
 
         public override void ExitState()
         {
-            
             base.ExitState();
         }
     }
