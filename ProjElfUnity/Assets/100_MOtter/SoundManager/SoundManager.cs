@@ -72,18 +72,6 @@ namespace MOtter.SoundManagement
             return audioSource;
         }
 
-        public void CleanSource(AudioSource audioSource)
-        {
-            if (audioSource.isPlaying)
-            {
-                audioSource.Stop();
-            }
-            if(!m_audioSourcesPool.Contains(audioSource))
-            {
-                m_audioSourcesPool.Add(audioSource);
-            }
-        }
-
         public AudioSource GetFreeAudioSource()
         {
             AudioSource audioSource = null;

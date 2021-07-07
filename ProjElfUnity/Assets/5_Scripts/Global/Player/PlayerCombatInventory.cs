@@ -7,6 +7,8 @@ namespace ProjElf.PlayerController
 {
     public class PlayerCombatInventory : CombatController.CombatInventory
     {
+        [SerializeField]
+        private Player m_player = null;
         public override void ChangeBow(BowData.BowSaveData newBowData)
         {
             base.ChangeBow(newBowData);
@@ -93,5 +95,10 @@ namespace ProjElf.PlayerController
             (m_combatController.UIManager as PlayerController.PlayerCombatControllerUIManager).WeaponsDisplay.SetNoWeaponActive();
         }
 
+        public override void UseMeleeWeapon()
+        {
+            base.UseMeleeWeapon();
+
+        }
     }
 }

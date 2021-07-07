@@ -20,8 +20,6 @@ namespace ProjElf.HubForest
         [SerializeField]
         private PlayerStatsState m_playerStatsState = null;
 
-        private AudioSource m_ambianceAudioSource = null;
-
         private List<AnimalHubController> m_animals = new List<AnimalHubController>();
         public List<AnimalHubController> Animals => m_animals;
         [SerializeField]
@@ -47,14 +45,13 @@ namespace ProjElf.HubForest
                     }
                 }
             }
-
+            ForestHubAudioReferences.Instance.StartHubMusic();
             yield return base.LoadAsync();
         }
 
         internal override void EnterStateMachine()
         {
             base.EnterStateMachine();
-            m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(ForestHubAudioReferences.Ambiance, true);
             m_saveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
 
             if(m_saveData.IsChoosingAnAnimalToSacrify)
@@ -64,6 +61,8 @@ namespace ProjElf.HubForest
                 m_saveData.IsChoosingAnAnimalToSacrify = false;
                 //On t'as bien niqué
             }
+
+            ForestHubAudioReferences.Instance.StartHubAmbiance();
         }
 
         public void ActivateGameplayState()
@@ -88,7 +87,8 @@ namespace ProjElf.HubForest
 
         internal override void ExitStateMachine()
         {
-            MOtter.MOtterApplication.GetInstance().SOUND.CleanSource(m_ambianceAudioSource);
+            ForestHubAudioReferences.Instance.StopHubAmbiance();
+            ForestHubAudioReferences.Instance.StopHubMusic();
             base.ExitStateMachine();
         }
     }
