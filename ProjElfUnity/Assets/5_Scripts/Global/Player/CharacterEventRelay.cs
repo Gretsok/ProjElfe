@@ -2,26 +2,27 @@
 
 using UnityEngine;
 
-namespace ProjElf.PlayerController
+
+public class CharacterEventRelay : MonoBehaviour
 {
-    public class CharacterEventRelay : MonoBehaviour
+
+    [SerializeField]
+    private CombatInventory m_combatInventory = null;
+
+    public virtual void StartSwordAttack()
     {
-        [SerializeField]
-        private PlayerSoundHandler m_soundHandler = null;
-        [SerializeField]
-        private CombatInventory m_combatInventory = null;
+        m_combatInventory.MeleeWeapon.StartDamaging();
+        
+    }
 
-        public void StartSwordAttack()
-        {
-            m_combatInventory.MeleeWeapon.StartDamaging();
-            m_soundHandler.PlaySwordHitSound();
-        }
+    public virtual void StopSwordAttack()
+    {
+        m_combatInventory.MeleeWeapon.StopDamaging();
+    }
 
-        public void StopSwordAttack()
-        {
-            m_combatInventory.MeleeWeapon.StopDamaging();
-        }
-
+    public virtual void Step()
+    {
 
     }
+
 }

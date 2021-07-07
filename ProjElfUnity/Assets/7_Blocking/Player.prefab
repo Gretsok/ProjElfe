@@ -1657,6 +1657,7 @@ MonoBehaviour:
   m_swordHitSoundData: {fileID: 11400000, guid: e2948b983b94dcb45b307871846ee8d7,
     type: 2}
   m_jumpSoundData: {fileID: 11400000, guid: c04b1ff13d1cd6440950b3b910b1b570, type: 2}
+  m_stepSoundData: {fileID: 11400000, guid: 027a059ac93449c48af1bd2f2d0896f9, type: 2}
 --- !u!1 &3496502621151300653
 GameObject:
   m_ObjectHideFlags: 0
@@ -2115,20 +2116,6 @@ MonoBehaviour:
   - {fileID: 1161509957113854501}
   - {fileID: 7569020055545631930}
   - {fileID: 621360561905996140}
---- !u!114 &5114562379047853385
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4343575923560995141}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b39c1f001dd07a44b86d381ad8bf6ddf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_soundHandler: {fileID: 7088476493699441481}
-  m_combatInventory: {fileID: 6367058284498771531}
 --- !u!114 &6545112354404110223
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2145,6 +2132,20 @@ MonoBehaviour:
   - rig: {fileID: 5095638299537503240}
     active: 1
   m_Effectors: []
+--- !u!114 &6072169920652800703
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4343575923560995141}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d20446e9262c554d8378320448e5ae3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_combatInventory: {fileID: 6367058284498771531}
+  m_soundHandler: {fileID: 7088476493699441481}
 --- !u!1 &4537042155897427957
 GameObject:
   m_ObjectHideFlags: 0
