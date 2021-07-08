@@ -165,6 +165,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ambiance: {fileID: 11400000, guid: 931cf2996e53aa547aa82a63ea0cfbf3, type: 2}
+  m_music: {fileID: 11400000, guid: c3dbfb8a05392d64cbbf73d89d996bb8, type: 2}
+  m_openChest: {fileID: 11400000, guid: a567c0e9cd8011841bab448dcd1f0d7a, type: 2}
+  m_closeChest: {fileID: 11400000, guid: 21bb399aae840634fa4352003a4cfc86, type: 2}
+  m_openBook: {fileID: 11400000, guid: 268c0f7d8c6e790408181e0e0a0702cb, type: 2}
+  m_closeBook: {fileID: 11400000, guid: 2524a76f76a060b4b9972f8792d2fb06, type: 2}
 --- !u!4 &194808631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,

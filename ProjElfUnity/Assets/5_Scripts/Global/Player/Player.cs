@@ -24,13 +24,14 @@ namespace ProjElf.PlayerController
         private PlayerCombatController m_combatController = null;
         [SerializeField]
         private PlayerCharacterModelSightBrain m_modelSightBrain = null;
-
+        [SerializeField]
+        private PlayerSoundHandler m_soundHandler = null;
         public CharacterController CharacterController => m_characterController;
         public PlayerCameraController CameraController => m_cameraController;
         public Interactor Interactor => m_interactor;
         public CharacterAnimatorHandler CharacterAnimatorHandler => m_characterAnimatorHandler;
         public PlayerCombatController CombatController => m_combatController;
-
+        public PlayerSoundHandler SoundHandler => m_soundHandler;
         internal bool IsFalling = false;
 
         internal Ray Sight = new Ray();
@@ -264,6 +265,7 @@ namespace ProjElf.PlayerController
         {
             Debug.Log("JUMP");
             m_characterAnimatorHandler.StartJump();
+            SoundHandler.PlayJumpSound();
             m_verticalVelocity = 7f;
             yield return null;
         }

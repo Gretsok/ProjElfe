@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1b82c3bff4a60e489c0ae6417778edf, type: 3}
   m_Name: SubMoveSoundData
   m_EditorClassIdentifier: 
-  m_audioClip: {fileID: 8300000, guid: b6a7d048fcf0b5641ac14ecf5e025395, type: 3}
+  m_audioClips:
+  - {fileID: 8300000, guid: b6a7d048fcf0b5641ac14ecf5e025395, type: 3}
   m_categoryName: 1

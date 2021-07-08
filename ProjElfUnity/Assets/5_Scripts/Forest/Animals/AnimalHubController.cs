@@ -35,13 +35,13 @@ namespace ProjElf.HubForest
             NavMeshHit hit;
             NavMesh.SamplePosition(randomDirection, out hit, 5f, 1);
             transform.position = hit.position;
-            m_animalSound = MOtter.MOtterApplication.GetInstance().SOUND.Play3DSound(m_animalSoundData, transform.position, true, 1, transform);
+            //m_animalSound = MOtter.MOtterApplication.GetInstance().SOUND.Play3DSound(m_animalSoundData, transform.position, true, 1, transform);
         }
 
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            m_animalSound.Stop();
+            //m_animalSound.Stop();
         }
 
     }

@@ -314,7 +314,7 @@ namespace ProjElf.CombatController
         #endregion
 
         #region UseWeapons
-        public void UseMeleeWeapon()
+        public virtual void UseMeleeWeapon()
         {
             if(m_selectedWeapon is MeleeWeapon)
             {
@@ -325,7 +325,7 @@ namespace ProjElf.CombatController
                 Debug.LogError("UseMeleeWeapon avec mauvaise arme");
             }
         }
-        public void UseBowWeapon(Vector3 direction)
+        public virtual void UseBowWeapon(Vector3 direction)
         {
             if (m_selectedWeapon is Bow)
             {
@@ -336,7 +336,7 @@ namespace ProjElf.CombatController
                 Debug.LogError("UseBowWeapon avec mauvaise arme");
             }
         }
-        public void UseGrimoireWeapon(Vector3 direction)
+        public virtual void UseGrimoireWeapon(Vector3 direction)
         {
             if (m_selectedWeapon is Grimoire)
             {
