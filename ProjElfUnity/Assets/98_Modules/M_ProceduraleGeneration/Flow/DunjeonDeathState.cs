@@ -27,6 +27,7 @@ namespace ProjElf.DunjeonGameplay
             InflateDeathPanel();
             m_saveData = MOtter.MOtterApplication.GetInstance().GAMEMANAGER.GetSaveData<SaveData>();
             m_saveData.IsChoosingAnAnimalToSacrify = true;
+            MOtter.MOtterApplication.GetInstance().GAMEMANAGER.SaveCurrentData();
         }
 
         private void InflateDeathPanel()

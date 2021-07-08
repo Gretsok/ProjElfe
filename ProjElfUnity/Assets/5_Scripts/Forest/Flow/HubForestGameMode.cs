@@ -59,6 +59,7 @@ namespace ProjElf.HubForest
                 m_RandomAnimal = m_saveData.GetRandomAnimalData();
                 AnimalsManager.GetInstance().SacrificeRescuedAnimal(m_RandomAnimal);
                 m_saveData.IsChoosingAnAnimalToSacrify = false;
+                Debug.Log($"Randomly sacrifice {m_RandomAnimal.NameKey}");
                 //On t'as bien niqué
             }
 

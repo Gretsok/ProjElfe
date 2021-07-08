@@ -34,6 +34,7 @@ namespace ProjElf.HubForest
             StartCoroutine(LoadInventoryPanelRoutine());
             m_inventoryChest.OpenChest();
             m_gamemode.Player.CombatController.UIManager.Hide();
+            ForestHubAudioReferences.Instance.PlayOpenChestSound(m_inventoryChest.transform.position);
         }
 
         #region Player Interactions
@@ -236,6 +237,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            ForestHubAudioReferences.Instance.PlayCloseChestSound(m_inventoryChest.transform.position);
             m_gamemode.Player.CombatController.UIManager.Show();
             m_inventoryChest.CloseChest();
             base.ExitState();
