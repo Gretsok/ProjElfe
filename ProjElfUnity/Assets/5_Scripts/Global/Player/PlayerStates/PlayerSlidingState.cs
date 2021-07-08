@@ -16,6 +16,7 @@ namespace ProjElf.PlayerController
             m_distanceTraveled = 0;
             m_player.CharacterAnimatorHandler.StartSlide();
             m_startingDirection = m_player.Velocity.magnitude > 0 ?  m_player.Velocity.normalized : transform.forward;
+            m_player.CombatController.IsInvincible = true;
         }
 
         public override void UpdateState()
@@ -40,6 +41,7 @@ namespace ProjElf.PlayerController
         public override void ExitState()
         {
             m_player.CharacterAnimatorHandler.StopSlide();
+            m_player.CombatController.IsInvincible = false;
             base.ExitState();
         }
     }
