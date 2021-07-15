@@ -166,79 +166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_ambiance: {fileID: 11400000, guid: 931cf2996e53aa547aa82a63ea0cfbf3, type: 2}
   m_music: {fileID: 11400000, guid: c3dbfb8a05392d64cbbf73d89d996bb8, type: 2}
---- !u!1 &42482803
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 42482805}
-  - component: {fileID: 42482804}
-  m_Layer: 0
-  m_Name: ContextManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &42482804
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42482803}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 03ea524f677fe6943abaa182c190be98, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &42482805
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 42482803}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1651369417}
-  m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &131041662
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 131041663}
-  m_Layer: 0
-  m_Name: SubApplications
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &131041663
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 131041662}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 353368314}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_openChest: {fileID: 11400000, guid: a567c0e9cd8011841bab448dcd1f0d7a, type: 2}
+  m_closeChest: {fileID: 11400000, guid: 21bb399aae840634fa4352003a4cfc86, type: 2}
+  m_openBook: {fileID: 11400000, guid: 268c0f7d8c6e790408181e0e0a0702cb, type: 2}
+  m_closeBook: {fileID: 11400000, guid: 2524a76f76a060b4b9972f8792d2fb06, type: 2}
 --- !u!4 &194808631 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2199089781243877719, guid: 0c8852882e559e348b31faab3fe12f0f,

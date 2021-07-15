@@ -25,6 +25,7 @@ namespace ProjElf.HubForest
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed += PlayerStatsState_performed;
             m_shrine.OpenGrimoire();
             m_gamemode.Player.CombatController.UIManager.Hide();
+            ForestHubAudioReferences.Instance.PlayOpenBookSound(m_shrine.transform.position);
         }
 
         private void PlayerStatsState_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
@@ -34,6 +35,7 @@ namespace ProjElf.HubForest
 
         public override void ExitState()
         {
+            ForestHubAudioReferences.Instance.PlayCloseBookSound(m_shrine.transform.position);
             m_gamemode.Player.CombatController.UIManager.Show();
             m_shrine.CloseGrimoire();
             m_gamemode.Actions.FindActionMap("UI").FindAction("Back").performed -= PlayerStatsState_performed;

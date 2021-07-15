@@ -59,6 +59,8 @@ namespace ProjElf.HubForest
             {
                 SwitchToState(m_notificationSacrificeState);
                 m_saveData.IsChoosingAnAnimalToSacrify = false;
+                Debug.Log($"Randomly sacrifice {m_RandomAnimal.NameKey}");
+                //On t'as bien niqué
             }
 
             ForestHubAudioReferences.Instance.StartHubAmbiance();

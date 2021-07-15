@@ -29,6 +29,8 @@ namespace ProjElf.CombatController
         public float MagicalDamageMultiplierIncrement => m_magicalDamageMultiplierIncrement;
         public float PhysicalDamageMultiplierIncrement => m_physicalDamageMultiplierIncrement;
 
+        public bool IsInvincible {get ; set ;}
+
 
         public Action OnLifeReachedZero = null;
         public Action<Damage, CombatController> OnBeingAttacked = null;
@@ -152,7 +154,7 @@ namespace ProjElf.CombatController
                     }
                     #endregion
                     
-                    if(damageGiverData.DamageGiver.CanDoDamage)
+                    if(damageGiverData.DamageGiver.CanDoDamage && !IsInvincible)
                     {
                         TakeDamage(damageGiverData.DamageGiver.Damage, damageGiverData.DamageGiver.Owner);
                     }
