@@ -19,7 +19,8 @@ namespace ProjElf.HubForest
         private ForestInventoryState m_inventoryState = null;
         [SerializeField]
         private PlayerStatsState m_playerStatsState = null;
-
+        [SerializeField]
+        private NotificationSacrificeState m_notificationSacrificeState = null;
         private List<AnimalHubController> m_animals = new List<AnimalHubController>();
         public List<AnimalHubController> Animals => m_animals;
         [SerializeField]
@@ -56,10 +57,8 @@ namespace ProjElf.HubForest
 
             if(m_saveData.IsChoosingAnAnimalToSacrify)
             {
-                m_RandomAnimal = m_saveData.GetRandomAnimalData();
-                AnimalsManager.GetInstance().SacrificeRescuedAnimal(m_RandomAnimal);
+                SwitchToState(m_notificationSacrificeState);
                 m_saveData.IsChoosingAnAnimalToSacrify = false;
-                //On t'as bien niqué
             }
 
             ForestHubAudioReferences.Instance.StartHubAmbiance();
