@@ -34,3 +34,6 @@ MonoBehaviour:
   m_dunjeonSceneData: {fileID: 11400000, guid: 039ad7c46472cc8498f813c83c7e47d7, type: 2}
   m_lifeFactorIncrement: 5.5
   m_damageFactorIncrement: 5.5
+  m_musicSoundData: {fileID: 11400000, guid: 50d6d27cc3d839142ba9677b3f183bb6, type: 2}
+  m_ambianceSoundData: {fileID: 11400000, guid: 88457bdc4072848429121f2b1573b3fd,
+    type: 2}

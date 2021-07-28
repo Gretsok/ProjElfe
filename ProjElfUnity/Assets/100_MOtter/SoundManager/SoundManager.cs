@@ -19,6 +19,11 @@ namespace MOtter.SoundManagement
 
         public AudioSource Play2DSound(SoundData soundData, bool loop = false, float volume = 1f)
         {
+            if(soundData.AudioClip == null)
+            {
+                Debug.LogError($"No audio clip in Sound Data : {soundData.name}");
+                return null;
+            }
             CheckFreeingRoutine();
             AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;
@@ -44,6 +49,11 @@ namespace MOtter.SoundManagement
 
         public AudioSource Play3DSound(SoundData soundData, Vector3 position, bool loop = false, float volume = 1f, Transform parent = null, float spatialBlend = 1f)
         {
+            if (soundData.AudioClip == null)
+            {
+                Debug.LogError($"No audio clip in Sound Data : {soundData.name}");
+                return null;
+            }
             CheckFreeingRoutine();
             AudioSource audioSource = GetFreeAudioSource();
             audioSource.loop = loop;

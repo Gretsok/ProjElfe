@@ -17,7 +17,7 @@ namespace ProjElf.CombatController
         public CombatController Owner { get; private set; }
 
         public Damage Damage => m_damage;
-        public float Cooldown => 0.1f;
+        public float Cooldown => 0.5f;
 
         private bool m_isPoolable = true;
         public bool IsPoolable => m_isPoolable;

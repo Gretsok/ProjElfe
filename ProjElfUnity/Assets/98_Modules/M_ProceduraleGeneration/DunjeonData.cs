@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using MOtter.SoundManagement;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ProjElf.ProceduraleGeneration
@@ -44,6 +45,15 @@ namespace ProjElf.ProceduraleGeneration
 
 
         public string DunjeonName => m_dunjeonName;
+
+        [Header("Specific Sounds")]
+        [SerializeField]
+        private SoundData m_musicSoundData = null;
+        [SerializeField]
+        private SoundData m_ambianceSoundData = null;
+
+        public SoundData MusicSoundData => m_musicSoundData;
+        public SoundData AmbianceSoundData => m_ambianceSoundData;
 
         /// <summary>
         /// Get a random number of rooms making the way leading to the end

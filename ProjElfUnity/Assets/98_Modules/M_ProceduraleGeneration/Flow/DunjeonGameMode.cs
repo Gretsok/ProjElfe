@@ -1,8 +1,6 @@
 ﻿using UnityEngine;
-using MOtter.StatesMachine;
 using System.Collections;
 using UnityEngine.AI;
-using MOtter;
 using ProjElf.DunjeonGameplay;
 using ProjElf.AnimalManagement;
 
@@ -27,6 +25,11 @@ namespace ProjElf.ProceduraleGeneration
         public AnimalData AnimalDataToRescue => m_animalDataToRescue;
 
         private DunjeonRoom m_playerCurrentDunjeonRoom = null;
+
+        #region Specific Sounds Running
+        private AudioSource m_musicAudioSource = null;
+        private AudioSource m_ambianceAudioSource = null;
+        #endregion
 
         public override IEnumerator LoadAsync()
         {
@@ -69,7 +72,8 @@ namespace ProjElf.ProceduraleGeneration
             }
             m_animalDataToRescue = animalPrison.AnimalDataToRescue;
 
-
+            m_musicAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.MusicSoundData, true);
+            m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.AmbianceSoundData, true);
 
             yield return base.LoadAsync();
         }
@@ -129,6 +133,19 @@ namespace ProjElf.ProceduraleGeneration
         public void LoadBackToHub()
         {
             m_hubSceneData.LoadLevel();
+        }
+
+        internal override void ExitStateMachine()
+        {
+            if(m_musicAudioSource != null && m_musicAudioSource.isPlaying)
+            {
+                m_musicAudioSource.Stop();
+            }
+            if(m_ambianceAudioSource != null && m_ambianceAudioSource.isPlaying)
+            {
+                m_ambianceAudioSource.Stop();
+            }
+            base.ExitStateMachine();
         }
     }
 }
