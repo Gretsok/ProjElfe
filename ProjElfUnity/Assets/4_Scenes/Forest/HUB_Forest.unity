@@ -429,6 +429,7 @@ MonoBehaviour:
   m_dunjeonSelectionState: {fileID: 971220173}
   m_inventoryState: {fileID: 1920232948}
   m_playerStatsState: {fileID: 729520524}
+  m_notificationSacrificeState: {fileID: 0}
   m_animalHubControllerPrefab: {fileID: 6573104608402581653, guid: 6c4199f6f51b2fc4aaca65b9fe3ea81e,
     type: 3}
   m_animalSpawnPoint: {fileID: 1341330360}
@@ -1665,6 +1666,12 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2199089781243877721, guid: 0c8852882e559e348b31faab3fe12f0f,
+        type: 3}
+      propertyPath: m_portalSoundData
+      value: 
+      objectReference: {fileID: 11400000, guid: c8c1ce73351c2d94fa5f37274c5e5864,
+        type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c8852882e559e348b31faab3fe12f0f, type: 3}
 --- !u!1001 &3826145081811354971
