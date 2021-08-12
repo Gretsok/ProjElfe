@@ -15,7 +15,7 @@ MonoBehaviour:
   m_weaponID: -320907027
   m_weaponName: WEAPON_NAME_SWORD6_VARIANT
   m_weaponSprite: {fileID: 21300000, guid: 3d1dbb5ae67ef6340ac7f94dad76ab51, type: 3}
-  m_hitDamage: {x: 10, y: 20}
+  m_hitDamage: {x: 120, y: 140}
   m_attackSpeed: {x: 2, y: 2}
   m_weaponPrefab: {fileID: 6914283557180461366, guid: 75d3249c04c792c4c8950340bdd05b99,
     type: 3}

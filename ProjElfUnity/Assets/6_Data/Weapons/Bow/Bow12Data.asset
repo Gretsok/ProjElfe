@@ -15,7 +15,7 @@ MonoBehaviour:
   m_weaponID: -620582635
   m_weaponName: WEAPON_NAME_BOW12
   m_weaponSprite: {fileID: 21300000, guid: 0d67cdfde42c05e4189f80d8cc1d0f59, type: 3}
-  m_hitDamage: {x: 10, y: 20}
+  m_hitDamage: {x: 140, y: 200}
   m_attackSpeed: {x: 0.5, y: 1}
   m_weaponPrefab: {fileID: 6384736151154305086, guid: 414fc47a211ea194c9cc9e1ccc3fecde,
     type: 3}
