@@ -72,8 +72,10 @@ namespace ProjElf.ProceduraleGeneration
             }
             m_animalDataToRescue = animalPrison.AnimalDataToRescue;
 
-            m_musicAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.MusicSoundData, true);
-            m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.AmbianceSoundData, true);
+            if(m_dunjeonManager.CurrentDunjeonData.MusicSoundData != null)
+                m_musicAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.MusicSoundData, true);
+            if(m_dunjeonManager.CurrentDunjeonData.AmbianceSoundData)
+                m_ambianceAudioSource = MOtter.MOtterApplication.GetInstance().SOUND.Play2DSound(m_dunjeonManager.CurrentDunjeonData.AmbianceSoundData, true);
 
             yield return base.LoadAsync();
         }

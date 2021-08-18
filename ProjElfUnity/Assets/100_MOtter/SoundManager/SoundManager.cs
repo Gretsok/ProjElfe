@@ -19,6 +19,10 @@ namespace MOtter.SoundManagement
 
         public AudioSource Play2DSound(SoundData soundData, bool loop = false, float volume = 1f)
         {
+            if(soundData == null)
+            {
+                return null;
+            }
             if(soundData.AudioClip == null)
             {
                 Debug.LogError($"No audio clip in Sound Data : {soundData.name}");
