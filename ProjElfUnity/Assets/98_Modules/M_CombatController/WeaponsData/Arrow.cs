@@ -22,7 +22,7 @@ namespace ProjElf.CombatController
         private bool m_isPoolable = true;
         public bool IsPoolable => m_isPoolable;
 
-        public bool CanDoDamage => true;
+        public bool CanDoDamage => !m_isPoolable;
 
         public Action<IDamageGiver> OnDisappear { get; set; } = null;
 
