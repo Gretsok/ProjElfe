@@ -262,6 +262,7 @@ MonoBehaviour:
     - INTERACT_DISPLAY_PLAYER_STATS
     - INTERACT_SAVE_ANIMAL
     - GOT_A_NEW_WEAPON
+    - MENU_FORCE_SACRIFICE_ANIMAL
     m_values:
     - FR
     - "Fran\xE7ais"
@@ -511,3 +512,5 @@ MonoBehaviour:
     - Afficher les statistiques du joueurs
     - Sauver l'animal
     - Une nouvelle arme !
+    - "Puisque vous n'avez pas sacrifier d'animal lorsque vous \xEAtes mort, l'univers
+      en a sacrifi\xE9 un al\xE9atoirement pour vous."

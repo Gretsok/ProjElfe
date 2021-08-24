@@ -71,6 +71,10 @@ namespace MOtter.StatesMachine
             m_currentState?.EnterState();
         }
 
+        public virtual void SwitchToDefaultState()
+        {
+            SwitchToState(m_defaultState);
+        }
         public virtual IEnumerator LoadAsync()
         {
             yield return null;

@@ -262,6 +262,7 @@ MonoBehaviour:
     - INTERACT_DISPLAY_PLAYER_STATS
     - INTERACT_SAVE_ANIMAL
     - GOT_A_NEW_WEAPON
+    - MENU_FORCE_SACRIFICE_ANIMAL
     m_values:
     - EN
     - English
@@ -511,3 +512,5 @@ MonoBehaviour:
     - Display player stats
     - Save animal
     - Got a new weapon !
+    - Since you did not sacrifice an animal when you died, the universe randomly
+      selected one to sacrifice.
