@@ -2,7 +2,7 @@
 The animals of the forest have been captured! Use the portal to explore dungeons to free them all and unlock the weapons along the way!
 Saving animals grants you stats bonus which replaces the classic level mechanic.
 
-# In short
+# About
 This project was made by three programmer students without artists.
 
 # Technical content
